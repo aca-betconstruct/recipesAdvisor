@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import styles from './styles';
 
@@ -16,6 +16,11 @@ class FoodCard extends Component {
         </div>
       </div>
     );
+  }
+  static propTypes={
+      classes:PropTypes.object,
+      foodObj:PropTypes.object,
+      deletePreference:PropTypes.func
   }
 }
 
