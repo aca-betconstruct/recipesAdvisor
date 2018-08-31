@@ -4,7 +4,7 @@ import injectSheet from 'react-jss';
 import styles from './styles';
 
 class FoodCard extends Component {
-  handleClick = () => this.props.removePreference(this.props.foodObj.id);
+  handleClick = () => this.props.deletePreference(this.props.foodObj.id);
 
   render() {
     const { classes, foodObj } = this.props;

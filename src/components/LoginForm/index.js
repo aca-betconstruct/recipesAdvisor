@@ -43,7 +43,7 @@ class Login extends Component {
               <div className={classes.contentMain}>
                 <div className={classes.signUpForm}>
                   <h4>Login to start the journey of amazing recipes</h4>
-                  <form method="post">
+                  <form method="post" onSubmit={this.handleSubmit}>
                     <Field
                       className={classes.text}
                       name="email"
