@@ -132,32 +132,14 @@ class Header extends Component {
                     navbar
                   >
                     <NavbarNav right>
-                      <NavItem>
-                        <NavLink to="/home" className={classes.navLink}>
-                          Home
-                        </NavLink>
-                      </NavItem>
-                      <NavItem>
-                        <NavLink to="/favourites" className={classes.navLink}>
-                          Favourites
-                        </NavLink>
-                      </NavItem>
-                      <NavItem>
-                        <NavLink to="/contactus">Contact</NavLink>
-                      </NavItem>
                       {isAuth ? (
                         <NavItem>
-                          <NavLink to="/">Log Out</NavLink>
+                          <NavLink to="/login">Log Out</NavLink>
                         </NavItem>
                       ) : (
-                        <NavbarNav>
-                          <NavItem>
-                            <NavLink to="/login">Log In</NavLink>
-                          </NavItem>
-                          <NavItem>
-                            <NavLink to="/signup">Sign Up</NavLink>
-                          </NavItem>
-                        </NavbarNav>
+                        <NavItem>
+                          <NavLink to="/login">Log In</NavLink>
+                        </NavItem>
                       )}
                     </NavbarNav>
                   </Collapse>
@@ -166,8 +148,6 @@ class Header extends Component {
             </div>
           </Container>
         </header>
-        <AnimatableImages />
-        <Search />
         <ScrollButton scrollStepInPx="50" delayInMs="16.66" />
       </React.Fragment>
     );

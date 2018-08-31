@@ -6,7 +6,7 @@ import Recipe from '../../containers/Recipe';
 import Loader from '../Loader';
 import injectSheet from 'react-jss';
 import styles from './styles';
-//import { Grid, Row } from 'react-bootstrap';
+import { Container, Row } from 'mdbreact';
 
 let curPage = 0;
 
@@ -81,21 +81,23 @@ class Recipes extends Component {
             </p>
           }
         >
-          <div className={classes.recipes}>
-            {recipes.map(item =>
-              item.hits.map((recipe, index) => {
-                return (
-                  <Recipe
-                    recipe={recipe.recipe}
-                    key={recipe.recipe.url}
-                    index={index}
-                    q={item.q}
-                    type={'profile'}
-                  />
-                );
-              })
-            )}
-          </div>
+          <Container>
+            <Row className={classes.recipes}>
+              {recipes.map(item =>
+                item.hits.map((recipe, index) => {
+                  return (
+                    <Recipe
+                      recipe={recipe.recipe}
+                      key={recipe.recipe.url}
+                      index={index}
+                      q={item.q}
+                      type={'profile'}
+                    />
+                  );
+                })
+              )}
+            </Row>
+          </Container>
         </InfiniteScroll>
         {recipes.length ? (
           recipes.some(item => item.count > 0) ? (
