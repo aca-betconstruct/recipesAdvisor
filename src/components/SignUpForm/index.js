@@ -53,7 +53,6 @@ class SignUp extends Component {
             <div className={classes.grids}>
               <div className={classes.contentLeft}>
                 <div className={classes.contentInfo}>
-                  <h2>What Are We?</h2>
                   <div className={classes.slider}>
                     <div className={classes.callbacksContainer}>
                       <ul
@@ -62,7 +61,7 @@ class SignUp extends Component {
                       >
                         <li>
                           <div className={classes.descriptionBanner}>
-                            <h3>A Simple Recipes Website</h3>
+                            <h3>Why Do You Need This ?</h3>
                             <p>
                               Recipes Advisor is a website that will help you to
                               get interesting recipes based on the products you
@@ -73,7 +72,7 @@ class SignUp extends Component {
                         </li>
                         <li>
                           <div className={classes.descriptionBanner}>
-                            <h3>What You Do ?</h3>
+                            <h3>What Do You Do here ?</h3>
                             <p>
                               Set up your food prefferences once and get
                               interesting recipes daily.
@@ -85,7 +84,7 @@ class SignUp extends Component {
                   </div>
                   <div className={classes.signIn}>
                     <h4>
-                      Already have an account{' '}
+                      Already have an account ?{' '}
                       <Link to="login" className={classes.a}>
                         Login
                       </Link>

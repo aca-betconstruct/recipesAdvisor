@@ -29,6 +29,15 @@ class AnimatableImages extends Component {
     }
   }
 
+  componentDidUpdate() {
+    const { index } = this.state;
+    if (index !== images.length - 1) {
+      setTimeout(() => this.setState({ index: index + 1 }), 7000);
+    } else {
+      setTimeout(() => this.setState({ index: 0 }), 7000);
+    }
+  }
+
   render() {
     const { classes } = this.props;
     const { index } = this.state;

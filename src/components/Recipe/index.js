@@ -51,7 +51,7 @@ class Recipe extends Component {
   render() {
     const { recipe, classes } = this.props;
     const { isFavourite } = recipe;
-    return <Card />;
+    return <SmallCard />;
   }
 }
 
