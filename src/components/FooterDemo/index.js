@@ -11,7 +11,7 @@ class FooterPage extends Component {
         <Container fluid className="text-center text-md-left">
           <Row className="text-center text-md-left mt-5 pb-4">
             <Col md="3" lg="3" xl="3" className="mx-auto mt-3">
-              <h6 className="text-uppercase mb-4 font-weight-bold green-text">
+              <h6 className="text-uppercase mb-4 font-weight-bold light-green-text">
                 Recipes Advisor
               </h6>
               <p>
