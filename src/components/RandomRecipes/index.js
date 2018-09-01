@@ -13,8 +13,7 @@ class RandomRecipes extends Component {
     return (
       <span>
         <AnimatableImages />
-        <AnimatableCards />
-        <Recipes />
+        <Recipes type={'random'} />
       </span>
     );
   }

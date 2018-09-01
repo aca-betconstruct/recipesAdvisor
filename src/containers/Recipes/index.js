@@ -1,14 +1,22 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { getRecipes, firstPage, nextPage } from '../../actions';
+import {
+  getRecipes,
+  firstPage,
+  nextPage,
+  getPreferences,
+  getFetchFavourites
+} from '../../actions';
 import Recipes from '../../components/Recipes';
 
 const mapStateToProps = state => {
   return {
     isRecipesFetching: state.isRecipesFetching,
     recipes: state.recipes,
-    curPage: state.curPage
+    curPage: state.curPage,
+    preferences: state.preferences,
+    favourites: state.allFetchFavourites
   };
 };
 
@@ -17,7 +25,9 @@ const mapDispatchToProps = dispatch => {
     {
       getRecipes,
       firstPage,
-      nextPage
+      nextPage,
+      getPreferences,
+      getFetchFavourites
     },
     dispatch
   );

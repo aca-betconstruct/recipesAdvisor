@@ -1,17 +1,23 @@
 import {
   RECIPES_FETCHING,
   RECIPES_FETCHING_FAILURE,
-  RECIPES_FETCHING_SUCCESS
+  RECIPES_FETCHING_SUCCESS,
+  RANDOM_FOODS
 } from '../constants';
+
+const randomRecipes = RANDOM_FOODS.map(food => food.name);
 
 const recipesFetching = () => {
   return { type: RECIPES_FETCHING };
 };
 
-const recipesFetchingSuccess = recipe => {
+const recipesFetchingSuccess = (recipe, favs) => {
   return {
     type: RECIPES_FETCHING_SUCCESS,
-    payload: recipe
+    payload: {
+      recipe,
+      favs
+    }
   };
 };
 
@@ -22,32 +28,48 @@ const recipesFetchingFailure = () => {
 };
 
 const joiner = (arr, type) => {
-  return `&${type}` + arr.join(`&${type}`);
+  return `&${type}=` + arr.join(`&${type}=`);
 };
 
-export const getRecipes = (page = 0, labels = [], q, type) => dispatch => {
-  console.log(page);
+export const getRecipes = (
+  page = 0,
+  labels = [],
+  q,
+  labelsType,
+  preferences = [],
+  favourites = [],
+  type = 'daily'
+) => dispatch => {
   dispatch(recipesFetching());
-  const excludes = [],
-    includes = ['eggs', 'fish'],
-    random = ['soy', 'chocolate'];
-  let count = 24;
+  const favs = favourites.map(fav => fav.favoriteId);
+  const excludes = preferences
+      .filter(item => !item.isLike)
+      .map(item => item.text),
+    includes = preferences.filter(item => item.isLike).map(item => item.text);
+  let count = 10;
   let excludesFoods = '',
     connectedLabels = '';
-  if (labels.length) connectedLabels = joiner(labels, type);
+  if (labels.length) connectedLabels = joiner(labels, labelsType);
+  if (excludes.length) excludesFoods = joiner(excludes, 'excluded');
   let include = [];
-  if (q !== undefined) {
-    include.push(q);
-    if (excludes.length) excludesFoods = joiner(excludes, 'excluded');
-  } else {
-    if (includes.length) {
-      if (excludes.length) excludesFoods = joiner(excludes, 'excluded');
-      include = includes;
-      count = count / include.length;
-    } else {
-      include = random;
-      count = count / random.length;
-    }
+  switch (type) {
+    case 'daily':
+      include.push(
+        includes[Math.floor(Math.random() * includes.length)],
+        includes[Math.floor(Math.random() * includes.length)]
+      );
+      break;
+    case 'search':
+      include.push(q);
+      break;
+    case 'random':
+      include.push(
+        randomRecipes[Math.floor(Math.random() * randomRecipes.length)],
+        randomRecipes[Math.floor(Math.random() * randomRecipes.length)]
+      );
+      break;
+    default:
+      break;
   }
   include.forEach(inclFoods => {
     fetch(
@@ -56,7 +78,10 @@ export const getRecipes = (page = 0, labels = [], q, type) => dispatch => {
     )
       .then(recipes => recipes.json())
       .then(recipes => {
-        return dispatch(recipesFetchingSuccess(recipes));
+        if (type === 'random') {
+          return dispatch(recipesFetchingSuccess(recipes, []));
+        }
+        return dispatch(recipesFetchingSuccess(recipes, favs));
       })
       .catch(error => {
         console.log(error);
