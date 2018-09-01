@@ -1,5 +1,6 @@
 export default {
   btn: {
+    zIndex: 1030,
     position: 'fixed',
     bottom: '50px',
     right: '10px',
