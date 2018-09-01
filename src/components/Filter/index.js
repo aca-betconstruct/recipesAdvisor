@@ -3,151 +3,69 @@ import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 import styles from './styles';
 
-//import { Glyphicon } from 'react-bootstrap';
-
-const diets = [
-  ['balanced', 'Balanced'],
-  ['high-protein', 'High Protein'],
-  ['vegan', 'Vegan'],
-  ['low-carb', 'Low Carb'],
-  ['low-fat', 'Low Fat'],
-  ['vegeterian', 'Vegeterian']
-];
-
-const health = [
-  ['peanut-free', 'Peanut Free'],
-  ['tree-nut-free', 'Tree Nut Free'],
-  ['sugar-conscious', 'Sugar Conscious'],
-  ['alcohol-free', 'Alcohol Free']
-];
+import Search from '../Search';
 
 class Filter extends Component {
   constructor() {
     super();
     this.state = {
       search: '',
-      show: false
+      activeLabel: ''
     };
   }
 
-  filterShowChange = () => this.setState({ show: !this.state.show });
-
-  runSearch = () => {
-    const { history, match } = this.props;
-    history.push(`${match.url}/search?q=${this.state.search.trim()}`);
+  changeLabel = label => {
+    const { activeLabel } = this.state;
+    if (activeLabel === label) this.setState({ activeLabel: '' });
+    else this.setState({ activeLabel: label });
   };
 
-  handleDietClick = v => {
-    const { filter, addDietLabel, removeLabel } = this.props;
-    if (filter.labels.includes(v)) {
-      removeLabel(v);
-    } else {
-      addDietLabel(v);
-    }
-  };
+  handleInput = e => this.setState({ search: e.target.value });
 
-  handleHealthClick = v => {
-    const { filter, addHealthLabel, removeLabel } = this.props;
-    if (filter.labels.includes(v)) {
-      removeLabel(v);
-    } else {
-      addHealthLabel(v);
-    }
-  };
-
-  handleSearchInput = e => this.setState({ search: e.target.value });
-
-  handleEnter = e => {
+  runSearch = e => {
     if (e.key === 'Enter') {
-      this.runSearch();
-      this.props.firstPage();
+      const { search, label } = this.state;
+      if (label) this.props.getRecipes(0, [label], search.trim(), 'diet');
+      else this.props.getRecipes(0, [label], search.trim());
     }
-  };
-
-  handleFilterSubmit = () => {
-    this.filterShowChange();
-    this.runSearch();
   };
 
   render() {
-    const { classes, filter } = this.props;
-    const { search, show } = this.state;
+    const { classes } = this.props;
+    const { activeLabel } = this.state;
     return (
       <div className={classes.main}>
-        <input
-          spellCheck="false"
-          className={`${classes.search} ${show ? classes.searchActive : ''}`}
-          type="text"
-          onKeyDown={this.handleEnter}
-          onChange={this.handleSearchInput}
-          value={search}
-        />
-        <div
-          className={`${classes.dropdownButtonContainer} ${
-            show ? classes.dropdownButtonContainerActive : ''
-          }`}
-          onClick={this.filterShowChange}
-        >
-          {/*<Glyphicon*/}
-          {/*glyph="glyphicon glyphicon-filter"*/}
-          {/*className={`${classes.dropdownOpenButton} ${*/}
-          // show ? classes.dropdownOpenButtonActive : '' // }`}
-          {/*/>*/}
-        </div>
-        <div
-          className={`${classes.dropdownClose} ${
-            show ? classes.dropdownActive : ''
-          }`}
-        >
-          <div className={classes.sectionTitle}>Diets</div>
-          <hr style={{ marginBottom: '5px' }} className={classes.hr} />
-          <div className={classes.dietSection}>
-            {diets.map(v => (
-              <div
-                className={classes.dietSectionButton}
-                key={v[0]}
-                onClick={() => this.handleDietClick(v[0])}
-              >
-                {filter.labels.includes(v[0]) ? `${v[1]} ✓` : `${v[1]}`}
-              </div>
-            ))}
+        <h1>Filter</h1>
+        <div className={classes.filtersContainer}>
+          <div
+            onClick={() => this.changeLabel('balanced')}
+            className={`${classes.label} ${
+              activeLabel === 'balanced' ? classes.activeLabel : ''
+            }`}
+          >
+            Balanced
           </div>
-          <hr style={{ marginTop: '5px' }} className={classes.hr} />
-          <div className={classes.sectionTitle}>Healthy</div>
-          <hr style={{ marginBottom: '5px' }} className={classes.hr} />
-          <div className={classes.healthSection}>
-            {health.map(v => (
-              <div
-                className={classes.healthSectionButton}
-                key={v[0]}
-                onClick={() => this.handleHealthClick(v[0])}
-              >
-                {filter.labels.includes(v[0]) ? `${v[1]} ✓` : `${v[1]}`}
-              </div>
-            ))}
+          <div
+            onClick={() => this.changeLabel('vegeterian')}
+            className={`${classes.label} ${
+              activeLabel === 'vegeterian' ? classes.activeLabel : ''
+            }`}
+          >
+            Vegeterian
           </div>
-          <hr
-            style={{ marginTop: '5px', marginBottom: '5px' }}
-            className={classes.hr}
+          <div
+            onClick={() => this.changeLabel('vegan')}
+            className={`${classes.label} ${
+              activeLabel === 'vegan' ? classes.activeLabel : ''
+            }`}
+          >
+            Vegan
+          </div>
+          <Search
+            onChange={this.handleInput}
+            onKeyDown={this.runSearch}
+            value={this.state.search}
           />
-          <div className={classes.calSection}>
-            <p className={classes.cal}>Cal </p>
-            <p className={classes.fromTo}>
-              from:
-              <input maxLength="5" type="number" className={classes.calInput} />
-            </p>
-            <p className={classes.fromTo}>
-              to:
-              <input maxLength="5" type="number" className={classes.calInput} />
-            </p>
-            <button
-              className={classes.searchButton}
-              onClick={this.handleFilterSubmit}
-              type="submit"
-            >
-              Search
-            </button>
-          </div>
         </div>
       </div>
     );

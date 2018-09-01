@@ -11,6 +11,7 @@ import ContactUs from '../../components/ContactUs';
 import Recipes from '../../containers/Recipes';
 import RandomRecipes from '../../components/RandomRecipes';
 import Favourites from '../../containers/Favourites';
+import FooterPage from '../../components/FooterDemo';
 
 class RoutesWithHeaderAndFooter extends Component {
   render() {
@@ -24,7 +25,7 @@ class RoutesWithHeaderAndFooter extends Component {
         <Route path="/home" component={Home} />
         <Route path="/settings" component={Settings} />
         <Route path="/favourites" component={Favourites} />
-        <Footer />
+        <FooterPage />
       </React.Fragment>
     );
   }
