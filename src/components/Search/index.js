@@ -30,7 +30,7 @@ class Search extends Component {
   }
 
   handleCloseClick() {
-    setTimeout(() => this.setState({ isSearchIconVisible: true }), 1002);
+    setTimeout(() => this.setState({ isSearchIconVisible: true }), 460);
     this.setState({
       isOpen: false,
       isCloseIconVisible: false
@@ -38,16 +38,19 @@ class Search extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, onChange, onKeyDown, value } = this.props;
     const { isOpen, isSearchIconVisible, isCloseIconVisible } = this.state;
     return (
-      <form className={`${classes.form}`}>
+      <div className={`${classes.form} ${isOpen ? '' : classes.formClose}`}>
         <input
           className={`form-control ${classes.searchBar} ${
             isOpen ? '' : classes.closed
           }`}
+          onChange={onChange}
+          onKeyDown={onKeyDown}
+          value={value}
           type={'text'}
-          placeholder={isOpen ? 'Search' : ''}
+          placeholder={'Search'}
           aria-label={'Search'}
           onClick={this.handleOpenClick}
         />
@@ -60,7 +63,7 @@ class Search extends Component {
           onClick={this.handleCloseClick}
         />
         <span className={isSearchIconVisible ? classes.searchIcon : ''} />
-      </form>
+      </div>
     );
   }
 }

@@ -1,20 +1,16 @@
 export default {
   form: {
     display: 'flex',
-    alignItems: 'center',
-    maxWidth: '276px'
+    alignItems: 'center'
   },
   searchBar: {
-    minWidth: '200px',
-    maxWidth: '250px',
+    width: '250px',
     height: '35px',
     border: '2px solid gray',
     borderRadius: '1000px',
-    paddingLeft: '17px',
-    paddingRight: '25px',
-    transitionProperty:
-      'min-width, width, height, border-radius, padding-right',
-    transitionDuration: '1s, 1s, .5s, 1s, 1s',
+    padding: '6px 25px 6px 17px',
+    transitionProperty: 'width, height, border-radius, padding',
+    transitionDuration: '.6s, .9s, .5s, .4s',
     '&:focus': {
       outline: 0,
       borderColor: 'gray',
@@ -23,10 +19,9 @@ export default {
   },
   closed: {
     cursor: 'pointer',
-    padding: 0,
-    minWidth: '20px',
-    width: '20px',
-    height: '20px',
+    padding: '10px',
+    width: '0',
+    height: '0',
     borderRadius: '50%'
   },
   dNone: {
