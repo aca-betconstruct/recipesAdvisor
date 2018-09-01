@@ -2,9 +2,16 @@ export default {
   form: {
     display: 'flex',
     alignItems: 'center',
-    maxWidth: '276px'
+    width: '276px',
+    position: 'unset',
+    transitionProperty: 'margin-left',
+    transitionDuration: '1s'
+  },
+  formOpened: {
+    marginLeft: '13px'
   },
   searchBar: {
+    marginLeft: 'auto',
     minWidth: '200px',
     maxWidth: '250px',
     height: '35px',
@@ -39,6 +46,9 @@ export default {
     width: '1px',
     border: '1px solid gray',
     transform: 'rotate(-45deg)'
+  },
+  searchIconNone: {
+    display: 'none'
   },
   closeIcon: {
     color: 'gray',

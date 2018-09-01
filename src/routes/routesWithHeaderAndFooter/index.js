@@ -9,6 +9,7 @@ import PrivateRoutes from '../privateRoutes';
 import AboutUs from '../../components/AboutUs';
 import ContactUs from '../../components/ContactUs';
 import Recipes from '../../containers/Recipes';
+import RandomRecipes from '../../components/RandomRecipes';
 import Favourites from '../../containers/Favourites';
 
 class RoutesWithHeaderAndFooter extends Component {
@@ -16,8 +17,9 @@ class RoutesWithHeaderAndFooter extends Component {
     return (
       <React.Fragment>
         <Header />
+        <Route exact path="/" component={RandomRecipes} />
         <Route path="/aboutUs" component={AboutUs} />
-        <Route exact path="/" component={Recipes} />
+        <Route path="/profile" component={Recipes} />
         <Route path="/contactUs" component={ContactUs} />
         <Route path="/home" component={Home} />
         <Route path="/settings" component={Settings} />

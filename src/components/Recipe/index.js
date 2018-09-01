@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import SmallCard from './SmallCard';
-import Card from './Card';
-import AnimatedCard from './AnimatedCard';
+import { SmallCard } from '../Cards';
 import injectSheet from 'react-jss';
 import styles from './styles';
 
