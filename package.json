@@ -16,6 +16,7 @@
     "prop-types": "^15.6.2",
     "query-string-params": "^1.7.5",
     "react": "^16.4.2",
+    "react-autocomplete": "^1.8.1",
     "react-big-calendar": "^0.19.0",
     "react-dnd": "^2.6.0",
     "react-dnd-html5-backend": "^2.6.0",
