@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { Animation, Row, Col, Container } from 'mdbreact';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-import { BigCard, MediumCard } from '..';
+import { BigCard, MediumCard } from '../Cards/index';
 
 const jwt = localStorage.getItem('jwt');
 let curPage = 0;
 
-class AnimatableCards extends Component {
+class Recipes extends Component {
   constructor(props) {
     super(props);
 
@@ -39,10 +39,6 @@ class AnimatableCards extends Component {
       const { preferences, favourites } = this.props;
       getRecipes(curPage, labels, q, labelsType, preferences, favourites, type);
     });
-    //setTimeout(
-      //() => getRecipes(curPage, labels, q, labelsType, preferences, type),
-      //1400
-   // );
     nextPage(curPage + 1);
   }
 
@@ -178,4 +174,4 @@ class AnimatableCards extends Component {
   }
 }
 
-export default AnimatableCards;
+export default Recipes;

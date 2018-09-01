@@ -4,6 +4,11 @@ import {
   getPreferences,
   fetchPreferences
 } from './preferences';
+import {
+  getFetchFavourites,
+  deleteFetchFavourites,
+  fetchFavourites
+} from './favourites';
 import { addHealthLabel, addDietLabel, removeLabel } from './filter';
 import { firstPage, nextPage } from './pagination';
 
@@ -16,5 +21,8 @@ export {
   removeLabel,
   deletePreference,
   getPreferences,
-  fetchPreferences
+  fetchPreferences,
+  getFetchFavourites,
+  deleteFetchFavourites,
+  fetchFavourites
 };

@@ -5,7 +5,6 @@ export const RECIPES_FETCHING_FAILURE = 'RECIPES_FETCHING_FAILURE';
 export const FIRST_PAGE = 'FIRST_PAGE';
 export const NEXT_PAGE = 'NEXT_PAGE';
 
-
 export const REQUEST_SIGNUP = 'REQUEST_SIGNUP';
 export const RECEIVE_SIGNUP = 'RECEIVE_SIGNUP';
 
@@ -41,7 +40,90 @@ export const calendarInitialState = {
   modalOpen: false,
   recipesOpen: false
 };
-export const RECEIVE_ALL_PREFERENCES='RECEIVE_ALL_PREFERENCES';
-export const REQUEST_PREFERENCES='REQUEST_PREFERENCES';
-
-
+export const RECEIVE_ALL_PREFERENCES = 'RECEIVE_ALL_PREFERENCES';
+export const REQUEST_PREFERENCES = 'REQUEST_PREFERENCES';
+export const RANDOM_FOODS = [
+  { name: 'egg' },
+  { name: 'soy' },
+  { name: 'pasta' },
+  { name: 'french fries' },
+  { name: 'ice-cream' },
+  { name: 'bread' },
+  { name: 'fried rice' },
+  { name: 'pancakes' },
+  { name: 'burger' },
+  { name: 'pizza' },
+  { name: 'pumpkin pie' },
+  { name: 'chicken pot pie' },
+  { name: 'banana' },
+  { name: 'apple pie' },
+  { name: 'bagel' },
+  { name: 'muffins' },
+  { name: 'alfredo sauce' },
+  { name: `reece's peanut cups` },
+  { name: 'ice cream cake' },
+  { name: 'cheesecake' },
+  { name: 'cheese' },
+  { name: 'banana bread' },
+  { name: 'potato chips' },
+  { name: 'cheetos' },
+  { name: 'doritos' },
+  { name: 'tacos' },
+  { name: 'burritos' },
+  { name: 'chimichanga' },
+  { name: 'enchilada' },
+  { name: 'salsa' },
+  { name: 'marinara sauce' },
+  { name: 'broccoli' },
+  { name: 'chocolate covered strawberries' },
+  { name: 'kiwi' },
+  { name: 'tomato' },
+  { name: 'salad' },
+  { name: 'steak' },
+  { name: 'chicken tenders' },
+  { name: 'grilled chicken' },
+  { name: 'ribs' },
+  { name: 'biscuits and gravy' },
+  { name: 'hot dogs' },
+  { name: 'eggs' },
+  { name: 'lemon' },
+  { name: 'fish' },
+  { name: 'yogurt' },
+  { name: 'chicken' },
+  { name: 'eggplant' },
+  { name: 'spaghetti' },
+  { name: 'sardou' },
+  { name: 'potato' },
+  { name: 'pea' },
+  { name: 'soup' },
+  { name: 'mushrooms' },
+  { name: 'chowder' },
+  { name: 'apple' },
+  { name: 'porridge' },
+  { name: 'cucumber' },
+  { name: 'arugula' },
+  { name: 'risotto' },
+  { name: 'mango' },
+  { name: 'berry' },
+  { name: 'courgette' },
+  { name: 'panini' },
+  { name: 'sausage' },
+  { name: 'cauliflower' },
+  { name: 'saffron' },
+  { name: 'milk' },
+  { name: 'polenta' },
+  { name: 'chocolate' },
+  { name: 'blackberry' },
+  { name: 'coffee' },
+  { name: 'cardamom' },
+  { name: 'tea' },
+  { name: 'trail' },
+  { name: 'cheddar' },
+  { name: 'biscuits' },
+  { name: 'vegan' },
+  { name: 'milkshake' },
+  { name: 'leaf' },
+  { name: 'quinoa' },
+  { name: 'rhubarb' },
+  { name: 'pistachios' }
+];
