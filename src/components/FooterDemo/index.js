@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Container, Row, Footer } from 'mdbreact';
-
-class FooterPage extends React.Component {
+class FooterPage extends Component {
   render() {
     return (
       <Footer
@@ -11,7 +10,7 @@ class FooterPage extends React.Component {
       >
         <Container fluid className="text-center text-md-left">
           <Row className="text-center text-md-left mt-5 pb-4">
-            <Col md="3" lg="3" xl="3" className="mx-auto mt-3" >
+            <Col md="3" lg="3" xl="3" className="mx-auto mt-3">
               <h6 className="text-uppercase mb-4 font-weight-bold green-text">
                 Recipes Advisor
               </h6>
@@ -21,7 +20,10 @@ class FooterPage extends React.Component {
                 elit.
               </p>
             </Col>
-            <hr className="w-100 clearfix d-md-none" style={{ marginLeft: '1260px' }}/>
+            <hr
+              className="w-100 clearfix d-md-none"
+              style={{ marginLeft: '1260px' }}
+            />
             <Col md="2" lg="2" xl="2" className="mx-auto mt-3">
               <h6 className="text-uppercase mb-4 font-weight-bold">Products</h6>
               <p>
@@ -48,7 +50,7 @@ class FooterPage extends React.Component {
               </p>
             </Col>
           </Row>
-          <hr/>
+          <hr />
           <Row className="d-flex align-items-center">
             <Col md="8" lg="8">
               <p>
