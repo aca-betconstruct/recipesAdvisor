@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { isRecipesFetching, recipes } from './recipes';
 import { reducer as reduxFormReducer } from 'redux-form';
 import curPage from './pagination';
-import preferences from './preferences';
+import { preferences, isPreferencesFetching } from './preferences';
 import filter from './filter';
 
 import auth from './authenticated';
@@ -21,5 +21,6 @@ export default combineReducers({
   preferences,
   auth,
   form: reduxFormReducer,
-  filter
+  filter,
+  isPreferencesFetching
 });

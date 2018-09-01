@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
+import PropTypes from 'prop-types';
 
 import styles from './styles';
 
@@ -54,6 +55,9 @@ class AnimatableImages extends Component {
       </div>
     );
   }
+  static propTypes = {
+    classes: PropTypes.object
+  };
 }
 
 export default injectSheet(styles)(AnimatableImages);

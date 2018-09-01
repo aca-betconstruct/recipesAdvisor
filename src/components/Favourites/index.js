@@ -43,7 +43,9 @@ class Favourites extends Component {
   }
   static propTypes = {
     classes: PropTypes.object,
-    favourites: PropTypes.array
+    favourites: PropTypes.array,
+    allFetchFavourites: PropTypes.array,
+    isFavouritesFetching: PropTypes.bool
   };
 }
 
