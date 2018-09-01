@@ -51,12 +51,21 @@ class Recipes extends Component {
         labels,
         q,
         preferences,
+        favourites,
         type
       } = this.props;
       if (labels !== prevProps.labels || q !== prevProps.q) {
         curPage = 0;
         firstPage();
-        getRecipes(curPage, labels, q, labelsType, preferences, type);
+        getRecipes(
+          curPage,
+          labels,
+          q,
+          labelsType,
+          preferences,
+          favourites,
+          type
+        );
       }
     }
   }
@@ -68,7 +77,7 @@ class Recipes extends Component {
         resolve(this.setState({ zoomOut: true, zoomIn: false }))
       );
       animationStart.then(() => {
-        console.log('a');
+        const a = '';
         setTimeout(
           () =>
             this.setState({ curIndex: index, zoomOut: false, zoomIn: true }),
@@ -88,10 +97,20 @@ class Recipes extends Component {
       labels,
       q,
       preferences,
+      favourites,
       type
     } = this.props;
     setTimeout(
-      () => getRecipes(curPage, labels, q, labelsType, preferences, type),
+      () =>
+        getRecipes(
+          curPage,
+          labels,
+          q,
+          labelsType,
+          preferences,
+          favourites,
+          type
+        ),
       time
     );
     nextPage(curPage + 1);
