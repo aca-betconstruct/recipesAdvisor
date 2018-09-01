@@ -41,7 +41,7 @@ class Search extends Component {
     const { classes } = this.props;
     const { isOpen, isSearchIconVisible, isCloseIconVisible } = this.state;
     return (
-      <form className={`${classes.form}`}>
+      <form className={`${classes.form} ${isOpen ? classes.formOpened : ''}`}>
         <input
           className={`form-control ${classes.searchBar} ${
             isOpen ? '' : classes.closed
@@ -59,7 +59,7 @@ class Search extends Component {
           }`}
           onClick={this.handleCloseClick}
         />
-        <span className={isSearchIconVisible ? classes.searchIcon : ''} />
+        {isSearchIconVisible ? <span className={classes.searchIcon} /> : ''}
       </form>
     );
   }
