@@ -13,15 +13,24 @@ import {
   Fa
 } from 'mdbreact';
 import { Link } from 'react-router-dom';
+import injectSheet from 'react-jss';
+
+import styles from './styles';
 
 class BigCard extends Component {
   render() {
-    const { image, label, ingredientLines } = this.props.recipe;
-    console.log(this.props.recipe);
-    console.log(image);
+    const { classes } = this.props;
+    const {
+      image,
+      label,
+      ingredientLines,
+      calories,
+      totalWeight,
+      totalTime
+    } = this.props.recipe;
     return (
-      <div className="mb-4">
-        <View hover rounded className="z-depth-1-half mb-4">
+      <div>
+        <View hover rounded className={`z-depth-1-half mb-4 ${classes.view}`}>
           <img className="img-fluid" src={image} alt="Sample image" />
           <a>
             <Mask overlay="white-slight" className="waves-light" />
@@ -45,15 +54,19 @@ class BigCard extends Component {
           </Link>
         </h3>
         <div
-          style={{ height: '137px', overflowX: 'hidden' }}
-          className="dark-grey-text mb-lg-0 mb-md-5 mb-4"
+          className={`dark-grey-text mb-lg-0 mb-md-5 mb-4 ${
+            classes.ingredients
+          }`}
         >
-          {ingredientLines.map(item => (
-            <p>{item}</p>
-          ))}
+          <p>Calories: {Number.parseInt(calories)} kcal.</p>
+          <p>Weight: {Number.parseInt(totalWeight)} g.</p>
+          <p>Time: {totalTime} min.</p>
+          {/*{ingredientLines.map(item => (*/}
+          {/*<p>{item}</p>*/}
+          {/*))}*/}
         </div>
       </div>
     );
   }
 }
-export default BigCard;
+export default injectSheet(styles)(BigCard);
