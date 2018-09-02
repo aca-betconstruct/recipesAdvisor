@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Animation, Row, Col, Container } from 'mdbreact';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import injectSheet from 'react-jss';
 
 import { BigCard, MediumCard } from '../Cards/index';
+import styles from './styles';
 
 const jwt = localStorage.getItem('jwt');
 let curPage = 0;
@@ -75,14 +77,19 @@ class Recipes extends Component {
     const { curIndex } = this.state;
     if (curIndex !== index) {
       const animationStart = new Promise(resolve =>
-        resolve(this.setState({ zoomOut: true, zoomIn: false }))
+        resolve(
+          this.setState({
+            zoomOut: true,
+            zoomIn: false
+          })
+        )
       );
       animationStart.then(() => {
         setTimeout(
           () =>
             this.setState({
               curIndex: index,
-              curReipe: i,
+              curRecipe: i,
               zoomOut: false,
               zoomIn: true
             }),
@@ -137,7 +144,7 @@ class Recipes extends Component {
 
   render() {
     const { curRecipe, curIndex, zoomOut, zoomIn } = this.state;
-    const { recipes } = this.props;
+    const { recipes, classes } = this.props;
     return (
       <Container style={{ width: '800px' }} className="mt-5">
         <Row style={{ marginTop: '25px' }}>
@@ -166,13 +173,18 @@ class Recipes extends Component {
           ) : (
             ''
           )}
-          <Col md="12" lg="6">
+          <Col
+            md="12"
+            lg="6"
+            id={'scrollableContent'}
+            className={classes.scrollBar}
+          >
             <InfiniteScroll
-              style={{ overflowX: 'hidden' }}
-              height={550}
+              style={{ overflowX: 'hidden', width: '98%' }}
               dataLength={recipes.length}
               next={this.fetchMoreData}
               hasMore={true}
+              scrollableTarget="scrollableContent"
               loader={<h4 style={{ textAlign: 'center' }}>Loading...</h4>}
               endMessage={
                 <p style={{ textAlign: 'center' }}>
@@ -198,4 +210,4 @@ class Recipes extends Component {
   }
 }
 
-export default Recipes;
+export default injectSheet(styles)(Recipes);
