@@ -1,6 +1,6 @@
 import {
     RECEIVE_ALL_PREFERENCES,
-    REQUEST_PREFERENCES
+    REQUEST_PREFERENCES,REMOVE_PREFERENCE,ADD_PREFERENCE
 } from '../constants';
 
 
@@ -19,7 +19,7 @@ const allReceivePreference = json => {
 export const deletePreference = (id, jwt) => {
     return dispatch => {
         dispatch(requestPreference());
-        return fetch(`https://acafoodapi.haffollc.com/v1/preferences/${id}`, {
+        return fetch(`https://acafoodapi.haffollc.com/v1/preference/${id}`, {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${jwt}`
@@ -29,6 +29,7 @@ export const deletePreference = (id, jwt) => {
             .then(response => response.json())
             .then(json => {
                // dispatch(allReceivePreference());
+                dispatch({type:REMOVE_PREFERENCE,payload:json})
                 dispatch(getPreferences(jwt));
             })
             .catch(e => {
@@ -47,7 +48,7 @@ export const getPreferences = jwt => {
             }
         })
             .then(response => response.json())
-            .then(json => dispatch(allReceivePreference(json)))
+            .then(json =>{ dispatch(allReceivePreference(json))})
             .catch(e => {
                 console.log(e);
             });
@@ -56,7 +57,7 @@ export const getPreferences = jwt => {
 export const fetchPreferences = (state, jwt) => {
     return dispatch => {
         dispatch(requestPreference());
-       return fetch(`http://localhost:5002/v1/preferences`, {
+       return fetch(`https://acafoodapi.haffollc.com/v1/preferences`, {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${jwt}`
@@ -66,8 +67,8 @@ export const fetchPreferences = (state, jwt) => {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response);
-                dispatch(allReceivePreference(response.data));
+                console.log(response);dispatch({type:ADD_PREFERENCE,payload:response.data})
+                dispatch(getPreferences(jwt));
             });
     };
 };

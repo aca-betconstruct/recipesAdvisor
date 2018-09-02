@@ -5,13 +5,13 @@ import styles from './styles';
 
 import { Field } from 'redux-form';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import renderField from '../AuthHelpers/renderField';
 
 class Login extends Component {
   constructor(props) {
     super(props);
-
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -23,17 +23,11 @@ class Login extends Component {
       {
         email: email,
         password: password
-      },
-      this.props.history.push('/')
+      },this.props.history.push('/home')
     );
-    console.log({
-      email: email,
-      password: password
-    });
   }
 
   render() {
-    localStorage.clear();
     const { classes, valid } = this.props;
     return (
       <div>
@@ -86,4 +80,4 @@ class Login extends Component {
   }
 }
 
-export default injectSheet(styles)(Login);
+export default withRouter(injectSheet(styles)(Login));

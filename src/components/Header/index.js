@@ -79,10 +79,8 @@ class Header extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes,auth } = this.props;
     const { scrollPositionY, collapse, isLogoAnimated } = this.state;
-    const jwt = localStorage.getItem('jwt');
-    const isAuth = jwt !== null;
     return (
       <React.Fragment>
         <header
@@ -132,7 +130,7 @@ class Header extends Component {
                     navbar
                   >
                     <NavbarNav right>
-                      {isAuth ? (
+                      {auth ? (
                         <NavItem>
                           <NavLink to="/login">Log Out</NavLink>
                         </NavItem>

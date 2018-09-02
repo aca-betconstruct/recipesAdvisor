@@ -11,7 +11,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   fetchAuthenticated: (jwt, prop) => dispatch(fetchAuthenticated(jwt, prop)),
-  logoutUser: prop => dispatch(logoutUser(prop))
 });
 
 export default connect(

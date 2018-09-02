@@ -13,6 +13,8 @@ import SignUpForm from '../containers/SignUpForm';
 import MagazinePage from '../components/ProfileDemo';
 import AuthenticatedComponent from '../containers/Authenticated';
 import SmallCard from '../components/Cards/SmallCard';
+import PrivateRoute from '../containers/privateRoute'
+import Authenticated from '../containers/Authenticated';
 
 class ModalSwitch extends Component {
   previousLocation = this.props.location;
@@ -35,7 +37,9 @@ class ModalSwitch extends Component {
     );
     return (
       <div>
+
         <Switch location={isModal ? this.previousLocation : location}>
+
           <Route path="/login" component={LoginForm} />
           <Route path="/preferences" component={Preferences} />
           <Route path="/signUp" component={SignUpForm} />

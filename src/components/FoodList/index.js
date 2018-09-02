@@ -24,7 +24,7 @@ class FoodList extends Component {
     this.props.preferences.forEach(v => {
       if (v.id >= id) id = v.id + 1;
     });
-    return id;
+    return id+13;
   };
   handleAdd = e => {
     if (this.state.inputVal.trim().length !== 0) {
@@ -51,7 +51,7 @@ class FoodList extends Component {
     } = this.props;
     return !isPreferencesFetching ? (
       <div className={classes.paper}>
-        {preferences.filter(v => v.type === type).map(v => (
+        {preferences.filter(v => v.isLike === type).map(v => (
           <FoodCard
             key={v.id}
             foodObj={v}
