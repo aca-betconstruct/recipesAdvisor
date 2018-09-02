@@ -81,7 +81,6 @@ class Header extends Component {
   render() {
     const { classes } = this.props;
     const { pathname } = this.props.location;
-    console.log(this.props.location);
     const { scrollPositionY, collapse, isLogoAnimated } = this.state;
     const jwt = localStorage.getItem('jwt');
     const isAuth = jwt !== null;
