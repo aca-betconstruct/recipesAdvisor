@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 class WideRecipeCard extends Component {
   render() {
+    const { image, label, ingredients } = this.props.recipe.recipe;
     return (
       <Row
         style={{
@@ -18,23 +19,20 @@ class WideRecipeCard extends Component {
             rounded
             className="z-depth-1-half mb-4"
           >
-            <img
-              className="img-fluid"
-              src="https://mdbootstrap.com/img/Photos/Others/img%20(29).jpg"
-              alt="Sample image"
-            />
+            <img className="img-fluid" src={image} alt="Sample image" />
             <a>
               <Mask overlay="white-slight" className="waves-light" />
             </a>
           </View>
         </Col>
         <Col md="9">
-          <p className="font-weight-bold dark-grey-text">26/02/2018</p>
+          <p className="font-weight-bold dark-grey-text">{label}</p>
           <div className="d-flex justify-content-between">
             <Col size="11" className="text-truncate pl-0 mb-3">
               <a onClick={this.props.onClick} className="dark-grey-text">
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                blanditiis
+                {ingredients.map(v => (
+                  <div>{v.text}</div>
+                ))}
               </a>
             </Col>
             <Link to={'somewhere'} style={{ color: 'black' }}>
