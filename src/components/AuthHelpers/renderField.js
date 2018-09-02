@@ -1,5 +1,6 @@
 import React from 'react';
 import injectSheet from 'react-jss';
+import PropTypes from 'prop-types'
 import styles from '../SignUpForm/styles';
 
 const renderField = ({
@@ -25,6 +26,10 @@ const renderField = ({
       </div>
     </div>
   );
-};
 
+};
+renderField.propTypes={
+    classes:PropTypes.object
+
+};
 export default injectSheet(styles)(renderField);

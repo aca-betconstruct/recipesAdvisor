@@ -10,7 +10,7 @@ export class MapContainer extends Component {
     return (
       <Map
         google={this.props.google}
-        style={{width: '740px', height: '400px', position: 'relative'}}
+        style={{ height: '400px', marginRight: '20px' }}
         className={`map ${classes.map}`}
         initialCenter={{
           lat: 40.2018202,
@@ -26,7 +26,4 @@ export class MapContainer extends Component {
 
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyB60RMlfliecFnXM-SNDJj4QjNVdSymk4w'
-
 })(injectSheet(styles)(MapContainer));
-
-

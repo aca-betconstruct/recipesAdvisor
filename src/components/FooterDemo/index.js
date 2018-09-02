@@ -5,10 +5,10 @@ class FooterPage extends Component {
   render() {
     return (
       <Footer
-        className="font-small pt-4 mt-4"
+        className="font-small pt-4 mt-4 "
         style={{ backgroundColor: 'black' }}
       >
-        <Container fluid className="text-center text-md-left">
+        <Container fluid className="text-center text-md-left col-8">
           <Row className="text-center text-md-left mt-5 pb-4">
             <Col md="3" lg="3" xl="3" className="mx-auto mt-3">
               <h6 className="text-uppercase mb-4 font-weight-bold light-green-text">
@@ -48,12 +48,12 @@ class FooterPage extends Component {
               <p>
                 <i className="fa fa-print mr-3" /> + 01 234 567 89
               </p>
-            </Col>
+            </Col>-
           </Row>
           <hr />
-          <Row className="d-flex align-items-center">
-            <Col md="8" lg="8">
-              <p>
+          <Row >
+            <Col md="1" lg="3">
+              <p className="float-xl-right">
                 &copy; {new Date().getFullYear()} Copyright:
                 <a href="https://acafoodapi.haffollc.com"> Recipes Advisor </a>
               </p>

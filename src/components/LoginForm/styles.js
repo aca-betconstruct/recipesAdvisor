@@ -1,4 +1,4 @@
-import backgroundImg from '../../images/loginBack.jpg';
+import backgroundImg from '../../images/acorns.jpg';
 
 export default {
   '@global': {
@@ -81,7 +81,9 @@ export default {
   },
   wrap: {
     width: '50%',
-    margin: '2em auto 0'
+    marginLeft: '920px',
+    marginTop: '160px'
+
   },
   grids: {
     position: 'relative',

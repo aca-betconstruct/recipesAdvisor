@@ -5,7 +5,7 @@ import { fetchAuthenticated, logoutUser } from '../../actions/authenticated';
 
 const mapStateToProps = state => {
   return {
-    auth: state
+    auth: state.auth
   };
 };
 

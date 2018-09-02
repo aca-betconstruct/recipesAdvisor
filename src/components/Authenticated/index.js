@@ -7,7 +7,7 @@ class AuthenticatedComponent extends Component {
     console.log(!jwt)
     const { fetchAuthenticated, history } = this.props;
     if (!jwt) {
-      history.push('/Login');
+      history.push('/login');
     }
 
     fetchAuthenticated(jwt);

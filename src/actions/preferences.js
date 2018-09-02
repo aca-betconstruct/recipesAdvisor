@@ -1,11 +1,74 @@
-import { ADD_PREFERENCE, REMOVE_PREFERENCE } from '../constants';
+import {
+    RECEIVE_ALL_PREFERENCES,
+    REQUEST_PREFERENCES
+} from '../constants';
 
-export const addPreference = pref => ({
-  type: ADD_PREFERENCE,
-  pref
-});
 
-export const removePreference = id => ({
-  type: REMOVE_PREFERENCE,
-  payload: { id }
-});
+const requestPreference = () => {
+    return {
+        type: REQUEST_PREFERENCES
+    };
+};
+
+const allReceivePreference = json => {
+    return {
+        type:RECEIVE_ALL_PREFERENCES ,
+        payload: json.data
+    };
+};
+export const deletePreference = (id, jwt) => {
+    return dispatch => {
+        dispatch(requestPreference());
+        return fetch(`https://acafoodapi.haffollc.com/v1/preferences/${id}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${jwt}`
+            },
+            method: 'DELETE'
+        })
+            .then(response => response.json())
+            .then(json => {
+               // dispatch(allReceivePreference());
+                dispatch(getPreferences(jwt));
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    };
+};
+export const getPreferences = jwt => {
+    return dispatch => {
+        dispatch(requestPreference());
+        return fetch(`https://acafoodapi.haffollc.com/v1/preferences`, {
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${jwt}`
+            }
+        })
+            .then(response => response.json())
+            .then(json => dispatch(allReceivePreference(json)))
+            .catch(e => {
+                console.log(e);
+            });
+    };
+};
+export const fetchPreferences = (state, jwt) => {
+    return dispatch => {
+        dispatch(requestPreference());
+       return fetch(`http://localhost:5002/v1/preferences`, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${jwt}`
+            },
+            method: 'POST',
+            body: JSON.stringify(state)
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                dispatch(allReceivePreference(response.data));
+            });
+    };
+};
+

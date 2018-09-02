@@ -1,5 +1,14 @@
 import { getRecipes } from './recipes';
-import { addPreference, removePreference } from './preferences';
+import {
+  deletePreference,
+  getPreferences,
+  fetchPreferences
+} from './preferences';
+import {
+  getFetchFavourites,
+  deleteFetchFavourites,
+  fetchFavourites
+} from './favourites';
 import { addHealthLabel, addDietLabel, removeLabel } from './filter';
 import { firstPage, nextPage } from './pagination';
 
@@ -7,9 +16,13 @@ export {
   getRecipes,
   firstPage,
   nextPage,
-  addPreference,
-  removePreference,
   addHealthLabel,
   addDietLabel,
-  removeLabel
+  removeLabel,
+  deletePreference,
+  getPreferences,
+  fetchPreferences,
+  getFetchFavourites,
+  deleteFetchFavourites,
+  fetchFavourites
 };

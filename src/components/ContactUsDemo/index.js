@@ -15,7 +15,7 @@ import MapContainer from '../GoogleMap';
 class ContactPage extends Component {
   render() {
     return (
-      <Container style={{ marginTop: '120px' }}>
+      <Container style={{ marginTop: '120px' }} className="responsive">
         <section className="my-5">
           <h2 className="h1-responsive font-weight-bold text-center my-5 light-green-text">
             Contact us
@@ -80,11 +80,7 @@ class ContactPage extends Component {
               </Card>
             </Col>
             <Col lg="7">
-              <div
-                id="map-container"
-                className="rounded z-depth-1-half map-container"
-                style={{ height: '400px' }}
-              >
+              <div id="map-container" className="rounded z-depth-1-half map-container" style={{height: '400px'}}>
                 <MapContainer />
               </div>
             </Col>

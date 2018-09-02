@@ -24,20 +24,33 @@ export const isRecipesFetching = (
 
 const initialStateForRecipes = [];
 export const recipes = (state = initialStateForRecipes, action) => {
-  const recipe = action.payload;
   switch (action.type) {
     case RECIPES_FETCHING_SUCCESS:
+      const recipe = action.payload.recipe,
+        favouritesId = action.payload.favs;
+      const hits = recipe.hits.map(item => {
+        if (favouritesId.some(id => id === item.recipe.uri.slice(45))) {
+          return {
+            ...item,
+            recipe: {
+              ...item.recipe,
+              isFavourite: true
+            }
+          };
+        }
+        return {
+          ...item,
+          recipe: {
+            ...item.recipe,
+            isFavourite: false
+          }
+        };
+      });
       return [
         ...state,
         {
           ...recipe,
-          hits: recipe.hits.map(item => ({
-            ...item,
-            recipe: {
-              ...item.recipe,
-              isFavourite: false
-            }
-          }))
+          hits
         }
       ];
     case RECIPES_FETCHING_FAILURE:
