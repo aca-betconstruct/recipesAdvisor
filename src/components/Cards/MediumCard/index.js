@@ -14,6 +14,7 @@ class WideRecipeCard extends Component {
       >
         <Col md="3">
           <View
+            style={{ maxWidth: '300px' }}
             onClick={this.props.onClick}
             hover
             rounded

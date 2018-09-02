@@ -46,7 +46,7 @@ class ModalSwitch extends Component {
           <Route path="/cascade" component={ReversedCascade} />
           <Route path="/calculator" component={CaloriesCalculator} />
           <Route path="/calendar" component={Calendar} />
-          <Route component={RoutesWithHeaderAndFooter} />
+          <Route component={({ location }) => <RoutesWithHeaderAndFooter location={location}/>} />
         </Switch>
         <Route path="/recepte/:id" component={ReceptePage} />
       </div>

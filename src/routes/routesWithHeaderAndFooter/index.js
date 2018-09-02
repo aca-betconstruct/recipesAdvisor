@@ -11,7 +11,7 @@ import ContactUs from '../../components/ContactUs';
 import Recipes from '../../containers/Recipes';
 import RandomRecipes from '../../components/RandomRecipes';
 import Favourites from '../../containers/Favourites';
-import FooterPage from '../../components/FooterDemo';
+import FooterPage from '../../components/Footer';
 import AboutUsPage from '../../components/AboutUsDemo';
 import ContactPage from '../../components/ContactUsDemo';
 
@@ -19,7 +19,7 @@ class RoutesWithHeaderAndFooter extends Component {
   render() {
     return (
       <React.Fragment>
-        <Header />
+        <Header location={this.props.location} />
         <Route exact path="/" component={RandomRecipes} />
         <Route path="/aboutUs" component={AboutUsPage} />
         <Route path="/profile" component={Recipes} />

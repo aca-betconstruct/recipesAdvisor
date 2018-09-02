@@ -80,6 +80,8 @@ class Header extends Component {
 
   render() {
     const { classes } = this.props;
+    const { pathname } = this.props.location;
+    console.log(this.props.location);
     const { scrollPositionY, collapse, isLogoAnimated } = this.state;
     const jwt = localStorage.getItem('jwt');
     const isAuth = jwt !== null;
@@ -88,6 +90,10 @@ class Header extends Component {
         <header
           className={`${classes.headerArea} ${
             scrollPositionY !== 0 ? classes.sticky : ''
+          } ${
+            pathname === '/aboutus' || pathname === '/contactus'
+              ? classes.black
+              : ''
           }`}
         >
           <Container className={classes.container}>
@@ -103,6 +109,10 @@ class Header extends Component {
                       : collapse
                         ? classes.navBarScroll
                         : ''
+                  } ${
+                    pathname === '/aboutus' || pathname === '/contactus'
+                      ? classes.black
+                      : ''
                   }`}
                 >
                   <NavbarBrand
