@@ -46,7 +46,7 @@ export const getRecipes = (
       .filter(item => !item.isLike)
       .map(item => item.text),
     includes = preferences.filter(item => item.isLike).map(item => item.text);
-  console.log('includes = ', includes);
+
   let count = 10;
   let excludesFoods = '',
     connectedLabels = '';
@@ -59,14 +59,11 @@ export const getRecipes = (
         includes[Math.floor(Math.random() * includes.length)],
         includes[Math.floor(Math.random() * includes.length)]
       );
-      console.log('daily');
       break;
     case 'search':
       include.push(q);
-      console.log('search');
       break;
     case 'random':
-      console.log('random');
       include.push(
         randomRecipes[Math.floor(Math.random() * randomRecipes.length)],
         randomRecipes[Math.floor(Math.random() * randomRecipes.length)]
@@ -82,7 +79,6 @@ export const getRecipes = (
     )
       .then(recipes => recipes.json())
       .then(recipes => {
-        console.log(recipes);
         return dispatch(recipesFetchingSuccess(recipes, favs));
       })
       .catch(error => {
