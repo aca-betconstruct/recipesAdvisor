@@ -23,7 +23,6 @@ class BigCard extends Component {
     const {
       image,
       label,
-      ingredientLines,
       calories,
       totalWeight,
       totalTime
