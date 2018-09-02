@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 class WideRecipeCard extends Component {
   render() {
-    const { image, label, ingredients } = this.props.recipe.recipe;
+    const { image, label, ingredientLines } = this.props.recipe.recipe;
     return (
       <Row
         style={{
@@ -30,9 +30,7 @@ class WideRecipeCard extends Component {
           <div className="d-flex justify-content-between">
             <Col size="11" className="text-truncate pl-0 mb-3">
               <a onClick={this.props.onClick} className="dark-grey-text">
-                {ingredients.map(v => (
-                  <div>{v.text}</div>
-                ))}
+                {ingredientLines[0]}
               </a>
             </Col>
             <Link to={'somewhere'} style={{ color: 'black' }}>

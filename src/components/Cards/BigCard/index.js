@@ -16,7 +16,9 @@ import { Link } from 'react-router-dom';
 
 class BigCard extends Component {
   render() {
-    const { image, label, ingredients } = this.props.recipe.recipe;
+    const { image, label, ingredientLines } = this.props.recipe;
+    console.log(this.props.recipe);
+    console.log(image);
     return (
       <div className="mb-4">
         <View hover rounded className="z-depth-1-half mb-4">
@@ -42,18 +44,14 @@ class BigCard extends Component {
             {label}
           </Link>
         </h3>
-        <p className="dark-grey-text mb-lg-0 mb-md-5 mb-4">
-          Sed ut perspiciatis unde voluptatem omnis iste natus error sit
-          voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
-          ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-          explicabo. Duis aute irure dolor in reprehenderit in voluptate velit
-          esse cillum dolore eu fugiat.
-          {
-            //   ingredients.map(v => (
-            //   <div>{v.text}</div>
-            // ))
-          }
-        </p>
+        <div
+          style={{ height: '137px', overflowX: 'hidden' }}
+          className="dark-grey-text mb-lg-0 mb-md-5 mb-4"
+        >
+          {ingredientLines.map(item => (
+            <p>{item}</p>
+          ))}
+        </div>
       </div>
     );
   }

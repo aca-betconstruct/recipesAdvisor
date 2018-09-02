@@ -14,6 +14,7 @@ class Recipes extends Component {
 
     this.state = {
       curIndex: 0,
+      curRecipe: 0,
       zoomOut: false,
       zoomIn: false
     };
@@ -70,7 +71,7 @@ class Recipes extends Component {
     }
   }
 
-  handleClick(index) {
+  handleClick(index, i) {
     const { curIndex } = this.state;
     if (curIndex !== index) {
       const animationStart = new Promise(resolve =>
@@ -80,7 +81,12 @@ class Recipes extends Component {
         const a = '';
         setTimeout(
           () =>
-            this.setState({ curIndex: index, zoomOut: false, zoomIn: true }),
+            this.setState({
+              curIndex: index,
+              curReipe: i,
+              zoomOut: false,
+              zoomIn: true
+            }),
           550
         );
       });
@@ -131,7 +137,7 @@ class Recipes extends Component {
   };
 
   render() {
-    const { curIndex, zoomOut, zoomIn } = this.state;
+    const { curRecipe, curIndex, zoomOut, zoomIn } = this.state;
     const { recipes } = this.props;
     return (
       <Container style={{ width: '800px' }} className="mt-5">
@@ -143,7 +149,7 @@ class Recipes extends Component {
                 duration={'700ms'}
                 className={`col-md-12 col-lg-6`}
               >
-                <BigCard recipe={recipes[curIndex]} />
+                <BigCard recipe={recipes[curRecipe].hits[curIndex].recipe} />
               </Animation>
             ) : zoomIn ? (
               <Animation
@@ -151,11 +157,11 @@ class Recipes extends Component {
                 duration={'700ms'}
                 className={'col-md-12 col-lg-6'}
               >
-                <BigCard recipe={recipes[curIndex]} />
+                <BigCard recipe={recipes[curRecipe].hits[curIndex].recipe} />
               </Animation>
             ) : (
               <Col md="12" lg="6">
-                <BigCard recipe={recipes[curIndex]} />
+                <BigCard recipe={recipes[curRecipe].hits[curIndex].recipe} />
               </Col>
             )
           ) : (
@@ -164,7 +170,7 @@ class Recipes extends Component {
           <Col md="12" lg="6">
             <InfiniteScroll
               style={{ overflowX: 'hidden' }}
-              height={420}
+              height={550}
               dataLength={recipes.length}
               next={this.fetchMoreData}
               hasMore={true}
@@ -175,13 +181,13 @@ class Recipes extends Component {
                 </p>
               }
             >
-              {recipes.map(recipe =>
+              {recipes.map((recipe, i) =>
                 recipe.hits.map((item, index) => (
                   <MediumCard
                     recipe={item}
                     image={item.image}
                     key={index}
-                    onClick={() => this.handleClick(index)}
+                    onClick={() => this.handleClick(index, i)}
                   />
                 ))
               )}
