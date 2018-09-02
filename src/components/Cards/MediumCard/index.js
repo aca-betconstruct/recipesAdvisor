@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Mask, Fa, View } from 'mdbreact';
 import { Link } from 'react-router-dom';
+import injectSheet from 'react-jss';
+
+import styles from './styles';
 
 class WideRecipeCard extends Component {
   render() {
-    const { image, label, ingredientLines } = this.props.recipe.recipe;
+    const { classes, recipe } = this.props;
+    const { image, label, ingredientLines } = recipe.recipe;
     return (
-      <Row
-        style={{
-          borderBottom: '1px solid #e0e0e0',
-          marginBottom: '1.5rem'
-        }}
-      >
+      <Row className={classes.row}>
         <Col md="3">
           <View
-            style={{ maxWidth: '300px' }}
             onClick={this.props.onClick}
             hover
             rounded
-            className="z-depth-1-half mb-4"
+            className={`${classes.view} z-depth-1-half mb-4`}
           >
             <img className="img-fluid" src={image} alt="Sample image" />
             <a>
@@ -34,7 +32,7 @@ class WideRecipeCard extends Component {
                 {ingredientLines[0]}
               </a>
             </Col>
-            <Link to={'somewhere'} style={{ color: 'black' }}>
+            <Link to={'somewhere'} className={classes.link}>
               <Fa icon="angle-double-right" />
             </Link>
           </div>
@@ -44,4 +42,4 @@ class WideRecipeCard extends Component {
   }
 }
 
-export default WideRecipeCard;
+export default injectSheet(styles)(WideRecipeCard);
