@@ -54,20 +54,27 @@ export const getRecipes = (
   if (excludes.length) excludesFoods = joiner(excludes, 'excluded');
   let include = [];
   switch (type) {
-    case 'daily':
-      include.push(
-        includes[Math.floor(Math.random() * includes.length)],
-        includes[Math.floor(Math.random() * includes.length)]
-      );
-      break;
-    case 'search':
-      include.push(q);
-      break;
     case 'random':
       include.push(
         randomRecipes[Math.floor(Math.random() * randomRecipes.length)],
         randomRecipes[Math.floor(Math.random() * randomRecipes.length)]
       );
+      break;
+    case 'daily':
+      if (includes.length) {
+        include.push(
+          includes[Math.floor(Math.random() * includes.length)],
+          includes[Math.floor(Math.random() * includes.length)]
+        );
+      } else {
+        include.push(
+          randomRecipes[Math.floor(Math.random() * randomRecipes.length)],
+          randomRecipes[Math.floor(Math.random() * randomRecipes.length)]
+        );
+      }
+      break;
+    case 'search':
+      include.push(q);
       break;
     default:
       break;
