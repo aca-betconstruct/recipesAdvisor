@@ -11,7 +11,8 @@ import { bindActionCreators } from 'redux';
 
 const mapStateToProps = state => {
   return {
-    filter: state.filter
+    filter: state.filter,
+    curPage: state.curPage
   };
 };
 

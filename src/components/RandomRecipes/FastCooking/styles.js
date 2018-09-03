@@ -1,7 +1,7 @@
 export default {
   container: {
     width: '250px',
-    '@media screen and (min-width: 1200px)': {
+    '@media screen and (max-width: 1200px)': {
       display: 'none'
     }
   }

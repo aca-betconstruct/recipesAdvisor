@@ -11,6 +11,7 @@ import {
 } from './favourites';
 import { addHealthLabel, addDietLabel, removeLabel } from './filter';
 import { firstPage, nextPage } from './pagination';
+import { logoutUser } from './authenticated';
 
 export {
   getRecipes,
@@ -24,5 +25,6 @@ export {
   fetchPreferences,
   getFetchFavourites,
   deleteFetchFavourites,
-  fetchFavourites
+  fetchFavourites,
+  logoutUser
 };

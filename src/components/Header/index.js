@@ -73,6 +73,10 @@ class Header extends Component {
     });
   }
 
+  handleLogoutClick = () => {
+    this.props.logoutUser();
+  };
+
   handleLogoClick() {
     const { firstPage } = this.props;
     firstPage();
@@ -141,7 +145,12 @@ class Header extends Component {
                     <NavbarNav right>
                       <NavItem>
                         {auth ? (
-                          <NavLink to="/login">Log Out</NavLink>
+                          <a
+                            style={{ color: 'white' }}
+                            onClick={this.handleLogoutClick}
+                          >
+                            Log Out
+                          </a>
                         ) : (
                           <NavLink to="/login">Log In</NavLink>
                         )}

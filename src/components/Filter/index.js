@@ -15,18 +15,36 @@ class Filter extends Component {
   }
 
   changeLabel = label => {
-    const { activeLabel } = this.state;
+    const { search, activeLabel } = this.state;
+    const { getRecipes, curPage, firstPage } = this.props;
     if (activeLabel === label) this.setState({ activeLabel: '' });
-    else this.setState({ activeLabel: label });
+    else {
+      const Filter = new Promise(resolve => resolve(firstPage));
+      if (search.trim().length) {
+        Filter.then(() =>
+          getRecipes(curPage, [label], search, 'diet', [], [], 'search')
+        );
+        this.setState({ activeLabel: label });
+      } else {
+        Filter.then(() =>
+          getRecipes(curPage, [label], search, 'diet', [], [], 'daily')
+        );
+        this.setState({ activeLabel: label });
+      }
+    }
   };
 
   handleInput = e => this.setState({ search: e.target.value });
 
   runSearch = e => {
     if (e.key === 'Enter') {
-      const { search, label } = this.state;
-      if (label) this.props.getRecipes(0, [label], search.trim(), 'diet');
-      else this.props.getRecipes(0, [label], search.trim());
+      const { search, activeLabel } = this.state;
+      const { firstPage, getRecipes } = this.props;
+      const Search = new Promise(resolve => resolve(firstPage()));
+      Search.then(() => {
+        const { curPage } = this.props;
+        getRecipes(curPage, [activeLabel], search, '', [], [], 'search');
+      });
     }
   };
 
