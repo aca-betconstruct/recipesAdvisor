@@ -42,12 +42,12 @@ class Login extends Component {
       {
         email: email,
         password: password
-      },this.props.history.push('/home')
+      }
     );
   }
 
   render() {
-      const {from} = this.props.location.state || {from: {pathname: '/home'}};
+      const {from} = this.props.location.state || {from: {pathname: '/preferences'}};
 
       if (this.props.auth) {
           return <Redirect to={from}/>;
