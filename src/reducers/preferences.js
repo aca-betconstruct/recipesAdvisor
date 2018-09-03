@@ -36,8 +36,12 @@ export const preferences = (state = [], action) => {
         case RECEIVE_ALL_PREFERENCES: {
             return action.payload;
         }
-        default: {
-            return state;
-        }
+            case ADD_PREFERENCE:
+       state.push({ ...action.payload });
+      return [...state];
+     case REMOVE_PREFERENCE:
+       return state.filter(v => v.id !== action.payload.id);
+     default:
+       return state;
     }
 };

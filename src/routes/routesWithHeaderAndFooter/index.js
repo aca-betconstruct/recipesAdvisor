@@ -5,7 +5,7 @@ import Header from '../../containers/Header';
 import Footer from '../../components/Footer';
 import Home from '../../components/Home';
 import Settings from '../../components/Settings';
-import PrivateRoutes from '../privateRoutes';
+import PrivateRoutes from '../../containers/privateRoute';
 import AboutUs from '../../components/AboutUs';
 import ContactUs from '../../components/ContactUs';
 import Recipes from '../../containers/Recipes';
@@ -24,7 +24,7 @@ class RoutesWithHeaderAndFooter extends Component {
         <Route path="/aboutUs" component={AboutUsPage} />
         <Route path="/profile" component={Recipes} />
         <Route path="/contactUs" component={ContactPage} />
-        <Route path="/home" component={Home} />
+        <PrivateRoutes path="/home" component={Home} />
         <Route path="/settings" component={Settings} />
         <Route path="/favourites" component={Favourites} />
         <FooterPage />

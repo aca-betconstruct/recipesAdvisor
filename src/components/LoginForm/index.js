@@ -1,20 +1,39 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
+import {Redirect} from 'react-router-dom'
+
 
 import styles from './styles';
 
 import { Field } from 'redux-form';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import renderField from '../AuthHelpers/renderField';
 
 class Login extends Component {
   constructor(props) {
     super(props);
-
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
+    componentDidMount() {
+        const { fetchAuthenticated, jwt } = this.props;
+        fetchAuthenticated(jwt);
+    }
+    componentDidUpdate(nextProps) {
+        const { auth, jwt } = this.props;
+        if (jwt && !auth) {
+            const { fetchAuthenticated } = this.props;
+            fetchAuthenticated(jwt);
+        }
+        if (auth) {
+            console.log('Yes mozg em');
+            return false;
+        } else {
+            console.log('UPS');
+            return true;
+        }
+    }
   handleSubmit(event) {
     event.preventDefault();
     const { fetchLogin } = this.props;
@@ -23,67 +42,67 @@ class Login extends Component {
       {
         email: email,
         password: password
-      },
-      this.props.history.push('/')
+      }
     );
-    console.log({
-      email: email,
-      password: password
-    });
   }
 
   render() {
-    localStorage.clear();
-    const { classes, valid } = this.props;
-    return (
-      <div>
-        <div>
-          <div className={classes.wrap}>
-            <div className={classes.grids}>
-              <div className={classes.contentMain}>
-                <div className={classes.signUpForm}>
-                  <h4>Login to start the journey of amazing recipes</h4>
-                  <form method="post" onSubmit={this.handleSubmit}>
-                    <Field
-                      className={classes.text}
-                      name="email"
-                      component={renderField}
-                      type="text"
-                      placeholder="Email"
-                    />
-                    <Field
-                      className={classes.password}
-                      name="password"
-                      component={renderField}
-                      type="password"
-                      placeholder="Password"
-                    />
+      const {from} = this.props.location.state || {from: {pathname: '/preferences'}};
 
-                    <button
-                      className={classes.button}
-                      type="submit"
-                      disabled={!valid}
-                    >
-                      Login
-                    </button>
-                    <div className={classes.signUpMessage}>
-                      Not a member ?
-                      <Link to="signup" className={classes.a}>
-                        Sign Up
-                      </Link>
-                    </div>
-                  </form>
+      if (this.props.auth) {
+          return <Redirect to={from}/>;
+      }
+      else {
+      const { classes, valid } = this.props;
+      return (
+        <div>
+          <div>
+            <div className={classes.wrap}>
+              <div className={classes.grids}>
+                <div className={classes.contentMain}>
+                  <div className={classes.signUpForm}>
+                    <h4>Login to start the journey of amazing recipes</h4>
+                    <form method="post" onSubmit={this.handleSubmit}>
+                      <Field
+                        className={classes.text}
+                        name="email"
+                        component={renderField}
+                        type="text"
+                        placeholder="Email"
+                      />
+                      <Field
+                        className={classes.password}
+                        name="password"
+                        component={renderField}
+                        type="password"
+                        placeholder="Password"
+                      />
+
+                      <button
+                        className={classes.button}
+                        type="submit"
+                        disabled={!valid}
+                      >
+                        Login
+                      </button>
+                      <div className={classes.signUpMessage}>
+                        Not a member ?
+                        <Link to="signup" className={classes.a}>
+                          Sign Up
+                        </Link>
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className={classes.footer}>
-              <p>© Recipes Advisor LLC. All rights reserved</p>
+              <div className={classes.footer}>
+                <p>© Recipes Advisor LLC. All rights reserved</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
   }
-}
+}}
 
-export default injectSheet(styles)(Login);
+export default withRouter(injectSheet(styles)(Login));

@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 
 class PrivateRoute extends Component {
+
   render() {
-    let { component: Component, ...rest } = this.props;
-    const isAuth = localStorage.getItem('jwt');
+    let { component: Component,auth, ...rest } = this.props;
     return (
       <Route
         {...rest}
         render={props =>
-          isAuth ? (
+            auth ? (
             <Component {...props} />
           ) : (
             <Redirect

@@ -6,18 +6,9 @@ class AuthenticatedComponent extends Component {
     const jwt = localStorage.getItem('jwt');
     console.log(!jwt)
     const { fetchAuthenticated, history } = this.props;
-    if (!jwt) {
-      history.push('/login');
-    }
-
     fetchAuthenticated(jwt);
   }
 
-  logout = () => {
-    const { logoutUser, history } = this.props;
-    localStorage.removeItem('jwt');
-    logoutUser(history.push('/login'));
-  };
 
   render() {
     const { auth } = this.props;
