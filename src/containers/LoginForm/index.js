@@ -12,14 +12,15 @@ const mapStateToProps = state => {
   return {
     email,
     password,
-    auth: state.auth
+    auth: state.auth,
+      jwt:state.jwt
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   fetchLogin: state => dispatch(fetchLogin(state)),
   fetchAuthenticated: (jwt, prop) => dispatch(fetchAuthenticated(jwt, prop)),
-    logoutUser:()=>dispatch(logoutUser())
+  logoutUser:()=>dispatch(logoutUser())
 });
 
 let LoginForm = reduxForm({

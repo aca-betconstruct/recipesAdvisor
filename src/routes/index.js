@@ -39,16 +39,11 @@ class ModalSwitch extends Component {
       <div>
 
         <Switch location={isModal ? this.previousLocation : location}>
-
           <Route path="/login" component={LoginForm} />
-          <Route path="/preferences" component={Preferences} />
+          <PrivateRoute path="/preferences" component={Preferences} />
           <Route path="/signUp" component={SignUpForm} />
           <Route path="/profdemo" component={MagazinePage} />
-          <Route path="/small" component={SmallCard} />
-          <Route path="cascade" component={ReversedCascade} />
-          <Route path="/calculator" component={CaloriesCalculator} />
-          <Route path="/cascade" component={ReversedCascade} />
-          <Route path="/calculator" component={CaloriesCalculator} />
+          <PrivateRoute path="/calculator" component={CaloriesCalculator} />
           <Route path="/calendar" component={Calendar} />
           <Route component={RoutesWithHeaderAndFooter} />
         </Switch>

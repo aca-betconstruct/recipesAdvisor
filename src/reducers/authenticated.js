@@ -1,8 +1,10 @@
-import { RECEIVE_AUTHENTICATED, LOGOUT_USER } from '../constants';
+import { RECEIVE_AUTHENTICATED, LOGOUT_USER, RECEIVE_LOGIN } from '../constants';
 
-const auth = (state = null, action) => {
+export const auth = (state = null, action) => {
   switch (action.type) {
     case RECEIVE_AUTHENTICATED: {
+
+
       return action.payload;
     }
     case LOGOUT_USER: {
@@ -13,5 +15,16 @@ const auth = (state = null, action) => {
     }
   }
 };
-
-export default auth;
+export const jwt = (state = '', action) => {
+    switch (action.type) {
+        case RECEIVE_LOGIN: {
+          return action.payload;
+        }
+        case LOGOUT_USER: {
+            return '';
+        }
+        default: {
+            return state;
+        }
+    }
+};

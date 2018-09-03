@@ -30,14 +30,13 @@ const logout = () => {
   };
 };
 
-export const logoutUser = prop => {
+export const logoutUser = () => {
   return dispatch => {
-    prop;
     dispatch(logout());
   };
 };
 
-export const fetchAuthenticated = (jwt, prop) => {
+export const fetchAuthenticated = (jwt) => {
   return dispatch => {
     dispatch(requestAuthenticated());
     return fetch(`https://acafoodapi.haffollc.com/v1/me`, {

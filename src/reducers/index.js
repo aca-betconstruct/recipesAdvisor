@@ -5,7 +5,7 @@ import curPage from './pagination';
 import { preferences, isPreferencesFetching } from './preferences';
 import filter from './filter';
 
-import auth from './authenticated';
+import {auth,jwt} from './authenticated';
 
 import {
   allFetchFavourites,
@@ -22,5 +22,6 @@ export default combineReducers({
   auth,
   form: reduxFormReducer,
   filter,
-  isPreferencesFetching
+  isPreferencesFetching,
+  jwt
 });
