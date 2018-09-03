@@ -13,6 +13,7 @@ import SignUpForm from '../containers/SignUpForm';
 import MagazinePage from '../components/ProfileDemo';
 import AuthenticatedComponent from '../containers/Authenticated';
 import SmallCard from '../components/Cards/SmallCard';
+import FastCooking from '../containers/FastCooking';
 
 class ModalSwitch extends Component {
   previousLocation = this.props.location;
@@ -36,6 +37,7 @@ class ModalSwitch extends Component {
     return (
       <div>
         <Switch location={isModal ? this.previousLocation : location}>
+          <Route path={'/small'} component={FastCooking} />
           <Route path="/login" component={LoginForm} />
           <Route path="/preferences" component={Preferences} />
           <Route path="/signUp" component={SignUpForm} />
@@ -46,7 +48,11 @@ class ModalSwitch extends Component {
           <Route path="/cascade" component={ReversedCascade} />
           <Route path="/calculator" component={CaloriesCalculator} />
           <Route path="/calendar" component={Calendar} />
-          <Route component={({ location }) => <RoutesWithHeaderAndFooter location={location}/>} />
+          <Route
+            component={({ location }) => (
+              <RoutesWithHeaderAndFooter location={location} />
+            )}
+          />
         </Switch>
         <Route path="/recepte/:id" component={ReceptePage} />
       </div>

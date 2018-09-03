@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import AnimatableImages from '../AnimatableImages';
 import { AnimatableCards } from '../Cards';
 import Recipes from '../../containers/Recipes';
+import { Row } from 'mdbreact';
+import FastCooking from '../../containers/FastCooking';
 
 class RandomRecipes extends Component {
   constructor(props) {
@@ -13,7 +15,10 @@ class RandomRecipes extends Component {
     return (
       <span>
         <AnimatableImages />
-        <Recipes type={'random'} />
+        <Row>
+          <FastCooking />
+          <Recipes type={'random'} />
+        </Row>
       </span>
     );
   }
