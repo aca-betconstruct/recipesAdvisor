@@ -81,7 +81,7 @@ export const getRecipes = (
   }
   include.forEach(inclFoods => {
     fetch(
-      `https://api.edamam.com/search?q=${inclFoods}&app_id=a37bb1eb&app_key=3f704a5ce747891ed2b8978661054585&from=${page *
+      `https://api.edamam.com/search?q=${inclFoods}&app_id=8d30ad7e&app_key=2e15423acdc14ff0c010ea43cd8c94e8&from=${page *
         count}&to=${count * (page + 1)}${connectedLabels}${excludesFoods}`
     )
       .then(recipes => recipes.json())

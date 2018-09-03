@@ -29,12 +29,9 @@ class FastCooking extends Component {
           })
         )
       );
-      console.log('Start:', recipe);
       recipe = recipe.filter(item => item.time > 0 && item.time <= 60);
-      console.log('Middle:', recipe);
       recipe.splice(4, recipe.length - 6);
       this.setState({ recipes: recipe });
-      console.log('End:', this.state.recipes);
     }, 1000);
   }
 
