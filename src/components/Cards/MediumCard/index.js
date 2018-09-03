@@ -8,7 +8,7 @@ import styles from './styles';
 class WideRecipeCard extends Component {
   render() {
     const { classes, recipe } = this.props;
-    const { image, label, ingredientLines } = recipe.recipe;
+    const { image, label, ingredientLines, uri } = recipe.recipe;
     return (
       <Row className={classes.row}>
         <Col md="3">
@@ -32,7 +32,10 @@ class WideRecipeCard extends Component {
                 {ingredientLines[0]}
               </a>
             </Col>
-            <Link to={'somewhere'} className={classes.link}>
+            <Link
+              to={{ pathname: `/somewhere/${uri.slice(44)}` }}
+              style={{ color: 'black' }}
+            >
               <Fa icon="angle-double-right" />
             </Link>
           </div>
