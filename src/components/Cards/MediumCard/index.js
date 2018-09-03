@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 class WideRecipeCard extends Component {
   render() {
-    const { image, label, ingredientLines } = this.props.recipe.recipe;
+    const { image, label, ingredientLines, uri  } = this.props.recipe.recipe;
     return (
       <Row
         style={{
@@ -33,7 +33,7 @@ class WideRecipeCard extends Component {
                 {ingredientLines[0]}
               </a>
             </Col>
-            <Link to={'somewhere'} style={{ color: 'black' }}>
+            <Link to= {{ pathname: `/somewhere/${uri.slice(44)}`,}} style={{ color: 'black' }}>
               <Fa icon="angle-double-right" />
             </Link>
           </div>

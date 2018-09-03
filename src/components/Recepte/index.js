@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ViewPage from '../ViewPage';
 let recepte = [
   {
     day: 1,
@@ -149,38 +150,24 @@ let recepte = [
 ];
 
 class ReceptePage extends Component {
+
+
   back = event => {
     event.stopPropagation();
     this.props.history.goBack();
   };
 
   render() {
-    const { match, classes } = this.props;
-
-    let url = match.url.slice(9);
-    const elements = recepte.filter(el => el.uri.slice(51) === url);
-
-    if (!elements) {
-      return null;
-    }
-
+    const { match, recipes } = this.props;
     return (
-      <div className="static-modal"
-      >
-        <div
-          style={{
-            position: 'absolute',
-            background: 'white',
-            left: '10%',
-            right: '10%',
-            padding: 15,
-            border: '2px solid #444'
-          }}
-        >
-          <div>
-            {elements.map(el => el.recepte.map(els => <div>{els.label}</div>))}
-          </div>
-        </div>
+      <div>
+        {recipes.map((recipe, i) => {
+          console.log('a',recipe)
+          return recipe.hits.map((item, index) => {
+            console.log('b',item.uri)
+            return (<ViewPage match={match}  recipe={item.recipe}/>)
+          });
+        })}
       </div>
     );
   }
