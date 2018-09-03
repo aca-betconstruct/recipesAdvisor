@@ -79,7 +79,7 @@ class Header extends Component {
   }
 
   render() {
-    const { classes,auth } = this.props;
+    const { classes, auth } = this.props;
     const { scrollPositionY, collapse, isLogoAnimated } = this.state;
     return (
       <React.Fragment>

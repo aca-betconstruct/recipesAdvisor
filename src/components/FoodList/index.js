@@ -66,7 +66,6 @@ class FoodList extends Component {
             placeholder={inputPlaceholder}
           />
           <button onClick={this.handleAdd}>Add</button>
-          <button onClick={this.handleClear}>Clear</button>
         </div>
       </div>
     ) : null;
