@@ -13,7 +13,7 @@ const SmallCard = ({ classes, recipe }) => {
           <img className="img-fluid" src={recipe.image} alt="Sample image" />
           <a>
             <Mask overlay="white-slight" className="waves-light" />
-          </a>
+          </a>,Small
         </View>
       </Col>
       <div className={classes.descriptionCol}>

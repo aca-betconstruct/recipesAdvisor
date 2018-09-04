@@ -4,7 +4,11 @@ import injectSheet from 'react-jss';
 import styles from './styles';
 
 class FoodCard extends Component {
-  handleClick = () => this.props.deletePreference(this.props.foodObj.id,localStorage.getItem('jwt'));
+  handleClick = () =>
+    this.props.deletePreference(
+      this.props.foodObj.id,
+      localStorage.getItem('jwt')
+    );
 
   render() {
     const { classes, foodObj } = this.props;
@@ -17,11 +21,11 @@ class FoodCard extends Component {
       </div>
     );
   }
-  static propTypes={
-      classes:PropTypes.object,
-      foodObj:PropTypes.object,
-      deletePreference:PropTypes.func
-  }
+  static propTypes = {
+    classes: PropTypes.object,
+    foodObj: PropTypes.object,
+    deletePreference: PropTypes.func
+  };
 }
 
 export default injectSheet(styles)(FoodCard);
