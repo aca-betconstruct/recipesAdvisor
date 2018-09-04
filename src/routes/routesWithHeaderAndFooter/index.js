@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import Header from '../../containers/Header';
 import Home from '../../components/Home';
 import Settings from '../../components/Settings';
-import PrivateRoutes from '../../containers/privateRoute';
+import PrivateRoutes from '../../containers/PrivateRoute';
 import Recipes from '../../containers/Recipes';
 import RandomRecipes from '../../components/RandomRecipes';
 import Favourites from '../../containers/Favourites';

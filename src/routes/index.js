@@ -4,9 +4,9 @@ import RoutesWithHeaderAndFooter from './routesWithHeaderAndFooter';
 import Preferences from '../components/Preferences';
 import ReceptePage from '../containers/Recepte';
 import CaloriesCalculator from '../components/CaloriesCalculator';
-import LoginForm from '../containers/LoginForm';
-import SignUpForm from '../containers/SignUpForm';
-import PrivateRoute from '../containers/privateRoute';
+import LoginForm from '../containers/Login';
+import SignUpForm from '../containers/SignUp';
+import PrivateRoute from '../containers/PrivateRoute';
 
 class Routers extends Component {
   render() {
