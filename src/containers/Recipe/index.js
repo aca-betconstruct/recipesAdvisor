@@ -5,7 +5,7 @@ import Recipe from '../../components/Recipe';
 import {
   deleteFetchFavourites,
   fetchFavourites
-} from '../../actions/favourites';
+} from '../../actions';
 
 const mapStateToProps = state => ({
   favourites: state.favourites

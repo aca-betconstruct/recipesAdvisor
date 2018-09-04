@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Login from '../../components/Login';
 import validate from '../../config/AuthenticationValidation/validation';
-import { fetchLogin } from '../../actions/login';
-import { fetchAuthenticated, logoutUser } from '../../actions/authenticated';
+import { fetchLogin,fetchAuthenticated, logoutUser } from '../../actions';
 
 const selector = formValueSelector('Login');
 
