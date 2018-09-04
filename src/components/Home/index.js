@@ -18,18 +18,6 @@ const Home = ({ classes }) => {
       <div className={classes.main}>
         <Route path="/home" component={Filter} />
         <Route exact path="/home/" render={props => <Recipes {...props} />} />
-        <Route
-          path="/home/search"
-          render={({ location }) => (
-            <FilteredRecipe
-              q={
-                urlToProperty(location.search).q
-                  ? urlToProperty(location.search).q[0]
-                  : ''
-              }
-            />
-          )}
-        />
         <Route path={'/home/favourites'} component={() => <Favourites />} />
       </div>
     </div>

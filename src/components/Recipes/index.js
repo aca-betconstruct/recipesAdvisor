@@ -7,7 +7,6 @@ import injectSheet from 'react-jss';
 import { BigCard, MediumCard } from '../Cards/index';
 import styles from './styles';
 
-const jwt = localStorage.getItem('jwt');
 let curPage = 0;
 
 class Recipes extends Component {
@@ -35,7 +34,7 @@ class Recipes extends Component {
       labelsType,
       labels,
       q,
-      type
+      type,jwt
     } = this.props;
     const pref = new Promise(resolve => resolve(getPreferences(jwt)));
     pref.then(() => getFetchFavourites(jwt)).then(() => {

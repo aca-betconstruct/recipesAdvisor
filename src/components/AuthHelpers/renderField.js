@@ -1,7 +1,7 @@
 import React from 'react';
 import injectSheet from 'react-jss';
 import PropTypes from 'prop-types'
-import styles from '../SignUpForm/styles';
+import styles from '../SignUp/styles';
 
 const renderField = ({
   input,
