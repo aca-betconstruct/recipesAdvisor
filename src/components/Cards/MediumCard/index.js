@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Mask, Fa, View } from 'mdbreact';
+import { Row, Col, Mask, Fa, View } from 'mdbreact';
 import { Link } from 'react-router-dom';
+
 import injectSheet from 'react-jss';
 
 import styles from './styles';

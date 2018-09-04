@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import styles from './styles';
 
@@ -88,6 +88,12 @@ class Filter extends Component {
       </div>
     );
   }
+  static propTypes = {
+    classes: PropTypes.object,
+    getRecipes: PropTypes.func,
+    curPage: PropTypes.number,
+    firstPage: PropTypes.func
+  };
 }
 
 export default injectSheet(styles)(Filter);
