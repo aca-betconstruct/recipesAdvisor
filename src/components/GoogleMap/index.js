@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
+import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 
 import styles from './styles';
@@ -22,6 +23,9 @@ export class MapContainer extends Component {
       </Map>
     );
   }
+  static propTypes = {
+    classes: PropTypes.classes
+  };
 }
 
 export default GoogleApiWrapper({

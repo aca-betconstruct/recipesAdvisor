@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import { Button, Fa } from 'mdbreact';
-
 import styles from './styles';
 
 class ScrollButton extends Component {
@@ -45,6 +45,11 @@ class ScrollButton extends Component {
       </Button>
     );
   }
+  static propTypes = {
+    classes: PropTypes.object,
+    delayInMs: PropTypes.number,
+    scrollStepInPx: PropTypes.number
+  };
 }
 
 export default injectSheet(styles)(ScrollButton);

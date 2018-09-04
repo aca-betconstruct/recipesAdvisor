@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   Animation,
   Container,
-  Fa,
   Navbar,
   NavbarBrand,
   Collapse,
@@ -14,9 +13,6 @@ import {
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
-
-import AnimatableImages from '../AnimatableImages';
-import Search from '../Search';
 import ScrollButton from './ScrollButton';
 
 import styles from './styles';
@@ -168,7 +164,9 @@ class Header extends Component {
   }
   static propTypes = {
     classes: PropTypes.object,
-    firstPage: PropTypes.func
+    firstPage: PropTypes.func,
+    auth: PropTypes.object,
+    location: PropTypes.object
   };
 }
 

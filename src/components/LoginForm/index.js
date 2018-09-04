@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
-import {Redirect} from 'react-router-dom'
-
-
-import styles from './styles';
-
+import { Redirect, Link, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
-import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
-
+import styles from './styles';
 import renderField from '../AuthHelpers/renderField';
 
 class Login extends Component {
@@ -16,43 +11,36 @@ class Login extends Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-    componentDidMount() {
-        const { fetchAuthenticated, jwt } = this.props;
-        fetchAuthenticated(jwt);
+  componentDidMount() {
+    const { fetchAuthenticated, jwt } = this.props;
+    fetchAuthenticated(jwt);
+  }
+  componentDidUpdate(nextProps) {
+    const { auth, jwt } = this.props;
+    if (jwt && !auth) {
+      const { fetchAuthenticated } = this.props;
+      fetchAuthenticated(jwt);
     }
-    componentDidUpdate(nextProps) {
-        const { auth, jwt } = this.props;
-        if (jwt && !auth) {
-            const { fetchAuthenticated } = this.props;
-            fetchAuthenticated(jwt);
-        }
-        if (auth) {
-            console.log('Yes mozg em');
-            return false;
-        } else {
-            console.log('UPS');
-            return true;
-        }
-    }
+    return !auth;
+  }
   handleSubmit(event) {
     event.preventDefault();
     const { fetchLogin } = this.props;
     const { email, password } = this.props;
-    fetchLogin(
-      {
-        email: email,
-        password: password
-      }
-    );
+    fetchLogin({
+      email: email,
+      password: password
+    });
   }
 
   render() {
-      const {from} = this.props.location.state || {from: {pathname: '/preferences'}};
+    const { from } = this.props.location.state || {
+      from: { pathname: '/preferences' }
+    };
 
-      if (this.props.auth) {
-          return <Redirect to={from}/>;
-      }
-      else {
+    if (this.props.auth) {
+      return <Redirect to={from} />;
+    } else {
       const { classes, valid } = this.props;
       return (
         <div>
@@ -102,7 +90,15 @@ class Login extends Component {
           </div>
         </div>
       );
+    }
   }
-}}
+  static propTypes = {
+    classes: PropTypes.object,
+    valid: PropTypes.bool,
+    auth: PropTypes.object,
+    jwt: PropTypes.string,
+    fetchAuthenticated: PropTypes.func
+  };
+}
 
 export default withRouter(injectSheet(styles)(Login));
