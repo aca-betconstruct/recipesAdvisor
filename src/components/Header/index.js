@@ -79,7 +79,7 @@ class Header extends Component {
   }
 
   render() {
-    const { classes, auth } = this.props;
+    const { classes, isAuth } = this.props;
     const { pathname } = this.props.location;
     const { scrollPositionY, collapse, isLogoAnimated } = this.state;
     return (
@@ -140,7 +140,7 @@ class Header extends Component {
                   >
                     <NavbarNav right>
                       <NavItem>
-                        {auth ? (
+                        {isAuth ? (
                           <a
                             style={{ color: 'white' }}
                             onClick={this.handleLogoutClick}
@@ -165,7 +165,7 @@ class Header extends Component {
   static propTypes = {
     classes: PropTypes.object,
     firstPage: PropTypes.func,
-    auth: PropTypes.array,
+    isAuth: PropTypes.array,
     location: PropTypes.object
   };
 }
