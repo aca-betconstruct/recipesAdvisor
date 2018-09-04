@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-//import { PageHeader, Table } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+
 import './style.css';
 
 let recepte = [

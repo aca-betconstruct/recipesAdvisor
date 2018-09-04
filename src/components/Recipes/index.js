@@ -128,20 +128,6 @@ class Recipes extends Component {
     nextPage(curPage + 1);
   }
 
-  static propTypes = {
-    curPage: PropTypes.number,
-    nextPage: PropTypes.func,
-    preferences: PropTypes.array,
-    getRecipes: PropTypes.func,
-    isRecipesFetching: PropTypes.bool,
-    recipes: PropTypes.array,
-    classes: PropTypes.object
-  };
-  static defaultProps = {
-    isRecipesFetching: false,
-    recipes: []
-  };
-
   render() {
     const { curRecipe, curIndex, zoomOut, zoomIn } = this.state;
     const { recipes, classes } = this.props;
@@ -208,6 +194,19 @@ class Recipes extends Component {
       </Container>
     );
   }
+  static propTypes = {
+    curPage: PropTypes.number,
+    nextPage: PropTypes.func,
+    preferences: PropTypes.array,
+    getRecipes: PropTypes.func,
+    isRecipesFetching: PropTypes.bool,
+    recipes: PropTypes.array,
+    classes: PropTypes.object
+  };
+  static defaultProps = {
+    isRecipesFetching: false,
+    recipes: []
+  };
 }
 
 export default injectSheet(styles)(Recipes);

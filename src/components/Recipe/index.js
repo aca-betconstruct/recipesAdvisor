@@ -11,17 +11,6 @@ class Recipe extends Component {
     this.handleFavouriteClick = this.handleFavouriteClick.bind(this);
   }
 
-  static propTypes = {
-    recipe: PropTypes.object.isRequired,
-    classes: PropTypes.object,
-    addToFavourites: PropTypes.func,
-    removeFromFavourites: PropTypes.func,
-    favouriteRecipe: PropTypes.func,
-    q: PropTypes.string,
-    index: PropTypes.number,
-    type: PropTypes.string
-  };
-
   handleFavouriteClick(e) {
     e.preventDefault();
     const {
@@ -33,7 +22,7 @@ class Recipe extends Component {
     const { isFavourite } = recipe;
     const jwt = localStorage.getItem('jwt');
     if (!jwt) {
-      history.push('/Login');
+      history.push('/login');
     }
     isFavourite
       ? deleteFetchFavourites(recipe.uri.slice(45), jwt)
@@ -47,10 +36,19 @@ class Recipe extends Component {
   }
 
   render() {
-    const { recipe, classes } = this.props;
+    const { recipe } = this.props;
     const { isFavourite } = recipe;
     return <SmallCard />;
   }
+  static propTypes = {
+    recipe: PropTypes.object.isRequired,
+    addToFavourites: PropTypes.func,
+    removeFromFavourites: PropTypes.func,
+    favouriteRecipe: PropTypes.func,
+    q: PropTypes.string,
+    index: PropTypes.number,
+    type: PropTypes.string
+  };
 }
 
 export default injectSheet(styles)(Recipe);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Col } from 'mdbreact';
+import { Container } from 'mdbreact';
 import injectSheet from 'react-jss';
+import PropTypes from 'prop-types';
 
 import { SmallCard } from '../../Cards';
 
@@ -56,6 +57,9 @@ class FastCooking extends Component {
       return <span />;
     }
   }
+  static propTypes = {
+    classes: PropTypes.object
+  };
 }
 
 export default injectSheet(styles)(FastCooking);

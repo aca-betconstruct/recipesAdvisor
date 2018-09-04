@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 //import { Tabs, Tab } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-import ChangePassword from '../ChangePassword';
 import FoodPreferences from '../FoodPreferences';
 import styles from './styles';
 import injectSheet from 'react-jss';

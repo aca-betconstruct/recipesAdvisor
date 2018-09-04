@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { Fa } from 'mdbreact';
 import injectSheet from 'react-jss';
 
@@ -41,7 +43,6 @@ class Search extends Component {
     const { classes, onChange, onKeyDown, value } = this.props;
     const { isOpen, isSearchIconVisible, isCloseIconVisible } = this.state;
     return (
-
       <div className={`${classes.form} ${isOpen ? '' : classes.formClose}`}>
         <input
           className={`form-control ${classes.searchBar} ${
@@ -68,6 +69,12 @@ class Search extends Component {
       </div>
     );
   }
+  static propTypes = {
+    classes: PropTypes.object,
+    onChange: PropTypes.func,
+    onKeyDown: PropTypes.func,
+    value: PropTypes.string
+  };
 }
 
 export default injectSheet(styles)(Search);
