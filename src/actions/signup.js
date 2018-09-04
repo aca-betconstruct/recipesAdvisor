@@ -12,7 +12,7 @@ const receiveSignup = () => {
   };
 };
 
-export const fetchSignup = (state, prop) => {
+export const fetchSignup = state => {
   return dispatch => {
     dispatch(requestSignup());
     return fetch(`https://acafoodapi.haffollc.com/v1/signup`, {
@@ -24,7 +24,6 @@ export const fetchSignup = (state, prop) => {
     })
       .then(response => response.json())
       .then(json => {
-        prop;
         dispatch(receiveSignup());
       });
   };
