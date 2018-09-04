@@ -15,7 +15,7 @@ export default (state = { type: '', labels: [] }, action) => {
         state.labels.push(...temporaryState.labels, action.label);
       } else {
         state.type = 'health';
-          state.labels = [];
+        state.labels = [];
         state.labels.push(action.label);
       }
       return { ...state };
@@ -33,12 +33,15 @@ export default (state = { type: '', labels: [] }, action) => {
       return { ...state };
 
     case REMOVE_FILTER_LABEL:
-        temporaryState = { ...state };
-        state.labels = [];
-        temporaryState.labels.splice(temporaryState.labels.indexOf(action.label), 1);
-        state.labels.push(temporaryState.labels);
+      temporaryState = { ...state };
+      state.labels = [];
+      temporaryState.labels.splice(
+        temporaryState.labels.indexOf(action.label),
+        1
+      );
+      state.labels.push(temporaryState.labels);
 
-        return { ...state };
+      return { ...state };
     default:
       return state;
   }
