@@ -16,7 +16,8 @@ const mapStateToProps = state => {
     recipes: state.recipes,
     curPage: state.curPage,
     preferences: state.preferences,
-    favourites: state.allFetchFavourites
+    favourites: state.allFetchFavourites,
+    jwt: state.jwt
   };
 };
 

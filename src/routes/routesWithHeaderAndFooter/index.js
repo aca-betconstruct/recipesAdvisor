@@ -8,8 +8,8 @@ import Recipes from '../../containers/Recipes';
 import RandomRecipes from '../../components/RandomRecipes';
 import Favourites from '../../containers/Favourites';
 import FooterPage from '../../components/Footer';
-import AboutUsPage from '../../components/AboutUsDemo';
-import ContactPage from '../../components/ContactUsDemo';
+import AboutUsPage from '../../components/AboutUs';
+import ContactPage from '../../components/ContactUs';
 
 class RoutesWithHeaderAndFooter extends Component {
   render() {

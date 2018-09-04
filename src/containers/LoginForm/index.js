@@ -1,7 +1,7 @@
 import { formValueSelector, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Login from '../../components/LoginForm';
+import Login from '../../components/Login';
 import validate from '../../config/AuthenticationValidation/validation';
 import { fetchLogin } from '../../actions/login';
 import { fetchAuthenticated, logoutUser } from '../../actions/authenticated';
