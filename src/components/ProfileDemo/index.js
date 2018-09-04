@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import {
   Container,
   Row,
@@ -10,6 +12,7 @@ import {
   View,
   Badge
 } from 'mdbreact';
+
 
 import SmallCard from '../Cards/SmallCard';
 import BigCard from '../Cards/BigCard';

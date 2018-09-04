@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Button, Card, CardBody, CardImage, CardTitle, CardText, Container } from 'mdbreact';
 
 class ReversedCascade extends React.Component {
