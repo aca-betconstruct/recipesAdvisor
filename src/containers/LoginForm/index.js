@@ -1,9 +1,10 @@
 import { formValueSelector, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Login from '../../components/LoginForm';
 import validate from '../../config/AuthenticationValidation/validation';
 import { fetchLogin } from '../../actions/login';
-import { fetchAuthenticated ,logoutUser} from '../../actions/authenticated';
+import { fetchAuthenticated, logoutUser } from '../../actions/authenticated';
 
 const selector = formValueSelector('Login');
 
@@ -13,15 +14,16 @@ const mapStateToProps = state => {
     email,
     password,
     auth: state.auth,
-      jwt:state.jwt
+    jwt: state.jwt
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  fetchLogin: state => dispatch(fetchLogin(state)),
-  fetchAuthenticated: (jwt, prop) => dispatch(fetchAuthenticated(jwt, prop)),
-  logoutUser:()=>dispatch(logoutUser())
-});
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(
+    { fetchLogin, fetchAuthenticated, logoutUser },
+    dispatch
+  );
+};
 
 let LoginForm = reduxForm({
   form: 'Login',

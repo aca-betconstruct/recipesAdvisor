@@ -1,14 +1,11 @@
 import { connect } from 'react-redux';
 import {
-  addPreference,
-  removePreference,
   deletePreference,
   getPreferences,
   fetchPreferences
 } from '../../actions';
 import FoodList from '../../components/FoodList';
 import { bindActionCreators } from 'redux';
-import { isPreferencesFetching } from '../../reducers/preferences';
 
 const mapStateToProps = state => {
   return {

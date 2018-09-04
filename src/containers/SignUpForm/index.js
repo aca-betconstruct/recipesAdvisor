@@ -1,5 +1,6 @@
 import { reduxForm, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import SignUp from '../../components/SignUpForm/index';
 import { fetchSignup } from '../../actions/signup';
 import validate from '../../config/AuthenticationValidation/validation';
@@ -24,9 +25,9 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  fetchSignup: state => dispatch(fetchSignup(state))
-});
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ fetchSignup }, dispatch);
+};
 
 let SignUpForm = reduxForm({
   form: 'SignUp',

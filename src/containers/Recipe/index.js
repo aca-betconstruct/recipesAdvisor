@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import { favouriteRecipe, favouriteSpecialRecipe } from '../../actions';
 import Recipe from '../../components/Recipe';
 import {
   deleteFetchFavourites,
@@ -11,10 +11,12 @@ const mapStateToProps = state => ({
   favourites: state.favourites
 });
 
-const mapDispatchToProps = dispatch => ({
-  fetchFavourites: (state, jwt) => dispatch(fetchFavourites(state, jwt)),
-  deleteFetchFavourites: (id, jwt) => dispatch(deleteFetchFavourites(id, jwt))
-});
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(
+    { fetchFavourites, deleteFetchFavourites },
+    dispatch
+  );
+};
 
 export default connect(
   mapStateToProps,

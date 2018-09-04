@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import FastCooking from '../../components/RandomRecipes/FastCooking';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   recipes: state.recipes
 });
 
