@@ -48,8 +48,8 @@ class FastCooking extends Component {
           }}
           className={classes.container}
         >
-          {recipes.map(recipe => (
-            <SmallCard recipe={recipe} />
+          {recipes.map((recipe, index) => (
+            <SmallCard recipe={recipe} key={index} />
           ))}
         </Container>
       );

@@ -158,14 +158,14 @@ class Header extends Component {
             </div>
           </Container>
         </header>
-        <ScrollButton scrollStepInPx="50" delayInMs="16.66" />
+        <ScrollButton scrollStepInPx={50} delayInMs={16.66} />
       </React.Fragment>
     );
   }
   static propTypes = {
     classes: PropTypes.object,
     firstPage: PropTypes.func,
-    auth: PropTypes.object,
+    auth: PropTypes.array,
     location: PropTypes.object
   };
 }

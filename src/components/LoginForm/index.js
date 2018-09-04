@@ -95,7 +95,7 @@ class Login extends Component {
   static propTypes = {
     classes: PropTypes.object,
     valid: PropTypes.bool,
-    auth: PropTypes.object,
+    auth: PropTypes.array,
     jwt: PropTypes.string,
     fetchAuthenticated: PropTypes.func
   };

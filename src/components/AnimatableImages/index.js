@@ -11,6 +11,8 @@ const images = [
   'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2013/9/17/3/WU0603H_Pepperoni-Pizza_s4x3.jpg.rend.hgtvcom.966.725.suffix/1433674887844.jpeg'
 ];
 
+let timeout;
+
 class AnimatableImages extends Component {
   constructor(props) {
     super(props);
@@ -23,19 +25,23 @@ class AnimatableImages extends Component {
   componentDidMount() {
     const { index } = this.state;
     if (index !== images.length - 1) {
-      setTimeout(() => this.setState({ index: index + 1 }), 7000);
+      timeout = setTimeout(() => this.setState({ index: index + 1 }), 7000);
     } else {
-      setTimeout(() => this.setState({ index: 0 }), 7000);
+      timeout = setTimeout(() => this.setState({ index: 0 }), 7000);
     }
   }
 
   componentDidUpdate() {
     const { index } = this.state;
     if (index !== images.length - 1) {
-      setTimeout(() => this.setState({ index: index + 1 }), 7000);
+      timeout = setTimeout(() => this.setState({ index: index + 1 }), 7000);
     } else {
-      setTimeout(() => this.setState({ index: 0 }), 7000);
+      timeout = setTimeout(() => this.setState({ index: 0 }), 7000);
     }
+  }
+
+  componentWillUnmount() {
+    clearTimeout(timeout);
   }
 
   render() {
