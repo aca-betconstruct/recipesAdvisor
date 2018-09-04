@@ -81,8 +81,7 @@ class CaloriesCalculator extends Component {
       gender,
       ageInYears,
       weightInKilograms,
-      heightInCentimeters,
-      isReady
+      heightInCentimeters
     } = this.state;
 
     // For men:	BMR = 10 × weight(kg) + 6.25 × height(cm) - 5 × age(y) + 5
@@ -133,15 +132,16 @@ class CaloriesCalculator extends Component {
 
   render() {
     const { classes } = this.props;
-    const { activityDescription } = this.state;
+    const { activityDescription, isReady, calories } = this.state;
     let caloriesMessage = '';
     let weightLossMessage = '';
-    if (this.state.isReady === true) {
-      caloriesMessage =
-        'your amount of daily calories is ' + parseInt(this.state.calories);
-      weightLossMessage =
-        "if you want to loose weight don't consume more than " +
-        parseInt(this.state.calories - 500);
+    if (isReady === true) {
+      caloriesMessage = `your amount of daily calories is  ${parseInt(
+        calories,
+        10
+      )}`;
+      weightLossMessage = `if you want to loose weight don't consume more than 
+        ${parseInt(calories - 500, 10)}`;
     }
 
     return (
