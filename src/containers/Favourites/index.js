@@ -5,7 +5,8 @@ import Favourites from '../../components/Favourites';
 
 const mapStateToProps = state => ({
   allFetchFavourites: state.allFetchFavourites,
-  isFavouritesFetching: state.isFavouriteRecipesFetching
+  isFavouritesFetching: state.isFavouriteRecipesFetching,
+  jwt: state.jwt
 });
 
 const mapDispatchToProps = dispatch => {
