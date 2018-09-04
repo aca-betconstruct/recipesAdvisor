@@ -3,7 +3,7 @@ import injectSheet from 'react-jss';
 import PropTypes from 'prop-types';
 import ReactAutocomplete from 'react-autocomplete';
 import styles from './styles';
-import FoodCard from '../FoodCard';
+import FoodCard from '../../containers/FoodCard';
 import { RANDOM_FOODS } from '../../constants';
 
 class FoodList extends Component {
@@ -14,8 +14,7 @@ class FoodList extends Component {
     };
   }
   componentDidMount() {
-    const jwt = localStorage.getItem('jwt');
-    const { getPreferences } = this.props;
+    const { getPreferences,jwt } = this.props;
     getPreferences(jwt);
   }
 
@@ -30,8 +29,7 @@ class FoodList extends Component {
   };
   handleAdd = e => {
     if (this.state.value.trim().length !== 0) {
-      const jwt = localStorage.getItem('jwt');
-      const { fetchPreferences } = this.props;
+      const { fetchPreferences,jwt } = this.props;
       fetchPreferences(
         {
           text: this.state.value.trim(),

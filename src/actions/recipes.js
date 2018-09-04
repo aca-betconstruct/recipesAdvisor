@@ -28,7 +28,7 @@ const recipesFetchingFailure = () => {
 };
 
 const joiner = (arr, type) => {
-  return `&${type}=` + arr.join(`&${type}=`);
+  return `&${type}=${arr.join(`&${type}=`)}`;
 };
 
 export const getRecipes = (
@@ -47,7 +47,7 @@ export const getRecipes = (
       .map(item => item.text),
     includes = preferences.filter(item => item.isLike).map(item => item.text);
 
-  let count = 10;
+  let count = 30;
   let excludesFoods = '',
     connectedLabels = '';
   if (labels.length) connectedLabels = joiner(labels, labelsType);

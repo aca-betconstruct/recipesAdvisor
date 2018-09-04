@@ -10,7 +10,8 @@ import { bindActionCreators } from 'redux';
 const mapStateToProps = state => {
   return {
     preferences: state.preferences,
-    isPreferencesFetching: state.isPreferencesFetching
+    isPreferencesFetching: state.isPreferencesFetching,
+    jwt: state.jwt
   };
 };
 
