@@ -14,17 +14,20 @@ class FoodCard extends Component {
     return (
       <div className={classes.card}>
         <div className={classes.text}>{foodObj.text}</div>
-        <div className={classes.removeButContainer} onClick={this.handleClick}>
+        <button
+          className={classes.removeButContainer}
+          onClick={this.handleClick}
+        >
           <div className={classes.removeBut}>+</div>
-        </div>
+        </button>
       </div>
     );
   }
-  static propTypes = {
-    classes: PropTypes.object,
-    foodObj: PropTypes.object,
-    deletePreference: PropTypes.func
-  };
+  // static propTypes = {
+  //   classes: PropTypes.object,
+  //   foodObj: PropTypes.object,
+  //   deletePreference: PropTypes.func
+  // };
 }
 
 export default injectSheet(styles)(FoodCard);
