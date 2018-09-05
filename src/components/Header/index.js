@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import ScrollButton from './ScrollButton';
+import logo from '../../images/logo.png';
 
 import styles from './styles';
 
@@ -100,6 +101,7 @@ class Header extends Component {
                   color="transparent"
                   dark
                   expand="md"
+                  style={{ padding: '2px 16px' }}
                   className={`${classes.navBar} ${
                     scrollPositionY !== 0
                       ? classes.navBarScroll
@@ -121,12 +123,20 @@ class Header extends Component {
                     {isLogoAnimated ? (
                       <Animation type="tada">
                         <Link to={'/'} className={classes.navBarBrand}>
-                          <strong>LOGO</strong>
+                          <img
+                            src={logo}
+                            alt="Not Found"
+                            className={classes.logo}
+                          />
                         </Link>
                       </Animation>
                     ) : (
                       <Link to={'/'} className={classes.navBarBrand}>
-                        <strong>LOGO</strong>
+                        <img
+                          src={logo}
+                          alt="Not Found"
+                          className={classes.logo}
+                        />
                       </Link>
                     )}
                   </NavbarBrand>
