@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import ReactAutocomplete from 'react-autocomplete';
 import styles from './styles';
 import FoodCard from '../../containers/FoodCard';
@@ -105,14 +105,14 @@ class FoodList extends Component {
       </div>
     ) : null;
   }
-  // static propTypes = {
-  //   classes: PropTypes.object,
-  //   preferences: PropTypes.array,
-  //   type: PropTypes.bool,
-  //   deletePreference: PropTypes.func,
-  //   isPreferencesFetching: PropTypes.bool,
-  //   inputPlaceholder: PropTypes.string
-  // };
+  static propTypes = {
+    classes: PropTypes.object,
+    preferences: PropTypes.array,
+    type: PropTypes.bool,
+    deletePreference: PropTypes.func,
+    isPreferencesFetching: PropTypes.bool,
+    inputPlaceholder: PropTypes.string
+  };
 }
 
 export default injectSheet(styles)(FoodList);
