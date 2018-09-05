@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Login from '../../components/Login';
 import validate from '../../config/AuthenticationValidation/validation';
-import { fetchLogin } from '../../actions/login';
-import { fetchAuthenticated, logoutUser } from '../../actions/authenticated';
+import { fetchLogin,fetchAuthenticated, logoutUser } from '../../actions';
+import {selectIsAuth} from '../../selectors'
 
 const selector = formValueSelector('Login');
 
@@ -13,7 +13,7 @@ const mapStateToProps = state => {
   return {
     email,
     password,
-    auth: state.auth,
+    isAuth: selectIsAuth(state),
     jwt: state.jwt
   };
 };

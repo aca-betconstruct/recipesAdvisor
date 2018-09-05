@@ -16,12 +16,12 @@ class Login extends Component {
     fetchAuthenticated(jwt);
   }
   componentDidUpdate(nextProps) {
-    const { auth, jwt } = this.props;
-    if (jwt && !auth) {
+    const { isAuth, jwt } = this.props;
+    if (jwt && !isAuth) {
       const { fetchAuthenticated } = this.props;
       fetchAuthenticated(jwt);
     }
-    return !auth;
+    return !isAuth;
   }
   handleSubmit(event) {
     event.preventDefault();
@@ -38,7 +38,7 @@ class Login extends Component {
       from: { pathname: '/preferences' }
     };
 
-    if (this.props.auth) {
+    if (this.props.isAuth) {
       return <Redirect to={from} />;
     } else {
       const { classes, valid } = this.props;
@@ -95,7 +95,7 @@ class Login extends Component {
   static propTypes = {
     classes: PropTypes.object,
     valid: PropTypes.bool,
-    auth: PropTypes.array,
+    isAuth: PropTypes.array,
     jwt: PropTypes.string,
     fetchAuthenticated: PropTypes.func
   };

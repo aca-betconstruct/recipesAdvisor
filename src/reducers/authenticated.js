@@ -4,7 +4,7 @@ import {
   RECEIVE_LOGIN
 } from '../constants';
 
-export const auth = (state = null, action) => {
+export const user = (state = null, action) => {
   switch (action.type) {
     case RECEIVE_AUTHENTICATED: {
       return action.payload;

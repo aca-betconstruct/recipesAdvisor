@@ -2,7 +2,7 @@ import { reduxForm, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import SignUp from '../../components/SignUp/index';
-import { fetchSignup } from '../../actions/signup';
+import { fetchSignup } from '../../actions';
 import validate from '../../config/AuthenticationValidation/validation';
 
 const selector = formValueSelector('SignUp');

@@ -14,8 +14,8 @@ const Home = ({ classes }) => {
     <div>
       <AnimatableImages />
       <div className={classes.main}>
-        <Filter/>
-       <Recipes />
+        <Filter />
+        <Recipes />
       </div>
     </div>
   );

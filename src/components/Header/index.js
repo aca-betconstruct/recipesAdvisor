@@ -79,7 +79,7 @@ class Header extends Component {
   }
 
   render() {
-    const { classes, auth } = this.props;
+    const { classes, isAuth } = this.props;
     const { pathname } = this.props.location;
     const {
       scrollPositionY,
@@ -125,7 +125,7 @@ class Header extends Component {
                   {isLogoAnimated ? (
                     <Animation type="tada">
                       <Link
-                        to={auth ? '/home' : '/'}
+                        to={isAuth ? '/home' : '/'}
                         className={classes.navBarBrand}
                       >
                         <strong>LOGO</strong>
@@ -133,7 +133,7 @@ class Header extends Component {
                     </Animation>
                   ) : (
                     <Link
-                      to={auth ? '/home' : '/'}
+                      to={isAuth ? '/home' : '/'}
                       className={classes.navBarBrand}
                     >
                       <strong>LOGO</strong>
@@ -150,7 +150,7 @@ class Header extends Component {
                 >
                   <NavbarNav right>
                     <NavItem>
-                      {auth ? (
+                      {isAuth ? (
                         <a
                           style={{ color: 'white' }}
                           onClick={this.handleLogoutClick}
@@ -173,7 +173,7 @@ class Header extends Component {
   static propTypes = {
     classes: PropTypes.object,
     firstPage: PropTypes.func,
-    auth: PropTypes.array,
+    isAuth: PropTypes.bool,
     location: PropTypes.object
   };
 }

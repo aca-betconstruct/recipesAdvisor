@@ -25,9 +25,10 @@ export const fetchLogin = (state) => {
     })
       .then(response => response.json())
       .then(response => {
-
-        localStorage.setItem('jwt', response.data['authToken']);
-        dispatch(receiveLogin(response.data['authToken'] || ''));
+            if(response.data) {
+                localStorage.setItem('jwt', response.data['authToken']);
+                dispatch(receiveLogin(response.data['authToken'] || ''));
+            }
 
 
       });
