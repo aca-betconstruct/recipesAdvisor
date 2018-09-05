@@ -14,10 +14,10 @@ class Routers extends Component {
       <Router>
         <Switch>
           <Route path="/login" component={LoginForm} />
-          <PrivateRoute path="/preferences" component={Preferences} />
           <Route path="/signUp" component={SignUpForm} />
           <Route path="/somewhere/:id" component={ReceptePage} />*
           <PrivateRoute path="/calculator" component={CaloriesCalculator} />
+          <PrivateRoute path="/preferences" component={Preferences} />
           <Route
             component={({ location }) => (
               <RoutesWithHeaderAndFooter location={location} />

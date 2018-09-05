@@ -14,9 +14,8 @@ const Home = ({ classes }) => {
     <div>
       <AnimatableImages />
       <div className={classes.main}>
-        <Route path="/home" component={Filter} />
-        <Route exact path="/home/" render={props => <Recipes {...props} />} />
-        <Route path={'/home/favourites'} component={() => <Favourites />} />
+        <Filter/>
+       <Recipes />
       </div>
     </div>
   );
