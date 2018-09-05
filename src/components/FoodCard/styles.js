@@ -35,11 +35,11 @@ export default {
   text: {
     display: 'inline',
     width: 'calc(100% - 44px)',
-    lineHeight: '43px',
+    lineHeight: '33px',
     fontSize: '18px',
     border: '1px solid rgb(211, 211, 211)',
     cursor: 'default',
-    padding: '0 8px 0 8px',
+    padding: '5px 8px 5px 8px',
     userSelect: 'none'
   }
 };
