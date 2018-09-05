@@ -1,7 +1,8 @@
 import {
   REQUEST_FAVORITES,
   RECEIVE_FAVORITES,
-  RECEIVE_ALL_FAVORITES
+  RECEIVE_ALL_FAVORITES,
+  DELETE_FAVOURITE, CHECK_FAVOURITE
 } from '../constants';
 
 const requestFavourites = () => {
@@ -9,6 +10,13 @@ const requestFavourites = () => {
     type: REQUEST_FAVORITES
   };
 };
+
+const deleteFavourite = (id) => ({
+  type: DELETE_FAVOURITE,
+  payload: {
+    id
+  }
+});
 
 const receiveFavourites = json => {
   return {
@@ -22,6 +30,15 @@ const allreceiveFavourites = json => {
     type: RECEIVE_ALL_FAVORITES,
     payload: json.data
   };
+};
+
+export const checkFavourite = (id) => {
+  return {
+    type: CHECK_FAVOURITE,
+    payload: {
+      id
+    }
+  }
 };
 
 export const fetchFavourites = (state, jwt) => {
@@ -74,7 +91,7 @@ export const deleteFetchFavourites = (id, jwt) => {
       .then(response => response.json())
       .then(json => {
         dispatch(receiveFavourites());
-        dispatch(getFetchFavourites(jwt));
+        dispatch(deleteFavourite(id));
       })
       .catch(e => {
         console.log(e);

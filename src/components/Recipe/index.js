@@ -36,8 +36,6 @@ class Recipe extends Component {
   }
 
   render() {
-    const { recipe } = this.props;
-    const { isFavourite } = recipe;
     return <SmallCard />;
   }
   static propTypes = {

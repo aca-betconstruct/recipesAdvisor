@@ -4,7 +4,9 @@ import { Animation, Row, Col, Container } from 'mdbreact';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import injectSheet from 'react-jss';
 
-import { BigCard, MediumCard } from '../Cards/index';
+import { MediumCard } from '../Cards/index';
+import BigCard from '../../containers/Cards/BigCard/index';
+
 import styles from './styles';
 
 let curPage = 0;
@@ -34,13 +36,29 @@ class Recipes extends Component {
       labelsType,
       labels,
       q,
-      type,jwt
+      type,
+      jwt
     } = this.props;
-    const pref = new Promise(resolve => resolve(getPreferences(jwt)));
-    pref.then(() => getFetchFavourites(jwt)).then(() => {
-      const { preferences, favourites } = this.props;
-      getRecipes(curPage, labels, q, labelsType, preferences, favourites, type);
+    const pref = new Promise(resolve => {
+      if (jwt.length) resolve(getPreferences(jwt));
+      else resolve();
     });
+    pref
+      .then(() => {
+        if (jwt.length) getFetchFavourites(jwt);
+      })
+      .then(() => {
+        const { preferences, favourites } = this.props;
+        getRecipes(
+          curPage,
+          labels,
+          q,
+          labelsType,
+          preferences,
+          favourites,
+          type
+        );
+      });
     nextPage(curPage + 1);
   }
 
@@ -129,10 +147,83 @@ class Recipes extends Component {
 
   render() {
     const { curRecipe, curIndex, zoomOut, zoomIn } = this.state;
-    const { recipes, classes } = this.props;
+    const { classes, type, recipes, favourites } = this.props;
+    if (type === 'favourite') {
+      return (
+        <Container style={{ width: '800px' }} className="mt-5">
+          <Row
+            style={{
+              marginTop: '25px',
+              display: 'flex',
+              justifyContent: 'center'
+            }}
+          >
+            {favourites.length ? (
+              zoomOut ? (
+                <Animation
+                  type={'zoomOutDown'}
+                  duration={'700ms'}
+                  className={`col-md-12 col-lg-6`}
+                >
+                  <BigCard recipe={favourites[curIndex].recepte} />
+                </Animation>
+              ) : zoomIn ? (
+                <Animation
+                  type={'zoomInUp'}
+                  duration={'700ms'}
+                  className={'col-md-12 col-lg-6'}
+                >
+                  <BigCard recipe={favourites[curIndex].recepte} />
+                </Animation>
+              ) : (
+                <Col md="12" lg="6">
+                  <BigCard recipe={favourites[curIndex].recepte} />
+                </Col>
+              )
+            ) : (
+              ''
+            )}
+            <Col
+              md="12"
+              lg="6"
+              id={'scrollableContent'}
+              className={classes.scrollBar}
+            >
+              <InfiniteScroll
+                style={{ overflowX: 'hidden', width: '98%' }}
+                dataLength={favourites.length}
+                next={this.fetchMoreData}
+                hasMore={false}
+                scrollableTarget="scrollableContent"
+                loader={<h4 style={{ textAlign: 'center' }}>Loading...</h4>}
+                endMessage={
+                  <p style={{ textAlign: 'center' }}>
+                    <b>Yay! You have seen it all</b>
+                  </p>
+                }
+              >
+                {favourites.map((recipe, i) => (
+                  <MediumCard
+                    recipe={recipe.recepte}
+                    key={i}
+                    onClick={() => this.handleClick(i, 0)}
+                  />
+                ))}
+              </InfiniteScroll>
+            </Col>
+          </Row>
+        </Container>
+      );
+    }
     return (
       <Container style={{ width: '800px' }} className="mt-5">
-        <Row style={{ marginTop: '25px' }}>
+        <Row
+          style={{
+            marginTop: '25px',
+            display: 'flex',
+            justifyContent: 'center'
+          }}
+        >
           {recipes.length ? (
             zoomOut ? (
               <Animation
@@ -180,8 +271,7 @@ class Recipes extends Component {
               {recipes.map((recipe, i) =>
                 recipe.hits.map((item, index) => (
                   <MediumCard
-                    recipe={item}
-                    image={item.image}
+                    recipe={item.recipe}
                     key={index}
                     onClick={() => this.handleClick(index, i)}
                   />

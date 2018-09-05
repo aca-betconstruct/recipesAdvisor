@@ -2,7 +2,8 @@ import {
   RECIPES_FETCHING,
   RECIPES_FETCHING_FAILURE,
   RECIPES_FETCHING_SUCCESS,
-  RANDOM_FOODS
+  RANDOM_FOODS,
+  CHECK_FAVOURITE
 } from '../constants';
 
 const randomRecipes = RANDOM_FOODS.map(food => food.name);

@@ -10,10 +10,10 @@ const SmallCard = ({ classes, recipe }) => {
     <Row className={classes.row}>
       <Col md="3" className={classes.imgCol}>
         <View hover rounded className={`z-depth-1-half mb-4 ${classes.view}`}>
-          <img className="img-fluid" src={recipe.image} alt="Sample image" />
+          <img className="img-fluid" src={recipe.image} alt={recipe.name} />
           <a>
             <Mask overlay="white-slight" className="waves-light" />
-          </a>,Small
+          </a>
         </View>
       </Col>
       <div className={classes.descriptionCol}>
