@@ -2,7 +2,7 @@ export default {
   main: {
     display: 'flex',
     justifyContent: 'space-between',
-    minWidth: '620px',
+    minWidth: '635px',
     width: '70%',
     border: '1px solid rgb(0, 190, 0)',
     padding: '13px 13px 8px 13px',
@@ -15,8 +15,8 @@ export default {
   label: {
     userSelect: 'none',
     padding: '8px',
-    paddingTop: '16px',
-    fontSize: '17px',
+    paddingTop: '19px',
+    fontSize: '16px',
     transition: '.6s',
     color: 'black',
     cursor: 'pointer'

@@ -73,20 +73,20 @@ class Filter extends Component {
             Balanced
           </div>
           <div
-            onClick={() => this.changeLabel('vegeterian')}
+            onClick={() => this.changeLabel('low-fat')}
             className={`${classes.label} ${
-              activeLabel === 'vegeterian' ? classes.activeLabel : ''
+              activeLabel === 'low-fat' ? classes.activeLabel : ''
             }`}
           >
-            Vegeterian
+            Low Fat
           </div>
           <div
-            onClick={() => this.changeLabel('vegan')}
+            onClick={() => this.changeLabel('high-protein')}
             className={`${classes.label} ${
-              activeLabel === 'vegan' ? classes.activeLabel : ''
+              activeLabel === 'high-protein' ? classes.activeLabel : ''
             }`}
           >
-            Vegan
+            High Protein
           </div>
           <Search
             onChange={this.handleInput}
