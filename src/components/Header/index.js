@@ -165,7 +165,7 @@ class Header extends Component {
   static propTypes = {
     classes: PropTypes.object,
     firstPage: PropTypes.func,
-    isAuth: PropTypes.array,
+    isAuth: PropTypes.bool,
     location: PropTypes.object
   };
 }
