@@ -11,17 +11,12 @@ class Login extends Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  componentDidMount() {
-    const { fetchAuthenticated, jwt } = this.props;
-    fetchAuthenticated(jwt);
-  }
-  componentDidUpdate(nextProps) {
-    const { isAuth, jwt } = this.props;
-    if (jwt && !isAuth) {
+  componentDidUpdate() {
+    const { jwt } = this.props;
+    if (jwt) {
       const { fetchAuthenticated } = this.props;
       fetchAuthenticated(jwt);
     }
-    return !isAuth;
   }
   handleSubmit(event) {
     event.preventDefault();
@@ -95,7 +90,7 @@ class Login extends Component {
   static propTypes = {
     classes: PropTypes.object,
     valid: PropTypes.bool,
-    isAuth: PropTypes.array,
+    isAuth: PropTypes.bool,
     jwt: PropTypes.string,
     fetchAuthenticated: PropTypes.func
   };
