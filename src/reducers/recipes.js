@@ -3,7 +3,8 @@ import {
   RECIPES_FETCHING_SUCCESS,
   RECIPES_FETCHING,
   FIRST_PAGE,
-  LOGOUT_USER
+  LOGOUT_USER,
+  CHECK_FAVOURITE
 } from '../constants';
 
 const initialStateIsRecipesFetching = false;
@@ -62,6 +63,25 @@ export const recipes = (state = initialStateForRecipes, action) => {
       return initialStateForRecipes;
     case LOGOUT_USER:
       return initialStateForRecipes;
+    case CHECK_FAVOURITE:
+      return state.map(item => ({
+        ...item,
+        hits: item.hits.map(recipe => {
+          if (recipe.recipe.uri === action.payload.id) {
+            return {
+              ...recipe,
+              recipe: {
+                ...recipe.recipe,
+                isFavourite: !recipe.recipe.isFavourite
+              }
+            };
+          } else {
+            return {
+              ...recipe
+            };
+          }
+        })
+      }));
     default:
       return state;
   }

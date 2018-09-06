@@ -253,7 +253,8 @@ export default {
   },
   '@media (max-width: 991px)': {
     wrap: {
-      width: '80%'
+      width: '80%',
+      marginLeft: '20%'
     }
   },
   '@media (max-width: 900px)': {
@@ -294,13 +295,19 @@ export default {
       minHeight: '425px'
     },
     wrap: {
-      width: '85%'
+      width: '85%',
+      marginLeft: '15%'
     },
     h1: {
       fontSize: '1.5em'
     },
     p: {
       fontSize: '1em'
+    }
+  },
+  '@media (max-width: 450px)': {
+    wrap: {
+      margin: 'auto'
     }
   },
   '@media (max-width: 320px)': {

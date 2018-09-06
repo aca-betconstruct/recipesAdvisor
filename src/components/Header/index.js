@@ -13,13 +13,14 @@ import {
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
-import ScrollButton from './ScrollButton';
+
 import logo from '../../images/logo.png';
 
 import styles from './styles';
 
+let timeout;
+
 const debounce = (func, wait) => {
-  let timeout;
   return (...args) => {
     clearTimeout(timeout);
     timeout = setTimeout(() => func.apply(this, args), wait);
@@ -44,11 +45,11 @@ class Header extends Component {
   }
 
   componentDidMount() {
-    return window.addEventListener('scroll', debounce(this.handleScroll, 32));
+    return window.addEventListener('scroll', debounce(this.handleScroll, 16));
   }
 
   componentWillUnmount() {
-    return window.addEventListener('scroll', debounce(this.handleScroll, 32));
+    clearTimeout(timeout);
   }
 
   handleScroll() {
@@ -82,94 +83,93 @@ class Header extends Component {
   render() {
     const { classes, isAuth } = this.props;
     const { pathname } = this.props.location;
-    const { scrollPositionY, collapse, isLogoAnimated } = this.state;
+    const {
+      scrollPositionY,
+      isWideEnough,
+      collapse,
+      isLogoAnimated
+    } = this.state;
     return (
-      <React.Fragment>
-        <header
-          className={`${classes.headerArea} ${
-            scrollPositionY !== 0 ? classes.sticky : ''
-          } ${
-            pathname === '/aboutus' || pathname === '/contactus'
-              ? classes.black
-              : ''
-          }`}
-        >
-          <Container className={classes.container}>
-            <div className={'row'}>
-              <div className={'col-12'}>
-                <Navbar
-                  color="transparent"
-                  dark
-                  expand="md"
-                  style={{ padding: '2px 16px' }}
-                  className={`${classes.navBar} ${
-                    scrollPositionY !== 0
+      <header
+        className={`${classes.headerArea} ${
+          scrollPositionY !== 0 ? classes.sticky : ''
+        } ${
+          pathname === '/aboutus' || pathname === '/contactus'
+            ? classes.black
+            : ''
+        }`}
+      >
+        <Container className={classes.container}>
+          <div className={'row'}>
+            <div className={'col-12'}>
+              <Navbar
+                color="transparent"
+                dark
+                expand="md"
+                className={`${classes.navBar} ${
+                  scrollPositionY !== 0
+                    ? classes.navBarScroll
+                    : collapse
                       ? classes.navBarScroll
-                      : collapse
-                        ? classes.navBarScroll
-                        : ''
-                  } ${
-                    pathname === '/aboutus' || pathname === '/contactus'
-                      ? classes.black
                       : ''
-                  }`}
+                } ${
+                  pathname === '/aboutus' || pathname === '/contactus'
+                    ? classes.black
+                    : ''
+                }`}
+              >
+                <NavbarBrand
+                  tag={'span'}
+                  onMouseEnter={this.mouseEntered}
+                  onMouseLeave={this.mouseLeaved}
+                  onClick={this.handleLogoClick}
                 >
-                  <NavbarBrand
-                    tag={'span'}
-                    onMouseEnter={this.mouseEntered}
-                    onMouseLeave={this.mouseLeaved}
-                    onClick={this.handleLogoClick}
-                  >
-                    {isLogoAnimated ? (
-                      <Animation type="tada">
-                        <Link to={'/'} className={classes.navBarBrand}>
-                          <img
-                            src={logo}
-                            alt="Not Found"
-                            className={classes.logo}
-                          />
-                        </Link>
-                      </Animation>
-                    ) : (
-                      <Link to={'/'} className={classes.navBarBrand}>
-                        <img
-                          src={logo}
-                          alt="Not Found"
-                          className={classes.logo}
-                        />
+                  {isLogoAnimated ? (
+                    <Animation type="tada">
+                      <Link
+                        to={isAuth ? '/home' : '/'}
+                        className={classes.navBarBrand}
+                      >
+                        <img src={logo} alt="LOGO" className={classes.logo} />
                       </Link>
-                    )}
-                  </NavbarBrand>
-                  {!this.state.isWideEnough && (
-                    <NavbarToggler onClick={this.handleTogglerClick} />
+                    </Animation>
+                  ) : (
+                    <Link
+                      to={isAuth ? '/home' : '/'}
+                      className={classes.navBarBrand}
+                    >
+                      <img src={logo} alt="LOGO" className={classes.logo} />
+                    </Link>
                   )}
-                  <Collapse
-                    isOpen={collapse}
-                    className={classes.collapsed}
-                    navbar
-                  >
-                    <NavbarNav right>
-                      <NavItem>
-                        {isAuth ? (
-                          <Link to={'/login'}
-                            style={{ color: 'white' }}
-                            onClick={this.handleLogoutClick}
-                          >
-                            Log Out
-                          </Link>
-                        ) : (
-                          <NavLink to="/login">Log In</NavLink>
-                        )}
-                      </NavItem>
-                    </NavbarNav>
-                  </Collapse>
-                </Navbar>
-              </div>
+                </NavbarBrand>
+                {!isWideEnough && (
+                  <NavbarToggler onClick={this.handleTogglerClick} />
+                )}
+                <Collapse
+                  isOpen={collapse}
+                  className={classes.collapsed}
+                  navbar
+                >
+                  <NavbarNav right>
+                    <NavItem>
+                      {isAuth ? (
+                        <a
+                          style={{ color: 'white' }}
+                          onClick={this.handleLogoutClick}
+                        >
+                          Log Out
+                        </a>
+                      ) : (
+                        <NavLink to="/login">Log In</NavLink>
+                      )}
+                    </NavItem>
+                  </NavbarNav>
+                </Collapse>
+              </Navbar>
             </div>
-          </Container>
-        </header>
-        <ScrollButton scrollStepInPx={50} delayInMs={16.66} />
-      </React.Fragment>
+          </div>
+        </Container>
+      </header>
     );
   }
   static propTypes = {

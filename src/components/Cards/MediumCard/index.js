@@ -9,7 +9,7 @@ import styles from './styles';
 class WideRecipeCard extends Component {
   render() {
     const { classes, recipe } = this.props;
-    const { image, label, ingredientLines, uri } = recipe.recipe;
+    const { image, label, ingredientLines, uri } = recipe;
     return (
       <Row className={classes.row}>
         <Col md="3">
@@ -19,7 +19,7 @@ class WideRecipeCard extends Component {
             rounded
             className={`${classes.view} z-depth-1-half mb-4`}
           >
-            <img className="img-fluid" src={image} alt="Sample image" />
+            <img className="img-fluid" src={image} alt={label} />
             <a>
               <Mask overlay="white-slight" className="waves-light" />
             </a>

@@ -7,7 +7,8 @@ import {
 import {
   getFetchFavourites,
   deleteFetchFavourites,
-  fetchFavourites
+  fetchFavourites,
+  checkFavourite
 } from './favourites';
 import { addHealthLabel, addDietLabel, removeLabel } from './filter';
 import { firstPage, nextPage } from './pagination';
@@ -17,6 +18,7 @@ import { fetchLogin } from './login';
 
 export {
   getRecipes,
+  checkFavourite,
   firstPage,
   nextPage,
   addHealthLabel,

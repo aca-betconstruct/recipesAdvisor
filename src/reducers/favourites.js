@@ -1,7 +1,9 @@
 import {
   LOGOUT_USER,
   RECEIVE_ALL_FAVOURITES,
-  REQUEST_FAVOURITES
+  REQUEST_FAVOURITES,
+  CHECK_FAVOURITE,
+  DELETE_FAVOURITE
 } from '../constants';
 
 export const isFavouriteRecipesFetching = (state = false, action) => {
@@ -23,6 +25,20 @@ export const allFetchFavourites = (state = [], action) => {
     case LOGOUT_USER: {
       return [];
     }
+    case CHECK_FAVOURITE:
+      return state.map(item => {
+        if (item.recepte.uri === action.payload.id) {
+          return {
+            ...item,
+            recepte: {
+              ...item.recepte,
+              isFavourite: !item.recepte.isFavourite
+            }
+          };
+        } else return item;
+      });
+    case DELETE_FAVOURITE:
+      return state.filter(item => item.favoriteId !== action.payload.id);
     default: {
       return state;
     }

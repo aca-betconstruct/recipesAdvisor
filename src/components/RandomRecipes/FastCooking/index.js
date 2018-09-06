@@ -26,7 +26,8 @@ class FastCooking extends Component {
         rec.hits.map(item =>
           recipe.push({
             image: item.recipe.image,
-            time: item.recipe.totalTime
+            time: item.recipe.totalTime,
+            name: item.recipe.label
           })
         )
       );
