@@ -15,43 +15,49 @@ class ProfileSidebar extends Component {
     };
   }
 
-  handleChange = (event) => {
-    if(event.target.innerText.length < 16 || event.target.innerText === 'DAILY' || event.target.innerText === 'DIET') {
+  handleChange = event => {
+    if (
+      event.target.innerText.length < 16 ||
+      event.target.innerText === 'DAILY' ||
+      event.target.innerText === 'DIET'
+    ) {
       this.props.category(event.target.innerText);
     }
   };
-  
+
   render() {
     const { classes } = this.props;
     return (
-      <div style={{ width: "20%",
-        background: 'rgba(0, 0, 0, 0.8)',
-        height: '100%',
-        backgroundSize: 'cover',
-        minHeight: '100vh',
-      paddingTop: '15%'}}>
+      <div
+        style={{
+          width: '20%',
+          background: 'rgba(0, 0, 0, 0.8)',
+          backgroundSize: 'cover',
+          minHeight: '100vh',
+          paddingTop: '15%'
+        }}
+      >
         <div
           style={{
             display: 'flex',
-            flexDirection: 'column',
-           
+            flexDirection: 'column'
           }}
         >
-            <Link to="/home">
-              <Tooltip
-                placement="right"
-                componentClass={classes.button}
-                tag="div"
-                component="button"
-                tooltipContent="
+          <Link to="/home">
+            <Tooltip
+              placement="right"
+              componentClass={classes.button}
+              tag="div"
+              component="button"
+              tooltipContent="
           This is your default page.Here you can see your daily recipes
           which are offered to you based on your preferences. This list
           will automatically update every day"
-              >
-                Daily Recipes
-              </Tooltip>
-            </Link>
-          
+            >
+              Daily Recipes
+            </Tooltip>
+          </Link>
+
           <Link to="/">
             <Tooltip
               placement="right"
@@ -61,7 +67,7 @@ class ProfileSidebar extends Component {
               tooltipContent="
                 Click here if you want to discover new stuff and refresh your list of favourite recipes. We offer all kinds of
                 foods and drinks in this section, both covering the basics and the ones you want to keep for impressing your precious guests."
-              >
+            >
               Discover Recipes
             </Tooltip>
           </Link>
@@ -80,7 +86,7 @@ class ProfileSidebar extends Component {
             </Tooltip>
           </Link>
 
-          <Link to="/calculator" >
+          <Link to="/calculator">
             <Tooltip
               placement="right"
               componentClass={classes.button}
@@ -93,8 +99,8 @@ class ProfileSidebar extends Component {
               Calculator
             </Tooltip>
           </Link>
-  
-          <Link to="/home/preferences" >
+
+          <Link to="/home/preferences">
             <Tooltip
               placement="right"
               componentClass={classes.button}
@@ -105,7 +111,6 @@ class ProfileSidebar extends Component {
               Preferences
             </Tooltip>
           </Link>
-
         </div>
       </div>
     );
