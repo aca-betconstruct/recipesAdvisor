@@ -3,6 +3,8 @@ import injectSheet from 'react-jss';
 import PropTypes from 'prop-types';
 import styles from './styles';
 import Header from '../../containers/Header';
+import { Link } from 'react-router-dom';
+
 
 const activities = [
   'Sedentary lifestyle',
@@ -146,7 +148,6 @@ class CaloriesCalculator extends Component {
 
     return (
       <div>
-        <Header />
         <h1 className={classes.welcome}>
           Please Fill In The Form To Calculate The Calories
         </h1>
@@ -192,6 +193,7 @@ class CaloriesCalculator extends Component {
                     className={classes.textInput}
                     type="number"
                     min="12"
+                    max="120"
                     onChange={this.handleAgeInputChange}
                   />
                 </div>
@@ -201,6 +203,7 @@ class CaloriesCalculator extends Component {
                     className={classes.textInput}
                     type="number"
                     min="30"
+                    max="400"
                     onChange={this.handleWeightInputChange}
                   />
                 </div>
@@ -210,6 +213,7 @@ class CaloriesCalculator extends Component {
                     className={classes.textInput}
                     type="number"
                     min="100"
+                    max="250"
                     onChange={this.handleHeightInputChange}
                   />
                 </div>
@@ -220,6 +224,11 @@ class CaloriesCalculator extends Component {
                 >
                   Calculate
                 </button>
+  
+                <Link  className={classes.linkButton} to="/home">
+                  go back
+                </Link>
+                
               </form>
             </div>
           </div>

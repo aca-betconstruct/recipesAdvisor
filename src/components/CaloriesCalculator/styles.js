@@ -195,6 +195,29 @@ export default {
       border: 'solid 1px #FFFFFF'
     }
   },
+  linkButton: {
+    color: '#ffffff',
+    fontSize: '.9em',
+    textDecoration: 'none',
+    padding: '1em 2em',
+    cursor: 'pointer',
+    background: '#F44336',
+    textTransform: 'uppercase',
+    fontWeight: '600',
+    textAlign: 'center',
+    border: 'solid 1px #f44336',
+    transition: '0.5s all',
+    marginLeft: '5px',
+    '-webkit-transition': '0.5s all',
+    '-o-transition': '0.5s all',
+    '-moz-transition': '0.5s all',
+    '-ms-transition': '0.5s all',
+    '&:hover': {
+      background: 'none',
+      border: 'solid 1px #FFFFFF',
+      color: "#FFFFFF"
+    }
+  },
   a: {
     color: 'red',
     '&:hover': {

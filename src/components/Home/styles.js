@@ -1,9 +1,12 @@
 export default {
   main: {
     display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    paddingTop: '100px'
+    flexDirection: 'row'
+  },
+  row: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 };

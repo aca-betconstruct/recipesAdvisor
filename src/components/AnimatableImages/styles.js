@@ -19,8 +19,7 @@ export default {
       height: '180px'
     },
     height: '140px',
-    width: '100%',
-    marginBottom: '50px'
+    width: '100%'
   },
   opacity: {
     height: '100%',

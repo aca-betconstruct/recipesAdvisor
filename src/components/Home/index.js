@@ -4,6 +4,7 @@ import injectSheet from 'react-jss';
 import PropTypes from 'prop-types';
 
 import AnimatableImages from '../../components/AnimatableImages';
+import SideBar from '../SideBar';
 import Recipes from '../../containers/Recipes';
 import Filter from '../../containers/Filter';
 import Favourites from '../../containers/Favourites';
@@ -14,8 +15,11 @@ const Home = ({ classes }) => {
     <div>
       <AnimatableImages />
       <div className={classes.main}>
-        <Route exact path='/home' component={Filter} />
-        <Route exact path='/home' component={Recipes} />
+        <Route exact path='/home' component={SideBar} />
+        <div className={classes.row}>
+            <Route exact path='/home' component={Filter} />
+            <Route exact path='/home' component={Recipes} />
+          </div>
         <Route path='/home/favourites' component={Favourites} />
       </div>
     </div>

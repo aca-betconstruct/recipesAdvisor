@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { Col, Container, Row, Footer } from 'mdbreact';
 const FooterPage = () => {
   return (
-    <Footer
-      className="font-small pt-4 mt-4 "
-      style={{ backgroundColor: 'black' }}
+    <footer
+      className="page-footer mt-0 font-small pt-4"
+      style={{ backgroundColor: 'black', marginTop: 0 }}
     >
       <Container>
         <Row
@@ -68,7 +68,7 @@ const FooterPage = () => {
           </Col>
         </Row>
       </Container>
-    </Footer>
+    </footer>
   );
 };
 
