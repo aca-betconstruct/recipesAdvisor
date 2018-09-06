@@ -17,18 +17,18 @@ class Filter extends Component {
   changeLabel = label => {
     const { search, activeLabel } = this.state;
     const { getRecipes, curPage, firstPage } = this.props;
-    if (activeLabel === label) this.setState({ activeLabel: '' });
-    else {
+    if (activeLabel === label) {
+      this.runSearch({ key: 'Enter' }, '');
+      this.setState({ activeLabel: '' });
+    } else {
       const Filter = new Promise(resolve => resolve(firstPage));
       if (search.trim().length) {
         Filter.then(() =>
           getRecipes(curPage, [label], search, 'diet', [], [], 'search')
         );
         this.setState({ activeLabel: label });
+        this.runSearch({ key: 'Enter' }, label);
       } else {
-        Filter.then(() =>
-          getRecipes(curPage, [label], search, 'diet', [], [], 'daily')
-        );
         this.setState({ activeLabel: label });
       }
     }
@@ -36,14 +36,23 @@ class Filter extends Component {
 
   handleInput = e => this.setState({ search: e.target.value });
 
-  runSearch = e => {
+  runSearch = (e, label) => {
     if (e.key === 'Enter') {
-      const { search, activeLabel } = this.state;
+      const activeLabel = label || this.state.activeLabel;
+      const { search } = this.state;
       const { firstPage, getRecipes } = this.props;
       const Search = new Promise(resolve => resolve(firstPage()));
       Search.then(() => {
         const { curPage } = this.props;
-        getRecipes(curPage, [activeLabel], search, '', [], [], 'search');
+        getRecipes(
+          curPage,
+          activeLabel ? [activeLabel] : [],
+          search,
+          '',
+          [],
+          [],
+          'search'
+        );
       });
     }
   };
@@ -64,20 +73,20 @@ class Filter extends Component {
             Balanced
           </div>
           <div
-            onClick={() => this.changeLabel('vegeterian')}
+            onClick={() => this.changeLabel('low-fat')}
             className={`${classes.label} ${
-              activeLabel === 'vegeterian' ? classes.activeLabel : ''
+              activeLabel === 'low-fat' ? classes.activeLabel : ''
             }`}
           >
-            Vegeterian
+            Low Fat
           </div>
           <div
-            onClick={() => this.changeLabel('vegan')}
+            onClick={() => this.changeLabel('high-protein')}
             className={`${classes.label} ${
-              activeLabel === 'vegan' ? classes.activeLabel : ''
+              activeLabel === 'high-protein' ? classes.activeLabel : ''
             }`}
           >
-            Vegan
+            High Protein
           </div>
           <Search
             onChange={this.handleInput}

@@ -14,9 +14,12 @@ class FoodCard extends Component {
     return (
       <div className={classes.card}>
         <div className={classes.text}>{foodObj.text}</div>
-        <div className={classes.removeButContainer} onClick={this.handleClick}>
+        <button
+          className={classes.removeButContainer}
+          onClick={this.handleClick}
+        >
           <div className={classes.removeBut}>+</div>
-        </div>
+        </button>
       </div>
     );
   }

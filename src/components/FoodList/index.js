@@ -13,8 +13,9 @@ class FoodList extends Component {
       value: ''
     };
   }
+
   componentDidMount() {
-    const { getPreferences,jwt } = this.props;
+    const { getPreferences, jwt } = this.props;
     getPreferences(jwt);
   }
 
@@ -27,21 +28,19 @@ class FoodList extends Component {
     });
     return id + 13;
   };
-  handleAdd = e => {
-    if (this.state.value.trim().length !== 0) {
-      const { fetchPreferences,jwt } = this.props;
-      fetchPreferences(
-        {
-          text: this.state.value.trim(),
-          isLike: this.props.type,
-          id: this.idGen()
-        },
-        jwt
-      );
-      this.setState({ value: '' });
-    }
+
+  handleAdd = text => {
+    const { fetchPreferences, jwt } = this.props;
+    fetchPreferences(
+      {
+        text,
+        isLike: this.props.type,
+        id: this.idGen()
+      },
+      jwt
+    );
+    this.setState({ value: '' });
   };
-  handleClear = e => this.setState({ value: '' });
 
   render() {
     const {
@@ -54,15 +53,9 @@ class FoodList extends Component {
     } = this.props;
     return !isPreferencesFetching ? (
       <div className={classes.paper}>
-        {preferences.filter(v => v.isLike === type).map(v => (
-          <FoodCard
-            key={v.id}
-            foodObj={v}
-            deletePreference={deletePreference}
-          />
-        ))}
-        <div>
+        <div className={classes.addFood}>
           <ReactAutocomplete
+            inputProps={{ placeholder: inputPlaceholder }}
             items={RANDOM_FOODS}
             shouldItemRender={(item, value) =>
               item.name.toLowerCase().indexOf(value.toLowerCase()) > -1
@@ -80,10 +73,35 @@ class FoodList extends Component {
             )}
             value={this.state.value}
             onChange={e => this.setState({ value: e.target.value })}
-            onSelect={value => this.setState({ value })}
+            onSelect={this.handleAdd}
+            menuStyle={{
+              borderRadius: '3px',
+              boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)',
+              background: 'rgba(255, 255, 255)',
+              fontSize: '90%',
+              position: 'fixed',
+              overflow: 'auto',
+              maxHeight: '50%',
+              padding: '2px'
+            }}
           />
-          <button onClick={this.handleAdd}>Add</button>
+          <button
+            className={classes.addButton}
+            style={{
+              backgroundColor: type ? 'rgb(0, 190, 0)' : 'rgb(255, 57, 57)',
+              borderColor: type ? 'rgb(0, 190, 0)' : 'rgb(255, 57, 57)'
+            }}
+          >
+            {type ? '+' : '-'}
+          </button>
         </div>
+        {preferences.filter(v => v.isLike === type).map(v => (
+          <FoodCard
+            key={v.id}
+            foodObj={v}
+            deletePreference={deletePreference}
+          />
+        ))}
       </div>
     ) : null;
   }

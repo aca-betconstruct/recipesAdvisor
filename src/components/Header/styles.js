@@ -46,5 +46,8 @@ export default {
   black: {
     backgroundColor: 'black',
     borderColor: 'black'
+  },
+  logo: {
+    width: '55px'
   }
 };

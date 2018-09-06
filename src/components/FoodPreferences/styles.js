@@ -6,7 +6,7 @@ export default {
     flexDirection: 'row',
     flexWrap: 'wrap',
     margin: 'auto',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'center'
   },
   list: {

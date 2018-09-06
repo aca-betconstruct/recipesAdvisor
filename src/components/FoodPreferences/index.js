@@ -10,12 +10,12 @@ const FoodPreferences = ({ classes }) => {
   return (
     <div className={classes.listsContainer}>
       <div className={classes.list}>
-        <h2 className={classes.listTitle}>Preffered Products</h2>
-        <FoodList inputPlaceholder="Food you prefer" type />
+        <h2 className={classes.listTitle}>Include Ingredients</h2>
+        <FoodList inputPlaceholder="Ex. Banana" type />
       </div>
       <div className={classes.list}>
-        <h2 className={classes.listTitle}>Products to Avoid</h2>
-        <FoodList inputPlaceholder="Food you dont like" type={false} />
+        <h2 className={classes.listTitle}>Exclude Ingredients</h2>
+        <FoodList inputPlaceholder="Ex. Cheese" type={false} />
       </div>
       <Link to="home" className={classes.button}>
         Show Recipes
