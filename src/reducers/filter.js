@@ -1,10 +1,12 @@
 import {
   ADD_HEALTH_LABEL,
   ADD_DIET_LABEL,
-  REMOVE_FILTER_LABEL
+  REMOVE_FILTER_LABEL,
+  LOGOUT_USER
 } from '../constants';
 
-export default (state = { type: '', labels: [] }, action) => {
+const initialState = { type: '', labels: [] };
+export default (state = initialState, action) => {
   let temporaryState;
 
   switch (action.type) {
@@ -42,6 +44,8 @@ export default (state = { type: '', labels: [] }, action) => {
       state.labels.push(temporaryState.labels);
 
       return { ...state };
+    case LOGOUT_USER:
+      return initialState;
     default:
       return state;
   }

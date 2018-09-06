@@ -2,7 +2,8 @@ import {
   RECIPES_FETCHING_FAILURE,
   RECIPES_FETCHING_SUCCESS,
   RECIPES_FETCHING,
-  FIRST_PAGE
+  FIRST_PAGE,
+  LOGOUT_USER
 } from '../constants';
 
 const initialStateIsRecipesFetching = false;
@@ -17,6 +18,8 @@ export const isRecipesFetching = (
       return false;
     case RECIPES_FETCHING_FAILURE:
       return false;
+    case LOGOUT_USER:
+      return initialStateIsRecipesFetching;
     default:
       return state;
   }
@@ -56,6 +59,8 @@ export const recipes = (state = initialStateForRecipes, action) => {
     case RECIPES_FETCHING_FAILURE:
       return [...state];
     case FIRST_PAGE:
+      return initialStateForRecipes;
+    case LOGOUT_USER:
       return initialStateForRecipes;
     default:
       return state;
