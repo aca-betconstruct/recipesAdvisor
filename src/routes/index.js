@@ -42,7 +42,7 @@ class ModalSwitch extends Component {
           <Route path="/login" component={LoginForm} />
           <Route path="/preferences" component={Preferences} />
           <Route path="/signUp" component={SignUpForm} />
-          <Route path="/somewhere/:id" component={ReceptePage} />*
+          <Route path="/detail/:id" component={ReceptePage} />*
           <Route path="/profdemo" component={MagazinePage} />
           <Route path="/small" component={SmallCard} />
           <Route path="cascade" component={ReversedCascade} />

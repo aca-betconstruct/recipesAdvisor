@@ -15,7 +15,7 @@ const receiveLogin = () => {
 export const fetchLogin = (state, prop) => {
   return dispatch => {
     dispatch(requestLogin());
-    return fetch(`https://acafoodapi.haffollc.com/v1/login`, {
+    return fetch(`http://localhost:5002/v1/login`, {
       headers: {
         'Content-Type': 'application/json'
       },

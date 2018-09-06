@@ -1,22 +1,32 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, CardImage, View, Fa, CardBody } from 'mdbreact';
-import { Link } from 'react-router-dom';
-import ReceptePage from '../Recepte';
+import CommentPage from '../Comments';
+import './style.css';
 
 class ViewPage extends Component {
   render() {
-    const { match, recipe } = this.props;
-
-    let url = match.url.slice(11);
-
-    if (url !== recipe.uri.slice(44)) {
-      return '';
-    }
+    const {
+      match,
+      recipe,
+      comments,
+      auth,
+      fetchpComment,
+      fetchComment
+    } = this.props;
+    const url = match.url.slice(8);
 
     return (
       <Container>
         <Row>
-          <Col md="4">
+          <Col>
+            <button onClick={this.props.back} className="ditael-back">
+              <i
+                className="fa fa-arrow-left green-text fa-2x"
+                aria-hidden="true"
+              />
+            </button>
+          </Col>
+          <Col md="5">
             <View zoom>
               <CardImage
                 cascade
@@ -29,7 +39,7 @@ class ViewPage extends Component {
               />
             </View>
           </Col>
-          <Col lg="7" md="7">
+          <Col lg="5" md="5">
             <Row className="mb-5">
               <Col xl="10" md="11" size="10">
                 <a className="green-text">
@@ -38,25 +48,51 @@ class ViewPage extends Component {
                     {recipe.label}
                   </h2>
                 </a>
-
                 <Row>
-                  <Col>
-                    <h4 className="font-weight-bold black-text">
-                      Ingredients:
-                    </h4>
-                    {recipe.ingredientLines.map((elem, i) => {
-                      return (
-                        <h4 key={i}>
-                          <strong>{elem}</strong>
-                        </h4>
-                      );
-                    })}
-                  </Col>
+                  <div className="tableditael">
+                    <Col>
+                      <h3 className="font-weight-bold black-text">
+                        Ingredients
+                      </h3>
+                      {recipe.ingredientLines.map((elem, i) => {
+                        return (
+                          <h5 key={i}>
+                            <strong h1-responsive text-center my-5>
+                              {elem}
+                            </strong>
+                          </h5>
+                        );
+                      })}
+                    </Col>
+                  </div>
                 </Row>
+                <div className="tableditael">
+                  <div>
+                    <h3 className="font-weight-bold black-text">Calories</h3>
+                    <strong h1-responsive text-center my-5>
+                      {Math.ceil(recipe.calories)}
+                    </strong>
+                  </div>
+                  <div style={{ marginLeft: '20px' }}>
+                    <h3 className="font-weight-bold black-text " lg="3" md="3">
+                      Total weight
+                    </h3>
+                    <strong h1-responsive text-center my-5>
+                      {Math.ceil(recipe.totalWeight)}
+                    </strong>
+                  </div>
+                </div>
               </Col>
             </Row>
           </Col>
         </Row>
+        <CommentPage
+          fetchpComment={fetchpComment}
+          url={url}
+          fetchComment={fetchComment}
+          comments={comments}
+          auth={auth}
+        />
       </Container>
     );
   }
