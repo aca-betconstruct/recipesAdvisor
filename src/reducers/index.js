@@ -10,7 +10,7 @@ import { user, jwt } from './authenticated';
 import {
   allFetchFavourites,
   isFavouriteRecipesFetching
-} from './allFetchFavourites';
+} from './favourites';
 
 export default combineReducers({
   recipes,
