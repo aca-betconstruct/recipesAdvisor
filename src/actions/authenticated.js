@@ -18,13 +18,9 @@ const receiveAuthenticated = json => {
   };
 };
 
-const errorAuthenticated = () => {
-  return {
-    type: ERROR_AUTHENTICATED
-  };
-};
 
 const logout = () => {
+  localStorage.clear();
   return {
     type: LOGOUT_USER
   };
@@ -36,7 +32,7 @@ export const logoutUser = () => {
   };
 };
 
-export const fetchAuthenticated = (jwt) => {
+export const fetchAuthenticated = jwt => {
   return dispatch => {
     dispatch(requestAuthenticated());
     return fetch(`https://acafoodapi.haffollc.com/v1/me`, {
@@ -48,9 +44,11 @@ export const fetchAuthenticated = (jwt) => {
       }
     })
       .then(response => response.json())
-      .then(json => dispatch(receiveAuthenticated(json)))
+      .then(json => {
+        dispatch(receiveAuthenticated(json));
+      })
       .catch(e => {
-        console.log(e)
+        console.log(e);
       });
   };
 };
