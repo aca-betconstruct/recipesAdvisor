@@ -30,7 +30,7 @@ class Login extends Component {
 
   render() {
     const { from } = this.props.location.state || {
-      from: { pathname: '/home/preferences' }
+      from: { pathname: '/home' }
     };
 
     if (this.props.isAuth) {

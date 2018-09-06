@@ -17,7 +17,7 @@ const FoodPreferences = ({ classes }) => {
         <h2 className={classes.listTitle}>Exclude Ingredients</h2>
         <FoodList inputPlaceholder="Ex. Cheese" type={false} />
       </div>
-      <Link to="/" className={classes.button}>
+      <Link to="/home" className={classes.button}>
         Show Recipes
       </Link>
     </div>
