@@ -1,25 +1,25 @@
 import {
-  REQUEST_FAVORITES,
-  RECEIVE_FAVORITES,
-  RECEIVE_ALL_FAVORITES
+  REQUEST_FAVOURITES,
+  RECEIVE_FAVOURITES,
+  RECEIVE_ALL_FAVOURITES
 } from '../constants';
 
 const requestFavourites = () => {
   return {
-    type: REQUEST_FAVORITES
+    type: REQUEST_FAVOURITES
   };
 };
 
 const receiveFavourites = json => {
   return {
-    type: RECEIVE_FAVORITES,
+    type: RECEIVE_FAVOURITES,
     payload: json
   };
 };
 
 const allreceiveFavourites = json => {
   return {
-    type: RECEIVE_ALL_FAVORITES,
+    type: RECEIVE_ALL_FAVOURITES,
     payload: json.data
   };
 };
