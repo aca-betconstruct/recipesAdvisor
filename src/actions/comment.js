@@ -2,7 +2,7 @@ import {
   REQUEST_COMMENT,
   RECEIVE_COMMENT,
   REQUEST_POST_COMMENT,
-  RECEIVE_POST_COMMENT
+  ADD_COMMENT
 } from '../constants';
 
 const requestComment = () => {
@@ -11,9 +11,16 @@ const requestComment = () => {
   };
 };
 
-const receiveComment = json => {
+const receiveComments = json => {
   return {
     type: RECEIVE_COMMENT,
+    payload: json.data
+  };
+};
+
+const addComment = json => {
+  return {
+    type: ADD_COMMENT,
     payload: json.data
   };
 };
@@ -24,22 +31,14 @@ const requestPostComment = () => {
   };
 };
 
-const receivePostComment = json => {
-  return {
-    type: RECEIVE_POST_COMMENT,
-    payload: json.data
-  };
-};
-
 export const fetchComment = () => {
   return dispatch => {
     dispatch(requestComment());
     return fetch(`http://localhost:5002/v1/comments`)
       .then(response => response.json())
-      .then(response => dispatch(receiveComment(response)));
+      .then(response => dispatch(receiveComments(response)));
   };
 };
-
 
 export const fetchpComment = (state, jwt) => {
   return dispatch => {
@@ -53,6 +52,6 @@ export const fetchpComment = (state, jwt) => {
       body: JSON.stringify(state)
     })
       .then(response => response.json())
-      .then(response => dispatch(receiveComment(response)))
+      .then(response => dispatch(addComment(response)));
   };
 };

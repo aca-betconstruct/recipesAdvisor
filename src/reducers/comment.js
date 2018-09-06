@@ -1,10 +1,11 @@
-import { RECEIVE_COMMENT } from '../constants';
+import { RECEIVE_COMMENT, ADD_COMMENT } from '../constants';
 
 const comments = (state = [], action) => {
   switch (action.type) {
-    case RECEIVE_COMMENT: {
+    case RECEIVE_COMMENT:
+      return action.payload;
+    case ADD_COMMENT:
       return [...state, action.payload];
-    }
     default: {
       return state;
     }
