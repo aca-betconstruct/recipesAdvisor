@@ -1,9 +1,9 @@
 import { RECEIVE_COMMENT } from '../constants';
 
-const comments = (state = null, action) => {
+const comments = (state = [], action) => {
   switch (action.type) {
-    case  RECEIVE_COMMENT: {
-      return action.payload;
+    case RECEIVE_COMMENT: {
+      return [...state, action.payload];
     }
     default: {
       return state;
