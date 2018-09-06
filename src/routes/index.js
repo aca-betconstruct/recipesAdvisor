@@ -14,7 +14,7 @@ class Routers extends Component {
       <Router>
         <Switch>
           <Route path="/login" component={LoginForm} />
-          <PrivateRoute path="/preferences" component={Preferences} />
+          <PrivateRoute path="/home/preferences" component={Preferences} />
           <Route path="/signUp" component={SignUpForm} />
           <Route path="/somewhere/:id" component={ReceptePage} />*
           <PrivateRoute path="/calculator" component={CaloriesCalculator} />

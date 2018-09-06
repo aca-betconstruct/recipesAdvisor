@@ -151,12 +151,12 @@ class Header extends Component {
                     <NavbarNav right>
                       <NavItem>
                         {isAuth ? (
-                          <a
+                          <Link to={'/login'}
                             style={{ color: 'white' }}
                             onClick={this.handleLogoutClick}
                           >
                             Log Out
-                          </a>
+                          </Link>
                         ) : (
                           <NavLink to="/login">Log In</NavLink>
                         )}
