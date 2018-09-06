@@ -33,10 +33,7 @@ class WideRecipeCard extends Component {
                 {ingredientLines[0]}
               </a>
             </Col>
-            <Link
-              to={{ pathname: `/somewhere/${uri.slice(44)}` }}
-              style={{ color: 'black' }}
-            >
+            <Link to= {{ pathname: `/detail/${uri.slice(44)}`,}} style={{ color: 'black' }}>
               <Fa icon="angle-double-right" />
             </Link>
           </div>

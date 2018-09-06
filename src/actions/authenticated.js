@@ -1,7 +1,6 @@
 import {
   REQUEST_AUTHENTICATED,
   RECEIVE_AUTHENTICATED,
-  ERROR_AUTHENTICATED,
   LOGOUT_USER
 } from '../constants';
 
@@ -35,7 +34,7 @@ export const logoutUser = () => {
 export const fetchAuthenticated = jwt => {
   return dispatch => {
     dispatch(requestAuthenticated());
-    return fetch(`https://acafoodapi.haffollc.com/v1/me`, {
+    return fetch(`http://localhost:5002/v1/users`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',

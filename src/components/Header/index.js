@@ -94,7 +94,9 @@ class Header extends Component {
         className={`${classes.headerArea} ${
           scrollPositionY !== 0 ? classes.sticky : ''
         } ${
-          pathname === '/aboutus' || pathname === '/contactus'
+          pathname === '/aboutus' ||
+          pathname === '/contactus' ||
+          pathname.slice(0, 7) === '/detail'
             ? classes.black
             : ''
         }`}
@@ -113,7 +115,9 @@ class Header extends Component {
                       ? classes.navBarScroll
                       : ''
                 } ${
-                  pathname === '/aboutus' || pathname === '/contactus'
+                  pathname === '/aboutus' ||
+                  pathname === '/contactus' ||
+                  pathname.slice(0, 7) === '/detail'
                     ? classes.black
                     : ''
                 }`}
@@ -153,12 +157,13 @@ class Header extends Component {
                   <NavbarNav right>
                     <NavItem>
                       {isAuth ? (
-                        <a
+                        <Link
+                          to={'/login'}
                           style={{ color: 'white' }}
                           onClick={this.handleLogoutClick}
                         >
                           Log Out
-                        </a>
+                        </Link>
                       ) : (
                         <NavLink to="/login">Log In</NavLink>
                       )}

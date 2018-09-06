@@ -16,7 +16,10 @@ class Routers extends Component {
           <Route path="/login" component={LoginForm} />
           <PrivateRoute path="/home/preferences" component={Preferences} />
           <Route path="/signUp" component={SignUpForm} />
-          <Route path="/somewhere/:id" component={ReceptePage} />*
+          <Route
+            path="/detail/:id"
+            component={({ location, match, history }) => <ReceptePage history={history} match={match} location={location} />}
+          />
           <PrivateRoute path="/calculator" component={CaloriesCalculator} />
           <Route
             component={({ location }) => (
