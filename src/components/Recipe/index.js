@@ -1,52 +1,65 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { SmallCard } from '../Cards';
-import injectSheet from 'react-jss';
-import styles from './styles';
+import ViewPage from '../Detail';
+import Header from '../../containers/Header';
 
-class Recipe extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleFavouriteClick = this.handleFavouriteClick.bind(this);
-  }
-
-  handleFavouriteClick(e) {
-    e.preventDefault();
+class ReceptePage extends Component {
+  componentDidMount() {
     const {
-      recipe,
-      fetchFavourites,
-      deleteFetchFavourites,
-      history
+      match,
+      fetchComment,
+      fetchDitael,
+      fetchAuthenticated,
+      jwt
     } = this.props;
-    const { isFavourite } = recipe;
-    const jwt = localStorage.getItem('jwt');
-    if (!jwt) {
-      history.push('/login');
-    }
-    isFavourite
-      ? deleteFetchFavourites(recipe.uri.slice(45), jwt)
-      : fetchFavourites(
-          {
-            favoriteId: recipe.uri.slice(45),
-            recepte: { ...recipe, isFavourite: true }
-          },
-          jwt
-        );
+    const url = match.url.slice(8);
+    fetchComment();
+    fetchDitael(url);
+    fetchAuthenticated(jwt);
   }
+  // componentDidUpdate(prevProps) {
+  //   const { match, getComments, getDetail, detail } = this.props;
+  //   const url = match.url.slice(8);
+  //   if (detail.length !== prevProps.length) {
+  //     getDetail(url);
+  //   }
+  // }
+  back = event => {
+    event.stopPropagation();
+    this.props.history.goBack();
+  };
 
   render() {
-    return <SmallCard />;
+    const {
+      match,
+      ditael,
+      comments,
+      fetchpComment,
+      fetchComment,
+      auth
+    } = this.props;
+
+    return (
+      <div>
+        <Header location={this.props.location} />
+        <div style={{ marginTop: '170px' }}>
+          {ditael === null ? (
+            <p>Loading...</p>
+          ) : (
+            <ViewPage
+              recipe={ditael}
+              match={match}
+              fetchpComment={fetchpComment}
+              back={this.back}
+              fetchComment={fetchComment}
+              comments={comments}
+              auth={auth}
+            />
+          )}
+        </div>
+      </div>
+    );
   }
-  static propTypes = {
-    recipe: PropTypes.object.isRequired,
-    addToFavourites: PropTypes.func,
-    removeFromFavourites: PropTypes.func,
-    favouriteRecipe: PropTypes.func,
-    q: PropTypes.string,
-    index: PropTypes.number,
-    type: PropTypes.string
-  };
 }
 
-export default injectSheet(styles)(Recipe);
+export default ReceptePage;

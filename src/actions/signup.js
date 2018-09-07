@@ -1,20 +1,20 @@
 import { REQUEST_SIGNUP, RECEIVE_SIGNUP } from '../constants';
 
-const requestSignup = () => {
+const requestSignUp = () => {
   return {
     type: REQUEST_SIGNUP
   };
 };
 
-const receiveSignup = () => {
+const receiveSignUp = () => {
   return {
     type: RECEIVE_SIGNUP
   };
 };
 
-export const fetchSignup = state => {
+export const postSignUp = state => {
   return dispatch => {
-    dispatch(requestSignup());
+    dispatch(requestSignUp());
     return fetch(`https://acafoodapi.haffollc.com/v1/signup`, {
       headers: {
         'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ export const fetchSignup = state => {
     })
       .then(response => response.json())
       .then(json => {
-        dispatch(receiveSignup());
+        dispatch(receiveSignUp());
       });
   };
 };

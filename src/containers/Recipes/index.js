@@ -6,7 +6,7 @@ import {
   firstPage,
   nextPage,
   getPreferences,
-  getFetchFavourites
+  getFavourites
 } from '../../actions';
 import Recipes from '../../components/Recipes';
 
@@ -28,7 +28,7 @@ const mapDispatchToProps = dispatch => {
       firstPage,
       nextPage,
       getPreferences,
-      getFetchFavourites
+      getFetchFavourites: getFavourites
     },
     dispatch
   );

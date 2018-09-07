@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Login from '../../components/Login';
 import validate from '../../config/AuthenticationValidation/validation';
-import { fetchLogin,fetchAuthenticated, logoutUser } from '../../actions';
+import { postLogin,getAuthenticated, logoutUser } from '../../actions';
 import {selectIsAuth} from '../../selectors'
 
 const selector = formValueSelector('Login');
@@ -20,7 +20,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
-    { fetchLogin, fetchAuthenticated, logoutUser },
+    { fetchLogin: postLogin, fetchAuthenticated: getAuthenticated, logoutUser },
     dispatch
   );
 };

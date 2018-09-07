@@ -1,8 +1,9 @@
 import {
-    ADD_PREFERENCE,
-    REMOVE_PREFERENCE,
-    RECEIVE_ALL_PREFERENCES,
-    REQUEST_PREFERENCES, LOGOUT_USER
+  ADD_PREFERENCE,
+  REMOVE_PREFERENCE,
+  RECEIVE_ALL_PREFERENCES,
+  REQUEST_PREFERENCES,
+  LOGOUT_USER
 } from '../constants';
 export const isPreferencesFetching = (state = false, action) => {
   switch (action.type) {
@@ -14,7 +15,7 @@ export const isPreferencesFetching = (state = false, action) => {
       return false;
   }
 };
-const initialPreferences=[];
+const initialPreferences = [];
 export const preferences = (state = initialPreferences, action) => {
   switch (action.type) {
     case RECEIVE_ALL_PREFERENCES: {
@@ -25,8 +26,8 @@ export const preferences = (state = initialPreferences, action) => {
       return [...state];
     case REMOVE_PREFERENCE:
       return state.filter(v => v.id !== action.payload.id);
-      case LOGOUT_USER:
-        return initialPreferences;
+    case LOGOUT_USER:
+      return initialPreferences;
     default:
       return state;
   }

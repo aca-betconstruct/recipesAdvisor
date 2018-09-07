@@ -30,7 +30,6 @@ class ViewPage extends Component {
             <View zoom>
               <CardImage
                 cascade
-                top
                 src={recipe.image}
                 alt="sample photo"
                 top
@@ -57,7 +56,7 @@ class ViewPage extends Component {
                       {recipe.ingredientLines.map((elem, i) => {
                         return (
                           <h5 key={i}>
-                            <strong h1-responsive text-center my-5>
+                            <strong >
                               {elem}
                             </strong>
                           </h5>
@@ -69,7 +68,7 @@ class ViewPage extends Component {
                 <div className="tableditael">
                   <div>
                     <h3 className="font-weight-bold black-text">Calories</h3>
-                    <strong h1-responsive text-center my-5>
+                    <strong >
                       {Math.ceil(recipe.calories)}
                     </strong>
                   </div>
@@ -77,7 +76,7 @@ class ViewPage extends Component {
                     <h3 className="font-weight-bold black-text " lg="3" md="3">
                       Total weight
                     </h3>
-                    <strong h1-responsive text-center my-5>
+                    <strong >
                       {Math.ceil(recipe.totalWeight)}
                     </strong>
                   </div>

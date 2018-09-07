@@ -2,19 +2,19 @@ import { getRecipes } from './recipes';
 import {
   deletePreference,
   getPreferences,
-  fetchPreferences
+  postPreference
 } from './preferences';
 import {
-  getFetchFavourites,
+  getFavourites,
   deleteFetchFavourites,
-  fetchFavourites,
+  postFavourite,
   checkFavourite
 } from './favourites';
 import { addHealthLabel, addDietLabel, removeLabel } from './filter';
 import { firstPage, nextPage } from './pagination';
-import { logoutUser, fetchAuthenticated } from './authenticated';
-import { fetchSignup } from './signup';
-import { fetchLogin } from './login';
+import { logoutUser, getAuthenticated } from './authenticated';
+import { postSignUp } from './signup';
+import { postLogin } from './login';
 
 export {
   getRecipes,
@@ -26,12 +26,12 @@ export {
   removeLabel,
   deletePreference,
   getPreferences,
-  fetchPreferences,
-  getFetchFavourites,
+  postPreference,
+  getFavourites,
   deleteFetchFavourites,
-  fetchFavourites,
+  postFavourite,
   logoutUser,
-  fetchSignup,
-  fetchLogin,
-  fetchAuthenticated
+  postSignUp,
+  postLogin,
+  getAuthenticated
 };

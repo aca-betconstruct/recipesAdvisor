@@ -1,24 +1,28 @@
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
-import Recipe from '../../components/Recipe';
-import {
-  deleteFetchFavourites,
-  fetchFavourites
-} from '../../actions';
+import ReceptePage from '../../components/Recipe';
+import { getComments, postComment } from '../../actions/comment';
+import { getDetail } from '../../actions/detail';
+import { getAuthenticated } from '../../actions/authenticated';
 
-const mapStateToProps = state => ({
-  favourites: state.favourites
-});
-
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators(
-    { fetchFavourites, deleteFetchFavourites },
-    dispatch
-  );
+const mapStateToProps = state => {
+  return {
+    recipes: state.recipes,
+    ditael: state.ditael,
+    comments: state.comments,
+    auth: state.user,
+    jwt: state.jwt
+  };
 };
+
+const mapDispatchToProps = dispatch => ({
+  fetchComment: () => dispatch(getComments()),
+  fetchpComment: (state, jwt) => dispatch(postComment(state, jwt)),
+  fetchDitael: url => dispatch(getDetail(url)),
+  fetchAuthenticated: jwt => dispatch(getAuthenticated(jwt))
+});
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Recipe);
+)(ReceptePage);

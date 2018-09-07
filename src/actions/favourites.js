@@ -12,7 +12,7 @@ const requestFavourites = () => {
   };
 };
 
-const deleteFavourite = (id) => ({
+const deleteFavourite = id => ({
   type: DELETE_FAVOURITE,
   payload: {
     id
@@ -33,16 +33,16 @@ const allreceiveFavourites = json => {
   };
 };
 
-export const checkFavourite = (id) => {
+export const checkFavourite = id => {
   return {
     type: CHECK_FAVOURITE,
     payload: {
       id
     }
-  }
+  };
 };
 
-export const fetchFavourites = (state, jwt) => {
+export const postFavourite = (state, jwt) => {
   return dispatch => {
     dispatch(requestFavourites());
     return fetch(`https://acafoodapi.haffollc.com/v1/favourites`, {
@@ -61,7 +61,7 @@ export const fetchFavourites = (state, jwt) => {
   };
 };
 
-export const getFetchFavourites = jwt => {
+export const getFavourites = jwt => {
   return dispatch => {
     dispatch(requestFavourites());
     return fetch(`https://acafoodapi.haffollc.com/v1/favourites`, {

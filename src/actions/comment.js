@@ -31,7 +31,7 @@ const requestPostComment = () => {
   };
 };
 
-export const fetchComment = () => {
+export const getComments = () => {
   return dispatch => {
     dispatch(requestComment());
     return fetch(`http://localhost:5002/v1/comments`)
@@ -40,7 +40,7 @@ export const fetchComment = () => {
   };
 };
 
-export const fetchpComment = (state, jwt) => {
+export const postComment = (state, jwt) => {
   return dispatch => {
     dispatch(requestPostComment());
     return fetch(`http://localhost:5002/v1/comments`, {

@@ -13,7 +13,7 @@ const receiveLogin = data => {
   };
 };
 
-export const fetchLogin = state => {
+export const postLogin = state => {
   return dispatch => {
     dispatch(requestLogin());
     return fetch(`http://localhost:5002/v1/login`, {

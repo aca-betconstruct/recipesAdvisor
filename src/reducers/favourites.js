@@ -17,7 +17,7 @@ export const isFavouriteRecipesFetching = (state = false, action) => {
   }
 };
 
-export const allFetchFavourites = (state = [], action) => {
+export const favourites = (state = [], action) => {
   switch (action.type) {
     case RECEIVE_ALL_FAVOURITES: {
       return action.payload;

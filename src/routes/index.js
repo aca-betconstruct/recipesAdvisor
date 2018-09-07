@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import RoutesWithHeaderAndFooter from './routesWithHeaderAndFooter';
 import Preferences from '../components/Preferences';
-import ReceptePage from '../containers/Recepte';
+import ReceptePage from '../containers/Recipe';
 import CaloriesCalculator from '../components/CaloriesCalculator';
 import LoginForm from '../containers/Login';
 import SignUpForm from '../containers/SignUp';
@@ -18,7 +18,13 @@ class Routers extends Component {
           <Route path="/signUp" component={SignUpForm} />
           <Route
             path="/detail/:id"
-            component={({ location, match, history }) => <ReceptePage history={history} match={match} location={location} />}
+            component={({ location, match, history }) => (
+              <ReceptePage
+                history={history}
+                match={match}
+                location={location}
+              />
+            )}
           />
           <PrivateRoute path="/calculator" component={CaloriesCalculator} />
           <Route

@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {selectIsAuth} from '../../selectors'
-
+import { selectIsAuth } from '../../selectors';
 
 import Header from '../../components/Header';
 import { firstPage, logoutUser } from '../../actions';
@@ -15,5 +14,5 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(
   mapPropsToState,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(Header);
