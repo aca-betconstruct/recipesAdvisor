@@ -23,14 +23,9 @@ store.subscribe(
     saveState(
       {
         recipes: store.getState().recipes,
-        isRecipesFetching: store.getState().isRecipesFetching,
         allFetchFavourites: store.getState().allFetchFavourites,
-        isFavouriteRecipesFetching: store.getState().isFavouriteRecipesFetching,
         preferences: store.getState().preferences,
-        user: store.getState().user,
-        form: store.getState().form,
         filter: store.getState().filter,
-        isPreferencesFetching: store.getState().isPreferencesFetching,
         jwt: store.getState().jwt
       },
       'store'

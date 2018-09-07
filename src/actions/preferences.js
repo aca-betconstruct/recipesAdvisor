@@ -19,7 +19,6 @@ const allReceivePreference = json => {
 };
 export const deletePreference = (id, jwt) => {
   return dispatch => {
-    //dispatch(requestPreference());
     return fetch(`http://localhost:5002/v1/preference/${id}`, {
       headers: {
         'Content-Type': 'application/json',
@@ -59,7 +58,6 @@ export const getPreferences = jwt => {
 };
 export const postPreference = (state, jwt) => {
   return dispatch => {
-    //dispatch(requestPreference());
     return fetch(`http://localhost:5002/v1/preferences`, {
       headers: {
         'Content-Type': 'application/json',
