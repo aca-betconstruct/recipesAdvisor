@@ -221,7 +221,10 @@ class Recipes extends Component {
       );
     }
     return (
-      <Container className="my-5">
+      <Container
+        style={type === 'random' ? { width: '80%' } : {}}
+        className="my-5"
+      >
         <Row
           style={{
             marginTop: '25px',

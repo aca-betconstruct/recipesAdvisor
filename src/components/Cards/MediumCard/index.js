@@ -26,7 +26,12 @@ class WideRecipeCard extends Component {
           </View>
         </Col>
         <Col className={classes.description}>
-          <p className="font-weight-bold dark-grey-text">{label}</p>
+          <a
+            onClick={this.props.onClick}
+            className="font-weight-bold dark-grey-text"
+          >
+            {label}
+          </a>
           <div className="d-flex justify-content-between">
             <Col size="11" className="text-truncate pl-0 mb-3">
               <a onClick={this.props.onClick} className="dark-grey-text">

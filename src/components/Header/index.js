@@ -41,7 +41,6 @@ class Header extends Component {
     this.mouseEntered = this.mouseEntered.bind(this);
     this.mouseLeaved = this.mouseLeaved.bind(this);
     this.handleTogglerClick = this.handleTogglerClick.bind(this);
-    this.handleLogoClick = this.handleLogoClick.bind(this);
   }
 
   componentDidMount() {
@@ -74,11 +73,6 @@ class Header extends Component {
   handleLogoutClick = () => {
     this.props.logoutUser();
   };
-
-  handleLogoClick() {
-    const { firstPage } = this.props;
-    firstPage();
-  }
 
   render() {
     const { classes, isAuth } = this.props;
@@ -126,7 +120,6 @@ class Header extends Component {
                   tag={'span'}
                   onMouseEnter={this.mouseEntered}
                   onMouseLeave={this.mouseLeaved}
-                  onClick={this.handleLogoClick}
                 >
                   {isLogoAnimated ? (
                     <Animation type="tada">
@@ -198,7 +191,6 @@ class Header extends Component {
   }
   static propTypes = {
     classes: PropTypes.object,
-    firstPage: PropTypes.func,
     isAuth: PropTypes.bool,
     location: PropTypes.object
   };

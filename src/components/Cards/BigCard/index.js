@@ -48,7 +48,8 @@ class BigCard extends Component {
       calories,
       totalWeight,
       totalTime,
-      isFavourite
+      isFavourite,
+      uri
     } = recipe;
     return (
       <div className={classes.card}>
@@ -75,12 +76,15 @@ class BigCard extends Component {
             </Link>
           )}
           <img className="img-fluid" src={image} alt={label} />
-          <a>
+          <Link to={{ pathname: `/detail/${uri.slice(44)}` }}>
             <Mask overlay="white-slight" className="waves-light" />
-          </a>
+          </Link>
         </View>
         <h3 className="font-weight-bold dark-grey-text mb-3 p-0">
-          <Link to={'somewhere'} style={{ color: 'black' }}>
+          <Link
+            to={{ pathname: `/detail/${uri.slice(44)}` }}
+            style={{ color: 'black' }}
+          >
             {label}
           </Link>
         </h3>
@@ -91,7 +95,7 @@ class BigCard extends Component {
         >
           <p>Calories: {Number.parseInt(calories, 10)} kcal.</p>
           <p>Weight: {Number.parseInt(totalWeight, 10)} g.</p>
-          <p>Time: {totalTime} min.</p>
+          {totalTime > 0 ? <p>Time: {totalTime} min.</p> : ''}
         </div>
       </div>
     );
