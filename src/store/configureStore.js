@@ -17,7 +17,7 @@ const store =
             window.__REDUX_DEVTOOLS_EXTENSION__()
         )
       );
-store.subscribe(() => console.log(store.getState()));
+//store.subscribe(() => console.log(store.getState()));
 store.subscribe(
   throttle(() => {
     saveState(
@@ -26,7 +26,6 @@ store.subscribe(
         isRecipesFetching: store.getState().isRecipesFetching,
         allFetchFavourites: store.getState().allFetchFavourites,
         isFavouriteRecipesFetching: store.getState().isFavouriteRecipesFetching,
-        curPage: store.getState().curPage,
         preferences: store.getState().preferences,
         user: store.getState().user,
         form: store.getState().form,

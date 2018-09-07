@@ -22,8 +22,7 @@ export const preferences = (state = initialPreferences, action) => {
       return action.payload;
     }
     case ADD_PREFERENCE:
-      state.push({ ...action.payload });
-      return [...state];
+      return [...state, action.payload];
     case REMOVE_PREFERENCE:
       return state.filter(v => v.id !== action.payload.id);
     case LOGOUT_USER:

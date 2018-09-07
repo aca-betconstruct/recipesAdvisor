@@ -19,8 +19,8 @@ const allReceivePreference = json => {
 };
 export const deletePreference = (id, jwt) => {
   return dispatch => {
-    dispatch(requestPreference());
-    return fetch(`https://acafoodapi.haffollc.com/v1/preference/${id}`, {
+    //dispatch(requestPreference());
+    return fetch(`http://localhost:5002/v1/preference/${id}`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt}`
@@ -30,8 +30,8 @@ export const deletePreference = (id, jwt) => {
       .then(response => response.json())
       .then(json => {
         // dispatch(allReceivePreference());
-        dispatch({ type: REMOVE_PREFERENCE, payload: json });
-        dispatch(getPreferences(jwt));
+        dispatch({ type: REMOVE_PREFERENCE, payload: {id} });
+       // dispatch(getPreferences(jwt));
       })
       .catch(e => {
         console.log(e);
@@ -41,7 +41,7 @@ export const deletePreference = (id, jwt) => {
 export const getPreferences = jwt => {
   return dispatch => {
     dispatch(requestPreference());
-    return fetch(`https://acafoodapi.haffollc.com/v1/preferences`, {
+    return fetch(`http://localhost:5002/v1/preferences`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -59,8 +59,8 @@ export const getPreferences = jwt => {
 };
 export const postPreference = (state, jwt) => {
   return dispatch => {
-    dispatch(requestPreference());
-    return fetch(`https://acafoodapi.haffollc.com/v1/preferences`, {
+    //dispatch(requestPreference());
+    return fetch(`http://localhost:5002/v1/preferences`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt}`
@@ -72,7 +72,7 @@ export const postPreference = (state, jwt) => {
       .then(response => {
         console.log(response);
         dispatch({ type: ADD_PREFERENCE, payload: response.data });
-        dispatch(getPreferences(jwt));
+       // dispatch(getPreferences(jwt));
       });
   };
 };

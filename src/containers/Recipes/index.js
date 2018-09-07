@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 
 import {
   getRecipes,
+  updateRecipes,
   firstPage,
   nextPage,
   getPreferences,
@@ -25,6 +26,7 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
       getRecipes,
+      updateRecipes,
       firstPage,
       nextPage,
       getPreferences,

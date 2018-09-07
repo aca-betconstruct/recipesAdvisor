@@ -1,4 +1,4 @@
-import { getRecipes } from './recipes';
+import { getRecipes, updateRecipes } from './recipes';
 import {
   deletePreference,
   getPreferences,
@@ -18,6 +18,7 @@ import { postLogin } from './login';
 
 export {
   getRecipes,
+  updateRecipes,
   checkFavourite,
   firstPage,
   nextPage,

@@ -119,7 +119,7 @@ class Recipes extends Component {
   fetchMoreData() {
     let time = 15000;
     const {
-      getRecipes,
+      updateRecipes,
       nextPage,
       curPage,
       labelsType,
@@ -131,7 +131,7 @@ class Recipes extends Component {
     } = this.props;
     setTimeout(
       () =>
-        getRecipes(
+        updateRecipes(
           curPage,
           labels,
           q,
@@ -153,7 +153,7 @@ class Recipes extends Component {
         <Container style={{ width: '800px' }} className="mt-5">
           <Row
             style={{
-              marginTop: '25px',
+              margin: '25px 0',
               display: 'flex',
               justifyContent: 'center'
             }}
@@ -190,7 +190,7 @@ class Recipes extends Component {
               className={classes.scrollBar}
             >
               <InfiniteScroll
-                style={{ overflowX: 'hidden', width: '98%' }}
+                style={{ overflowX: 'hidden', width: '90%' }}
                 dataLength={favourites.length}
                 next={this.fetchMoreData}
                 hasMore={false}
