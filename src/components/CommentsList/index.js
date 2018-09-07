@@ -17,8 +17,8 @@ class CommentListPage extends Component {
                   return '';
                 }
                 return (
-                  <div className="excerpt" style={{ marginTop: '20px' }}>
-                    <div className="brief">
+                  <div className="excerpt" style={{ marginTop: '40px', backgroundColor:"#e6ffe6" }}>
+                    <div className="brief" style={{ backgroundColor:" #ccffcc" }}>
                       {auth === null ? (
                         <p>Loading ...</p>
                       ) : (

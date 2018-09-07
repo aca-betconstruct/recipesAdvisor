@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { Container, Row, Col, Input, Button } from 'mdbreact';
-import './style.css';
 import CommentListPage from '../CommentsList';
 
 class CommentPage extends Component {
@@ -31,22 +30,39 @@ class CommentPage extends Component {
     return (
       <Fragment>
         <Row>
-          <Col md="4" lg="3">
+          <Col md="4" lg="3" className="responsive">
             <form method="post" onSubmit={this.handleSubmit}>
               <div className="row">
-                <div className="col-75">
+                <div class="form-group">
+                  <hr
+                    color="green"
+                    style={{ width: '1200px', marginTop: '150px' }}
+                  />
                   <textarea
                     name="subject"
-                    placeholder="Comments .."
-                    className="iteminput"
-                    style={{ height: '200px' }}
+                    placeholder="Add comments .."
+                    class="form-control rounded-0 z-depth-1"
+                    id="exampleFormControlTextarea6"
+                    rows="3"
+                    style={{
+                      marginTop: '60px',
+                      width: '500px',
+                      marginLeft: '30px'
+                    }}
                     value={this.state.text}
                     onChange={this.handleChange}
                   />
                 </div>
               </div>
-              <div className="row">
-                <button color="green" className="green-text">
+              <div className="row" style={{ marginLeft: '420px' }}>
+                <button
+                  style={{
+                    backgroundColor: 'green',
+                    border: 0,
+                    color: 'white',
+                    padding: '8px'
+                  }}
+                >
                   Success
                 </button>
               </div>
