@@ -4,7 +4,7 @@ import { reducer as reduxFormReducer } from 'redux-form';
 import curPage from './pagination';
 import { preferences, isPreferencesFetching } from './preferences';
 import filter from './filter';
-import ditael from './detail';
+import detail from './detail';
 import comments from './comment';
 
 import { user, jwt } from './authenticated';
@@ -20,7 +20,7 @@ export default combineReducers({
   curPage,
   preferences,
   user,
-  ditael,
+   detail,
   form: reduxFormReducer,
   filter,
   isPreferencesFetching,

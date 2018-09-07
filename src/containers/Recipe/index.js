@@ -1,28 +1,19 @@
 import { connect } from 'react-redux';
-
-import ReceptePage from '../../components/Recipe';
-import { getComments, postComment } from '../../actions/comment';
-import { getDetail } from '../../actions/detail';
-import { getAuthenticated } from '../../actions/authenticated';
+import Recipe from '../../components/Recipe';
+import { getDetail } from '../../actions';
 
 const mapStateToProps = state => {
   return {
-    recipes: state.recipes,
-    ditael: state.ditael,
-    comments: state.comments,
+    detail: state.detail,
     auth: state.user,
-    jwt: state.jwt
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchComment: () => dispatch(getComments()),
-  fetchpComment: (state, jwt) => dispatch(postComment(state, jwt)),
-  fetchDitael: url => dispatch(getDetail(url)),
-  fetchAuthenticated: jwt => dispatch(getAuthenticated(jwt))
+  getDetail: url => dispatch(getDetail(url)),
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ReceptePage);
+)(Recipe);

@@ -15,6 +15,7 @@ import { firstPage, nextPage } from './pagination';
 import { logoutUser, getAuthenticated } from './authenticated';
 import { postSignUp } from './signup';
 import { postLogin } from './login';
+import {getDetail} from './detail'
 
 export {
   getRecipes,
@@ -34,5 +35,6 @@ export {
   logoutUser,
   postSignUp,
   postLogin,
-  getAuthenticated
+  getAuthenticated,
+  getDetail
 };

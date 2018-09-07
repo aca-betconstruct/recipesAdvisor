@@ -1,9 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import { Container, Row, Col, Input, Button } from 'mdbreact';
 
-class CommentListPage extends Component {
+class CommentsList extends Component {
+    componentDidMount() {
+    const { getComments,getAuthenticated,jwt } = this.props;
+    getComments();
+    getAuthenticated(jwt)
+
+  }
   render() {
-    const { fetchComment, comments, url, auth } = this.props;
+    const {  comments, url, auth } = this.props;
 
     return (
       <div style={{ marginTop: '70px' }}>
@@ -17,7 +23,7 @@ class CommentListPage extends Component {
                   return '';
                 }
                 return (
-                  <div className="excerpt" style={{ marginTop: '20px' }}>
+                  <div className="excerpt" style={{ marginTop: '20px' }} key={i}>
                     <div className="brief">
                       {auth === null ? (
                         <p>Loading ...</p>
@@ -27,7 +33,7 @@ class CommentListPage extends Component {
                             return '';
                           }
                           return (
-                            <p className="font-weight-bold mb-3">
+                            <p className="font-weight-bold mb-3" key={i+el.firstName}>
                               {el.firstName} {el.lastName}
                             </p>
                           );
@@ -48,4 +54,4 @@ class CommentListPage extends Component {
   }
 }
 
-export default CommentListPage;
+export default CommentsList;

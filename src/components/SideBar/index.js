@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
-import { Button, Popover, PopoverBody, PopoverHeader } from 'mdbreact';
 
 import styles from './styles';
 

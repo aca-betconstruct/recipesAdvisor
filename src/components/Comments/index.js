@@ -1,14 +1,14 @@
 import React, { Component, Fragment } from 'react';
-import { Container, Row, Col, Input, Button } from 'mdbreact';
+import { Row, Col} from 'mdbreact';
 import './style.css';
-import CommentListPage from '../CommentsList';
+import CommentList from '../../containers/CommentsList';
 
-class CommentPage extends Component {
+class Comments extends Component {
   constructor(props) {
     super(props);
     this.state = {
       text: '',
-      receptId: ''
+        receptId: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,15 +19,14 @@ class CommentPage extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    const jwt = JSON.parse(localStorage.getItem('store')).jwt;
-    const { fetchpComment } = this.props;
-    const { text, receptId } = this.state;
-
-    fetchpComment({ text: text, receptId: receptId }, jwt);
+    const { postComment,jwt } = this.props;
+    const { text,  receptId } = this.state;
+    postComment({ text: text,  receptId }, jwt);
     this.setState({ text: ' ', receptId: ' ' });
+
   }
   render() {
-    const { fetchComment, comments, url, auth } = this.props;
+    const { url } = this.props;
     return (
       <Fragment>
         <Row>
@@ -53,15 +52,12 @@ class CommentPage extends Component {
             </form>
           </Col>
         </Row>
-        <CommentListPage
-          fetchComment={fetchComment}
-          comments={comments}
+        <CommentList
           url={url}
-          auth={auth}
         />
       </Fragment>
     );
   }
 }
 
-export default CommentPage;
+export default Comments;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import RoutesWithHeaderAndFooter from './routesWithHeaderAndFooter';
 import Preferences from '../components/Preferences';
-import ReceptePage from '../containers/Recipe';
+import Recipe from '../containers/Recipe';
 import CaloriesCalculator from '../components/CaloriesCalculator';
 import LoginForm from '../containers/Login';
 import SignUpForm from '../containers/SignUp';
@@ -19,7 +19,7 @@ class Routers extends Component {
           <Route
             path="/detail/:id"
             component={({ location, match, history }) => (
-              <ReceptePage
+              <Recipe
                 history={history}
                 match={match}
                 location={location}

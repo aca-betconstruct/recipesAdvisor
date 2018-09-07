@@ -1,25 +1,22 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, CardImage, View, Fa, CardBody } from 'mdbreact';
-import CommentPage from '../Comments';
+import Comments from '../../containers/Comments';
 import './style.css';
 
-class ViewPage extends Component {
+class Detail extends Component {
+  back = event => {
+    event.stopPropagation();
+    this.props.history.goBack();
+  };
   render() {
-    const {
-      match,
-      recipe,
-      comments,
-      auth,
-      fetchpComment,
-      fetchComment
-    } = this.props;
+    const { match, recipe } = this.props;
     const url = match.url.slice(8);
 
     return (
       <Container>
         <Row>
           <Col>
-            <button onClick={this.props.back} className="ditael-back">
+            <button onClick={this.back} className="ditael-back">
               <i
                 className="fa fa-arrow-left green-text fa-2x"
                 aria-hidden="true"
@@ -56,9 +53,7 @@ class ViewPage extends Component {
                       {recipe.ingredientLines.map((elem, i) => {
                         return (
                           <h5 key={i}>
-                            <strong >
-                              {elem}
-                            </strong>
+                            <strong>{elem}</strong>
                           </h5>
                         );
                       })}
@@ -68,33 +63,29 @@ class ViewPage extends Component {
                 <div className="tableditael">
                   <div>
                     <h3 className="font-weight-bold black-text">Calories</h3>
-                    <strong >
-                      {Math.ceil(recipe.calories)}
-                    </strong>
+                    <strong>{Math.ceil(recipe.calories)}</strong>
                   </div>
                   <div style={{ marginLeft: '20px' }}>
                     <h3 className="font-weight-bold black-text " lg="3" md="3">
                       Total weight
                     </h3>
-                    <strong >
-                      {Math.ceil(recipe.totalWeight)}
-                    </strong>
+                    <strong>{Math.ceil(recipe.totalWeight)}</strong>
                   </div>
                 </div>
               </Col>
             </Row>
           </Col>
         </Row>
-        <CommentPage
-          fetchpComment={fetchpComment}
+        <Comments
+          // postComment={postComment}
           url={url}
-          fetchComment={fetchComment}
-          comments={comments}
-          auth={auth}
+          // getComments={getComments}
+          // comments={comments}
+          // auth={auth}
         />
       </Container>
     );
   }
 }
 
-export default ViewPage;
+export default Detail;

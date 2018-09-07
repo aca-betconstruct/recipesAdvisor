@@ -22,6 +22,7 @@ store.subscribe(
   throttle(() => {
     saveState(
       {
+          user:store.getState().user,
         recipes: store.getState().recipes,
         allFetchFavourites: store.getState().allFetchFavourites,
         preferences: store.getState().preferences,
