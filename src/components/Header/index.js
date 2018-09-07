@@ -154,9 +154,24 @@ class Header extends Component {
                   className={classes.collapsed}
                   navbar
                 >
-                  <NavbarNav right>
-                    <NavItem>
-                      {isAuth ? (
+                  {isAuth ? (
+                    <NavbarNav right>
+                      <NavItem className={classes.sideBarLink}>
+                        <Link to="/home">Daily Recipes</Link>
+                      </NavItem>
+                      <NavItem className={classes.sideBarLink}>
+                        <Link to="/">Discover Recipes</Link>
+                      </NavItem>
+                      <NavItem className={classes.sideBarLink}>
+                        <Link to="/home/favourites">Favourite Recipes</Link>
+                      </NavItem>
+                      <NavItem className={classes.sideBarLink}>
+                        <Link to="/calculator">Calculator</Link>
+                      </NavItem>
+                      <NavItem className={classes.sideBarLink}>
+                        <Link to="/home/preferences">Preferences</Link>
+                      </NavItem>
+                      <NavItem>
                         <Link
                           to={'/login'}
                           style={{ color: 'white' }}
@@ -164,11 +179,15 @@ class Header extends Component {
                         >
                           Log Out
                         </Link>
-                      ) : (
+                      </NavItem>
+                    </NavbarNav>
+                  ) : (
+                    <NavbarNav right>
+                      <NavItem>
                         <NavLink to="/login">Log In</NavLink>
-                      )}
-                    </NavItem>
-                  </NavbarNav>
+                      </NavItem>
+                    </NavbarNav>
+                  )}
                 </Collapse>
               </Navbar>
             </div>

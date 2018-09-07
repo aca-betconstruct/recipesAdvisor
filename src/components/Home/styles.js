@@ -6,7 +6,10 @@ export default {
   content: {
     display: 'flex',
     justifyContent: 'center',
-    width: '80%'
+    width: '80%',
+    '@media screen and (max-width: 767px)': {
+      width: '100%'
+    }
   },
   row: {
     display: 'flex',
