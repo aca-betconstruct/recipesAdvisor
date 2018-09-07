@@ -12,7 +12,7 @@ class WideRecipeCard extends Component {
     const { image, label, ingredientLines, uri } = recipe;
     return (
       <Row className={classes.row}>
-        <Col md="3">
+        <Col className={classes.imageWrapper}>
           <View
             onClick={this.props.onClick}
             hover
@@ -25,7 +25,7 @@ class WideRecipeCard extends Component {
             </a>
           </View>
         </Col>
-        <Col md="9">
+        <Col className={classes.description}>
           <p className="font-weight-bold dark-grey-text">{label}</p>
           <div className="d-flex justify-content-between">
             <Col size="11" className="text-truncate pl-0 mb-3">
@@ -33,7 +33,10 @@ class WideRecipeCard extends Component {
                 {ingredientLines[0]}
               </a>
             </Col>
-            <Link to= {{ pathname: `/detail/${uri.slice(44)}`,}} style={{ color: 'black' }}>
+            <Link
+              to={{ pathname: `/detail/${uri.slice(44)}` }}
+              style={{ color: 'black' }}
+            >
               <Fa icon="angle-double-right" />
             </Link>
           </div>
