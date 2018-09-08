@@ -9,6 +9,7 @@ import Recipes from '../../containers/Recipes';
 import Filter from '../../containers/Filter';
 import Favourites from '../../containers/Favourites';
 import styles from './styles';
+import CaloriesResults from "../../containers/CaloriesResults";
 
 const Home = ({ classes }) => {
   return (
@@ -21,6 +22,7 @@ const Home = ({ classes }) => {
             <Route exact path='/home' component={Recipes} />
           </div>
         <Route path='/home/favourites' component={Favourites} />
+        <CaloriesResults/>
       </div>
     </div>
   );

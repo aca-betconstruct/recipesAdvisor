@@ -32,7 +32,6 @@ class CaloriesCalculator extends Component {
       activity: 'Sedentary lifestyle',
       activityDescription: 0,
       gender: 'male',
-      calories: 0,
       isReady: false
     };
 
@@ -85,6 +84,7 @@ class CaloriesCalculator extends Component {
       weightInKilograms,
       heightInCentimeters
     } = this.state;
+    const { changeCalories } = this.props;
 
     // For men:	BMR = 10 × weight(kg) + 6.25 × height(cm) - 5 × age(y) + 5
     // For women:	BMR = 10 × weight(kg) + 6.25 × height(cm) - 5 × age(y) - 161
@@ -110,40 +110,32 @@ class CaloriesCalculator extends Component {
     }
 
     if (gender === 'male') {
-      this.setState({
-        calories:
-          (10 * weightInKilograms +
-            6.25 * heightInCentimeters -
-            5 * ageInYears +
-            5) *
-          bmr
-      });
+      changeCalories((10 * weightInKilograms +
+        6.25 * heightInCentimeters -
+        5 * ageInYears +
+        5) *
+        bmr);
     } else {
-      this.setState({
-        calories:
-          (10 * weightInKilograms +
-            6.25 * heightInCentimeters -
-            5 * ageInYears -
-            161) *
-          bmr
-      });
+      changeCalories((10 * weightInKilograms +
+        6.25 * heightInCentimeters -
+        5 * ageInYears -
+        161) *
+        bmr);
     }
 
     this.setState({ isReady: true });
   }
 
   render() {
-    const { classes } = this.props;
-    const { activityDescription, isReady, calories } = this.state;
+    const { classes, assignResults } = this.props;
+    const { valid } = this.props;
+    const { activityDescription, isReady } = this.state;
     let caloriesMessage = '';
     let weightLossMessage = '';
     if (isReady === true) {
-      caloriesMessage = `your amount of daily calories is  ${parseInt(
-        calories,
-        10
-      )}`;
+      caloriesMessage = `your amount of daily calories is  ${assignResults.calories}`;
       weightLossMessage = `if you want to loose weight don't consume more than 
-        ${parseInt(calories - 500, 10)}`;
+        ${assignResults.wls}`;
     }
 
     return (
@@ -220,7 +212,7 @@ class CaloriesCalculator extends Component {
                 <button
                   className={classes.button}
                   type="submit"
-                  onSubmit={this.handleCalculation}
+                //  disabled={!valid}
                 >
                   Calculate
                 </button>

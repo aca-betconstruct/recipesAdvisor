@@ -1,11 +1,12 @@
 export default {
   main: {
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+  
   },
   row: {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'colum',
     justifyContent: 'center',
     alignItems: 'center'
   }

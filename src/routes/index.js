@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import RoutesWithHeaderAndFooter from './routesWithHeaderAndFooter';
 import Preferences from '../components/Preferences';
 import ReceptePage from '../containers/Recepte';
-import CaloriesCalculator from '../components/CaloriesCalculator';
+import CaloriesCalculator from '../containers/CaloriesCalculator';
 import LoginForm from '../containers/Login';
 import SignUpForm from '../containers/SignUp';
 import PrivateRoute from '../containers/PrivateRoute';

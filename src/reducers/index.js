@@ -6,6 +6,7 @@ import { preferences, isPreferencesFetching } from './preferences';
 import filter from './filter';
 import ditael from './ditael';
 import comments from './comment';
+import assignResults from './calories';
 
 import { user, jwt } from './authenticated';
 
@@ -27,5 +28,6 @@ export default combineReducers({
   form: reduxFormReducer,
   filter,
   isPreferencesFetching,
-  jwt
+  jwt,
+  assignResults
 });

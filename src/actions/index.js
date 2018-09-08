@@ -15,6 +15,7 @@ import { firstPage, nextPage } from './pagination';
 import { logoutUser, fetchAuthenticated } from './authenticated';
 import { fetchSignup } from './signup';
 import { fetchLogin } from './login';
+import { changeCalories } from './calories';
 
 export {
   getRecipes,
@@ -33,5 +34,6 @@ export {
   logoutUser,
   fetchSignup,
   fetchLogin,
-  fetchAuthenticated
+  fetchAuthenticated,
+  changeCalories
 };

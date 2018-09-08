@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "eslint-plugin-prettier": "^2.6.2",
     "gh-pages": "^1.1.0",
     "google-maps-react": "^2.0.2",
     "history": "^4.7.2",
@@ -13,7 +12,6 @@
     "moment": "^2.21.0",
     "node-less-chokidar": "^0.1.2",
     "npm-run-all": "^4.1.2",
-    "prettier": "^1.14.2",
     "prop-types": "^15.6.2",
     "query-string-params": "^1.7.5",
     "react": "^16.4.2",
@@ -47,5 +45,9 @@
     "build-css": "node-less-chokidar src",
     "watch-css": "node-less-chokidar src --watch",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "eslint-plugin-prettier": "^2.6.2",
+    "prettier": "1.14.2"
   }
 }
