@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import {
   deletePreference,
   getPreferences,
-  fetchPreferences
+  postPreference
 } from '../../actions';
 import FoodList from '../../components/FoodList';
 import { bindActionCreators } from 'redux';
@@ -17,7 +17,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
-    { deletePreference, getPreferences, fetchPreferences },
+    { deletePreference, getPreferences, fetchPreferences: postPreference },
     dispatch
   );
 };

@@ -4,6 +4,8 @@ export default {
     width: '100%'
   },
   favourites: {
+    margin: 'auto',
+    minWidth: '70%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',

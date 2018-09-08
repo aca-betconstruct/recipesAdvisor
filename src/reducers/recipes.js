@@ -1,6 +1,8 @@
 import {
   RECIPES_FETCHING_FAILURE,
   RECIPES_FETCHING_SUCCESS,
+  RECIPES_UPDATE_SUCCESS,
+  RECIPES_UPDATE_FAILURE,
   RECIPES_FETCHING,
   FIRST_PAGE,
   LOGOUT_USER,
@@ -15,9 +17,9 @@ export const isRecipesFetching = (
   switch (action.type) {
     case RECIPES_FETCHING:
       return true;
-    case RECIPES_FETCHING_SUCCESS:
+    case RECIPES_FETCHING_SUCCESS || RECIPES_UPDATE_SUCCESS:
       return false;
-    case RECIPES_FETCHING_FAILURE:
+    case RECIPES_FETCHING_FAILURE || RECIPES_UPDATE_FAILURE:
       return false;
     case LOGOUT_USER:
       return initialStateIsRecipesFetching;
@@ -28,11 +30,43 @@ export const isRecipesFetching = (
 
 const initialStateForRecipes = [];
 export const recipes = (state = initialStateForRecipes, action) => {
+  let recipe = [],
+    favouritesId = [],
+    hits = [];
   switch (action.type) {
     case RECIPES_FETCHING_SUCCESS:
-      const recipe = action.payload.recipe,
-        favouritesId = action.payload.favs;
-      const hits = recipe.hits.map(item => {
+      recipe = action.payload.recipe;
+      favouritesId = action.payload.favs;
+      recipe.forEach(rec =>
+        hits.push({
+          ...rec,
+          hits: rec.hits.map(item => {
+            if (favouritesId.some(id => id === item.recipe.uri.slice(45))) {
+              return {
+                ...item,
+                recipe: {
+                  ...item.recipe,
+                  isFavourite: true
+                }
+              };
+            }
+            return {
+              ...item,
+              recipe: {
+                ...item.recipe,
+                isFavourite: false
+              }
+            };
+          })
+        })
+      );
+      return [...hits];
+    case RECIPES_FETCHING_FAILURE:
+      return [...state];
+    case RECIPES_UPDATE_SUCCESS:
+      recipe = action.payload.recipe;
+      favouritesId = action.payload.favs;
+      hits = recipe.hits.map(item => {
         if (favouritesId.some(id => id === item.recipe.uri.slice(45))) {
           return {
             ...item,
@@ -57,7 +91,7 @@ export const recipes = (state = initialStateForRecipes, action) => {
           hits
         }
       ];
-    case RECIPES_FETCHING_FAILURE:
+    case RECIPES_UPDATE_FAILURE:
       return [...state];
     case FIRST_PAGE:
       return initialStateForRecipes;

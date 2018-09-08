@@ -4,7 +4,7 @@ import BigCard from '../../../components/Cards/BigCard';
 import {
   checkFavourite,
   deleteFetchFavourites,
-  fetchFavourites
+  postFavourite
 } from '../../../actions';
 import { selectIsAuth } from '../../../selectors';
 
@@ -15,7 +15,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   checkFavourite: id => dispatch(checkFavourite(id)),
-  fetchFavourites: (state, jwt) => dispatch(fetchFavourites(state, jwt)),
+  fetchFavourites: (state, jwt) => dispatch(postFavourite(state, jwt)),
   deleteFetchFavourites: (id, jwt) => dispatch(deleteFetchFavourites(id, jwt))
 });
 

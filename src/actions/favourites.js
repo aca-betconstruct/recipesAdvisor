@@ -12,7 +12,7 @@ const requestFavourites = () => {
   };
 };
 
-const deleteFavourite = (id) => ({
+const deleteFavourite = id => ({
   type: DELETE_FAVOURITE,
   payload: {
     id
@@ -33,19 +33,19 @@ const allreceiveFavourites = json => {
   };
 };
 
-export const checkFavourite = (id) => {
+export const checkFavourite = id => {
   return {
     type: CHECK_FAVOURITE,
     payload: {
       id
     }
-  }
+  };
 };
 
-export const fetchFavourites = (state, jwt) => {
+export const postFavourite = (state, jwt) => {
   return dispatch => {
     dispatch(requestFavourites());
-    return fetch(`https://acafoodapi.haffollc.com/v1/favourites`, {
+    return fetch(`http://localhost:5002/v1/favourites`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt}`
@@ -61,10 +61,10 @@ export const fetchFavourites = (state, jwt) => {
   };
 };
 
-export const getFetchFavourites = jwt => {
+export const getFavourites = jwt => {
   return dispatch => {
     dispatch(requestFavourites());
-    return fetch(`https://acafoodapi.haffollc.com/v1/favourites`, {
+    return fetch(`http://localhost:5002/v1/favourites`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ export const getFetchFavourites = jwt => {
 export const deleteFetchFavourites = (id, jwt) => {
   return dispatch => {
     dispatch(requestFavourites());
-    return fetch(`https://acafoodapi.haffollc.com/v1/favourite/${id}`, {
+    return fetch(`http://localhost:5002/v1/favourite/${id}`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt}`
@@ -90,7 +90,7 @@ export const deleteFetchFavourites = (id, jwt) => {
       method: 'DELETE'
     })
       .then(response => response.json())
-      .then(json => {
+      .then(() => {
         dispatch(receiveFavourites());
         dispatch(deleteFavourite(id));
       })

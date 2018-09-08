@@ -1,15 +1,21 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Container, Row, Col, Input, Button } from 'mdbreact';
 
-class CommentListPage extends Component {
-  render() {
-    const { fetchComment, comments, url, auth } = this.props;
+class CommentsList extends Component {
+    componentDidMount() {
+    const { getComments,getAuthenticated,jwt } = this.props;
+    getComments();
+    getAuthenticated(jwt)
 
+  }
+  render() {
+    const {  comments, url, auth } = this.props;
+    console.log(comments);
     return (
       <div style={{ marginTop: '70px' }}>
         <Row>
           <Col md="4" lg="3">
-            {comments === null ? (
+            {!comments.length ? (
               <p>Loading..</p>
             ) : (
               comments.map((elem, i) => {
@@ -17,8 +23,8 @@ class CommentListPage extends Component {
                   return '';
                 }
                 return (
-                  <div className="excerpt" style={{ marginTop: '20px' }}>
-                    <div className="brief">
+                  <div className="excerpt" style={{ marginTop: '40px', backgroundColor:"#e6ffe6" }}>
+                    <div className="brief" style={{ backgroundColor:" #ccffcc" }}>
                       {auth === null ? (
                         <p>Loading ...</p>
                       ) : (
@@ -27,7 +33,7 @@ class CommentListPage extends Component {
                             return '';
                           }
                           return (
-                            <p className="font-weight-bold mb-3">
+                            <p className="font-weight-bold mb-3" key={i+el.firstName}>
                               {el.firstName} {el.lastName}
                             </p>
                           );
@@ -48,4 +54,4 @@ class CommentListPage extends Component {
   }
 }
 
-export default CommentListPage;
+export default CommentsList;

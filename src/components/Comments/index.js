@@ -1,9 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { Container, Row, Col, Input, Button } from 'mdbreact';
-import './style.css';
-import CommentListPage from '../CommentsList';
+import CommentList from '../../containers/CommentsList';
 
-class CommentPage extends Component {
+class Comments extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,49 +18,59 @@ class CommentPage extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    const jwt = JSON.parse(localStorage.getItem('store')).jwt;
-    const { fetchpComment } = this.props;
+    const { postComment, jwt } = this.props;
     const { text, receptId } = this.state;
-
-    fetchpComment({ text: text, receptId: receptId }, jwt);
+    postComment({ text: text, receptId }, jwt);
     this.setState({ text: ' ', receptId: ' ' });
   }
   render() {
-    const { fetchComment, comments, url, auth } = this.props;
+    const { url } = this.props;
     return (
       <Fragment>
         <Row>
-          <Col md="4" lg="3">
+          <Col md="4" lg="3" className="responsive">
             <form method="post" onSubmit={this.handleSubmit}>
               <div className="row">
-                <div className="col-75">
+                <div className="form-group">
+                  <hr
+                    color="green"
+                    style={{ width: '1200px', marginTop: '150px' }}
+                  />
                   <textarea
                     name="subject"
-                    placeholder="Comments .."
-                    className="iteminput"
-                    style={{ height: '200px' }}
+                    placeholder="Add comments .."
+                    className="form-control rounded-0 z-depth-1"
+                    id="exampleFormControlTextarea6"
+                    rows="3"
+                    style={{
+                      marginTop: '60px',
+                      width: '500px',
+                      marginLeft: '30px'
+                    }}
                     value={this.state.text}
                     onChange={this.handleChange}
                   />
                 </div>
               </div>
-              <div className="row">
-                <button color="green" className="green-text">
+              <div className="row" style={{ marginLeft: '420px' }}>
+                <button
+                  style={{
+                    backgroundColor: 'green',
+                    border: 0,
+                    color: 'white',
+                    padding: '8px'
+                  }}
+                >
                   Success
                 </button>
               </div>
             </form>
           </Col>
         </Row>
-        <CommentListPage
-          fetchComment={fetchComment}
-          comments={comments}
-          url={url}
-          auth={auth}
-        />
+        <CommentList url={url} />
       </Fragment>
     );
   }
 }
 
-export default CommentPage;
+export default Comments;

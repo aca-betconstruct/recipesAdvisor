@@ -1,22 +1,17 @@
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
 import Recipe from '../../components/Recipe';
-import {
-  deleteFetchFavourites,
-  fetchFavourites
-} from '../../actions';
+import { getDetail } from '../../actions';
 
-const mapStateToProps = state => ({
-  favourites: state.favourites
-});
-
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators(
-    { fetchFavourites, deleteFetchFavourites },
-    dispatch
-  );
+const mapStateToProps = state => {
+  return {
+    detail: state.detail,
+    auth: state.user,
+  };
 };
+
+const mapDispatchToProps = dispatch => ({
+  getDetail: url => dispatch(getDetail(url)),
+});
 
 export default connect(
   mapStateToProps,

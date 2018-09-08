@@ -1,4 +1,14 @@
 export default {
+  sideBar: {
+    width: '20%',
+    background: 'rgba(0, 0, 0, 0.8)',
+    backgroundSize: 'cover',
+    minHeight: '100vh',
+    paddingTop: '15%',
+    '@media screen and (max-width: 767px)': {
+      display: 'none'
+    }
+  },
   button: {
     font: 'roboto',
     color: '#ffffff',
@@ -12,17 +22,14 @@ export default {
     textAlign: 'center',
     border: 'none',
     transition: '0.5s all',
-    width: "100%",
-    marginTop: "5px",
+    width: '100%',
+    marginTop: '5px',
     '-webkit-transition': '0.5s all',
     '-o-transition': '0.5s all',
     '-moz-transition': '0.5s all',
     '-ms-transition': '0.5s all',
-    "&:hover": {
-      backgroundColor: '#f44336',
+    '&:hover': {
+      backgroundColor: '#f44336'
     }
-  },
-  sidebar: {
-    width:"30%"
   }
 };

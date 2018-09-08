@@ -31,7 +31,7 @@ export const logoutUser = () => {
   };
 };
 
-export const fetchAuthenticated = jwt => {
+export const getAuthenticated = jwt => {
   return dispatch => {
     dispatch(requestAuthenticated());
     return fetch(`http://localhost:5002/v1/users`, {

@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+ccimport PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import { Button, Fa } from 'mdbreact';
 import styles from './styles';

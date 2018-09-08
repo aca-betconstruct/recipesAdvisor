@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getFetchFavourites } from '../../actions';
+import { getFavourites } from '../../actions';
 import Favourites from '../../components/Favourites';
 
 const mapStateToProps = state => ({
@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ getFetchFavourites }, dispatch);
+  return bindActionCreators({ getFetchFavourites: getFavourites }, dispatch);
 };
 export default connect(
   mapStateToProps,

@@ -4,27 +4,24 @@ import { reducer as reduxFormReducer } from 'redux-form';
 import curPage from './pagination';
 import { preferences, isPreferencesFetching } from './preferences';
 import filter from './filter';
-import ditael from './ditael';
+import detail from './detail';
 import comments from './comment';
 import assignResults from './calories';
 
 import { user, jwt } from './authenticated';
 
-import {
-  allFetchFavourites,
-  isFavouriteRecipesFetching
-} from './favourites';
+import { favourites, isFavouriteRecipesFetching } from './favourites';
 
 export default combineReducers({
   comments,
   recipes,
   isRecipesFetching,
-  allFetchFavourites,
+  allFetchFavourites: favourites,
   isFavouriteRecipesFetching,
   curPage,
   preferences,
   user,
-  ditael,
+   detail,
   form: reduxFormReducer,
   filter,
   isPreferencesFetching,

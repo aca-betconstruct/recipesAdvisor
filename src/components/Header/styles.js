@@ -35,7 +35,8 @@ export default {
     '@media (max-width: 767px)': {
       backgroundColor: 'black',
       borderRadius: '2px',
-      borderTop: '1px solid white'
+      borderTop: '1px solid white',
+      padding: '10px 20px'
     }
   },
   navLink: {
@@ -49,5 +50,14 @@ export default {
   },
   logo: {
     width: '55px'
+  },
+  sideBarLink: {
+    paddingBottom: '5px',
+    '&>a': {
+      color: 'white'
+    },
+    '@media screen and (min-width: 768px)': {
+      display: 'none'
+    }
   }
 };

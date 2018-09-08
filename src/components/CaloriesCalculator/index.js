@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 import PropTypes from 'prop-types';
 import styles from './styles';
-import Header from '../../containers/Header';
 import { Link } from 'react-router-dom';
 
 
