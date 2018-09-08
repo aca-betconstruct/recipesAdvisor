@@ -41,7 +41,6 @@ class Header extends Component {
     this.mouseEntered = this.mouseEntered.bind(this);
     this.mouseLeaved = this.mouseLeaved.bind(this);
     this.handleTogglerClick = this.handleTogglerClick.bind(this);
-    this.handleLogoClick = this.handleLogoClick.bind(this);
   }
 
   componentDidMount() {
@@ -74,11 +73,6 @@ class Header extends Component {
   handleLogoutClick = () => {
     this.props.logoutUser();
   };
-
-  handleLogoClick() {
-    const { firstPage } = this.props;
-    firstPage();
-  }
 
   render() {
     const { classes, isAuth } = this.props;
@@ -126,7 +120,6 @@ class Header extends Component {
                   tag={'span'}
                   onMouseEnter={this.mouseEntered}
                   onMouseLeave={this.mouseLeaved}
-                  onClick={this.handleLogoClick}
                 >
                   {isLogoAnimated ? (
                     <Animation type="tada">
@@ -154,9 +147,24 @@ class Header extends Component {
                   className={classes.collapsed}
                   navbar
                 >
-                  <NavbarNav right>
-                    <NavItem>
-                      {isAuth ? (
+                  {isAuth ? (
+                    <NavbarNav right>
+                      <NavItem className={classes.sideBarLink}>
+                        <Link to="/home">Daily Recipes</Link>
+                      </NavItem>
+                      <NavItem className={classes.sideBarLink}>
+                        <Link to="/">Discover Recipes</Link>
+                      </NavItem>
+                      <NavItem className={classes.sideBarLink}>
+                        <Link to="/home/favourites">Favourite Recipes</Link>
+                      </NavItem>
+                      <NavItem className={classes.sideBarLink}>
+                        <Link to="/calculator">Calculator</Link>
+                      </NavItem>
+                      <NavItem className={classes.sideBarLink}>
+                        <Link to="/home/preferences">Preferences</Link>
+                      </NavItem>
+                      <NavItem>
                         <Link
                           to={'/login'}
                           style={{ color: 'white' }}
@@ -164,11 +172,15 @@ class Header extends Component {
                         >
                           Log Out
                         </Link>
-                      ) : (
+                      </NavItem>
+                    </NavbarNav>
+                  ) : (
+                    <NavbarNav right>
+                      <NavItem>
                         <NavLink to="/login">Log In</NavLink>
-                      )}
-                    </NavItem>
-                  </NavbarNav>
+                      </NavItem>
+                    </NavbarNav>
+                  )}
                 </Collapse>
               </Navbar>
             </div>
@@ -179,7 +191,6 @@ class Header extends Component {
   }
   static propTypes = {
     classes: PropTypes.object,
-    firstPage: PropTypes.func,
     isAuth: PropTypes.bool,
     location: PropTypes.object
   };

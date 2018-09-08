@@ -31,8 +31,8 @@ class Recipes extends Component {
       getPreferences,
       getFetchFavourites,
       getRecipes,
+      firstPage,
       nextPage,
-      curPage,
       labelsType,
       labels,
       q,
@@ -46,9 +46,10 @@ class Recipes extends Component {
     pref
       .then(() => {
         if (jwt.length) getFetchFavourites(jwt);
+        firstPage();
       })
       .then(() => {
-        const { preferences, favourites } = this.props;
+        const { preferences, favourites, curPage } = this.props;
         getRecipes(
           curPage,
           labels,
@@ -147,13 +148,13 @@ class Recipes extends Component {
 
   render() {
     const { curRecipe, curIndex, zoomOut, zoomIn } = this.state;
-    const { classes, type, recipes, favourites } = this.props;
+    const { classes, type, recipes, favourites, curPage } = this.props;
     if (type === 'favourite') {
       return (
-        <Container style={{ width: '800px' }} className="mt-5">
+        <Container className="my-5">
           <Row
             style={{
-              margin: '25px 0',
+              marginTop: '25px',
               display: 'flex',
               justifyContent: 'center'
             }}
@@ -198,7 +199,11 @@ class Recipes extends Component {
                 loader={<h4 style={{ textAlign: 'center' }}>Loading...</h4>}
                 endMessage={
                   <p style={{ textAlign: 'center' }}>
-                    <b>Yay! You have seen it all</b>
+                    <b>
+                      {favourites.length
+                        ? 'Yay! You have seen it all'
+                        : 'You do not have any favourite recipes yet.'}
+                    </b>
                   </p>
                 }
               >
@@ -216,7 +221,10 @@ class Recipes extends Component {
       );
     }
     return (
-      <Container style={{ width: '800px' }} className="mt-5">
+      <Container
+        style={type === 'random' ? { width: '80%' } : {}}
+        className="my-5"
+      >
         <Row
           style={{
             marginTop: '25px',
@@ -256,10 +264,10 @@ class Recipes extends Component {
             className={classes.scrollBar}
           >
             <InfiniteScroll
-              style={{ overflowX: 'hidden', width: '98%' }}
+              style={{ overflowX: 'hidden', width: '90%' }}
               dataLength={recipes.length}
               next={this.fetchMoreData}
-              hasMore={true}
+              hasMore={curPage < 4}
               scrollableTarget="scrollableContent"
               loader={<h4 style={{ textAlign: 'center' }}>Loading...</h4>}
               endMessage={

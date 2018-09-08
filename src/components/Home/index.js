@@ -16,11 +16,13 @@ const Home = ({ classes }) => {
       <AnimatableImages />
       <div className={classes.main}>
         <Route exact path='/home' component={SideBar} />
+        <div className={classes.content}>
         <div className={classes.row}>
             <Route exact path='/home' component={Filter} />
             <Route exact path='/home' component={Recipes} />
           </div>
         <Route path='/home/favourites' component={Favourites} />
+      </div>
       </div>
     </div>
   );

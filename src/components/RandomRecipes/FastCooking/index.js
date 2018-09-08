@@ -27,7 +27,8 @@ class FastCooking extends Component {
           recipe.push({
             image: item.recipe.image,
             time: item.recipe.totalTime,
-            name: item.recipe.label
+            name: item.recipe.label,
+            uri: item.recipe.uri
           })
         )
       );
@@ -45,7 +46,7 @@ class FastCooking extends Component {
       return (
         <Container
           style={{
-            margin: recipes.length === 6 ? 'auto auto 0' : 'auto'
+            margin: 'auto'
           }}
           className={classes.container}
         >

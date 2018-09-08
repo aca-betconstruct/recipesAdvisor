@@ -27,15 +27,7 @@ class ProfileSidebar extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div
-        style={{
-          width: '20%',
-          background: 'rgba(0, 0, 0, 0.8)',
-          backgroundSize: 'cover',
-          minHeight: '100vh',
-          paddingTop: '15%'
-        }}
-      >
+      <div className={classes.sideBar}>
         <div
           style={{
             display: 'flex',
