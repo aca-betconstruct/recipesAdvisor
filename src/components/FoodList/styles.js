@@ -32,7 +32,7 @@ export default {
       padding: '5px'
     }
   },
-  addButton: {
+  button: {
     '&:focus': {
       outline: 0
     },
@@ -45,5 +45,13 @@ export default {
     borderRadius: '1px',
     fontSize: '28px',
     color: 'white'
+  },
+  addButton: {
+    backgroundColor: 'rgb(139, 195, 74)',
+    borderColor: 'rgb(139, 195, 74)'
+  },
+  removeButton: {
+    backgroundColor: '#a71c45',
+    borderColor: '#a71c45'
   }
 };

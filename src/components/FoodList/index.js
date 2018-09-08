@@ -86,11 +86,9 @@ class FoodList extends Component {
             }}
           />
           <button
-            className={classes.addButton}
-            style={{
-              backgroundColor: type ? 'rgb(0, 190, 0)' : 'rgb(255, 57, 57)',
-              borderColor: type ? 'rgb(0, 190, 0)' : 'rgb(255, 57, 57)'
-            }}
+            className={`${classes.button} ${
+              type ? classes.addButton : classes.removeButton
+            }`}
           >
             {type ? '+' : '-'}
           </button>

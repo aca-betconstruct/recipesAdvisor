@@ -39,6 +39,7 @@ class Recipes extends Component {
       type,
       jwt
     } = this.props;
+    firstPage();
     const pref = new Promise(resolve => {
       if (jwt.length) resolve(getPreferences(jwt));
       else resolve();
@@ -46,41 +47,14 @@ class Recipes extends Component {
     pref
       .then(() => {
         if (jwt.length) getFetchFavourites(jwt);
-        firstPage();
       })
       .then(() => {
-        const { preferences, favourites, curPage, isFavouritesFetching } = this.props;
-        if(!isFavouritesFetching) {
-          getRecipes(
-            curPage,
-            labels,
-            q,
-            labelsType,
-            preferences,
-            favourites,
-            type
-          );
-        }
-      });
-    nextPage(curPage + 1);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState === this.state) {
-      const {
-        isFavouritesFetching,
-        firstPage,
-        getRecipes,
-        labelsType,
-        labels,
-        q,
-        preferences,
-        type
-      } = this.props;
-      if (labels !== prevProps.labels || q !== prevProps.q) {
-        curPage = 0;
-        const { favourites } = this.props;
-        firstPage();
+        const {
+          preferences,
+          favourites,
+          curPage,
+          isFavouritesFetching
+        } = this.props;
         getRecipes(
           curPage,
           labels,
@@ -90,7 +64,26 @@ class Recipes extends Component {
           favourites,
           type
         );
-      }
+      });
+    nextPage(curPage + 1);
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      isFavouritesFetching,
+      firstPage,
+      getRecipes,
+      labelsType,
+      labels,
+      q,
+      preferences,
+      type
+    } = this.props;
+    if (labels !== prevProps.labels || q !== prevProps.q) {
+      curPage = 0;
+      const { favourites } = this.props;
+      firstPage();
+      getRecipes(curPage, labels, q, labelsType, preferences, favourites, type);
       if (isFavouritesFetching !== prevProps.isFavouritesFetching) {
         const { favourites } = this.props;
         getRecipes(

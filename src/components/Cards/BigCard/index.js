@@ -54,27 +54,27 @@ class BigCard extends Component {
     return (
       <div className={classes.card}>
         <View hover rounded className={`z-depth-1-half mb-4 ${classes.view}`}>
-          {isFavourite ? (
-            <Fa
-              icon={'heart'}
-              className={classes.favIcon}
-              onClick={this.handleFavouriteClick}
-            />
-          ) : isAuth ? (
-            <Fa
-              icon={'heart-o'}
-              className={classes.favIcon}
-              onClick={this.handleFavouriteClick}
-            />
-          ) : (
-            <Link to={'/login'}>
+          <span
+            className={`${classes.iconWrapper} ${
+              isFavourite ? classes.favourite : classes.notFavourite
+            }`}
+          >
+            {isAuth ? (
               <Fa
-                icon={'heart-o'}
+                icon={'heart'}
                 className={classes.favIcon}
                 onClick={this.handleFavouriteClick}
               />
-            </Link>
-          )}
+            ) : (
+              <Link to={'/login'}>
+                <Fa
+                  icon={'heart'}
+                  className={classes.favIcon}
+                  onClick={this.handleFavouriteClick}
+                />
+              </Link>
+            )}
+          </span>
           <img className="img-fluid" src={image} alt={label} />
           <Link to={{ pathname: `/detail/${uri.slice(44)}` }}>
             <Mask overlay="white-slight" className="waves-light" />

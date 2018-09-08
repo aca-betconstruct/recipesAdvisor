@@ -117,6 +117,7 @@ class Header extends Component {
                 }`}
               >
                 <NavbarBrand
+                  className={classes.navBarBrand}
                   tag={'span'}
                   onMouseEnter={this.mouseEntered}
                   onMouseLeave={this.mouseLeaved}

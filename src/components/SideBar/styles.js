@@ -29,7 +29,7 @@ export default {
     '-moz-transition': '0.5s all',
     '-ms-transition': '0.5s all',
     '&:hover': {
-      backgroundColor: '#f44336'
+      backgroundColor: 'rgb(139, 195, 74)'
     }
   }
 };

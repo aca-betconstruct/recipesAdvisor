@@ -1,4 +1,4 @@
-import backgroundImg from '../../images/loginBack.jpg';
+import backgroundImg from '../../images/backgroundImg.jpg';
 
 export default {
   main: {

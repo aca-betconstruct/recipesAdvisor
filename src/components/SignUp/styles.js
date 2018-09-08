@@ -1,4 +1,4 @@
-import backgroundImg from '../../images/loginBack.jpg';
+import backgroundImg from '../../images/backgroundImg.jpg';
 
 export default {
   '@global': {
@@ -99,7 +99,7 @@ export default {
     '& li': {
       position: 'absolute',
       width: '100%'
-    },
+    }
   },
   rslides: {
     position: 'relative',
@@ -112,8 +112,7 @@ export default {
       position: 'relative',
       display: 'block',
       float: 'left'
-    },
-   
+    }
   },
   contentLeft: {
     float: 'left',
@@ -125,7 +124,7 @@ export default {
     width: '50%'
   },
   contentInfo: {
-    padding: '5em 3em',
+    padding: '1.2em 3em',
     textAlign: 'center',
     '& h2': {
       color: '#212121',
@@ -159,7 +158,7 @@ export default {
       fontSize: '.9em',
       margin: '1em 0 0 0',
       '& a': {
-        color: '#f44336',
+        color: 'rgb(139, 195, 74)',
         textDecoration: 'none',
         '&:hover': {
           color: '#212121'
@@ -197,7 +196,7 @@ export default {
     border: '1px solid #ffffff',
     color: '#FFFFFF',
     fontSize: '.9em',
-    margin: '0 0 1.5em 0',
+    margin: '1.5em 0 0',
     width: '93%'
   },
 
@@ -213,25 +212,22 @@ export default {
   },
 
   button: {
+    marginTop: '1em',
     color: '#ffffff',
     fontSize: '.9em',
     textDecoration: 'none',
     padding: '1em 2em',
     cursor: 'pointer',
-    background: '#F44336',
+    background: 'rgb(139, 195, 74)',
     textTransform: 'uppercase',
     fontWeight: '600',
     textAlign: 'center',
-    border: 'solid 1px #f44336',
+    border: 'solid 1px rgb(139, 195, 74)',
     transition: '0.5s all',
     '-webkit-transition': '0.5s all',
     '-o-transition': '0.5s all',
     '-moz-transition': '0.5s all',
-    '-ms-transition': '0.5s all',
-    '&:hover': {
-      background: 'none',
-      border: 'solid 1px #FFFFFF'
-    }
+    '-ms-transition': '0.5s all'
   },
 
   footer: {
@@ -285,17 +281,17 @@ export default {
   },
   '@media (max-width: 715px)': {
     contentLeft: {
-      display: "none"
+      display: 'none'
     }
   },
   '@media (max-width: 667px)': {
     contentLeft: {
       float: 'none',
-      width: '100%',
+      width: '100%'
     },
     contentMain: {
       float: 'none',
-      width: '100%',
+      width: '100%'
     },
     signUpForm: {
       minHeight: '425px'

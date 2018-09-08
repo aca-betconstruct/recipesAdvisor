@@ -1,5 +1,6 @@
 export default {
   view: {
+    marginLeft: '20px',
     height: '67px',
     width: '67px'
   },
@@ -14,6 +15,7 @@ export default {
     padding: 0
   },
   description: {
-    margin: 'auto 0'
+    margin: 'auto 0',
+    marginLeft: '20px'
   }
 };

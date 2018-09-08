@@ -1,16 +1,12 @@
 export default {
   calories: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    marginTop: '15%',
-    marginRight: '0%',
-    marginLeft: "10%",
-    background: 'rgba(0, 0, 0, 0.8)',
-    padding: '3em',
-    minHeight: '440px',
-    height: '500px',
-    width: "20%",
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    padding: '10%',
+    textAlign: 'center',
+    minHeight: '350px',
+    height: '350px',
     '& h4': {
       color: '#FFFFFF',
       fontSize: '1em',

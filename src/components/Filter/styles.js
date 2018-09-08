@@ -3,7 +3,7 @@ export default {
     display: 'flex',
     justifyContent: 'space-between',
     width: '90%',
-    border: '1px solid rgb(0, 190, 0)',
+    border: '1px solid rgb(139, 195, 74)',
     padding: '13px 13px 8px 13px',
     borderWidth: '0 0 1px 0',
     marginBottom: '5px'
@@ -24,7 +24,7 @@ export default {
     }
   },
   activeLabel: {
-    color: 'green',
+    color: 'rgb(139, 195, 74)',
     transition: '.6s'
   }
 };

@@ -8,7 +8,7 @@ import styles from './styles';
 
 const SmallCard = ({ classes, recipe }) => {
   return (
-    <Row>
+    <Row className={classes.row}>
       <Col md="3" className={classes.imgCol}>
         <View hover rounded className={`z-depth-1-half mb-4 ${classes.view}`}>
           <img className="img-fluid" src={recipe.image} alt={recipe.name} />

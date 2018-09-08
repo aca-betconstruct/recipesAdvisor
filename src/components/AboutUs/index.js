@@ -4,7 +4,7 @@ import { Container, Row, Col, Mask, Fa, View } from 'mdbreact';
 const AboutUsPage = () => {
   return (
     <Container style={{ marginTop: '140px' }}>
-      <h1 className="h1-responsive font-weight-bold text-center my-5 green-text">
+      <h1 className="h1-responsive font-weight-bold text-center my-5 light-green-text">
         About Recipes Advisor{' '}
       </h1>
       <p className="text-center w-responsive mx-auto mb-5">
@@ -14,7 +14,7 @@ const AboutUsPage = () => {
       </p>
       <Row>
         <Col lg="7">
-          <a className="green-text">
+          <a className="light-green-text">
             <h6 className="font-weight-bold mb-3">
               <Fa icon="cutlery" className="pr-2" />
               Food
