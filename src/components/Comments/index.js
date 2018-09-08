@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Row, Col} from 'mdbreact';
-import './style.css';
+import { Container, Row, Col, Input, Button } from 'mdbreact';
 import CommentList from '../../containers/CommentsList';
 
 class Comments extends Component {
@@ -8,7 +7,7 @@ class Comments extends Component {
     super(props);
     this.state = {
       text: '',
-        receptId: ''
+      receptId: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,42 +18,56 @@ class Comments extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    const { postComment,jwt } = this.props;
-    const { text,  receptId } = this.state;
-    postComment({ text: text,  receptId }, jwt);
+    const { postComment, jwt } = this.props;
+    const { text, receptId } = this.state;
+    postComment({ text: text, receptId }, jwt);
     this.setState({ text: ' ', receptId: ' ' });
-
   }
   render() {
     const { url } = this.props;
     return (
       <Fragment>
         <Row>
-          <Col md="4" lg="3">
+          <Col md="4" lg="3" className="responsive">
             <form method="post" onSubmit={this.handleSubmit}>
               <div className="row">
-                <div className="col-75">
+                <div className="form-group">
+                  <hr
+                    color="green"
+                    style={{ width: '1200px', marginTop: '150px' }}
+                  />
                   <textarea
                     name="subject"
-                    placeholder="Comments .."
-                    className="iteminput"
-                    style={{ height: '200px' }}
+                    placeholder="Add comments .."
+                    className="form-control rounded-0 z-depth-1"
+                    id="exampleFormControlTextarea6"
+                    rows="3"
+                    style={{
+                      marginTop: '60px',
+                      width: '500px',
+                      marginLeft: '30px'
+                    }}
                     value={this.state.text}
                     onChange={this.handleChange}
                   />
                 </div>
               </div>
-              <div className="row">
-                <button color="green" className="green-text">
+              <div className="row" style={{ marginLeft: '420px' }}>
+                <button
+                  style={{
+                    backgroundColor: 'green',
+                    border: 0,
+                    color: 'white',
+                    padding: '8px'
+                  }}
+                >
                   Success
                 </button>
               </div>
             </form>
           </Col>
         </Row>
-        <CommentList
-          url={url}
-        />
+        <CommentList url={url} />
       </Fragment>
     );
   }

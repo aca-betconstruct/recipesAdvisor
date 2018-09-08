@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Container, Row, Col, Input, Button } from 'mdbreact';
 
 class CommentsList extends Component {
@@ -10,12 +10,12 @@ class CommentsList extends Component {
   }
   render() {
     const {  comments, url, auth } = this.props;
-
+    console.log(comments);
     return (
       <div style={{ marginTop: '70px' }}>
         <Row>
           <Col md="4" lg="3">
-            {comments === null ? (
+            {!comments.length ? (
               <p>Loading..</p>
             ) : (
               comments.map((elem, i) => {
@@ -23,8 +23,8 @@ class CommentsList extends Component {
                   return '';
                 }
                 return (
-                  <div className="excerpt" style={{ marginTop: '20px' }} key={i}>
-                    <div className="brief">
+                  <div className="excerpt" style={{ marginTop: '40px', backgroundColor:"#e6ffe6" }}>
+                    <div className="brief" style={{ backgroundColor:" #ccffcc" }}>
                       {auth === null ? (
                         <p>Loading ...</p>
                       ) : (
