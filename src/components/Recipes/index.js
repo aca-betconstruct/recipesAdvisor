@@ -49,7 +49,38 @@ class Recipes extends Component {
         firstPage();
       })
       .then(() => {
-        const { preferences, favourites, curPage } = this.props;
+        const { preferences, favourites, curPage, isFavouritesFetching } = this.props;
+        if(!isFavouritesFetching) {
+          getRecipes(
+            curPage,
+            labels,
+            q,
+            labelsType,
+            preferences,
+            favourites,
+            type
+          );
+        }
+      });
+    nextPage(curPage + 1);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState === this.state) {
+      const {
+        isFavouritesFetching,
+        firstPage,
+        getRecipes,
+        labelsType,
+        labels,
+        q,
+        preferences,
+        type
+      } = this.props;
+      if (labels !== prevProps.labels || q !== prevProps.q) {
+        curPage = 0;
+        const { favourites } = this.props;
+        firstPage();
         getRecipes(
           curPage,
           labels,
@@ -59,25 +90,9 @@ class Recipes extends Component {
           favourites,
           type
         );
-      });
-    nextPage(curPage + 1);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState === this.state) {
-      const {
-        firstPage,
-        getRecipes,
-        labelsType,
-        labels,
-        q,
-        preferences,
-        favourites,
-        type
-      } = this.props;
-      if (labels !== prevProps.labels || q !== prevProps.q) {
-        curPage = 0;
-        firstPage();
+      }
+      if (isFavouritesFetching !== prevProps.isFavouritesFetching) {
+        const { favourites } = this.props;
         getRecipes(
           curPage,
           labels,

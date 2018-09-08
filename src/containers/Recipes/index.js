@@ -14,6 +14,7 @@ import Recipes from '../../components/Recipes';
 const mapStateToProps = state => {
   return {
     isRecipesFetching: state.isRecipesFetching,
+    isFavouritesFetching: state.isFavouriteRecipesFetching,
     recipes: state.recipes,
     curPage: state.curPage,
     preferences: state.preferences,
