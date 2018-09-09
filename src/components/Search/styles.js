@@ -5,7 +5,7 @@ export default {
     alignItems: 'center'
   },
   searchBar: {
-    width: '250px',
+    width: '200px',
     height: '35px',
     border: '2px solid gray',
     borderRadius: '1000px',
