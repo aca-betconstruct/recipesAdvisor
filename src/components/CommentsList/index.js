@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import injectSheet from 'react-jss';
 import { Row, Col } from 'mdbreact';
+import styles from './styles';
 
 class CommentsList extends Component {
   componentDidMount() {
@@ -7,10 +9,11 @@ class CommentsList extends Component {
     getComments();
     getAuthenticated(jwt);
   }
+
   render() {
-    const { comments, url, auth } = this.props;
+    const { classes, comments, url, auth } = this.props;
     return (
-      <div style={{ marginTop: '70px' }}>
+      <div className={classes.main}>
         <Row>
           <Col md="4" lg="3">
             {!comments.length ? (
@@ -21,14 +24,8 @@ class CommentsList extends Component {
                   return '';
                 }
                 return (
-                  <div
-                    className="excerpt"
-                    style={{ marginTop: '40px', backgroundColor: '#e6ffe6' }}
-                  >
-                    <div
-                      className="brief"
-                      style={{ backgroundColor: ' #ccffcc' }}
-                    >
+                  <div className={classes.excerpt}>
+                    <div className={classes.brief}>
                       {auth === null ? (
                         <p>Loading ...</p>
                       ) : (
@@ -61,4 +58,4 @@ class CommentsList extends Component {
   }
 }
 
-export default CommentsList;
+export default injectSheet(styles)(CommentsList);
