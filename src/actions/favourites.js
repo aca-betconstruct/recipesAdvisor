@@ -1,7 +1,6 @@
 import {
   REQUEST_FAVOURITES,
   RECEIVE_FAVOURITES,
-  RECEIVE_ALL_FAVOURITES,
   DELETE_FAVOURITE,
   CHECK_FAVOURITE
 } from '../constants';
@@ -26,13 +25,6 @@ const receiveFavourites = json => {
   };
 };
 
-const allreceiveFavourites = json => {
-  return {
-    type: RECEIVE_ALL_FAVOURITES,
-    payload: json.data
-  };
-};
-
 export const checkFavourite = id => {
   return {
     type: CHECK_FAVOURITE,
@@ -53,11 +45,6 @@ export const postFavourite = (state, jwt) => {
       method: 'POST',
       body: JSON.stringify(state)
     })
-      .then(response => response.json())
-      .then(response => {
-        console.log(response);
-        dispatch(receiveFavourites(response.data));
-      });
   };
 };
 
@@ -72,7 +59,7 @@ export const getFavourites = jwt => {
       }
     })
       .then(response => response.json())
-      .then(json => dispatch(allreceiveFavourites(json)))
+      .then(json => dispatch(receiveFavourites(json.data)))
       .catch(e => {
         console.log(e);
       });
@@ -91,7 +78,6 @@ export const deleteFetchFavourites = (id, jwt) => {
     })
       .then(response => response.json())
       .then(() => {
-        dispatch(receiveFavourites());
         dispatch(deleteFavourite(id));
       })
       .catch(e => {
