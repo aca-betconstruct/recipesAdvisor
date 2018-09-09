@@ -9,7 +9,6 @@ import Recipes from '../../containers/Recipes';
 import Filter from '../../containers/Filter';
 import Favourites from '../../containers/Favourites';
 import styles from './styles';
-import CaloriesResults from '../../containers/CaloriesResults';
 
 const Home = ({ classes }) => {
   return (

@@ -126,7 +126,7 @@ class CaloriesCalculator extends Component {
   }
 
   render() {
-    const { classes, assignResults, valid } = this.props;
+    const { classes, assignResults } = this.props;
     const { activityDescription, isReady } = this.state;
     let caloriesMessage = '';
     let weightLossMessage = '';

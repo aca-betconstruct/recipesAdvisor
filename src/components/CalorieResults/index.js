@@ -26,6 +26,9 @@ class Results extends Component {
       </div>
     );
   }
+  static PropTypes = {
+    assignResults: PropTypes.object
+  };
 }
 
 export default injectSheet(styles)(Results);

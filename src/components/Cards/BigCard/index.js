@@ -80,7 +80,11 @@ class BigCard extends Component {
             <Mask overlay="white-slight" className="waves-light" />
           </Link>
         </View>
-        <h3 className="font-weight-bold dark-grey-text mb-3 p-0">
+        <h3
+          className={`font-weight-bold dark-grey-text mb-3 p-0 ${
+            classes.title
+          }`}
+        >
           <Link
             to={{ pathname: `/detail/${uri.slice(44)}` }}
             style={{ color: 'black' }}

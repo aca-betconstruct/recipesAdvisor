@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, CardImage, View, Fa, CardBody } from 'mdbreact';
+import { Container, Row, Col, CardImage, View, Fa } from 'mdbreact';
 import Comments from '../../containers/Comments';
 import './style.css';
 

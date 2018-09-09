@@ -3,7 +3,6 @@ import { changeCalories } from '../../actions';
 import CaloriesCalculator from '../../components/CaloriesCalculator';
 
 import { bindActionCreators } from 'redux';
-import assignResults from "../../reducers/calories";
 
 const mapStateToProps = state => {
   return {

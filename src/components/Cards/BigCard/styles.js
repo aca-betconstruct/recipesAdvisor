@@ -37,6 +37,11 @@ export default {
     color: 'white',
     fontSize: '25px'
   },
+  title: {
+    minWidth: '300px',
+    maxWidth: '300px',
+    textAlign: 'center'
+  },
   description: {
     textAlign: 'center',
     '&>p': {

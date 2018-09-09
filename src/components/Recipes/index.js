@@ -32,7 +32,6 @@ class Recipes extends Component {
       getFetchFavourites,
       getRecipes,
       firstPage,
-      nextPage,
       labelsType,
       labels,
       q,
@@ -40,37 +39,20 @@ class Recipes extends Component {
       jwt
     } = this.props;
     firstPage();
-    const pref = new Promise(resolve => {
-      if (jwt.length) resolve(getPreferences(jwt));
-      else resolve();
+    new Promise(resolve => {
+      if (jwt.length) {
+        getPreferences(jwt);
+        getFetchFavourites(jwt);
+      }
+      resolve();
+    }).then(() => {
+      const { preferences, favourites, curPage } = this.props;
+      getRecipes(curPage, labels, q, labelsType, preferences, favourites, type);
     });
-    pref
-      .then(() => {
-        if (jwt.length) getFetchFavourites(jwt);
-      })
-      .then(() => {
-        const {
-          preferences,
-          favourites,
-          curPage,
-          isFavouritesFetching
-        } = this.props;
-        getRecipes(
-          curPage,
-          labels,
-          q,
-          labelsType,
-          preferences,
-          favourites,
-          type
-        );
-      });
-    nextPage(curPage + 1);
   }
 
   componentDidUpdate(prevProps) {
     const {
-      isFavouritesFetching,
       firstPage,
       getRecipes,
       labelsType,
@@ -84,33 +66,19 @@ class Recipes extends Component {
       const { favourites } = this.props;
       firstPage();
       getRecipes(curPage, labels, q, labelsType, preferences, favourites, type);
-      if (isFavouritesFetching !== prevProps.isFavouritesFetching) {
-        const { favourites } = this.props;
-        getRecipes(
-          curPage,
-          labels,
-          q,
-          labelsType,
-          preferences,
-          favourites,
-          type
-        );
-      }
     }
   }
 
   handleClick(index, i) {
     const { curIndex } = this.state;
     if (curIndex !== index) {
-      const animationStart = new Promise(resolve =>
-        resolve(
-          this.setState({
-            zoomOut: true,
-            zoomIn: false
-          })
-        )
-      );
-      animationStart.then(() => {
+      new Promise(resolve => {
+        this.setState({
+          zoomOut: true,
+          zoomIn: false
+        });
+        resolve();
+      }).then(() => {
         setTimeout(
           () =>
             this.setState({
@@ -126,32 +94,30 @@ class Recipes extends Component {
   }
 
   fetchMoreData() {
-    let time = 15000;
-    const {
-      updateRecipes,
-      nextPage,
-      curPage,
-      labelsType,
-      labels,
-      q,
-      preferences,
-      favourites,
-      type
-    } = this.props;
-    setTimeout(
-      () =>
-        updateRecipes(
-          curPage,
-          labels,
-          q,
-          labelsType,
-          preferences,
-          favourites,
-          type
-        ),
-      time
-    );
+    const { nextPage, curPage } = this.props;
     nextPage(curPage + 1);
+    let time = 5000;
+    setTimeout(() => {
+      const {
+        updateRecipes,
+        curPage,
+        labelsType,
+        labels,
+        q,
+        preferences,
+        favourites,
+        type
+      } = this.props;
+      updateRecipes(
+        curPage,
+        labels,
+        q,
+        labelsType,
+        preferences,
+        favourites,
+        type
+      );
+    }, time);
   }
 
   render() {
@@ -227,77 +193,78 @@ class Recipes extends Component {
           </Row>
         </Container>
       );
-    }
-    return (
-      <Container
-        style={type === 'random' ? { width: '80%' } : {}}
-        className="my-5"
-      >
-        <Row
-          style={{
-            marginTop: '25px',
-            display: 'flex',
-            justifyContent: 'center'
-          }}
+    } else {
+      return (
+        <Container
+          style={type === 'random' ? { width: '80%' } : {}}
+          className="my-5"
         >
-          {recipes.length ? (
-            zoomOut ? (
-              <Animation
-                type={'zoomOutDown'}
-                duration={'700ms'}
-                className={`col-md-12 col-lg-6`}
-              >
-                <BigCard recipe={recipes[curRecipe].hits[curIndex].recipe} />
-              </Animation>
-            ) : zoomIn ? (
-              <Animation
-                type={'zoomInUp'}
-                duration={'700ms'}
-                className={'col-md-12 col-lg-6'}
-              >
-                <BigCard recipe={recipes[curRecipe].hits[curIndex].recipe} />
-              </Animation>
-            ) : (
-              <Col md="12" lg="6">
-                <BigCard recipe={recipes[curRecipe].hits[curIndex].recipe} />
-              </Col>
-            )
-          ) : (
-            ''
-          )}
-          <Col
-            md="12"
-            lg="6"
-            id={'scrollableContent'}
-            className={classes.scrollBar}
+          <Row
+            style={{
+              marginTop: '25px',
+              display: 'flex',
+              justifyContent: 'center'
+            }}
           >
-            <InfiniteScroll
-              style={{ overflowX: 'hidden', width: '90%' }}
-              dataLength={recipes.length}
-              next={this.fetchMoreData}
-              hasMore={curPage < 4}
-              scrollableTarget="scrollableContent"
-              loader={<h4 style={{ textAlign: 'center' }}>Loading...</h4>}
-              endMessage={
-                <p style={{ textAlign: 'center' }}>
-                  <b>Yay! You have seen it all</b>
-                </p>
-              }
+            {recipes.length ? (
+              zoomOut ? (
+                <Animation
+                  type={'zoomOutDown'}
+                  duration={'700ms'}
+                  className={`col-md-12 col-lg-6`}
+                >
+                  <BigCard recipe={recipes[curRecipe].hits[curIndex].recipe} />
+                </Animation>
+              ) : zoomIn ? (
+                <Animation
+                  type={'zoomInUp'}
+                  duration={'700ms'}
+                  className={'col-md-12 col-lg-6'}
+                >
+                  <BigCard recipe={recipes[curRecipe].hits[curIndex].recipe} />
+                </Animation>
+              ) : (
+                <Col md="12" lg="6">
+                  <BigCard recipe={recipes[curRecipe].hits[curIndex].recipe} />
+                </Col>
+              )
+            ) : (
+              ''
+            )}
+            <Col
+              md="12"
+              lg="6"
+              id={'scrollableContent'}
+              className={classes.scrollBar}
             >
-              {recipes.map((recipe, i) =>
-                recipe.hits.map((item, index) => (
-                  <MediumCard
-                    recipe={item.recipe}
-                    key={index}
-                    onClick={() => this.handleClick(index, i)}
-                  />
-                ))
-              )}
-            </InfiniteScroll>
-          </Col>
-        </Row>
-      </Container>
-    );
+              <InfiniteScroll
+                style={{ overflowX: 'hidden', width: '90%' }}
+                dataLength={recipes.length}
+                next={curPage < 5 ? this.fetchMoreData : () => {}}
+                hasMore={curPage < 5}
+                scrollableTarget="scrollableContent"
+                loader={<h4 style={{ textAlign: 'center' }}>Loading...</h4>}
+                endMessage={
+                  <p style={{ textAlign: 'center' }}>
+                    <b>Yay! You have seen it all</b>
+                  </p>
+                }
+              >
+                {recipes.map((recipe, i) =>
+                  recipe.hits.map((item, index) => (
+                    <MediumCard
+                      recipe={item.recipe}
+                      key={index}
+                      onClick={() => this.handleClick(index, i)}
+                    />
+                  ))
+                )}
+              </InfiniteScroll>
+            </Col>
+          </Row>
+        </Container>
+      );
+    }
   }
   static propTypes = {
     curPage: PropTypes.number,

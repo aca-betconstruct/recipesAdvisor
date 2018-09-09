@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Col, Container, Row, Footer } from 'mdbreact';
+import { Col, Container, Row } from 'mdbreact';
 const FooterPage = () => {
   return (
     <footer
