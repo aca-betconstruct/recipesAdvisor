@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
+import injectSheet from 'react-jss';
 import { Row, Col } from 'mdbreact';
 import PropTypes from 'prop-types';
 import CommentList from '../../containers/CommentsList';
+import styles from './styles';
 
 class Comments extends Component {
   constructor(props) {
@@ -25,7 +27,7 @@ class Comments extends Component {
     this.setState({ text: ' ', receptId: ' ' });
   }
   render() {
-    const { url } = this.props;
+    const { classes, url } = this.props;
     return (
       <Fragment>
         <Row>
@@ -33,37 +35,22 @@ class Comments extends Component {
             <form method="post" onSubmit={this.handleSubmit}>
               <div className="row">
                 <div className="form-group">
-                  <hr
-                    color="green"
-                    style={{ width: '1200px', marginTop: '150px' }}
-                  />
+                  <hr className={classes.hr} />
                   <textarea
                     name="subject"
                     placeholder="Add comments .."
-                    className="form-control rounded-0 z-depth-1"
+                    className={`form-control rounded-0 z-depth-1 + ${
+                      classes.textarea
+                    }`}
                     id="exampleFormControlTextarea6"
                     rows="3"
-                    style={{
-                      marginTop: '60px',
-                      width: '500px',
-                      marginLeft: '30px'
-                    }}
                     value={this.state.text}
                     onChange={this.handleChange}
                   />
                 </div>
               </div>
-              <div className="row" style={{ marginLeft: '420px' }}>
-                <button
-                  style={{
-                    backgroundColor: 'green',
-                    border: 0,
-                    color: 'white',
-                    padding: '8px'
-                  }}
-                >
-                  Success
-                </button>
+              <div className={classes.row}>
+                <button className={classes.button}>Success</button>
               </div>
             </form>
           </Col>
@@ -79,4 +66,4 @@ class Comments extends Component {
   };
 }
 
-export default Comments;
+export default injectSheet(styles)(Comments);
