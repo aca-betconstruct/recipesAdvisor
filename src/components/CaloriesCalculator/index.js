@@ -127,7 +127,15 @@ class CaloriesCalculator extends Component {
 
   render() {
     const { classes, assignResults } = this.props;
-    const { valid } = this.props;
+    const {
+      ageInYears,
+      weightInKilograms,
+      heightInCentimeters
+    } = this.state;
+    const isEnabled =
+      ageInYears.length > 1 &&
+      weightInKilograms.length > 1 &&
+      heightInCentimeters.length > 1;
     const { activityDescription, isReady } = this.state;
     let caloriesMessage = '';
     let weightLossMessage = '';
@@ -181,6 +189,8 @@ class CaloriesCalculator extends Component {
                 <div>
                   <h2>Age</h2>
                   <input
+                    aria-required="true"
+                    id = "ageErr"
                     className={classes.textInput}
                     type="number"
                     min="12"
@@ -191,6 +201,8 @@ class CaloriesCalculator extends Component {
                 <div>
                   <h2>Weight in kgs</h2>
                   <input
+                    aria-required="true"
+                    id = "weightErr"
                     className={classes.textInput}
                     type="number"
                     min="30"
@@ -201,6 +213,8 @@ class CaloriesCalculator extends Component {
                 <div className>
                   <h2>Height in cms</h2>
                   <input
+                    aria-required="true"
+                    id = "heightErr"
                     className={classes.textInput}
                     type="number"
                     min="100"
@@ -211,7 +225,9 @@ class CaloriesCalculator extends Component {
                 <button
                   className={classes.button}
                   type="submit"
-                //  disabled={!valid}
+                  disabled={!isEnabled}
+                  aria-disabled="true"
+                  aria-describedby="weightErr ageErr heightErr"
                 >
                   Calculate
                 </button>
