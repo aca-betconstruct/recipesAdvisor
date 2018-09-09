@@ -11,6 +11,7 @@ export default {
   },
   button: {
     font: 'roboto',
+    outline: 0,
     color: '#ffffff',
     fontSize: '.9em',
     textDecoration: 'none',
@@ -29,7 +30,11 @@ export default {
     '-moz-transition': '0.5s all',
     '-ms-transition': '0.5s all',
     '&:hover': {
-      backgroundColor: 'rgb(139, 195, 74)'
+      backgroundColor: 'rgb(139, 195, 74)',
+      outline: 0
+    },
+    '&:focus': {
+      outline: 0
     }
   }
 };

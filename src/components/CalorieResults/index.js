@@ -26,7 +26,7 @@ class Results extends Component {
       </div>
     );
   }
-  static PropTypes = {
+  static propTypes = {
     assignResults: PropTypes.object
   };
 }
