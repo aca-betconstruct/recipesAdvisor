@@ -11,24 +11,31 @@ class Filter extends Component {
   constructor() {
     super();
     this.state = {
-      calories: { min: 0, max: 2000 },
+      calories: { min: 0, max: 5000 },
       search: '',
       activeLabel: ''
     };
   }
 
   changeLabel = label => {
-    const { search, activeLabel } = this.state;
+    const { search, activeLabel, calories } = this.state;
     const { getRecipes, curPage, firstPage } = this.props;
     if (activeLabel === label) {
       this.runSearch({ key: 'Enter' }, '');
       this.setState({ activeLabel: '' });
     } else {
-      const range = this.getRange();
-      const Filter = new Promise(resolve => resolve(firstPage));
       if (search.trim().length) {
-        Filter.then(() =>
-          getRecipes(curPage, [label], search, 'diet', [], [], 'search', range)
+        new Promise(resolve => resolve(firstPage)).then(() =>
+          getRecipes(
+            curPage,
+            [label],
+            search,
+            'diet',
+            [],
+            [],
+            'search',
+            calories
+          )
         );
         this.setState({ activeLabel: label });
         this.runSearch({ key: 'Enter' }, label);
@@ -43,33 +50,42 @@ class Filter extends Component {
   runSearch = (e, label) => {
     if (e.key === 'Enter') {
       const activeLabel = label || this.state.activeLabel;
-      const { search } = this.state;
+      const { search, calories } = this.state;
       const { firstPage, getRecipes } = this.props;
-      const Search = new Promise(resolve => resolve(firstPage()));
-      Search.then(() => {
-        const range = this.getRange();
-        const { curPage } = this.props;
-        getRecipes(
-          curPage,
-          activeLabel ? [activeLabel] : [],
-          search,
-          '',
-          [],
-          [],
-          'search',
-          range
-        );
-      });
+      if (search.trim()) {
+        new Promise(resolve => resolve(firstPage())).then(() => {
+          const { curPage } = this.props;
+          getRecipes(
+            curPage,
+            activeLabel ? [activeLabel] : [],
+            search,
+            '',
+            [],
+            [],
+            'search',
+            calories
+          );
+        });
+      }
     }
   };
 
   handleRangeChangeComplete = () => {
-    this.runSearch({ key: 'Enter' });
+    const { getRecipes, curPage, preferences, favourites } = this.props;
+    const { activeLabel, calories, search } = this.state;
+    getRecipes(
+      curPage,
+      activeLabel,
+      search,
+      '',
+      preferences,
+      favourites,
+      'daily',
+      calories
+    );
   };
 
   changeCalories = calories => this.setState({ calories });
-
-  getRange = () => `${this.state.calories.min}-${this.state.calories.max}`;
 
   render() {
     const { classes } = this.props;
@@ -80,13 +96,13 @@ class Filter extends Component {
           <h1>Filter</h1>
           <div className={classes.inputRange}>
             <InputRange
-              maxValue={2000}
+              maxValue={5000}
               minValue={0}
               value={calories}
               onChange={this.changeCalories}
               allowSameValues={false}
               onChangeComplete={this.handleRangeChangeComplete}
-              step={5}
+              step={100}
             />
           </div>
         </div>
