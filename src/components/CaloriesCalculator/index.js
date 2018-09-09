@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 import PropTypes from 'prop-types';
-import styles from './styles';
 import { Link } from 'react-router-dom';
+import styles from './styles';
 
 const activities = [
   'Sedentary lifestyle',
@@ -51,27 +51,22 @@ class CaloriesCalculator extends Component {
       activity: event.target.value,
       activityDescription: ind
     });
-    console.log('Activity level ' + this.state.activity);
   }
 
   handleGenderSelectorChange(event) {
     this.setState({ gender: event.target.value });
-    console.log('Gender ' + this.state.gender);
   }
 
   handleAgeInputChange(event) {
     this.setState({ ageInYears: event.target.value });
-    console.log('Age is ' + this.state.ageInYears);
   }
 
   handleWeightInputChange(event) {
     this.setState({ weightInKilograms: event.target.value });
-    console.log('weight is ' + this.state.weightInKilograms);
   }
 
   handleHeightInputChange(event) {
     this.setState({ heightInCentimeters: event.target.value });
-    console.log('weight is ' + this.state.heightInCentimeters);
   }
 
   handleCalculation(event) {
@@ -121,7 +116,6 @@ class CaloriesCalculator extends Component {
           bmr
       );
     }
-
     this.setState({ isReady: true });
   }
 

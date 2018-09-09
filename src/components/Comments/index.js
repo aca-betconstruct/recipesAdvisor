@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Row, Col } from 'mdbreact';
+import PropTypes from 'prop-types';
 import CommentList from '../../containers/CommentsList';
 
 class Comments extends Component {
@@ -71,6 +72,11 @@ class Comments extends Component {
       </Fragment>
     );
   }
+  static propTypes = {
+    url: PropTypes.string,
+    jwt: PropTypes.string,
+    postComment: PropTypes.func
+  };
 }
 
 export default Comments;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Mask, Fa, View } from 'mdbreact';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import injectSheet from 'react-jss';
@@ -49,6 +50,10 @@ class WideRecipeCard extends Component {
       </Row>
     );
   }
+    static propTypes = {
+        classes: PropTypes.object,
+        recipe: PropTypes.object
+    };
 }
 
 export default injectSheet(styles)(WideRecipeCard);

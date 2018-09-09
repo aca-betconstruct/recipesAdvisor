@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, CardImage, View, Fa } from 'mdbreact';
+import PropTypes from 'prop-types';
 import Comments from '../../containers/Comments';
 import './style.css';
 
@@ -66,7 +67,7 @@ class Detail extends Component {
                     <strong>{Math.ceil(recipe.calories)}</strong>
                   </div>
                   <div style={{ marginLeft: '20px' }}>
-                    <h3 className="font-weight-bold black-text " lg="3" md="3">
+                    <h3 className="font-weight-bold black-text">
                       Total weight
                     </h3>
                     <strong>{Math.ceil(recipe.totalWeight)}</strong>
@@ -76,16 +77,14 @@ class Detail extends Component {
             </Row>
           </Col>
         </Row>
-        <Comments
-          // postComment={postComment}
-          url={url}
-          // getComments={getComments}
-          // comments={comments}
-          // auth={auth}
-        />
+        <Comments url={url} />
       </Container>
     );
   }
+  static propTypes = {
+    recipe: PropTypes.object,
+    classes: PropTypes.object
+  };
 }
 
 export default Detail;

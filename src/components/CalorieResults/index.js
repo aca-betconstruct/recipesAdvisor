@@ -6,7 +6,6 @@ import styles from './styles';
 class Results extends Component {
   render() {
     const { classes, assignResults } = this.props;
-
     return (
       <div className={classes.calories}>
         {assignResults.isReady ? (
@@ -26,8 +25,9 @@ class Results extends Component {
       </div>
     );
   }
-  static PropTypes = {
-    assignResults: PropTypes.object
+  static propTypes = {
+    assignResults: PropTypes.object,
+    classes: PropTypes.object
   };
 }
 

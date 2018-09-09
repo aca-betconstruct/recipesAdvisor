@@ -40,7 +40,7 @@ class Recipes extends Component {
     } = this.props;
     firstPage();
     new Promise(resolve => {
-      if (jwt.length) {
+      if (jwt) {
         getPreferences(jwt);
         getFetchFavourites(jwt);
       }

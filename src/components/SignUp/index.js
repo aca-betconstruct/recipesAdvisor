@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-
-import injectSheet from 'react-jss';
-import styles from './styles';
-
 import { Field } from 'redux-form';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import injectSheet from 'react-jss';
+import styles from './styles';
 
 import renderField from '../AuthHelpers/renderField';
 
@@ -153,6 +152,9 @@ class SignUp extends Component {
       </div>
     );
   }
+  static propTypes = {
+    classes: PropTypes.object
+  };
 }
 
 export default injectSheet(styles)(SignUp);

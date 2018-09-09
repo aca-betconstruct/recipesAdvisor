@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Row, Col } from 'mdbreact';
 
 class CommentsList extends Component {
@@ -59,6 +60,14 @@ class CommentsList extends Component {
       </div>
     );
   }
+  static propTypes = {
+    getComments: PropTypes.func,
+    getAuthenticated: PropTypes.func,
+    jwt: PropTypes.string,
+    comments: PropTypes.array,
+    url: PropTypes.string,
+    auth: PropTypes.array
+  };
 }
 
 export default CommentsList;

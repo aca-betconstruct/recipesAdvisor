@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, Mask, Fa } from 'mdbreact';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
 import injectSheet from 'react-jss';
 
 import styles from './styles';
@@ -10,17 +9,13 @@ import styles from './styles';
 class BigCard extends Component {
   constructor(props) {
     super(props);
-
     this.handleFavouriteClick = this.handleFavouriteClick.bind(this);
   }
-  static propTypes = {
-    classes: PropTypes.object,
-    recipe: PropTypes.object
-  };
+
   handleFavouriteClick() {
     const {
       checkFavourite,
-      fetchFavourites,
+      postFavourite,
       deleteFetchFavourites,
       jwt,
       recipe,
@@ -30,7 +25,7 @@ class BigCard extends Component {
       const { isFavourite, uri } = this.props.recipe;
       isFavourite
         ? deleteFetchFavourites(recipe.uri.slice(45), jwt)
-        : fetchFavourites(
+        : postFavourite(
             {
               favoriteId: recipe.uri.slice(45),
               recepte: { ...recipe, isFavourite: true }
@@ -104,6 +99,10 @@ class BigCard extends Component {
       </div>
     );
   }
+  static propTypes = {
+    classes: PropTypes.object,
+    recipe: PropTypes.object
+  };
 }
 
 export default injectSheet(styles)(BigCard);

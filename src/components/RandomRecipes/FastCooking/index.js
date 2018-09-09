@@ -32,8 +32,12 @@ class FastCooking extends Component {
           })
         )
       );
-      recipe = recipe.filter(item => item.time > 0 && item.time <= 60);
-      recipe.splice(4, recipe.length - 6);
+      recipe = recipe
+        .sort((a, b) => {
+          return a.time - b.time;
+        })
+        .filter(el => el.time !== 0);
+      recipe.splice(6);
       this.setState({ recipes: recipe });
     }, 1000);
   }
@@ -56,7 +60,7 @@ class FastCooking extends Component {
         </Container>
       );
     } else {
-      return <span />;
+      return null;
     }
   }
   static propTypes = {

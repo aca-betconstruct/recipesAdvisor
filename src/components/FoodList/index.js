@@ -19,23 +19,12 @@ class FoodList extends Component {
     getPreferences(jwt);
   }
 
-  handleInput = e => this.setState({ value: e.target.value });
-
-  idGen = () => {
-    let id = 1;
-    this.props.preferences.forEach(v => {
-      if (v.id >= id) id = v.id + 1;
-    });
-    return id + 13;
-  };
-
   handleAdd = text => {
     const { fetchPreferences, jwt } = this.props;
     fetchPreferences(
       {
         text,
-        isLike: this.props.type,
-        id: this.idGen()
+        isLike: this.props.type
       },
       jwt
     );
