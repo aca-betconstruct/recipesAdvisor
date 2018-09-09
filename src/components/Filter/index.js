@@ -24,7 +24,7 @@ class Filter extends Component {
       this.runSearch({ key: 'Enter' }, '');
       this.setState({ activeLabel: '' });
     } else {
-      if (search.trim().length) {
+      if (search.trim()) {
         new Promise(resolve => resolve(firstPage)).then(() =>
           getRecipes(
             curPage,
@@ -59,7 +59,7 @@ class Filter extends Component {
             curPage,
             activeLabel ? [activeLabel] : [],
             search,
-            '',
+            'diet',
             [],
             [],
             'search',
@@ -75,9 +75,9 @@ class Filter extends Component {
     const { activeLabel, calories, search } = this.state;
     getRecipes(
       curPage,
-      activeLabel,
+      [activeLabel],
       search,
-      '',
+      'diet',
       preferences,
       favourites,
       'daily',

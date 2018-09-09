@@ -18,7 +18,7 @@ class Detail extends Component {
       <Container>
         <Row>
           <Col>
-            <button onClick={this.back} className={classes.ditaelBack}>
+            <button onClick={this.back} className={classes.detailBack}>
               <i
                 className="fa fa-arrow-left green-text fa-2x"
                 aria-hidden="true"
@@ -47,7 +47,7 @@ class Detail extends Component {
                   </h2>
                 </a>
                 <Row>
-                  <div className={classes.tableDitael}>
+                  <div className={classes.tableDetail}>
                     <Col>
                       <h3 className="font-weight-bold black-text">
                         Ingredients
@@ -62,7 +62,7 @@ class Detail extends Component {
                     </Col>
                   </div>
                 </Row>
-                <div className={classes.tableDitael}>
+                <div className={classes.tableDetail}>
                   <div>
                     <h3 className="font-weight-bold black-text">Calories</h3>
                     <strong>{Math.ceil(recipe.calories)}</strong>

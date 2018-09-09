@@ -23,7 +23,8 @@ export default {
     transitionDuration: '500ms'
   },
   navBarBrand: {
-    padding: 0
+    padding: 0,
+    outline: 0
   },
   navBarScroll: {
     border: 'none'

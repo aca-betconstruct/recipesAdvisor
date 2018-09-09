@@ -1,4 +1,4 @@
-import { RECEIVE_ALL_FAVOURITES, REQUEST_FAVOURITES } from '../../constants';
+import { RECEIVE_FAVOURITES, REQUEST_FAVOURITES } from '../../constants';
 import { isFavouriteRecipesFetching } from '../../reducers/favourites';
 
 describe('isFavouriteRecipesFetching', () => {
@@ -9,12 +9,12 @@ describe('isFavouriteRecipesFetching', () => {
   });
   test('RECEIVE_ALL_FAVOURITES when it is false', () => {
     expect(
-      isFavouriteRecipesFetching(false, { type: RECEIVE_ALL_FAVOURITES })
+      isFavouriteRecipesFetching(false, { type: RECEIVE_FAVOURITES })
     ).toBe(false);
   });
   test('RECEIVE_ALL_FAVOURITES when it is true', () => {
     expect(
-      isFavouriteRecipesFetching(true, { type: RECEIVE_ALL_FAVOURITES })
+      isFavouriteRecipesFetching(true, { type: RECEIVE_FAVOURITES })
     ).toBe(false);
   });
   test('REQUEST_FAVOURITES  non-action when it is false ', () => {

@@ -24,6 +24,7 @@ class Recipes extends Component {
 
     this.fetchMoreData = this.fetchMoreData.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.deleteBigCard = this.deleteBigCard.bind(this);
   }
 
   componentDidMount() {
@@ -120,6 +121,14 @@ class Recipes extends Component {
     }, time);
   }
 
+  deleteBigCard() {
+    const { favourites } = this.props;
+    const { curIndex } = this.state;
+    if (favourites.length > curIndex && curIndex) {
+      this.setState({ curIndex: curIndex - 1 });
+    }
+  }
+
   render() {
     const { curRecipe, curIndex, zoomOut, zoomIn } = this.state;
     const { classes, type, recipes, favourites, curPage } = this.props;
@@ -140,7 +149,10 @@ class Recipes extends Component {
                   duration={'700ms'}
                   className={`col-md-12 col-lg-6`}
                 >
-                  <BigCard recipe={favourites[curIndex].recepte} />
+                  <BigCard
+                    deleteBigCard={this.deleteBigCard}
+                    recipe={favourites[curIndex].recepte}
+                  />
                 </Animation>
               ) : zoomIn ? (
                 <Animation
@@ -148,11 +160,17 @@ class Recipes extends Component {
                   duration={'700ms'}
                   className={'col-md-12 col-lg-6'}
                 >
-                  <BigCard recipe={favourites[curIndex].recepte} />
+                  <BigCard
+                    deleteBigCard={this.deleteBigCard}
+                    recipe={favourites[curIndex].recepte}
+                  />
                 </Animation>
               ) : (
                 <Col md="12" lg="6">
-                  <BigCard recipe={favourites[curIndex].recepte} />
+                  <BigCard
+                    deleteBigCard={this.deleteBigCard}
+                    recipe={favourites[curIndex].recepte}
+                  />
                 </Col>
               )
             ) : (
