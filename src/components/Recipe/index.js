@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import Detail from '../Detail';
 import Header from '../../containers/Header';
 
@@ -24,6 +25,9 @@ class Recipe extends Component {
         </div>
       </div>
     );
+  }
+  static propTypes ={
+      detail: PropTypes.object
   }
 }
 

@@ -7,20 +7,20 @@ describe('isFavouriteRecipesFetching', () => {
       isFavouriteRecipesFetching(false, { type: REQUEST_FAVOURITES })
     ).toBe(true);
   });
-  test('RECEIVE_ALL_FAVOURITES when is is false', () => {
+  test('RECEIVE_ALL_FAVOURITES when it is false', () => {
     expect(
       isFavouriteRecipesFetching(false, { type: RECEIVE_ALL_FAVOURITES })
     ).toBe(false);
   });
-  test('RECEIVE_ALL_FAVOURITES when is is true', () => {
+  test('RECEIVE_ALL_FAVOURITES when it is true', () => {
     expect(
       isFavouriteRecipesFetching(true, { type: RECEIVE_ALL_FAVOURITES })
     ).toBe(false);
   });
-  test('REQUEST_FAVOURITES on non-action when it is false ', () => {
+  test('REQUEST_FAVOURITES  non-action when it is false ', () => {
     expect(isFavouriteRecipesFetching(false, {})).toBe(false);
   });
-  test('REQUEST_FAVOURITES on non-action  when it is true', () => {
+  test('REQUEST_FAVOURITES  non-action  when it is true', () => {
     expect(isFavouriteRecipesFetching(true, {})).toBe(false);
   });
 });

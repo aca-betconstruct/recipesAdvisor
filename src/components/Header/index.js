@@ -71,6 +71,7 @@ class Header extends Component {
   }
 
   handleLogoutClick = () => {
+    localStorage.clear();
     this.props.logoutUser();
   };
 

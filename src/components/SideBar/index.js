@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Tooltip } from 'mdbreact';
 import injectSheet from 'react-jss';
+import PropTypes from 'prop-types';
 
 import CalorieResult from '../../containers/CaloriesResults';
 
@@ -94,6 +95,9 @@ class ProfileSidebar extends Component {
       </div>
     );
   }
+  static propTypes = {
+    classes: PropTypes.object
+  };
 }
 
 export default injectSheet(styles)(ProfileSidebar);

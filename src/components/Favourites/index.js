@@ -8,10 +8,7 @@ import styles from './styles';
 
 class Favourites extends Component {
   componentDidMount() {
-    const { getFetchFavourites, history, jwt } = this.props;
-    if (!jwt) {
-      history.push('/login');
-    }
+    const { getFetchFavourites, jwt } = this.props;
     getFetchFavourites(jwt);
   }
 

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import injectSheet from 'react-jss';
 import { Container, Row, Col, CardImage, View, Fa } from 'mdbreact';
+import PropTypes from 'prop-types';
 import Comments from '../../containers/Comments';
-import './style.css';
+import styles from './styles';
 
 class Detail extends Component {
   back = event => {
@@ -9,14 +11,14 @@ class Detail extends Component {
     this.props.history.goBack();
   };
   render() {
-    const { match, recipe } = this.props;
+    const { classes, match, recipe } = this.props;
     const url = match.url.slice(8);
 
     return (
       <Container>
         <Row>
           <Col>
-            <button onClick={this.back} className="ditael-back">
+            <button onClick={this.back} className={classes.ditaelBack}>
               <i
                 className="fa fa-arrow-left green-text fa-2x"
                 aria-hidden="true"
@@ -45,7 +47,7 @@ class Detail extends Component {
                   </h2>
                 </a>
                 <Row>
-                  <div className="tableditael">
+                  <div className={classes.tableDitael}>
                     <Col>
                       <h3 className="font-weight-bold black-text">
                         Ingredients
@@ -60,13 +62,13 @@ class Detail extends Component {
                     </Col>
                   </div>
                 </Row>
-                <div className="tableditael">
+                <div className={classes.tableDitael}>
                   <div>
                     <h3 className="font-weight-bold black-text">Calories</h3>
                     <strong>{Math.ceil(recipe.calories)}</strong>
                   </div>
                   <div style={{ marginLeft: '20px' }}>
-                    <h3 className="font-weight-bold black-text " lg="3" md="3">
+                    <h3 className="font-weight-bold black-text">
                       Total weight
                     </h3>
                     <strong>{Math.ceil(recipe.totalWeight)}</strong>
@@ -76,16 +78,14 @@ class Detail extends Component {
             </Row>
           </Col>
         </Row>
-        <Comments
-          // postComment={postComment}
-          url={url}
-          // getComments={getComments}
-          // comments={comments}
-          // auth={auth}
-        />
+        <Comments url={url} />
       </Container>
     );
   }
+  static propTypes = {
+    recipe: PropTypes.object,
+    classes: PropTypes.object
+  };
 }
 
-export default Detail;
+export default injectSheet(styles)(Detail);

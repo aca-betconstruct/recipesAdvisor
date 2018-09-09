@@ -7,17 +7,23 @@ import {
   postFavourite
 } from '../../../actions';
 import { selectIsAuth } from '../../../selectors';
+import { bindActionCreators } from 'redux';
 
 const mapStateToProps = state => ({
   jwt: state.jwt,
   isAuth: selectIsAuth(state)
 });
 
-const mapDispatchToProps = dispatch => ({
-  checkFavourite: id => dispatch(checkFavourite(id)),
-  fetchFavourites: (state, jwt) => dispatch(postFavourite(state, jwt)),
-  deleteFetchFavourites: (id, jwt) => dispatch(deleteFetchFavourites(id, jwt))
-});
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(
+    {
+      checkFavourite,
+      postFavourite,
+      deleteFetchFavourites
+    },
+    dispatch
+  );
+};
 
 export default connect(
   mapStateToProps,

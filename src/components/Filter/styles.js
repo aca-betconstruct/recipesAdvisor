@@ -4,28 +4,39 @@ export default {
   main: {
     display: 'flex',
     justifyContent: 'space-between',
-    width: '90%',
+    width: '94%',
     border: '1px solid rgb(139, 195, 74)',
-    padding: '13px 13px 8px 13px',
+    padding: '13px 9px 8px 9px',
     borderWidth: '0 0 1px 0',
-    marginBottom: '5px'
+    marginBottom: '5px',
+    '@media screen and (max-width: 450px)': {
+      width: '100%'
+    }
   },
   filtersContainer: {
-    display: 'flex'
+    display: 'flex',
+    '@media screen and (max-width: 450px)': {
+      marginRight: '25px'
+    }
   },
   filterLeftContainer: {
     display: 'flex',
     flexDirection: 'column',
-    width: '90px'
+    width: '90px',
+    '@media screen and (max-width: 450px)': {
+      marginLeft: '25px',
+      marginRight: '15px'
+    }
   },
   label: {
     userSelect: 'none',
-    padding: '38px 8px 0 8px',
+    padding: '30px 8px 0 8px',
     fontSize: '16px',
     transition: '.6s',
     color: 'black',
     cursor: 'pointer',
-    '@media screen and (max-width: 650px)': {
+    textAlign: 'center',
+    '@media screen and (max-width: 680px)': {
       display: 'none'
     }
   },
