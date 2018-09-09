@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
+import InputRange from 'react-input-range';
+import 'react-input-range/lib/css/index.css';
 import styles from './styles';
 
 import Search from '../Search';
@@ -9,6 +11,7 @@ class Filter extends Component {
   constructor() {
     super();
     this.state = {
+      calories: { min: 0, max: 2000 },
       search: '',
       activeLabel: ''
     };
@@ -21,10 +24,11 @@ class Filter extends Component {
       this.runSearch({ key: 'Enter' }, '');
       this.setState({ activeLabel: '' });
     } else {
+      const range = this.getRange();
       const Filter = new Promise(resolve => resolve(firstPage));
       if (search.trim().length) {
         Filter.then(() =>
-          getRecipes(curPage, [label], search, 'diet', [], [], 'search')
+          getRecipes(curPage, [label], search, 'diet', [], [], 'search', range)
         );
         this.setState({ activeLabel: label });
         this.runSearch({ key: 'Enter' }, label);
@@ -43,6 +47,7 @@ class Filter extends Component {
       const { firstPage, getRecipes } = this.props;
       const Search = new Promise(resolve => resolve(firstPage()));
       Search.then(() => {
+        const range = this.getRange();
         const { curPage } = this.props;
         getRecipes(
           curPage,
@@ -51,18 +56,40 @@ class Filter extends Component {
           '',
           [],
           [],
-          'search'
+          'search',
+          range
         );
       });
     }
   };
 
+  handleRangeChangeComplete = () => {
+    this.runSearch({ key: 'Enter' });
+  };
+
+  changeCalories = calories => this.setState({ calories });
+
+  getRange = () => `${this.state.calories.min}-${this.state.calories.max}`;
+
   render() {
     const { classes } = this.props;
-    const { activeLabel } = this.state;
+    const { activeLabel, calories } = this.state;
     return (
       <div className={classes.main}>
-        <h1>Filter</h1>
+        <div className={classes.filterLeftContainer}>
+          <h1>Filter</h1>
+          <div className={classes.inputRange}>
+            <InputRange
+              maxValue={2000}
+              minValue={0}
+              value={calories}
+              onChange={this.changeCalories}
+              allowSameValues={false}
+              onChangeComplete={this.handleRangeChangeComplete}
+              step={5}
+            />
+          </div>
+        </div>
         <div className={classes.filtersContainer}>
           <div
             onClick={() => this.changeLabel('balanced')}

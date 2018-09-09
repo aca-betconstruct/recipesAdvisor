@@ -69,7 +69,8 @@ export const getRecipes = (
   labelsType,
   preferences = [],
   favourites = [],
-  type = 'daily'
+  type = 'daily',
+  calories = '0-2000'
 ) => dispatch => {
   dispatch(recipesFetching());
   const favs = favourites.map(fav => fav.favoriteId);
@@ -114,13 +115,14 @@ export const getRecipes = (
       break;
   }
   let recipe = [];
+  console.log(calories);
   include.forEach(inclFoods => {
     let api = edamamKeys[Math.floor(Math.random() * edamamKeys.length)];
     fetch(
       `https://api.edamam.com/search?q=${inclFoods}&app_id=${
         api.appId
       }&app_key=${api.appKey}&from=${page * count}&to=${count *
-        (page + 1)}${connectedLabels}${excludesFoods}`
+        (page + 1)}${`&calories=${calories}`}${connectedLabels}${excludesFoods}`
     )
       .then(recipes => recipes.json())
       .then(recipes => {

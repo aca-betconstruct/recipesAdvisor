@@ -1,3 +1,5 @@
+const inputRangeColor = 'rgb(0, 190, 0)';
+
 export default {
   main: {
     display: 'flex',
@@ -11,10 +13,13 @@ export default {
   filtersContainer: {
     display: 'flex'
   },
+  filterLeftContainer: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
   label: {
     userSelect: 'none',
-    padding: '8px',
-    paddingTop: '19px',
+    padding: '38px 8px 0 8px',
     fontSize: '16px',
     transition: '.6s',
     color: 'black',
@@ -26,5 +31,24 @@ export default {
   activeLabel: {
     color: 'rgb(139, 195, 74)',
     transition: '.6s'
+  },
+  inputRange: {
+    width: '100%',
+    marginTop: '3px',
+    '& > div': {
+      '& > span': {
+        display: 'none'
+      },
+      '& > div': {
+        '& > div': {
+          backgroundColor: inputRangeColor
+        },
+        '& > span > div': {
+          backgroundColor: inputRangeColor,
+          borderColor: inputRangeColor,
+          transitionDuration: '.5s'
+        }
+      }
+    }
   }
 };
