@@ -15,7 +15,8 @@ export default {
   },
   filterLeftContainer: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    width: '90px'
   },
   label: {
     userSelect: 'none',
@@ -34,12 +35,17 @@ export default {
   },
   inputRange: {
     width: '100%',
-    marginTop: '3px',
+    marginBottom: '8px',
+    padding: '0 6px',
     '& > div': {
       '& > span': {
         display: 'none'
       },
       '& > div': {
+        '& > span:nth-of-type(2) > span': {
+          // backgroundColor: 'black'
+          top: '7px'
+        },
         '& > div': {
           backgroundColor: inputRangeColor
         },
