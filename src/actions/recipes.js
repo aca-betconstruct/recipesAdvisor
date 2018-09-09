@@ -81,7 +81,8 @@ export const getRecipes = (
   let count = 20;
   let excludesFoods = '',
     connectedLabels = '';
-  if (labels.length) connectedLabels = joiner(labels, labelsType);
+  if (labels.filter(item => item).length)
+    connectedLabels = joiner(labels, labelsType);
   if (excludes.length) excludesFoods = joiner(excludes, 'excluded');
   let include = [];
   switch (type) {
@@ -125,7 +126,6 @@ export const getRecipes = (
     )
       .then(recipes => recipes.json())
       .then(recipes => {
-        console.log(recipes);
         return {
           ...recipes,
           hits: recipes.hits.filter(
@@ -136,7 +136,6 @@ export const getRecipes = (
         };
       })
       .then(recipes => {
-        console.log('1', recipes);
         recipe.push(recipes);
         dispatch(recipesFetchingSuccess(recipe, favs));
       })
