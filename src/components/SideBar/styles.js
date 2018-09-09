@@ -5,7 +5,7 @@ export default {
     backgroundSize: 'cover',
     minHeight: '100vh',
     paddingTop: '15%',
-    '@media screen and (max-width: 767px)': {
+    '@media screen and (max-width: 820px)': {
       display: 'none'
     }
   },
