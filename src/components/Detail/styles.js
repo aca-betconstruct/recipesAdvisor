@@ -1,10 +1,14 @@
 export default {
-  tableDitael: {
+  tableDetail: {
     display: 'flex'
   },
-  ditaelBack: {
+  detailBack: {
     border: '0',
     backgroundColor: 'white',
-    outline: 'none'
+    outline: 0,
+    cursor: 'pointer',
+    '&:focus': {
+      outline: 0
+    }
   }
 };
