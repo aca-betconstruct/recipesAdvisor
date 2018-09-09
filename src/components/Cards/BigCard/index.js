@@ -24,19 +24,25 @@ class BigCard extends Component {
       deleteFetchFavourites,
       jwt,
       recipe,
-      isAuth
+      isAuth,
+      deleteBigCard
     } = this.props;
     if (isAuth) {
       const { isFavourite, uri } = this.props.recipe;
-      isFavourite
-        ? deleteFetchFavourites(recipe.uri.slice(45), jwt)
-        : fetchFavourites(
-            {
-              favoriteId: recipe.uri.slice(45),
-              recepte: { ...recipe, isFavourite: true }
-            },
-            jwt
-          );
+      if (isFavourite) {
+        if (deleteBigCard) {
+          deleteBigCard();
+        }
+        deleteFetchFavourites(recipe.uri.slice(45), jwt);
+      } else {
+        fetchFavourites(
+          {
+            favoriteId: recipe.uri.slice(45),
+            recepte: { ...recipe, isFavourite: true }
+          },
+          jwt
+        );
+      }
       checkFavourite(uri);
     }
   }
