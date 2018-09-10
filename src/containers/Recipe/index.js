@@ -5,12 +5,12 @@ import { getDetail } from '../../actions';
 const mapStateToProps = state => {
   return {
     detail: state.detail,
-    auth: state.user,
+    auth: state.user
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  getDetail: url => dispatch(getDetail(url)),
+  getDetail: url => dispatch(getDetail(url))
 });
 
 export default connect(

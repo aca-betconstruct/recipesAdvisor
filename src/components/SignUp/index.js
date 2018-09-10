@@ -32,8 +32,7 @@ class SignUp extends Component {
         email: email,
         password: password,
         confirmPassword: confirmPassword
-      },
-      history.push('/login')
+      }
     );
     console.log({
       firstName: firstName,

@@ -21,13 +21,18 @@ class Comments extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    const { postComment, jwt } = this.props;
+    const { postComment, jwt, history, isAuth } = this.props;
     const { text, receptId } = this.state;
-    postComment({ text: text, receptId }, jwt);
-    this.setState({ text: ' ', receptId: ' ' });
+    if (isAuth) {
+      postComment({ text: text, receptId }, jwt);
+      this.setState({ text: ' ', receptId: ' ' });
+    } else {
+      history.push('/login');
+    }
   }
   render() {
     const { classes, url } = this.props;
+    const { text } = this.state;
     return (
       <div className={classes.commentsWrapper}>
         <Row>
@@ -48,7 +53,12 @@ class Comments extends Component {
                 </div>
               </Row>
               <div className={classes.row}>
-                <button className={classes.button}>Success</button>
+                <button
+                  className={classes.button}
+                  disabled={text.trim() === ''}
+                >
+                  Success
+                </button>
               </div>
             </form>
           </Col>

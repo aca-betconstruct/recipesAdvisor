@@ -65,13 +65,13 @@ class Detail extends Component {
                 <div className={classes.tableDetail}>
                   <div>
                     <h3 className="font-weight-bold black-text">Calories</h3>
-                    <strong>{Math.ceil(recipe.calories)}</strong>
+                    <strong>{Math.ceil(recipe.calories)} kcal.</strong>
                   </div>
                   <div style={{ marginLeft: '20px' }}>
                     <h3 className="font-weight-bold black-text">
                       Total weight
                     </h3>
-                    <strong>{Math.ceil(recipe.totalWeight)}</strong>
+                    <strong>{Math.ceil(recipe.totalWeight)} g.</strong>
                   </div>
                 </div>
               </Col>
