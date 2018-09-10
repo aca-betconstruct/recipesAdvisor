@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-
-import injectSheet from 'react-jss';
-import styles from './styles';
-
 import { Field } from 'redux-form';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import injectSheet from 'react-jss';
+import styles from './styles';
 
 import renderField from '../AuthHelpers/renderField';
 
@@ -62,7 +61,7 @@ class SignUp extends Component {
                       >
                         <li>
                           <div className={classes.descriptionBanner}>
-                            <h3>Why Do You Need This ?</h3>
+                            <h3>Why Do You Need This?</h3>
                             <p>
                               Recipes Advisor is a website that will help you to
                               get interesting recipes based on the products you
@@ -73,7 +72,7 @@ class SignUp extends Component {
                         </li>
                         <li>
                           <div className={classes.descriptionBanner}>
-                            <h3>What Do You Do here ?</h3>
+                            <h3>What Do You Do here?</h3>
                             <p>
                               Set up your food preferences once and get
                               interesting recipes daily.
@@ -85,7 +84,7 @@ class SignUp extends Component {
                   </div>
                   <div className={classes.signIn}>
                     <h4>
-                      Already have an account ?{' '}
+                      Already have an account?{' '}
                       <Link to="login" className={classes.a}>
                         Login
                       </Link>
@@ -153,6 +152,9 @@ class SignUp extends Component {
       </div>
     );
   }
+  static propTypes = {
+    classes: PropTypes.object
+  };
 }
 
 export default injectSheet(styles)(SignUp);

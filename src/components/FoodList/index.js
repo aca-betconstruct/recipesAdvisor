@@ -19,23 +19,12 @@ class FoodList extends Component {
     getPreferences(jwt);
   }
 
-  handleInput = e => this.setState({ value: e.target.value });
-
-  idGen = () => {
-    let id = 1;
-    this.props.preferences.forEach(v => {
-      if (v.id >= id) id = v.id + 1;
-    });
-    return id + 13;
-  };
-
   handleAdd = text => {
     const { fetchPreferences, jwt } = this.props;
     fetchPreferences(
       {
         text,
-        isLike: this.props.type,
-        id: this.idGen()
+        isLike: this.props.type
       },
       jwt
     );
@@ -86,11 +75,9 @@ class FoodList extends Component {
             }}
           />
           <button
-            className={classes.addButton}
-            style={{
-              backgroundColor: type ? 'rgb(0, 190, 0)' : 'rgb(255, 57, 57)',
-              borderColor: type ? 'rgb(0, 190, 0)' : 'rgb(255, 57, 57)'
-            }}
+            className={`${classes.button} ${
+              type ? classes.addButton : classes.removeButton
+            }`}
           >
             {type ? '+' : '-'}
           </button>

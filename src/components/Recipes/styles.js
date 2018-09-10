@@ -1,6 +1,6 @@
 export default {
   scrollBar: {
-    height: '550px',
+    height: '500px',
     overflowX: 'hidden',
     '&::-webkit-scrollbar': {
       width: '6px'

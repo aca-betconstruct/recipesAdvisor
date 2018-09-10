@@ -8,19 +8,14 @@ export default {
     margin: '3px 0 3px 0'
   },
   removeButContainer: {
-    backgroundColor: 'rgb(198, 67, 67)',
+    backgroundColor: '#d81e5a',
     width: '44px',
-    border: '1px solid rgb(198, 67, 67)',
+    border: '1px solid #d81e5a',
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column',
     overflow: 'hidden',
-    cursor: 'pointer',
-    '&:hover': {
-      '& div': {
-        color: 'black'
-      }
-    }
+    cursor: 'pointer'
   },
   removeBut: {
     fontSize: '29px',
@@ -39,7 +34,7 @@ export default {
     fontSize: '18px',
     border: '1px solid rgb(211, 211, 211)',
     cursor: 'default',
-    padding: '5px 8px 5px 8px',
+    padding: '5px 8px',
     userSelect: 'none'
   }
 };

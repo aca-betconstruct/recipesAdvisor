@@ -1,24 +1,24 @@
 export default {
   wrapper: {
     '@media (min-width: 950px)': {
-      height: '400px'
+      height: '267px'
     },
     '@media (min-width: 850px) and (max-width: 950px)': {
-      height: '346px'
+      height: '231px'
     },
     '@media (min-width: 750px) and (max-width: 850px)': {
-      height: '300px'
+      height: '200px'
     },
     '@media (min-width: 650px) and (max-width: 750px)': {
-      height: '260px'
+      height: '173px'
     },
     '@media (min-width: 550px) and (max-width: 650px)': {
-      height: '220px'
+      height: '147px'
     },
     '@media (min-width: 450px) and (max-width: 550px)': {
-      height: '180px'
+      height: '120px'
     },
-    height: '140px',
+    height: '93px',
     width: '100%'
   },
   opacity: {
@@ -28,24 +28,24 @@ export default {
   },
   image: {
     '@media (min-width: 950px)': {
-      height: '400px'
+      height: '267px'
     },
     '@media (min-width: 850px) and (max-width: 950px)': {
-      height: '346px'
+      height: '231px'
     },
     '@media (min-width: 750px) and (max-width: 850px)': {
-      height: '300px'
+      height: '200px'
     },
     '@media (min-width: 650px) and (max-width: 750px)': {
-      height: '260px'
+      height: '173px'
     },
     '@media (min-width: 550px) and (max-width: 650px)': {
-      height: '220px'
+      height: '147px'
     },
     '@media (min-width: 450px) and (max-width: 550px)': {
-      height: '180px'
+      height: '120px'
     },
-    height: '140px',
+    height: '93px',
     position: 'absolute',
     top: 0,
     width: '100%',

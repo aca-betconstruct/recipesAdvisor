@@ -23,10 +23,8 @@ export default {
     transitionDuration: '500ms'
   },
   navBarBrand: {
-    color: 'white',
-    '&:hover': {
-      color: 'white'
-    }
+    padding: 0,
+    outline: 0
   },
   navBarScroll: {
     border: 'none'
@@ -49,7 +47,7 @@ export default {
     borderColor: 'black'
   },
   logo: {
-    width: '55px'
+    height: '50px'
   },
   sideBarLink: {
     paddingBottom: '5px',

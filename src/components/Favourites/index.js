@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 import PropTypes from 'prop-types';
-import { Row } from 'mdbreact';
 
 import SideBar from '../SideBar';
 import Recipes from '../../containers/Recipes';
@@ -9,10 +8,7 @@ import styles from './styles';
 
 class Favourites extends Component {
   componentDidMount() {
-    const { getFetchFavourites, history, jwt } = this.props;
-    if (!jwt) {
-      history.push('/login');
-    }
+    const { getFetchFavourites, jwt } = this.props;
     getFetchFavourites(jwt);
   }
 
@@ -24,14 +20,18 @@ class Favourites extends Component {
   }
 
   render() {
-    const { classes, allFetchFavourites, isFavouritesFetching } = this.props;
-    return <div className={classes.row}>
-      <SideBar/>
-      <div className={classes.favourites}>
-      <div className={classes.name}>
-        <h1>Favourites</h1>
+    const { classes } = this.props;
+    return (
+      <div className={classes.row}>
+        <SideBar />
+        <div className={classes.favourites}>
+          <div className={classes.name}>
+            <h1>Favourites</h1>
+          </div>
+          <Recipes type={'favourite'} />
+        </div>
       </div>
-      <Recipes type={'favourite'} /></div></div>;
+    );
   }
   static propTypes = {
     classes: PropTypes.object,

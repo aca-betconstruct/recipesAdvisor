@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 import PropTypes from 'prop-types';
-import styles from './styles';
 import { Link } from 'react-router-dom';
-
+import styles from './styles';
 
 const activities = [
   'Sedentary lifestyle',
@@ -52,27 +51,22 @@ class CaloriesCalculator extends Component {
       activity: event.target.value,
       activityDescription: ind
     });
-    console.log('Activity level ' + this.state.activity);
   }
 
   handleGenderSelectorChange(event) {
     this.setState({ gender: event.target.value });
-    console.log('Gender ' + this.state.gender);
   }
 
   handleAgeInputChange(event) {
     this.setState({ ageInYears: event.target.value });
-    console.log('Age is ' + this.state.ageInYears);
   }
 
   handleWeightInputChange(event) {
     this.setState({ weightInKilograms: event.target.value });
-    console.log('weight is ' + this.state.weightInKilograms);
   }
 
   handleHeightInputChange(event) {
     this.setState({ heightInCentimeters: event.target.value });
-    console.log('weight is ' + this.state.heightInCentimeters);
   }
 
   handleCalculation(event) {
@@ -84,9 +78,6 @@ class CaloriesCalculator extends Component {
       heightInCentimeters
     } = this.state;
     const { changeCalories } = this.props;
-
-    // For men:	BMR = 10 × weight(kg) + 6.25 × height(cm) - 5 × age(y) + 5
-    // For women:	BMR = 10 × weight(kg) + 6.25 × height(cm) - 5 × age(y) - 161
     let bmr;
     switch (this.state.activity) {
       case 'Sedentary lifestyle':
@@ -109,19 +100,22 @@ class CaloriesCalculator extends Component {
     }
 
     if (gender === 'male') {
-      changeCalories((10 * weightInKilograms +
-        6.25 * heightInCentimeters -
-        5 * ageInYears +
-        5) *
-        bmr);
+      changeCalories(
+        (10 * weightInKilograms +
+          6.25 * heightInCentimeters -
+          5 * ageInYears +
+          5) *
+          bmr
+      );
     } else {
-      changeCalories((10 * weightInKilograms +
-        6.25 * heightInCentimeters -
-        5 * ageInYears -
-        161) *
-        bmr);
+      changeCalories(
+        (10 * weightInKilograms +
+          6.25 * heightInCentimeters -
+          5 * ageInYears -
+          161) *
+          bmr
+      );
     }
-
     this.setState({ isReady: true });
   }
 
@@ -136,15 +130,17 @@ class CaloriesCalculator extends Component {
       ageInYears.length > 1 &&
       weightInKilograms.length > 1 &&
       heightInCentimeters.length > 1;
+
     const { activityDescription, isReady } = this.state;
     let caloriesMessage = '';
     let weightLossMessage = '';
     if (isReady === true) {
-      caloriesMessage = `your amount of daily calories is  ${assignResults.calories}`;
+      caloriesMessage = `your amount of daily calories is  ${
+        assignResults.calories
+      }`;
       weightLossMessage = `if you want to loose weight don't consume more than 
         ${assignResults.wls}`;
     }
-
     return (
       <div>
         <h1 className={classes.welcome}>
@@ -180,7 +176,11 @@ class CaloriesCalculator extends Component {
                     onChange={this.handleGenderSelectorChange}
                   >
                     {genders.map((value, index) => (
-                      <option key={index} value={value}>
+                      <option
+                        className={classes.option}
+                        key={index}
+                        value={value}
+                      >
                         <p>{value}</p>
                       </option>
                     ))}
@@ -233,18 +233,18 @@ class CaloriesCalculator extends Component {
                     Calculate
                   </button>
   
-                  <Link  className={classes.linkButton} to="/home">
+                  <Link  className={classes.button} to="/home">
                     go back
                   </Link>
                 </div>
-                
+
               </form>
             </div>
           </div>
           <div className={classes.boxRight}>
             <div className={classes.contentLeft}>
               <div className={classes.contentInfo}>
-                <h2> Is this your level ?</h2>
+                <h2> Is this your level?</h2>
                 <div className={classes.slider}>
                   <div className={classes.callbacksContainer}>
                     <ul
@@ -262,8 +262,7 @@ class CaloriesCalculator extends Component {
                       </li>
                       <li>
                         <div className={classes.descriptionBanner}>
-                          <h2>What You Do ?</h2>
-
+                          <h2>What You Do?</h2>
                           <p>{caloriesMessage}</p>
                           <p>{weightLossMessage}</p>
                         </div>
@@ -280,7 +279,8 @@ class CaloriesCalculator extends Component {
     );
   }
   static propTypes = {
-    classes: PropTypes.object
+    classes: PropTypes.object,
+    changeCalories: PropTypes.func
   };
 }
 

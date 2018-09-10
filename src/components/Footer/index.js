@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Col, Container, Row, Footer } from 'mdbreact';
+import { Col, Container, Row } from 'mdbreact';
 const FooterPage = () => {
   return (
     <footer
@@ -45,10 +45,10 @@ const FooterPage = () => {
           >
             <h6 className="text-uppercase mb-4 font-weight-bold">Contact</h6>
             <p>
-              <i className="fa fa-home mr-3" /> New York, NY 10012, US
+              <i className="fa fa-home mr-3" /> Yerevan, HH 2, ARM
             </p>
             <p>
-              <i className="fa fa-envelope mr-3" /> info@gmail.com
+              <i className="fa fa-envelope mr-3" /> recipesAdvisor@gmail.com
             </p>
             <p>
               <i className="fa fa-phone mr-3" /> + 01 234 567 88

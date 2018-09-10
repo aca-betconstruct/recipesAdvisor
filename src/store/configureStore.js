@@ -1,8 +1,7 @@
 import thunk from 'redux-thunk';
 import { applyMiddleware, createStore, compose } from 'redux';
 import rootReducer from '../reducers';
-import { saveState, loadState } from './localStorage';
-import throttle from 'lodash/throttle';
+import {loadState } from './localStorage';
 
 const localStorageStore = loadState('store');
 const store =
@@ -17,21 +16,6 @@ const store =
             window.__REDUX_DEVTOOLS_EXTENSION__()
         )
       );
-//store.subscribe(() => console.log(store.getState()));
-store.subscribe(
-  throttle(() => {
-    saveState(
-      {
-          user:store.getState().user,
-        recipes: store.getState().recipes,
-        allFetchFavourites: store.getState().allFetchFavourites,
-        preferences: store.getState().preferences,
-        filter: store.getState().filter,
-        jwt: store.getState().jwt
-      },
-      'store'
-    );
-  }, 1000)
-);
+
 
 export default store;

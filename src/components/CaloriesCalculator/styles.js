@@ -1,4 +1,5 @@
-import backgroundImg from '../../images/loginBack.jpg';
+import backgroundImg from '../../images/backgroundImg.jpg';
+
 export default {
   '@global': {
     'html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, dl, dt, dd, ol, nav ul, nav li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video': {
@@ -29,7 +30,6 @@ export default {
     },
     body: {
       background: `url(${backgroundImg}) no-repeat center center fixed`,
-//      background: 'red',
       backgroundSize: 'cover',
       minHeight: '100vh',
       fontFamily: "'Open Sans', sans-serif",
@@ -85,7 +85,7 @@ export default {
     '& li': {
       position: 'absolute',
       width: '100%'
-    },
+    }
   },
   rslides: {
     position: 'relative',
@@ -98,13 +98,12 @@ export default {
       position: 'relative',
       display: 'block',
       float: 'left'
-    },
+    }
   },
   boxLeft: {
     float: 'left',
     width: '50%',
     maxHeight: "658.56px"
-  
   },
   boxRight: {
     float: 'left',
@@ -157,68 +156,54 @@ export default {
     background: 'none',
     border: '1px solid white',
     //color: '#181035',
-    color: '#faa96a',
+    color: '#ffffff',
     fontSize: '.9em',
     margin: '0 0 1.5em 0',
     width: '100%',
-    "& :hover": {
-      backgroundColor:'blue',
-      pointerEvents: "none",
+    '& :hover': {
+      backgroundColor: 'blue',
+      pointerEvents: 'none'
     }
+  },
+  option: {
+    color: '#000000'
   },
   textInput: {
     outline: 'none',
     padding: '1em',
     background: 'none',
     border: '1px solid white',
-    color: '#faa96a',
+    color: '#ffffff',
     fontSize: '.9em',
     margin: '0 0 1.5em 0',
     width: '100%'
   },
-  
+
   button: {
     color: '#ffffff',
     fontSize: '.9em',
     textDecoration: 'none',
+    margin: '0 5px',
     padding: '1em 2em',
     cursor: 'pointer',
-    background: '#F44336',
+    background: 'rgb(139, 195, 74)',
     textTransform: 'uppercase',
     fontWeight: '600',
     textAlign: 'center',
-    border: 'solid 1px #f44336',
+    border: 'solid 1px rgb(139, 195, 74)',
     transition: '0.5s all',
     '-webkit-transition': '0.5s all',
     '-o-transition': '0.5s all',
     '-moz-transition': '0.5s all',
     '-ms-transition': '0.5s all',
     '&:hover': {
-      background: 'none',
-      border: 'solid 1px #FFFFFF'
-    }
-  },
-  linkButton: {
-    color: '#ffffff',
-    fontSize: '.9em',
-    textDecoration: 'none',
-    padding: '1em 2em',
-    cursor: 'pointer',
-    background: '#F44336',
-    textTransform: 'uppercase',
-    fontWeight: '600',
-    textAlign: 'center',
-    border: 'solid 1px #f44336',
-    transition: '0.5s all',
-    marginLeft: '5px',
-    '-webkit-transition': '0.5s all',
-    '-o-transition': '0.5s all',
-    '-moz-transition': '0.5s all',
-    '-ms-transition': '0.5s all',
-    '&:hover': {
-      background: 'none',
-      border: 'solid 1px #FFFFFF',
-      color: "#FFFFFF"
+      background: 'rgba(139, 195, 74, 0.8)',
+      borderColor: 'rgba(139, 195, 74, 0.8)',
+      color: '#ffffff',
+      outline: 0
+    },
+    '&:focus': {
+      outline: 0
     }
   },
   btnPanel: {
@@ -255,6 +240,7 @@ export default {
   '@media (max-width: 780px)': {
     welcome: {
       fontSize: "1.5em"
+
     }
   },
   '@media (max-width: 1366px)': {
@@ -343,88 +329,3 @@ export default {
       }
   }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-//
-//
-// export default {
-//   boxboxWrap: {
-//     width: '712px',
-//     display: 'flex',
-//     flexboxWrap: 'noboxWrap',
-//     margin: 'auto',
-//     border: '1px solid red'
-//   },
-//   box: {
-//     minWidth: '255px',
-//     display: 'flex',
-//     justifyContent: 'center',
-//     flexDirection: 'column',
-//     border: '1px solid black',
-//     padding: '20px',
-//     width: '255px',
-//     height: '510px',
-//     margin: '0 30px'
-//   },
-//
-//   result: {
-//     textAlign: 'center'
-//   },
-//
-//   listTitle: {
-//     font: '40px arial, sans-serif',
-//     color: 'white',
-//     textAlign: 'center',
-//     margin: '15px 0 10px 0'
-//   },
-//   button: {
-//     minWidth: '265px',
-//     margin: '0 20% 30px 20%',
-//     backgroundColor: 'rgb(71, 166, 47)',
-//     border: '2px solid rgb(71, 166, 47)',
-//     borderRadius: '10px',
-//     font: '26px arial, sans-serif',
-//     color: 'white',
-//     padding: '5px 0 5px 0',
-//     outline: 'none',
-//     cursor: 'pointer',
-//     textAlign: 'center',
-//     '&:focus, &:hover, &:visited, &:link, &:active': {
-//       textDecoration: 'none',
-//       color: 'white'
-//     },
-//     '&:hover': {
-//       backgroundColor: 'white',
-//       color: 'rgb(71, 166, 47)'
-//     }
-//   },
-//   noPrefsContainer: {
-//     minWidth: '251px',
-//     height: '34px',
-//     display: 'flex',
-//     flexDirection: 'row',
-//     justifyContent: 'center',
-//     color: 'white',
-//     margin: '2px auto',
-//     alignItems: 'center',
-//     lineHeight: '25px'
-//   },
-//   noPrefsText: {
-//     display: 'inline-block',
-//     fontSize: '19px',
-//     marginRight: '10px'
-//   }
-// };

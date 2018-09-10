@@ -37,29 +37,31 @@ export const recipes = (state = initialStateForRecipes, action) => {
     case RECIPES_FETCHING_SUCCESS:
       recipe = action.payload.recipe;
       favouritesId = action.payload.favs;
-      recipe.forEach(rec =>
-        hits.push({
-          ...rec,
-          hits: rec.hits.map(item => {
-            if (favouritesId.some(id => id === item.recipe.uri.slice(45))) {
+      recipe.forEach(rec => {
+        if (rec.hits.length) {
+          hits.push({
+            ...rec,
+            hits: rec.hits.map(item => {
+              if (favouritesId.some(id => id === item.recipe.uri.slice(45))) {
+                return {
+                  ...item,
+                  recipe: {
+                    ...item.recipe,
+                    isFavourite: true
+                  }
+                };
+              }
               return {
                 ...item,
                 recipe: {
                   ...item.recipe,
-                  isFavourite: true
+                  isFavourite: false
                 }
               };
-            }
-            return {
-              ...item,
-              recipe: {
-                ...item.recipe,
-                isFavourite: false
-              }
-            };
-          })
-        })
-      );
+            })
+          });
+        }
+      });
       return [...hits];
     case RECIPES_FETCHING_FAILURE:
       return [...state];

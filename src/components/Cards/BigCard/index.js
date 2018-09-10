@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, Mask, Fa } from 'mdbreact';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
 import injectSheet from 'react-jss';
 
 import styles from './styles';
@@ -10,33 +9,35 @@ import styles from './styles';
 class BigCard extends Component {
   constructor(props) {
     super(props);
-
     this.handleFavouriteClick = this.handleFavouriteClick.bind(this);
   }
-  static propTypes = {
-    classes: PropTypes.object,
-    recipe: PropTypes.object
-  };
+
   handleFavouriteClick() {
     const {
       checkFavourite,
-      fetchFavourites,
+      postFavourite,
       deleteFetchFavourites,
       jwt,
       recipe,
-      isAuth
+      isAuth,
+      deleteBigCard
     } = this.props;
     if (isAuth) {
       const { isFavourite, uri } = this.props.recipe;
-      isFavourite
-        ? deleteFetchFavourites(recipe.uri.slice(45), jwt)
-        : fetchFavourites(
-            {
-              favoriteId: recipe.uri.slice(45),
-              recepte: { ...recipe, isFavourite: true }
-            },
-            jwt
-          );
+      if (isFavourite) {
+        if (deleteBigCard) {
+          deleteBigCard();
+        }
+        deleteFetchFavourites(recipe.uri.slice(45), jwt);
+      } else {
+        postFavourite(
+          {
+            favoriteId: recipe.uri.slice(45),
+            recepte: { ...recipe, isFavourite: true }
+          },
+          jwt
+        );
+      }
       checkFavourite(uri);
     }
   }
@@ -54,33 +55,37 @@ class BigCard extends Component {
     return (
       <div className={classes.card}>
         <View hover rounded className={`z-depth-1-half mb-4 ${classes.view}`}>
-          {isFavourite ? (
-            <Fa
-              icon={'heart'}
-              className={classes.favIcon}
-              onClick={this.handleFavouriteClick}
-            />
-          ) : isAuth ? (
-            <Fa
-              icon={'heart-o'}
-              className={classes.favIcon}
-              onClick={this.handleFavouriteClick}
-            />
-          ) : (
-            <Link to={'/login'}>
+          <span
+            className={`${classes.iconWrapper} ${
+              isFavourite ? classes.favourite : classes.notFavourite
+            }`}
+          >
+            {isAuth ? (
               <Fa
-                icon={'heart-o'}
+                icon={'heart'}
                 className={classes.favIcon}
                 onClick={this.handleFavouriteClick}
               />
-            </Link>
-          )}
+            ) : (
+              <Link to={'/login'}>
+                <Fa
+                  icon={'heart'}
+                  className={classes.favIcon}
+                  onClick={this.handleFavouriteClick}
+                />
+              </Link>
+            )}
+          </span>
           <img className="img-fluid" src={image} alt={label} />
           <Link to={{ pathname: `/detail/${uri.slice(44)}` }}>
             <Mask overlay="white-slight" className="waves-light" />
           </Link>
         </View>
-        <h3 className="font-weight-bold dark-grey-text mb-3 p-0">
+        <h3
+          className={`font-weight-bold dark-grey-text mb-3 p-0 ${
+            classes.title
+          }`}
+        >
           <Link
             to={{ pathname: `/detail/${uri.slice(44)}` }}
             style={{ color: 'black' }}
@@ -100,6 +105,10 @@ class BigCard extends Component {
       </div>
     );
   }
+  static propTypes = {
+    classes: PropTypes.object,
+    recipe: PropTypes.object
+  };
 }
 
 export default injectSheet(styles)(BigCard);

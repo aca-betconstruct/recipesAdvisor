@@ -7,21 +7,21 @@ import {
 import { isPreferencesFetching, preferences } from '../../reducers/preferences';
 
 describe('test isPreferencesFetching', () => {
-  test('isPreferencesFetching on non-action', () => {
+  test('non-action', () => {
     expect(isPreferencesFetching(false, {})).toBe(false);
   });
-  test('isPreferencesFetching on REQUEST_PREFERENCES', () => {
+  test('REQUEST_PREFERENCES', () => {
     expect(isPreferencesFetching(false, { type: REQUEST_PREFERENCES })).toBe(
       true
     );
   });
-  test('isPreferencesFetching on RECEIVE_ALL_PREFERENCES', () => {
+  test('RECEIVE_ALL_PREFERENCES', () => {
     expect(isPreferencesFetching(true, { type: RECEIVE_ALL_PREFERENCES })).toBe(
       false
     );
   });
   describe('test preferences', () => {
-    test('test preferennces with non -action', () => {
+    test('non-action', () => {
       expect(preferences([], {})).toEqual([]);
     });
     test('test preferences with ADD_PREFERENCE if it is empty', () => {
@@ -33,7 +33,7 @@ describe('test isPreferencesFetching', () => {
         })
       ).toEqual([preference]);
     });
-    test('test preferences with ADD_PREFERENCE if it is not empty', () => {
+    test('ADD_PREFERENCE if it is not empty', () => {
       const first = { id: 499, isLike: true, text: 'fish' };
       const second = { id: 500, isLike: true, text: 'egg' };
       expect(
@@ -43,7 +43,7 @@ describe('test isPreferencesFetching', () => {
         })
       ).toEqual([first, second]);
     });
-    test('test preferences with REMOVE_PREFERENCE', () => {
+    test('REMOVE_PREFERENCE', () => {
       const first = { id: 499, isLike: true, text: 'fish' };
       const second = { id: 500, isLike: true, text: 'egg' };
       expect(

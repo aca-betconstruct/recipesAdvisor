@@ -20,6 +20,8 @@ const validate = values => {
   } else if (values.password && values.password.trim().length < 8) {
     errors.password = 'Must be 8 characters or more';
   }
+  if(values.password!==values.confirmPassword)
+    errors.confirmPassword='Must be equal password'
   return errors;
 };
 

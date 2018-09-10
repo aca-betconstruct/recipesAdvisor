@@ -23,24 +23,27 @@ export default {
     margin: '10px 0 10px 0'
   },
   button: {
-    minWidth: '265px',
-    margin: '20px 20% 30px 20%',
-    backgroundColor: 'rgb(71, 166, 47)',
-    border: '2px solid rgb(71, 166, 47)',
-    borderRadius: '10px',
-    font: '26px arial, sans-serif',
-    color: 'white',
-    padding: '5px 0 5px 0',
-    outline: 'none',
+    color: '#ffffff',
+    fontSize: '22px',
+    minWidth: '250px',
+    textDecoration: 'none',
+    margin: '10px',
+    padding: '10px',
     cursor: 'pointer',
+    background: 'rgb(139, 195, 74)',
+    textTransform: 'uppercase',
+    fontWeight: '600',
     textAlign: 'center',
-    '&:focus, &:hover, &:visited, &:link, &:active': {
-      textDecoration: 'none',
-      color: 'white'
-    },
+    border: 'solid 1px rgb(139, 195, 74)',
+    transition: '0.5s all',
     '&:hover': {
-      backgroundColor: 'white',
-      color: 'rgb(71, 166, 47)'
+      background: 'rgba(139, 195, 74, 0.8)',
+      borderColor: 'rgba(139, 195, 74, 0.8)',
+      color: '#ffffff',
+      outline: 0
+    },
+    '&:focus': {
+      outline: 0
     }
   }
 };

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import injectSheet from 'react-jss';
-
-import styles from './styles';
-
 import { Link } from 'react-router-dom';
 import { Tooltip } from 'mdbreact';
+import injectSheet from 'react-jss';
+import PropTypes from 'prop-types';
+
+import CalorieResult from '../../containers/CaloriesResults';
+
+import styles from './styles';
 
 class ProfileSidebar extends Component {
   constructor(props) {
@@ -13,16 +15,6 @@ class ProfileSidebar extends Component {
       show: false
     };
   }
-
-  handleChange = event => {
-    if (
-      event.target.innerText.length < 16 ||
-      event.target.innerText === 'DAILY' ||
-      event.target.innerText === 'DIET'
-    ) {
-      this.props.category(event.target.innerText);
-    }
-  };
 
   render() {
     const { classes } = this.props;
@@ -48,7 +40,6 @@ class ProfileSidebar extends Component {
               Daily Recipes
             </Tooltip>
           </Link>
-
           <Link to="/">
             <Tooltip
               placement="right"
@@ -57,12 +48,11 @@ class ProfileSidebar extends Component {
               component="button"
               tooltipContent="
                 Click here if you want to discover new stuff and refresh your list of favourite recipes. We offer all kinds of
-                foods and drinks in this section, both covering the basics and the ones you want to keep for impressing your precious guests."
+                foods and drinks in this section, both covering the basics and the ones you want to keep for impressing your precious guests"
             >
               Discover Recipes
             </Tooltip>
           </Link>
-
           <Link to="/home/favourites">
             <Tooltip
               placement="right"
@@ -76,7 +66,6 @@ class ProfileSidebar extends Component {
               Favourite Recipes
             </Tooltip>
           </Link>
-
           <Link to="/calculator">
             <Tooltip
               placement="right"
@@ -85,12 +74,11 @@ class ProfileSidebar extends Component {
               component="button"
               tooltipContent="Calculate the amount of calories that is an optimum for you,
                 based on your physical stats, and get recipes that will help you
-                to stay focused on your numbers`"
+                to stay focused on your numbers"
             >
               Calculator
             </Tooltip>
           </Link>
-
           <Link to="/home/preferences">
             <Tooltip
               placement="right"
@@ -102,10 +90,14 @@ class ProfileSidebar extends Component {
               Preferences
             </Tooltip>
           </Link>
+          <CalorieResult />
         </div>
       </div>
     );
   }
+  static propTypes = {
+    classes: PropTypes.object
+  };
 }
 
 export default injectSheet(styles)(ProfileSidebar);

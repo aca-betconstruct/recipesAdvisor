@@ -5,12 +5,13 @@ export default {
     backgroundSize: 'cover',
     minHeight: '100vh',
     paddingTop: '15%',
-    '@media screen and (max-width: 767px)': {
+    '@media screen and (max-width: 820px)': {
       display: 'none'
     }
   },
   button: {
     font: 'roboto',
+    outline: 0,
     color: '#ffffff',
     fontSize: '.9em',
     textDecoration: 'none',
@@ -29,7 +30,11 @@ export default {
     '-moz-transition': '0.5s all',
     '-ms-transition': '0.5s all',
     '&:hover': {
-      backgroundColor: '#f44336'
+      backgroundColor: 'rgb(139, 195, 74)',
+      outline: 0
+    },
+    '&:focus': {
+      outline: 0
     }
   }
 };

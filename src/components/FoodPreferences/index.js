@@ -11,7 +11,7 @@ const FoodPreferences = ({ classes }) => {
     <div className={classes.listsContainer}>
       <div className={classes.list}>
         <h2 className={classes.listTitle}>Include Ingredients</h2>
-        <FoodList inputPlaceholder="Ex. Banana" type />
+        <FoodList inputPlaceholder="Ex. Banana" type={true} />
       </div>
       <div className={classes.list}>
         <h2 className={classes.listTitle}>Exclude Ingredients</h2>

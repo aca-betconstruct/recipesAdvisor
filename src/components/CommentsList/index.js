@@ -1,57 +1,58 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Input, Button } from 'mdbreact';
+import PropTypes from 'prop-types';
+import injectSheet from 'react-jss';
+import { Row, Col } from 'mdbreact';
+import styles from './styles';
 
 class CommentsList extends Component {
-    componentDidMount() {
-    const { getComments,getAuthenticated,jwt } = this.props;
+  componentDidMount() {
+    const { getComments, getAuthenticated, jwt } = this.props;
     getComments();
-    getAuthenticated(jwt)
-
+    getAuthenticated(jwt);
   }
+
   render() {
-    const {  comments, url, auth } = this.props;
-    console.log(comments);
+    const { classes, comments, url, auth } = this.props;
+    const comment = comments.filter(elem => elem.receptId === url);
     return (
-      <div style={{ marginTop: '70px' }}>
+      <div className={classes.main}>
         <Row>
           <Col md="4" lg="3">
-            {!comments.length ? (
-              <p>Loading..</p>
-            ) : (
-              comments.map((elem, i) => {
-                if (url !== elem.receptId) {
-                  return '';
-                }
-                return (
-                  <div className="excerpt" style={{ marginTop: '40px', backgroundColor:"#e6ffe6" }}>
-                    <div className="brief" style={{ backgroundColor:" #ccffcc" }}>
-                      {auth === null ? (
-                        <p>Loading ...</p>
-                      ) : (
-                        auth.map((el, i) => {
-                          if (el.id !== elem.creatorId) {
-                            return '';
-                          }
-                          return (
-                            <p className="font-weight-bold mb-3" key={i+el.firstName}>
-                              {el.firstName} {el.lastName}
-                            </p>
-                          );
-                        })
-                      )}
-                    </div>
-                    <div>
-                      <div className="added-text">{elem.text}</div>
-                    </div>
+            {comment.map((elem, index) => {
+              const user = auth.filter(el => el.id === elem.creatorId);
+              return (
+                <div className={classes.excerpt} key={index}>
+                  <div className={classes.brief}>
+                    {user.map((el, i) => {
+                      return (
+                        <p
+                          className="font-weight-bold mb-3"
+                          key={i + el.firstName}
+                        >
+                          {el.firstName} {el.lastName}
+                        </p>
+                      );
+                    })}
                   </div>
-                );
-              })
-            )}
+                  <div>
+                    <div className="added-text">{elem.text}</div>
+                  </div>
+                </div>
+              );
+            })}
           </Col>
         </Row>
       </div>
     );
   }
+  static propTypes = {
+    getComments: PropTypes.func,
+    getAuthenticated: PropTypes.func,
+    jwt: PropTypes.string,
+    comments: PropTypes.array,
+    url: PropTypes.string,
+    auth: PropTypes.array
+  };
 }
 
-export default CommentsList;
+export default injectSheet(styles)(CommentsList);

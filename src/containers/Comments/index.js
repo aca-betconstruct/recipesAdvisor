@@ -1,22 +1,25 @@
-
 import { connect } from 'react-redux';
-
-import Comments from '../../components/Comments'
+import Comments from '../../components/Comments';
 import { selectIsAuth } from '../../selectors';
-import { postComment} from "../../actions/comment";
+import { postComment } from '../../actions';
+import { bindActionCreators } from 'redux';
 
 const mapStateToProps = state => ({
-    jwt: state.jwt,
-    isAuth: selectIsAuth(state),
-    comments: state.comments,
-
+  jwt: state.jwt,
+  isAuth: selectIsAuth(state),
+  comments: state.comments
 });
 
-const mapDispatchToProps = dispatch => ({
-    postComment: (state, jwt) => dispatch(postComment(state, jwt)),
-});
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(
+    {
+      postComment
+    },
+    dispatch
+  );
+};
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Comments);
