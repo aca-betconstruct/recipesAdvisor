@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 import { Row, Col } from 'mdbreact';
 import PropTypes from 'prop-types';
@@ -29,26 +29,24 @@ class Comments extends Component {
   render() {
     const { classes, url } = this.props;
     return (
-      <Fragment>
+      <div className={classes.commentsWrapper}>
         <Row>
-          <Col md="4" lg="3" className="responsive">
+          <Col className="responsive">
             <form method="post" onSubmit={this.handleSubmit}>
-              <div className="row">
-                <div className="form-group">
-                  <hr className={classes.hr} />
+              <Row>
+                <div className={`form-group ${classes.formGroup}`}>
+                  <h5 className={classes.title}>Comments</h5>
                   <textarea
                     name="subject"
                     placeholder="Add comments .."
-                    className={`form-control rounded-0 z-depth-1 + ${
-                      classes.textarea
-                    }`}
+                    className={`form-control z-depth-1 ${classes.textArea}`}
                     id="exampleFormControlTextarea6"
                     rows="3"
                     value={this.state.text}
                     onChange={this.handleChange}
                   />
                 </div>
-              </div>
+              </Row>
               <div className={classes.row}>
                 <button className={classes.button}>Success</button>
               </div>
@@ -56,7 +54,7 @@ class Comments extends Component {
           </Col>
         </Row>
         <CommentList url={url} />
-      </Fragment>
+      </div>
     );
   }
   static propTypes = {
