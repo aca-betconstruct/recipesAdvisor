@@ -11,7 +11,7 @@ class Detail extends Component {
     this.props.history.goBack();
   };
   render() {
-    const { classes, match, recipe } = this.props;
+    const { classes, match, recipe, history } = this.props;
     const url = match.url.slice(8);
 
     return (
@@ -78,7 +78,7 @@ class Detail extends Component {
             </Row>
           </Col>
         </Row>
-        <Comments url={url} />
+        <Comments url={url} history={history}/>
       </Container>
     );
   }
