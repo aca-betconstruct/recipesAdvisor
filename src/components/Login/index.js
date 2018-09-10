@@ -36,7 +36,8 @@ class Login extends Component {
     if (this.props.isAuth) {
       return <Redirect to={from} />;
     } else {
-      const { classes, valid } = this.props;
+      const { classes, valid, errorlogin } = this.props;
+      console.log("sxal",errorlogin)
       return (
         <div>
           <div>
@@ -60,6 +61,10 @@ class Login extends Component {
                         type="password"
                         placeholder="Password"
                       />
+
+                      <div className={classes.validate}>
+                        {errorlogin == null ? " " : <p>{errorlogin}</p>}
+                      </div>
 
                       <button
                         className={classes.button}

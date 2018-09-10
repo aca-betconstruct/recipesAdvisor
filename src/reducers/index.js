@@ -8,15 +8,16 @@ import detail from './detail';
 import comments from './comment';
 import assignResults from './calories';
 
-import { user, jwt } from './authenticated';
+import { user, jwt, errorlogin } from './authenticated';
 
 import { favourites, isFavouriteRecipesFetching } from './favourites';
-import signUp from './signUp';
+import signUpError from './signUp';
 
 export default combineReducers({
-  signUp,
+  signUpError,
   comments,
   recipes,
+  errorlogin,
   isRecipesFetching,
   allFetchFavourites: favourites,
   isFavouriteRecipesFetching,

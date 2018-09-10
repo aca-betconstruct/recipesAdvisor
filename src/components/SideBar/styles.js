@@ -1,10 +1,11 @@
 export default {
   sideBar: {
     width: '20%',
-    background: 'rgba(0, 0, 0, 0.8)',
+    background: 'black',
     backgroundSize: 'cover',
     minHeight: '100vh',
     paddingTop: '15%',
+    zIndex: 500,
     '@media screen and (max-width: 820px)': {
       display: 'none'
     }

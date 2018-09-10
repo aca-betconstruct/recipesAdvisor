@@ -17,6 +17,7 @@ const mapStateToProps = state => {
     'confirmPassword'
   );
   return {
+    signUpError: state.signUpError,
     firstName,
     lastName,
     email,

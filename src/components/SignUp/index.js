@@ -22,18 +22,15 @@ class SignUp extends Component {
       email,
       password,
       confirmPassword,
-      history,
       fetchSignup
     } = this.props;
-    fetchSignup(
-      {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-        confirmPassword: confirmPassword
-      }
-    );
+    fetchSignup({
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password,
+      confirmPassword: confirmPassword
+    });
     console.log({
       firstName: firstName,
       lastName: lastName,
@@ -43,7 +40,7 @@ class SignUp extends Component {
     });
   }
   render() {
-    const { classes, valid } = this.props;
+    const { classes, valid, signUpError } = this.props;
     return (
       <div>
         <div>
@@ -131,6 +128,9 @@ class SignUp extends Component {
                       type="password"
                       placeholder="Confirm Password"
                     />
+                    <div className={classes.validate}>
+                      {signUpError == null ? ' ' : <p>{signUpError}</p>}
+                    </div>
 
                     <button
                       className={classes.button}
