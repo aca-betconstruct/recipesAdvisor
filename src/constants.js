@@ -9,6 +9,7 @@ export const NEXT_PAGE = 'NEXT_PAGE';
 
 export const REQUEST_SIGNUP = 'REQUEST_SIGNUP';
 export const RECEIVE_SIGNUP = 'RECEIVE_SIGNUP';
+export const ERROR_SIGNUP = 'ERROR_SIGNUP';
 
 export const REQUEST_LOGIN = 'REQUEST_LOGIN';
 export const RECEIVE_LOGIN = 'RECEIVE_LOGIN';

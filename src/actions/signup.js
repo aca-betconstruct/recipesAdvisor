@@ -1,4 +1,4 @@
-import { REQUEST_SIGNUP, RECEIVE_SIGNUP } from '../constants';
+import { REQUEST_SIGNUP, RECEIVE_SIGNUP, ERROR_SIGNUP } from '../constants';
 
 const requestSignUp = () => {
   return {
@@ -6,25 +6,25 @@ const requestSignUp = () => {
   };
 };
 
-const receiveSignUp = () => {
+const receiveSignUp = message => {
   return {
-    type: RECEIVE_SIGNUP
+    type: RECEIVE_SIGNUP,
+    payload: message
   };
 };
 
 export const postSignUp = state => {
   return dispatch => {
     dispatch(requestSignUp());
-    return fetch(`https://acafoodapi.haffollc.com/v1/signup`, {
+    return fetch(`http://localhost:5002/v1/signup`, {
       headers: {
         'Content-Type': 'application/json'
       },
       method: 'POST',
       body: JSON.stringify(state)
     })
-      .then(response => response.json())
-      .then(json => {
-        dispatch(receiveSignUp());
-      });
+      .then(response => response.json(),  error => console.log('b'))
+      .then(response => console.log('a'))
+
   };
 };

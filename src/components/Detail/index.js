@@ -63,26 +63,20 @@ class Detail extends Component {
                 <div className="tableditael">
                   <div>
                     <h3 className="font-weight-bold black-text">Calories</h3>
-                    <strong>{Math.ceil(recipe.calories)}</strong>
+                    <strong>{Math.ceil(recipe.calories)} kcal.</strong>
                   </div>
                   <div style={{ marginLeft: '20px' }}>
                     <h3 className="font-weight-bold black-text " lg="3" md="3">
                       Total weight
                     </h3>
-                    <strong>{Math.ceil(recipe.totalWeight)}</strong>
+                    <strong>{Math.ceil(recipe.totalWeight)} g.</strong>
                   </div>
                 </div>
               </Col>
             </Row>
           </Col>
         </Row>
-        <Comments
-          // postComment={postComment}
-          url={url}
-          // getComments={getComments}
-          // comments={comments}
-          // auth={auth}
-        />
+        <Comments url={url} />
       </Container>
     );
   }

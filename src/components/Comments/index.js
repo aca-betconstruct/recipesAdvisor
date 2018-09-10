@@ -25,6 +25,7 @@ class Comments extends Component {
   }
   render() {
     const { url } = this.props;
+    const { text } = this.state;
     return (
       <Fragment>
         <Row>
@@ -60,6 +61,7 @@ class Comments extends Component {
                     color: 'white',
                     padding: '8px'
                   }}
+                  disabled={text.trim() === ''}
                 >
                   Success
                 </button>

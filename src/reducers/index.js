@@ -11,8 +11,10 @@ import assignResults from './calories';
 import { user, jwt } from './authenticated';
 
 import { favourites, isFavouriteRecipesFetching } from './favourites';
+import signUp from './signUp';
 
 export default combineReducers({
+  signUp,
   comments,
   recipes,
   isRecipesFetching,
@@ -21,7 +23,7 @@ export default combineReducers({
   curPage,
   preferences,
   user,
-   detail,
+  detail,
   form: reduxFormReducer,
   filter,
   isPreferencesFetching,
