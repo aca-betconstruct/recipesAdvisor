@@ -222,7 +222,6 @@ export default {
     }
   },
   btnPanel: {
-    backgroundColor: "blue",
     display: "flex",
     flexWrap: "none"
 },

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
+import { Tooltip } from 'mdbreact';
+
 import styles from './styles';
 
 import Search from '../Search';
@@ -70,7 +72,13 @@ class Filter extends Component {
               activeLabel === 'balanced' ? classes.activeLabel : ''
             }`}
           >
-            Balanced
+            <Tooltip
+              placement="top"
+              tooltipContent="Protein/Fat/Carb values in 15/35/50 ratio"
+            >
+              Balanced
+
+            </Tooltip>
           </div>
           <div
             onClick={() => this.changeLabel('low-fat')}
@@ -78,7 +86,13 @@ class Filter extends Component {
               activeLabel === 'low-fat' ? classes.activeLabel : ''
             }`}
           >
-            Low Fat
+            <Tooltip
+              placement="top"
+              tooltipContent="Protein/Fat/Carb values in 15/35/50 ratio"
+            >
+              Low Fat
+            </Tooltip>
+            
           </div>
           <div
             onClick={() => this.changeLabel('high-protein')}
@@ -86,7 +100,12 @@ class Filter extends Component {
               activeLabel === 'high-protein' ? classes.activeLabel : ''
             }`}
           >
-            High Protein
+            <Tooltip
+              placement="top"
+              tooltipContent="More than 50% of total calories from proteins"
+            >
+              High Protein
+            </Tooltip>
           </div>
           <Search
             onChange={this.handleInput}

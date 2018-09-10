@@ -75,7 +75,7 @@ class SignUp extends Component {
                           <div className={classes.descriptionBanner}>
                             <h3>What Do You Do here ?</h3>
                             <p>
-                              Set up your food prefferences once and get
+                              Set up your food preferences once and get
                               interesting recipes daily.
                             </p>
                           </div>

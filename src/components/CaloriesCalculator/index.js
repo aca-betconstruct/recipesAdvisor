@@ -222,19 +222,21 @@ class CaloriesCalculator extends Component {
                     onChange={this.handleHeightInputChange}
                   />
                 </div>
-                <button
-                  className={classes.button}
-                  type="submit"
-                  disabled={!isEnabled}
-                  aria-disabled="true"
-                  aria-describedby="weightErr ageErr heightErr"
-                >
-                  Calculate
-                </button>
+                <div className={classes.btnPanel}>
+                  <button
+                    className={classes.button}
+                    type="submit"
+                    disabled={!isEnabled}
+                    aria-disabled="true"
+                    aria-describedby="weightErr ageErr heightErr"
+                  >
+                    Calculate
+                  </button>
   
-                <Link  className={classes.linkButton} to="/home">
-                  go back
-                </Link>
+                  <Link  className={classes.linkButton} to="/home">
+                    go back
+                  </Link>
+                </div>
                 
               </form>
             </div>
