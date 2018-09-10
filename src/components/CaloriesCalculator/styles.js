@@ -60,7 +60,7 @@ export default {
     textTransform: 'uppercase'
   },
   boxWrap: {
-    height: '680.656px',
+    height: '700px',
     width: '50%',
     margin: '2em auto 0'
   },
@@ -103,6 +103,8 @@ export default {
   boxLeft: {
     float: 'left',
     width: '50%',
+    maxHeight: "658.56px"
+  
   },
   boxRight: {
     float: 'left',
@@ -139,6 +141,7 @@ export default {
     background: 'rgba(0, 0, 0, 0.56)',
     padding: '3em',
     minHeight: '426px',
+    maxHeight: "658.56px",
     '& h2': {
       color: '#FFFFFF',
       fontSize: '1em',
@@ -218,21 +221,55 @@ export default {
       color: "#FFFFFF"
     }
   },
+  btnPanel: {
+    backgroundColor: "blue",
+    display: "flex",
+    flexWrap: "none"
+},
   a: {
     color: 'red',
     '&:hover': {
       backgroundColor: 'red'
     }
   },
-  
-  '@media (max-width: 1440px)': {
-    boxWrap: {
-      width: '55%'
+  '@media (max-width: 1550px)': {
+    boxRight: {
+      padding: "4em"
+      
+    }
+  },
+  '@media (max-width: 1380px)': {
+    welcome: {
+      fontSize: "2.8em"
+    }
+  },
+  '@media (max-width: 1300px)': {
+    welcome: {
+      fontSize: "2.6em"
+    }
+  },
+  '@media (max-width: 1200px)': {
+    welcome: {
+      fontSize: "2.0em"
+    }
+  },
+  '@media (max-width: 780px)': {
+    welcome: {
+      fontSize: "1.5em"
     }
   },
   '@media (max-width: 1366px)': {
+    
     boxWrap: {
       width: '60%'
+    },
+    formsBox: {
+      height: "658.56px"
+    }
+  },
+  '@media (max-width: 1500px)': {
+    boxRight: {
+      padding: "3em"
     }
   },
   '@media (max-width: 1080px)': {
@@ -255,7 +292,11 @@ export default {
       width: '90%'
     }
   },
-  '@media (max-width: 667px)': {
+  '@media (max-width: 730px)': {
+    boxWrap: {
+      display: "flex",
+      flexDirection: "column"
+    },
     boxLeft: {
       float: 'none',
       width: '100%'
@@ -264,20 +305,43 @@ export default {
       float: 'none',
       width: '100%'
     },
-    callbacks_tabs: {
-      left: '45%'
+  },
+  '@media (max-width: 667px)': {
+    boxLeft: {
+      float: 'none',
+      width: '100%'
     },
-    formsBox: {
-      minHeight: '425px'
-    },
-    boxboxWrap: {
-      width: '85%'
+    boxRight: {
+      float: 'none',
+      width: '100%'
     }
   },
-  '@media (max-width: 320px)': {
-    boxWrap: {
-      width: '90%'
+  '@media (max-width: 440px)': {
+    boxRight: {
+      padding: "4em"
     }
+  },
+  '@media (max-width: 420px)': {
+    boxRight: {
+      padding: "3.5em"
+  
+    }
+    },
+  '@media (max-width: 390px)': {
+    boxRight: {
+      padding: "3em"
+      
+    }
+  },
+  
+    '@media (max-width: 370px)': {
+    boxWrap: {
+      width: '90%',
+      fontSize: '.9em'
+    },
+      welcome: {
+        fontSize: "1em"
+      }
   }
 };
 
