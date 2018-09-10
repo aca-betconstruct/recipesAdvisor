@@ -5,5 +5,11 @@ export default {
     '@media screen and (max-width: 1200px)': {
       display: 'none'
     }
+  },
+  title: {
+    padding: '20px 0 10px',
+    margin: '0 auto 15px 10px',
+    fontWeight: 400,
+    borderBottom: '1px solid rgb(139, 195, 74)'
   }
 };

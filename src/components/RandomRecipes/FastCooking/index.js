@@ -37,7 +37,7 @@ class FastCooking extends Component {
           return a.time - b.time;
         })
         .filter(el => el.time !== 0);
-      recipe.splice(6);
+      recipe.splice(5);
       this.setState({ recipes: recipe });
     }, 1000);
   }
@@ -54,6 +54,7 @@ class FastCooking extends Component {
           }}
           className={classes.container}
         >
+          <h4 className={classes.title}>Fast Foods</h4>
           {recipes.map((recipe, index) => (
             <SmallCard recipe={recipe} key={index} />
           ))}
