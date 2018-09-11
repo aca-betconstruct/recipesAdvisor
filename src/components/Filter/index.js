@@ -131,7 +131,7 @@ class Filter extends Component {
           >
             <Tooltip
               placement="top"
-              tooltipContent="Protein/Fat/Carb values in 15/35/50 ratio"
+              tooltipContent="Less than 15% of total calories from fat"
             >
               Low Fat
             </Tooltip>
