@@ -3,14 +3,15 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Login from '../../components/Login';
 import validate from '../../config/AuthenticationValidation/validation';
-import { postLogin,getAuthenticated, logoutUser } from '../../actions';
-import {selectIsAuth} from '../../selectors'
+import { postLogin, getAuthenticated, logoutUser } from '../../actions';
+import { selectIsAuth } from '../../selectors';
 
 const selector = formValueSelector('Login');
 
 const mapStateToProps = state => {
   const { email, password } = selector(state, 'email', 'password');
   return {
+    errorlogin: state.errorlogin,
     email,
     password,
     isAuth: selectIsAuth(state),

@@ -210,6 +210,10 @@ export default {
     margin: '0 0 1.5em 0',
     width: '93%'
   },
+  validate: {
+    color: 'red',
+    margin: '10px'
+  },
 
   button: {
     marginTop: '1em',

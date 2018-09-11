@@ -107,6 +107,11 @@ export default {
       width: '100%'
     }
   },
+  validate: {
+    color: 'red',
+    margin: '10px'
+  },
+
   rslides: {
     position: 'relative',
     listStyle: 'none',

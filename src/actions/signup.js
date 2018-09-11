@@ -6,14 +6,20 @@ const requestSignUp = () => {
   };
 };
 
-const receiveSignUp = message => {
+const receiveSignUp = () => {
   return {
-    type: RECEIVE_SIGNUP,
+    type: RECEIVE_SIGNUP
+  };
+};
+
+const errorSignUp = message => {
+  return {
+    type: ERROR_SIGNUP,
     payload: message
   };
 };
 
-export const postSignUp = state => {
+export const postSignUp = (state,prop) => {
   return dispatch => {
     dispatch(requestSignUp());
     return fetch(`http://localhost:5002/v1/signup`, {
@@ -23,8 +29,14 @@ export const postSignUp = state => {
       method: 'POST',
       body: JSON.stringify(state)
     })
-      .then(response => response.json(),  error => console.log('b'))
-      .then(response => console.log('a'))
-
+      .then(response => response.json())
+      .then(response => {
+        if (response.data) {
+          dispatch(receiveSignUp());
+         prop;
+        } else if (response.error) {
+          dispatch(errorSignUp(response.error));
+        }
+      });
   };
 };

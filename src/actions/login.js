@@ -1,4 +1,4 @@
-import { REQUEST_LOGIN, RECEIVE_LOGIN } from '../constants';
+import { REQUEST_LOGIN, RECEIVE_LOGIN, ERROR_LOGIN } from '../constants';
 import {saveState} from '../store/localStorage'
 
 const requestLogin = () => {
@@ -10,6 +10,13 @@ const requestLogin = () => {
 const receiveLogin = data => {
   return {
     type: RECEIVE_LOGIN,
+    payload: data
+  };
+};
+
+const errorLogin = data => {
+  return {
+    type: ERROR_LOGIN,
     payload: data
   };
 };
@@ -29,6 +36,8 @@ export const postLogin = state => {
         if (response.data) {
           dispatch(receiveLogin(response.data['authToken'] || ''));
           saveState({jwt:response.data['authToken']},'store');
+        }else if (response.error) {
+          dispatch(errorLogin(response.error))
         }
       });
   };

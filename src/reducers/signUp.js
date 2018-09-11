@@ -1,8 +1,8 @@
-import { RECEIVE_SIGNUP } from '../constants';
+import {  ERROR_SIGNUP } from '../constants';
 
-const signUp = (state = '', action) => {
+const signUpError = (state = null, action) => {
   switch (action.type) {
-    case RECEIVE_SIGNUP: {
+    case  ERROR_SIGNUP: {
       return action.payload;
     }
 
@@ -11,4 +11,4 @@ const signUp = (state = '', action) => {
     }
   }
 };
-export default signUp;
+export default signUpError;
