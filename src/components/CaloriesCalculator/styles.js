@@ -310,7 +310,10 @@ export default {
     boxRight: {
       padding: "3.5em"
   
-    }
+    },
+      btnPanel:{
+      justifyContent:"center"
+      }
     },
   '@media (max-width: 390px)': {
     boxRight: {
