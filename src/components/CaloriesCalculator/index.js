@@ -121,11 +121,7 @@ class CaloriesCalculator extends Component {
 
   render() {
     const { classes, assignResults } = this.props;
-    const {
-      ageInYears,
-      weightInKilograms,
-      heightInCentimeters
-    } = this.state;
+    const { ageInYears, weightInKilograms, heightInCentimeters } = this.state;
     const isEnabled =
       ageInYears.length > 1 &&
       weightInKilograms.length > 1 &&
@@ -181,7 +177,7 @@ class CaloriesCalculator extends Component {
                         key={index}
                         value={value}
                       >
-                        <p>{value}</p>
+                        {value}
                       </option>
                     ))}
                   </select>
@@ -190,7 +186,7 @@ class CaloriesCalculator extends Component {
                   <h2>Age</h2>
                   <input
                     aria-required="true"
-                    id = "ageErr"
+                    id="ageErr"
                     className={classes.textInput}
                     type="number"
                     min="12"
@@ -202,7 +198,7 @@ class CaloriesCalculator extends Component {
                   <h2>Weight in kgs</h2>
                   <input
                     aria-required="true"
-                    id = "weightErr"
+                    id="weightErr"
                     className={classes.textInput}
                     type="number"
                     min="30"
@@ -210,11 +206,11 @@ class CaloriesCalculator extends Component {
                     onChange={this.handleWeightInputChange}
                   />
                 </div>
-                <div className>
+                <div>
                   <h2>Height in cms</h2>
                   <input
                     aria-required="true"
-                    id = "heightErr"
+                    id="heightErr"
                     className={classes.textInput}
                     type="number"
                     min="100"
@@ -232,12 +228,11 @@ class CaloriesCalculator extends Component {
                   >
                     Calculate
                   </button>
-  
-                  <Link  className={classes.button} to="/home">
+
+                  <Link className={classes.button} to="/home">
                     go back
                   </Link>
                 </div>
-
               </form>
             </div>
           </div>
@@ -253,10 +248,8 @@ class CaloriesCalculator extends Component {
                     >
                       <li>
                         <div className={classes.descriptionBanner}>
-                          <p>
-                            <p className={classes.result}>
-                              {activityDescriptions[activityDescription]}
-                            </p>
+                          <p className={classes.result}>
+                            {activityDescriptions[activityDescription]}
                           </p>
                         </div>
                       </li>
