@@ -57,7 +57,7 @@ class Comments extends Component {
                   className={classes.button}
                   disabled={text.trim() === ''}
                 >
-                  Success
+                  Post
                 </button>
               </div>
             </form>
