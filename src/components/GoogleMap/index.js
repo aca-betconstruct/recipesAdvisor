@@ -24,7 +24,7 @@ export class MapContainer extends Component {
     );
   }
   static propTypes = {
-    classes: PropTypes.classes
+    classes: PropTypes.object
   };
 }
 
