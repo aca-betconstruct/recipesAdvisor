@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
-import { Link } from 'react-router-dom';
+import { Link ,withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import styles from './styles';
@@ -22,7 +22,7 @@ class SignUp extends Component {
       email,
       password,
       confirmPassword,
-      fetchSignup
+      fetchSignup,history
     } = this.props;
     fetchSignup({
       firstName: firstName,
@@ -30,14 +30,7 @@ class SignUp extends Component {
       email: email,
       password: password,
       confirmPassword: confirmPassword
-    });
-    console.log({
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      password: password,
-      confirmPassword: confirmPassword
-    });
+    },history.push('/login'));
   }
   render() {
     const { classes, valid, signUpError } = this.props;
@@ -156,4 +149,4 @@ class SignUp extends Component {
   };
 }
 
-export default injectSheet(styles)(SignUp);
+export default injectSheet(styles)(withRouter(SignUp));

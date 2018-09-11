@@ -37,7 +37,6 @@ class Login extends Component {
       return <Redirect to={from} />;
     } else {
       const { classes, valid, errorlogin } = this.props;
-      console.log("sxal",errorlogin)
       return (
         <div>
           <div>
@@ -63,7 +62,7 @@ class Login extends Component {
                       />
 
                       <div className={classes.validate}>
-                        {errorlogin == null ? " " : <p>{errorlogin}</p>}
+                        {errorlogin == null ? ' ' : <p>{errorlogin}</p>}
                       </div>
 
                       <button
