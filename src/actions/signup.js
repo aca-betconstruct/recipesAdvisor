@@ -19,7 +19,7 @@ const errorSignUp = message => {
   };
 };
 
-export const postSignUp = (state,prop) => {
+export const postSignUp = (state, toLoginPage) => {
   return dispatch => {
     dispatch(requestSignUp());
     return fetch(`http://localhost:5002/v1/signup`, {
@@ -33,7 +33,7 @@ export const postSignUp = (state,prop) => {
       .then(response => {
         if (response.data) {
           dispatch(receiveSignUp());
-         prop;
+          toLoginPage();
         } else if (response.error) {
           dispatch(errorSignUp(response.error));
         }

@@ -30,7 +30,7 @@ class SignUp extends Component {
       email: email,
       password: password,
       confirmPassword: confirmPassword
-    },history.push('/login'));
+    }, () => (history.push('/login')));
   }
   render() {
     const { classes, valid, signUpError } = this.props;
