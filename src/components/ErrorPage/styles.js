@@ -9,10 +9,16 @@ export default {
     backgroundColor: 'rgb(164, 228, 226)',
     '@media screen and (min-width: 796px)': {
       backgroundSize: '100%'
+    },
+    '@media screen and (max-width: 450px)': {
+      backgroundSize: '150%'
     }
   },
   btn: {
     position: 'absolute',
-    bottom: '15%'
+    bottom: '15%',
+    '@media screen and (max-width: 450px)': {
+      bottom: '25%'
+    }
   }
 };
