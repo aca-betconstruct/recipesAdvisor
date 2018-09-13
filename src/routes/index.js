@@ -7,6 +7,11 @@ import Recipe from '../containers/Recipe';
 import LoginForm from '../containers/Login';
 import SignUpForm from '../containers/SignUp';
 import PrivateRoute from '../containers/PrivateRoute';
+import Home from '../components/Home';
+import RandomRecipes from '../components/RandomRecipes';
+import AboutUsPage from '../components/AboutUs';
+import ContactPage from '../components/ContactUs';
+import ErrorPage from '../containers/ErrorPage';
 
 class Routers extends Component {
   render() {
@@ -14,24 +19,27 @@ class Routers extends Component {
       <Router>
         <Switch>
           <Route path="/login" component={LoginForm} />
-          <PrivateRoute path="/home/preferences" component={Preferences} />
+          <RoutesWithHeaderAndFooter exact path="/" component={RandomRecipes} />
+          <RoutesWithHeaderAndFooter path="/aboutUs" component={AboutUsPage} />
+          <RoutesWithHeaderAndFooter
+            path="/contactUs"
+            component={ContactPage}
+          />
+          <RoutesWithHeaderAndFooter path="/home" component={Home} />
+          <RoutesWithHeaderAndFooter
+            private={true}
+            path="/home/preferences"
+            component={Preferences}
+          />
           <Route path="/signUp" component={SignUpForm} />
           <Route
             path="/detail/:id"
             component={({ location, match, history }) => (
-              <Recipe
-                history={history}
-                match={match}
-                location={location}
-              />
+              <Recipe history={history} match={match} location={location} />
             )}
           />
           <PrivateRoute path="/calculator" component={CaloriesCalculator} />
-          <Route
-            component={({ location }) => (
-              <RoutesWithHeaderAndFooter location={location} />
-            )}
-          />
+          <Route component={ErrorPage} />
         </Switch>
       </Router>
     );
