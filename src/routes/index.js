@@ -25,12 +25,12 @@ class Routers extends Component {
             path="/contactUs"
             component={ContactPage}
           />
-          <RoutesWithHeaderAndFooter path="/home" component={Home} />
-          <RoutesWithHeaderAndFooter
-            private={true}
+          <PrivateRoute
+            exact
             path="/home/preferences"
             component={Preferences}
           />
+          <RoutesWithHeaderAndFooter path="/home" component={Home} />
           <Route path="/signUp" component={SignUpForm} />
           <Route
             path="/detail/:id"
