@@ -25,7 +25,7 @@ class FoodList extends Component {
   autoCompleteItems() {
     const { preferences } = this.props;
     let randomFoods = RANDOM_FOODS;
-    preferences.map(item => {
+    preferences.forEach(item => {
       randomFoods = randomFoods.filter(food => item.text !== food.name);
     });
     return randomFoods;
