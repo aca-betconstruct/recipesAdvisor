@@ -18,6 +18,7 @@ import { postSignUp } from './signup';
 import { postLogin } from './login';
 import { getDetail } from './detail';
 import { postComment, getComments } from './comment';
+import { getRecipesForNotification } from './notification';
 
 export {
   getRecipes,
@@ -41,5 +42,6 @@ export {
   getAuthenticated,
   getDetail,
   postComment,
-  getComments
+  getComments,
+  getRecipesForNotification
 };

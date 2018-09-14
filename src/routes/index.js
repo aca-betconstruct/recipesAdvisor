@@ -7,11 +7,14 @@ import Recipe from '../containers/Recipe';
 import LoginForm from '../containers/Login';
 import SignUpForm from '../containers/SignUp';
 import PrivateRoute from '../containers/PrivateRoute';
+import App from '../containers/Notification';
 
 class Routers extends Component {
   render() {
     return (
       <Router>
+        <div>
+        <App/>
         <Switch>
           <Route path="/login" component={LoginForm} />
           <PrivateRoute path="/home/preferences" component={Preferences} />
@@ -19,11 +22,7 @@ class Routers extends Component {
           <Route
             path="/detail/:id"
             component={({ location, match, history }) => (
-              <Recipe
-                history={history}
-                match={match}
-                location={location}
-              />
+              <Recipe history={history} match={match} location={location} />
             )}
           />
           <PrivateRoute path="/calculator" component={CaloriesCalculator} />
@@ -33,6 +32,7 @@ class Routers extends Component {
             )}
           />
         </Switch>
+        </div>
       </Router>
     );
   }
