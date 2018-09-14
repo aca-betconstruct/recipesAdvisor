@@ -1,26 +1,22 @@
-import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
+import { Route } from 'react-router-dom';
 import Header from '../../containers/Header';
-import Home from '../../components/Home';
 import PrivateRoutes from '../../containers/PrivateRoute';
-import RandomRecipes from '../../components/RandomRecipes';
 import FooterPage from '../../components/Footer';
-import AboutUsPage from '../../components/AboutUs';
-import ContactPage from '../../components/ContactUs';
 
 class RoutesWithHeaderAndFooter extends Component {
   render() {
+    const { private: Private, component: Component, ...rest } = this.props;
     return (
-      <React.Fragment>
-        <Header location={this.props.location} />
-        <Switch>
-          <Route exact path="/" component={RandomRecipes} />
-          <Route path="/aboutUs" component={AboutUsPage} />
-          <Route path="/contactUs" component={ContactPage} />
-          <PrivateRoutes path="/home" component={Home} />
-        </Switch>
+      <Fragment>
+        <Route render={({ location }) => <Header location={location} />} />
+        {Private ? (
+          <PrivateRoutes {...rest} render={props => <Component {...props} />} />
+        ) : (
+          <Route {...rest} render={props => <Component {...props} />} />
+        )}
         <FooterPage />
-      </React.Fragment>
+      </Fragment>
     );
   }
 }

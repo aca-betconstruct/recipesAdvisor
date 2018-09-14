@@ -7,11 +7,14 @@ import FoodCard from '../../containers/FoodCard';
 import { RANDOM_FOODS } from '../../constants';
 
 class FoodList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       value: ''
     };
+
+    this.autoCompleteItems = this.autoCompleteItems.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
   }
 
   componentDidMount() {
@@ -19,7 +22,16 @@ class FoodList extends Component {
     getPreferences(jwt);
   }
 
-  handleAdd = text => {
+  autoCompleteItems() {
+    const { preferences } = this.props;
+    let randomFoods = RANDOM_FOODS;
+    preferences.forEach(item => {
+      randomFoods = randomFoods.filter(food => item.text !== food.name);
+    });
+    return randomFoods;
+  }
+
+  handleAdd(text) {
     const { fetchPreferences, jwt } = this.props;
     fetchPreferences(
       {
@@ -29,7 +41,7 @@ class FoodList extends Component {
       jwt
     );
     this.setState({ value: '' });
-  };
+  }
 
   render() {
     const {
@@ -45,7 +57,7 @@ class FoodList extends Component {
         <div className={classes.addFood}>
           <ReactAutocomplete
             inputProps={{ placeholder: inputPlaceholder }}
-            items={RANDOM_FOODS}
+            items={this.autoCompleteItems()}
             shouldItemRender={(item, value) =>
               item.name.toLowerCase().indexOf(value.toLowerCase()) > -1
             }

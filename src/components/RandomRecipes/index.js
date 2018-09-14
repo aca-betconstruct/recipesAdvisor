@@ -8,7 +8,7 @@ const RandomRecipes = () => {
   return (
     <span>
       <AnimatableImages />
-      <Row>
+      <Row className={'mx-5'}>
         <FastCooking />
         <Recipes type={'random'} />
       </Row>
