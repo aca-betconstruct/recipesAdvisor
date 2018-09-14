@@ -13,7 +13,7 @@ import {
 import { addHealthLabel, addDietLabel, removeLabel } from './filter';
 import { firstPage, nextPage } from './pagination';
 import { changeCalories } from './calories';
-import { logoutUser, getAuthenticated } from './authenticated';
+import { logoutUser, getAuthenticated, getMe } from './authenticated';
 import { postSignUp } from './signup';
 import { postLogin } from './login';
 import { getDetail } from './detail';
@@ -41,5 +41,6 @@ export {
   getAuthenticated,
   getDetail,
   postComment,
-  getComments
+  getComments,
+  getMe
 };

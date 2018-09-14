@@ -1,6 +1,8 @@
 import {
   REQUEST_AUTHENTICATED,
   RECEIVE_AUTHENTICATED,
+  REQUEST_ME,
+  RECEIVE_ME,
   LOGOUT_USER
 } from '../constants';
 
@@ -17,6 +19,18 @@ const receiveAuthenticated = json => {
   };
 };
 
+const requestMe = () => {
+  return {
+    type: REQUEST_ME
+  };
+};
+
+const receiveMe = json => {
+  return {
+    type: RECEIVE_ME,
+    payload: json.data
+  };
+};
 
 const logout = () => {
   localStorage.clear();
@@ -45,9 +59,24 @@ export const getAuthenticated = jwt => {
       .then(response => response.json())
       .then(json => {
         dispatch(receiveAuthenticated(json));
-      })
-      .catch(e => {
-        console.log(e);
+      });
+  };
+};
+
+export const getMe = jwt => {
+  return dispatch => {
+    dispatch(requestMe());
+    return fetch(`http://localhost:5002/v1/me`, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${jwt}`
+      }
+    })
+      .then(response => response.json())
+      .then(json => {
+        dispatch(receiveMe(json));
       });
   };
 };

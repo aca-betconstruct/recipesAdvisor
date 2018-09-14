@@ -2,10 +2,22 @@ import {
   RECEIVE_AUTHENTICATED,
   LOGOUT_USER,
   RECEIVE_LOGIN,
+  RECEIVE_ME,
   ERROR_LOGIN
 } from '../constants';
 
 export const user = (state = null, action) => {
+  switch (action.type) {
+    case RECEIVE_ME: {
+      return action.payload;
+    }
+    default: {
+      return state;
+    }
+  }
+};
+
+export const users = (state = null, action) => {
   switch (action.type) {
     case RECEIVE_AUTHENTICATED: {
       return action.payload;
@@ -18,6 +30,7 @@ export const user = (state = null, action) => {
     }
   }
 };
+
 export const jwt = (state = '', action) => {
   switch (action.type) {
     case RECEIVE_LOGIN: {
