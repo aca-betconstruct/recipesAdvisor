@@ -18,27 +18,32 @@ class Routers extends Component {
     return (
       <Router>
         <Switch>
-          <Route path="/login" component={LoginForm} />
           <RoutesWithHeaderAndFooter exact path="/" component={RandomRecipes} />
-          <RoutesWithHeaderAndFooter path="/aboutUs" component={AboutUsPage} />
           <RoutesWithHeaderAndFooter
+            exact
+            path="/aboutUs"
+            component={AboutUsPage}
+          />
+          <RoutesWithHeaderAndFooter
+            exact
             path="/contactUs"
             component={ContactPage}
           />
-          <PrivateRoute
-            exact
-            path="/home/preferences"
-            component={Preferences}
-          />
-          <RoutesWithHeaderAndFooter path="/home" component={Home} />
-          <Route path="/signUp" component={SignUpForm} />
+          <PrivateRoute path="/home" component={Home} />
+          <Route exact path="/login" component={LoginForm} />
+          <Route exact path="/signUp" component={SignUpForm} />
           <Route
+            exact
             path="/detail/:id"
             component={({ location, match, history }) => (
               <Recipe history={history} match={match} location={location} />
             )}
           />
-          <PrivateRoute path="/calculator" component={CaloriesCalculator} />
+          <PrivateRoute
+            exact
+            path="/calculator"
+            component={CaloriesCalculator}
+          />
           <Route component={ErrorPage} />
         </Switch>
       </Router>
