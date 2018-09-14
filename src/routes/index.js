@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import RoutesWithHeaderAndFooter from './routesWithHeaderAndFooter';
-import Preferences from '../components/Preferences';
 import CaloriesCalculator from '../containers/CaloriesCalculator';
 import Recipe from '../containers/Recipe';
 import LoginForm from '../containers/Login';
