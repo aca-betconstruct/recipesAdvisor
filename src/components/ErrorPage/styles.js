@@ -17,8 +17,15 @@ export default {
   btn: {
     position: 'absolute',
     bottom: '15%',
+    '@media screen and (min-width: 451px) and (max-width: 1100px)': {
+      bottom: '20%'
+    },
     '@media screen and (max-width: 450px)': {
-      bottom: '25%'
+      bottom: '30%',
+      maxWidth: '110px',
+      '&>button': {
+        padding: '10px'
+      }
     }
   }
 };
