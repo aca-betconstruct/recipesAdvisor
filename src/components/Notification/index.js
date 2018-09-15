@@ -13,7 +13,7 @@ class MyNotification extends Component {
     interval = setInterval(() => {
         console.log(new Date().toLocaleTimeString({}, { hour12: false }));
       switch (new Date().toLocaleTimeString({}, { hour12: false })) {
-        case '18:30:00':
+        case '09:00:00':
           this.props.getRecipesForNotification('breakfast');
           break;
         case '13:30:00':
