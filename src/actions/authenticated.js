@@ -45,15 +45,14 @@ export const logoutUser = () => {
   };
 };
 
-export const getAuthenticated = jwt => {
+export const getAuthenticated = () => {
   return dispatch => {
     dispatch(requestAuthenticated());
     return fetch(`http://localhost:5002/v1/users`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${jwt}`
+        'Content-Type': 'application/json'
       }
     })
       .then(response => response.json())
