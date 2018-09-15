@@ -1,3 +1,4 @@
 import { createSelector } from 'reselect';
-const selectUser = state => state.user;
-export const selectIsAuth = createSelector(selectUser, user => user !== null);
+const jwt = state => state.jwt;
+export const selectIsAuth = createSelector(jwt, jwt => jwt !== '');
+
