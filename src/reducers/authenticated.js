@@ -9,21 +9,24 @@ import {
 export const user = (state = null, action) => {
   switch (action.type) {
     case RECEIVE_ME: {
-      return action.payload;
+      return action.payload[0];
     }
+      case LOGOUT_USER: {
+          return null;
+      }
     default: {
       return state;
     }
   }
 };
 
-export const users = (state = null, action) => {
+export const users = (state = [], action) => {
   switch (action.type) {
     case RECEIVE_AUTHENTICATED: {
       return action.payload;
     }
     case LOGOUT_USER: {
-      return null;
+      return [];
     }
     default: {
       return state;
@@ -50,6 +53,9 @@ export const errorlogin = (state = null, action) => {
     case ERROR_LOGIN: {
       return action.payload;
     }
+      case LOGOUT_USER: {
+          return null;
+      }
     default: {
       return state;
     }
