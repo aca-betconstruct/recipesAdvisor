@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import styles from './styles';
 import renderField from '../AuthHelpers/renderField';
-import { postLogin } from '../../actions';
 
 class Login extends Component {
   constructor(props) {
