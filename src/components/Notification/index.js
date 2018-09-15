@@ -1,8 +1,8 @@
-import React from 'react';
+import { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-let timeout;
-class MyNotification extends React.Component {
+let interval;
+class MyNotification extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,10 +10,9 @@ class MyNotification extends React.Component {
     };
   }
   componentDidMount() {
-    timeout = setInterval(() => {
-        console.log(new Date().toLocaleTimeString());
-      switch (new Date().toLocaleTimeString()) {
-        case '16:14:00':
+    interval = setInterval(() => {
+      switch (new Date().toLocaleTimeString({}, { hour12: false })) {
+        case '17:39:00':
           this.props.getRecipesForNotification('breakfast');
           break;
         case '0:39:00':
@@ -45,7 +44,7 @@ class MyNotification extends React.Component {
           });
           this.showNotification();
         } else {
-          alert('You denited Notification ,it is a sad:(');
+          alert('You denied Notification ,it is a sad:(');
         }
       });
     } else {
@@ -65,21 +64,18 @@ class MyNotification extends React.Component {
         body: 'You clicked on the button!',
         icon: notification.image
       });
-
       createdNotification.onclick = () => {
         history.push(`/detail/${notification.uri.slice(44)}`);
       };
-
-      timeout = setTimeout(() => createdNotification.close(), 5000);
     } else {
       alert('Notification are disabled');
     }
   };
   componentWillUnmount() {
-    clearTimeout(timeout);
+    clearInterval(interval);
   }
   render() {
-    return '';
+    return null;
   }
 }
 export default withRouter(MyNotification);
