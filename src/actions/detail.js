@@ -18,7 +18,7 @@ export const getDetail = uri => {
     dispatch(requestDetail());
     let api = EDAMAM_KEYS[Math.floor(Math.random() * EDAMAM_KEYS.length)];
     return fetch(
-      `https://api.edamam.com/search?r=http%3A%2F%2Fwww.edamam.com%2Fontologies%2Fedamam.owl%23${uri}&app_id=${api.appId}&app_key==${api.appKey}`
+      `https://api.edamam.com/search?r=http%3A%2F%2Fwww.edamam.com%2Fontologies%2Fedamam.owl%23${uri}&app_id=${api.appId}&app_key=${api.appKey}`
     )
       .then(response => response.json())
       .then(response => dispatch(receiveDetail(response)));
