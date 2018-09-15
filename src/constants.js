@@ -16,6 +16,9 @@ export const RECEIVE_LOGIN = 'RECEIVE_LOGIN';
 export const ERROR_LOGIN = 'ERROR_LOGIN';
 export const LOGOUT_USER = 'LOGOUT_USER';
 
+export const REQUEST_ME = 'REQUEST_ME';
+export const RECEIVE_ME = 'RECEIVE_ME';
+
 export const REQUEST_AUTHENTICATED = 'REQUEST_AUTHENTICATED';
 export const RECEIVE_AUTHENTICATED = 'RECEIVE_AUTHENTICATED';
 
@@ -133,7 +136,6 @@ export const RANDOM_FOODS = [
 
 export const EDAMAM_KEYS = [
   { appId: '3767af3b', appKey: '69ee56473afc34c85e1710efe3de4b8d' },
-  { appId: 'a37bb1eb', appKey: '3f704a5ce747891ed2b8978661054585' },
   { appId: '3db55968', appKey: 'bc9ab2f54295ce6e82c5fa5164ac0ca0' },
   { appId: '8d30ad7e', appKey: '2e15423acdc14ff0c010ea43cd8c94e8' },
   { appId: '466f05fe', appKey: 'df1f7c8e047ca64161163780b3db0941' },

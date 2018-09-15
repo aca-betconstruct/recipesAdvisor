@@ -7,7 +7,7 @@ import filter from './filter';
 import detail from './detail';
 import comments from './comment';
 import assignResults from './calories';
-import { user, jwt, errorlogin } from './authenticated';
+import { user, users, jwt, errorlogin } from './authenticated';
 import { favourites, isFavouriteRecipesFetching } from './favourites';
 import signUpError from './signUp';
 import { isNotificationFetching, notification } from './notification';
@@ -23,6 +23,7 @@ export default combineReducers({
   curPage,
   preferences,
   user,
+  users,
   detail,
   form: reduxFormReducer,
   filter,
