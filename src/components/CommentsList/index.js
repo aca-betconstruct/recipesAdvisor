@@ -6,23 +6,22 @@ import styles from './styles';
 
 class CommentsList extends Component {
   componentDidMount() {
-    const { getComments, getMe, getAuthenticated, jwt } = this.props;
+    const { getComments, getAuthenticated, jwt } = this.props;
     getComments();
-    getMe(jwt);
     getAuthenticated(jwt);
   }
 
   render() {
-    const { classes, comments, url, auth } = this.props;
+    const { classes, comments, url, users } = this.props;
     const comment = comments.filter(elem => elem.receptId === url);
     return (
       <Col className={classes.main}>
         {comment.map((elem, index) => {
-          const user = auth.filter(el => el.id === elem.creatorId);
+          const allUsers = users.filter(el => el.id === elem.creatorId);
           return (
             <div className={classes.excerpt} key={index}>
               <div className={classes.brief}>
-                {user.map((el, i) => {
+                {allUsers.map((el, i) => {
                   return (
                     <p
                       className={`font-weight-bold mb-3 ${classes.name}`}
