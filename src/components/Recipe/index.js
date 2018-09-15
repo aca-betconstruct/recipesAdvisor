@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
+import injectSheet from 'react-jss';
 import Detail from '../Detail';
 import Header from '../../containers/Header';
+
+import styles from './styles';
 
 class Recipe extends Component {
   componentDidMount() {
@@ -11,24 +14,25 @@ class Recipe extends Component {
   }
 
   render() {
-    const { match, detail, history } = this.props;
+    const { match, detail, history, classes } = this.props;
 
     return (
-      <div>
+      <Fragment>
         <Header location={this.props.location} />
-        <div style={{ marginTop: '170px' }}>
+        <div className={classes.wrapper}>
           {detail === null ? (
-            <p>Loading...</p>
+            <p className={classes.loading}>Loading...</p>
           ) : (
             <Detail history={history} recipe={detail} match={match} />
           )}
         </div>
-      </div>
+      </Fragment>
     );
   }
-  static propTypes ={
-      detail: PropTypes.object
-  }
+  static propTypes = {
+    detail: PropTypes.object,
+    classes: PropTypes.object
+  };
 }
 
-export default Recipe;
+export default injectSheet(styles)(Recipe);
