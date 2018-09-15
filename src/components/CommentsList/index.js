@@ -6,9 +6,9 @@ import styles from './styles';
 
 class CommentsList extends Component {
   componentDidMount() {
-    const { getComments, getAuthenticated, jwt } = this.props;
+    const { getComments, getAuthenticated } = this.props;
     getComments();
-    getAuthenticated(jwt);
+    getAuthenticated();
   }
 
   render() {
