@@ -45,8 +45,9 @@ export const getRecipesForNotification = type => {
         break;
     }
     let api = EDAMAM_KEYS[Math.floor(Math.random() * EDAMAM_KEYS.length)];
+    let randomInteger=Math.floor(Math.random()*80);
     return fetch(
-      `https://api.edamam.com/search?q=${food}&app_id=${api.appId}&app_key=${api.appKey}&from=0&to=1`
+      `https://api.edamam.com/search?q=${food}&app_id=${api.appId}&app_key=${api.appKey}&from=${randomInteger}&to=${randomInteger+1}`
     )
       .then(recipes => recipes.json())
       .then(recipe => recipe.hits[Math.floor(Math.random()*recipe.hits.length)].recipe)
