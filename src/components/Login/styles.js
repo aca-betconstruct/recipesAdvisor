@@ -181,8 +181,7 @@ export default {
   signUpForm: {
     background: 'rgba(0, 0, 0, 0.56)',
     padding: '3em',
-    // minHeight: '400px',
-    height: '400.72px',
+    minHeight: '400px',
     '& h3': {
       color: '#FFFFFF',
       fontSize: '2em',
