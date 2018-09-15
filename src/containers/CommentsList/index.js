@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux';
 
 const mapStateToProps = state => ({
   comments: state.comments,
-  auth: state.users,
+  users: state.users,
   jwt: state.jwt
 });
 
@@ -15,7 +15,6 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
       getComments,
-      getMe,
       getAuthenticated
     },
     dispatch
