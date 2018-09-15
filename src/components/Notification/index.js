@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 let timeout;
-class Notification extends React.Component {
+class MyNotification extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +13,7 @@ class Notification extends React.Component {
     timeout = setInterval(() => {
         console.log(new Date().toLocaleTimeString());
       switch (new Date().toLocaleTimeString()) {
-        case '0:38:00':
+        case '16:14:00':
           this.props.getRecipesForNotification('breakfast');
           break;
         case '0:39:00':
@@ -82,4 +82,4 @@ class Notification extends React.Component {
     return '';
   }
 }
-export default withRouter(Notification);
+export default withRouter(MyNotification);

@@ -6,7 +6,7 @@ import Recipe from '../containers/Recipe';
 import LoginForm from '../containers/Login';
 import SignUpForm from '../containers/SignUp';
 import PrivateRoute from '../containers/PrivateRoute';
-import App from '../containers/Notification';
+import MyNotification from '../containers/Notification';
 import Home from '../components/Home';
 import RandomRecipes from '../components/RandomRecipes';
 import AboutUsPage from '../components/AboutUs';
@@ -18,7 +18,7 @@ class Routers extends Component {
     return (
       <Router>
         <div>
-        <App/>
+        <MyNotification/>
         <Switch>
           <RoutesWithHeaderAndFooter exact path="/" component={RandomRecipes} />
           <RoutesWithHeaderAndFooter
