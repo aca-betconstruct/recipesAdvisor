@@ -4,7 +4,8 @@ import {
   NOTIFICATION_FETCHING_SUCCESS,
   BREAKFAST,
   DINNER,
-  LUNCH
+  LUNCH,
+  EDAMAM_KEYS
 } from '../constants';
 
 const notificationFetching = () => {
@@ -43,8 +44,9 @@ export const getRecipesForNotification = type => {
       default:
         break;
     }
+    let api = EDAMAM_KEYS[Math.floor(Math.random() * EDAMAM_KEYS.length)];
     return fetch(
-      `https://api.edamam.com/search?q=${food}&app_id=3767af3b&app_key=69ee56473afc34c85e1710efe3de4b8d&from=0&to=1`
+      `https://api.edamam.com/search?q=${food}&app_id=${api.appId}&app_key=${api.appKey}&from=0&to=1`
     )
       .then(recipes => recipes.json())
       .then(recipe => recipe.hits[Math.floor(Math.random()*recipe.hits.length)].recipe)

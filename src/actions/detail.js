@@ -1,4 +1,4 @@
-import { REQUEST_DETAIL, RECEIVE_DETAIL } from '../constants';
+import { REQUEST_DETAIL, RECEIVE_DETAIL, EDAMAM_KEYS } from '../constants';
 
 const requestDetail = () => {
   return {
@@ -16,8 +16,9 @@ const receiveDetail = json => {
 export const getDetail = uri => {
   return dispatch => {
     dispatch(requestDetail());
+    let api = EDAMAM_KEYS[Math.floor(Math.random() * EDAMAM_KEYS.length)];
     return fetch(
-      `https://api.edamam.com/search?r=http%3A%2F%2Fwww.edamam.com%2Fontologies%2Fedamam.owl%23${uri}&app_id=a37bb1eb&app_key=3f704a5ce747891ed2b8978661054585`
+      `https://api.edamam.com/search?r=http%3A%2F%2Fwww.edamam.com%2Fontologies%2Fedamam.owl%23${uri}&app_id=${api.appId}&app_key==${api.appKey}`
     )
       .then(response => response.json())
       .then(response => dispatch(receiveDetail(response)));

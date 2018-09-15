@@ -27,11 +27,9 @@ export const deletePreference = (id, jwt) => {
       method: 'DELETE'
     })
       .then(response => response.json())
-      .then(json => {
-        // dispatch(allReceivePreference());
-        dispatch({ type: REMOVE_PREFERENCE, payload: {id} });
-       // dispatch(getPreferences(jwt));
-      })
+      .then(() =>
+        dispatch({ type: REMOVE_PREFERENCE, payload: {id} })
+       )
       .catch(e => {
         console.log(e);
       });
@@ -70,7 +68,6 @@ export const postPreference = (state, jwt) => {
       .then(response => {
         console.log(response);
         dispatch({ type: ADD_PREFERENCE, payload: response.data });
-       // dispatch(getPreferences(jwt));
       });
   };
 };

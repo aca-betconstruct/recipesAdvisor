@@ -11,7 +11,6 @@ class MyNotification extends Component {
   }
   componentDidMount() {
     interval = setInterval(() => {
-        console.log(new Date().toLocaleTimeString({}, { hour12: false }));
       switch (new Date().toLocaleTimeString({}, { hour12: false })) {
         case '09:00:00':
           this.props.getRecipesForNotification('breakfast');
@@ -70,7 +69,7 @@ class MyNotification extends Component {
         history.push(`/detail/${notification.uri.slice(44)}`);
         createdNotification.close();
       };
-      } else {
+    } else {
       alert('Notification are disabled');
     }
   };
