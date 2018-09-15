@@ -2,7 +2,7 @@ export default {
   container: {
     width: '250px',
     maxWidth: '250px',
-    '@media screen and (max-width: 1300px)': {
+    '@media screen and (max-width: 1365px)': {
       display: 'none'
     }
   },
