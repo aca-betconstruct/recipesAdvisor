@@ -2,6 +2,8 @@ import {
   REQUEST_COMMENT,
   RECEIVE_COMMENT,
   REQUEST_POST_COMMENT,
+  REQUEST_DELETE_COMMENT,
+  RECEIVE_DELETE_COMMENT,
   ADD_COMMENT
 } from '../constants';
 
@@ -31,6 +33,18 @@ const requestPostComment = () => {
   };
 };
 
+const receiveDeletComments = () => {
+  return {
+    type: RECEIVE_DELETE_COMMENT
+  };
+};
+
+const requestDeleteComment = () => {
+  return {
+    type: REQUEST_DELETE_COMMENT
+  };
+};
+
 export const getComments = () => {
   return dispatch => {
     dispatch(requestComment());
@@ -53,5 +67,21 @@ export const postComment = (state, jwt) => {
     })
       .then(response => response.json())
       .then(response => dispatch(addComment(response)));
+  };
+};
+
+export const deleteComment = (id, jwt) => {
+  return dispatch => {
+    dispatch(requestDeleteComment());
+    return fetch(`http://localhost:5002/v1/comment/${id}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${jwt}`
+      },
+      method: 'DELETE',
+      body: JSON.stringify({id})
+    })
+      .then(response => response.json())
+      .then(response => dispatch(receiveDeletComments()));
   };
 };

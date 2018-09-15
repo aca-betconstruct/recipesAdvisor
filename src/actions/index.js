@@ -17,7 +17,7 @@ import { logoutUser, getAuthenticated, getMe } from './authenticated';
 import { postSignUp } from './signup';
 import { postLogin } from './login';
 import { getDetail } from './detail';
-import { postComment, getComments } from './comment';
+import { postComment, getComments, deleteComment } from './comment';
 import { getRecipesForNotification } from './notification';
 
 export {
@@ -39,6 +39,7 @@ export {
   changeCalories,
   postSignUp,
   postLogin,
+  deleteComment,
   getAuthenticated,
   getDetail,
   postComment,

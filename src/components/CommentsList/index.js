@@ -5,14 +5,23 @@ import { Col } from 'mdbreact';
 import styles from './styles';
 
 class CommentsList extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
   componentDidMount() {
-    const { getComments, getAuthenticated } = this.props;
+    const { getComments, getAuthenticated, getMe, jwt } = this.props;
     getComments();
     getAuthenticated();
+    getMe(jwt);
+  }
+  handleClick(id) {
+    const { deleteComment, jwt } = this.props;
+    deleteComment(id, jwt);
   }
 
   render() {
-    const { classes, comments, url, users } = this.props;
+    const { classes, comments, url, users, user } = this.props;
     const comment = comments.filter(elem => elem.receptId === url);
     return (
       <Col className={classes.main}>
@@ -32,7 +41,20 @@ class CommentsList extends Component {
                   );
                 })}
               </div>
-              <div className={classes.comment}>{elem.text}</div>
+              <div className={classes.comment}>
+                {elem.text}
+                <div>
+                  {user === null ? (
+                    <p>Loadibg ...</p>
+                  ) : user.id === elem.creatorId ? (
+                    <button onClick={this.handleClick(elem.id)}>
+                      <i className="fa fa-close" aria-hidden="true" />
+                    </button>
+                  ) : (
+                    ''
+                  )}
+                </div>
+              </div>
             </div>
           );
         })}
