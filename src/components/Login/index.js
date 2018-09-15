@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import styles from './styles';
 import renderField from '../AuthHelpers/renderField';
+import { postLogin } from '../../actions';
 
 class Login extends Component {
   constructor(props) {
@@ -14,15 +15,15 @@ class Login extends Component {
   componentDidUpdate() {
     const { jwt } = this.props;
     if (jwt) {
-      const { fetchAuthenticated } = this.props;
-      fetchAuthenticated(jwt);
+      const { getMe } = this.props;
+      getMe(jwt);
     }
   }
   handleSubmit(event) {
     event.preventDefault();
-    const { fetchLogin } = this.props;
+    const { postLogin } = this.props;
     const { email, password } = this.props;
-    fetchLogin({
+    postLogin({
       email: email,
       password: password
     });
