@@ -3,24 +3,23 @@ import { withRouter } from 'react-router-dom';
 
 let timeout;
 class MyNotification extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       ignore: true
     };
   }
   componentDidMount() {
     timeout = setInterval(() => {
-        console.log(new Date().toLocaleTimeString());
       switch (new Date().toLocaleTimeString()) {
-        case '16:14:00':
+        case '17:50:50':
           this.props.getRecipesForNotification('breakfast');
           break;
-        case '0:39:00':
-          this.props.getRecipesForNotification('dinner');
+        case '13:30:00':
+          this.props.getRecipesForNotification('lunch');
           break;
-        case '0:43:00':
-          this.props.getRecipesForNotification('supper');
+        case '17:00:00':
+          this.props.getRecipesForNotification('dinner');
           break;
         default:
           break;
@@ -61,8 +60,8 @@ class MyNotification extends React.Component {
     const { history, notification } = this.props;
     let createdNotification;
     if (!ignore && notification.uri) {
-      createdNotification = new Notification(notification.label, {
-        body: 'You clicked on the button!',
+      createdNotification = new Notification('We offer you the recipe.', {
+        body: notification.label,
         icon: notification.image
       });
 
@@ -76,7 +75,7 @@ class MyNotification extends React.Component {
     }
   };
   componentWillUnmount() {
-    clearTimeout(timeout);
+    clearInterval(timeout);
   }
   render() {
     return '';

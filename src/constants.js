@@ -130,3 +130,7 @@ export const RANDOM_FOODS = [
   { name: 'rhubarb' },
   { name: 'pistachios' }
 ];
+export const BREAKFAST=['eggs','yogurt','coffee','oatmeal','nuts','tea','fruit'];
+export const DINNER=['potato','chicken','pizza','vegetable','spaghetti'];
+export const LUNCH=['salad','vegan','cutlet'];
+
