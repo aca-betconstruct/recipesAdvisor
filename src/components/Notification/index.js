@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 let interval;
 class MyNotification extends Component {
@@ -10,16 +11,17 @@ class MyNotification extends Component {
     };
   }
   componentDidMount() {
+    const { getRecipesForNotification } = this.props;
     interval = setInterval(() => {
       switch (new Date().toLocaleTimeString({}, { hour12: false })) {
         case '9:09:00':
-          this.props.getRecipesForNotification('breakfast');
+          getRecipesForNotification('breakfast');
           break;
         case '13:30:00':
-          this.props.getRecipesForNotification('lunch');
+          getRecipesForNotification('lunch');
           break;
         case '17:00:00':
-          this.props.getRecipesForNotification('dinner');
+          getRecipesForNotification('dinner');
           break;
         default:
           break;
@@ -27,10 +29,8 @@ class MyNotification extends Component {
     }, 1000);
   }
   componentDidUpdate(prevProps) {
-    if (
-      prevProps.notification !== this.props.notification &&
-      !this.props.isNotificationFetching
-    ) {
+    const { notification, isNotificationFetching } = this.props;
+    if (prevProps.notification !== notification && !isNotificationFetching) {
       this.initNotifications();
     }
   }
@@ -79,5 +79,10 @@ class MyNotification extends Component {
   render() {
     return null;
   }
+  static propTypes = {
+    notification: PropTypes.object,
+    isNotificationFetching: PropTypes.bool,
+    getRecipesForNotification: PropTypes.func
+  };
 }
 export default withRouter(MyNotification);
