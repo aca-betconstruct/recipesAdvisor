@@ -7,7 +7,8 @@ class MyNotification extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ignore: true
+      ignore: true,
+      meal: ''
     };
   }
   componentDidMount() {
@@ -16,12 +17,15 @@ class MyNotification extends Component {
       switch (new Date().toLocaleTimeString({}, { hour12: false })) {
         case '9:00:00':
           getRecipesForNotification('breakfast');
+          this.setState({ meal: 'breakfast' });
           break;
         case '13:30:00':
           getRecipesForNotification('lunch');
+          this.setState({ meal: 'lunch' });
           break;
         case '17:00:00':
           getRecipesForNotification('dinner');
+          this.setState({ meal: 'dinner' });
           break;
         default:
           break;
@@ -57,17 +61,21 @@ class MyNotification extends Component {
 
   showNotification = () => {
     let { ignore } = this.state;
+    const { meal } = this.state;
     const { history, notification } = this.props;
     let createdNotification;
     if (!ignore && notification.uri) {
-      createdNotification = new Notification('We offer you the recipe.', {
-        body: notification.label,
-        icon: notification.image
-      });
+      createdNotification = new Notification(
+        `Your new ${meal} recipe is here! `,
+        {
+          body: notification.label,
+          icon: notification.image
+        }
+      );
 
       createdNotification.onclick = () => {
         history.push(`/detail/${notification.uri.slice(44)}`);
-        createdNotification.close();
+        // createdNotification.close();
       };
     } else {
       alert('Notification are disabled');
