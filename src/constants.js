@@ -36,6 +36,8 @@ export const REMOVE_FILTER_LABEL = 'REMOVE_FILTER_LABEL';
 export const REQUEST_COMMENT = 'REQUEST_COMMENT';
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
 export const REQUEST_POST_COMMENT = 'REQUEST_POST_COMMENT';
+export const REQUEST_DELETE_COMMENT = 'REQUEST_DELETE_COMMENT';
+export const RECEIVE_DELETE_COMMENT = 'RECEIVE_DELETE_COMMENT';
 export const ADD_COMMENT = 'ADD_COMMENT';
 
 export const REQUEST_DETAIL = 'REQUEST_DETAIL';
@@ -147,7 +149,14 @@ export const EDAMAM_KEYS = [
   { appId: 'fc73119a', appKey: 'c4f3820ce1155909b446ca73f75f2758' }
 ];
 
-export const BREAKFAST=['eggs','yogurt','coffee','oatmeal','nuts','tea','fruit'];
-export const DINNER=['potato','chicken','pizza','vegetable','spaghetti'];
-export const LUNCH=['salad','vegan','cutlet'];
-
+export const BREAKFAST = [
+  'eggs',
+  'yogurt',
+  'coffee',
+  'oatmeal',
+  'nuts',
+  'tea',
+  'fruit'
+];
+export const DINNER = ['potato', 'chicken', 'pizza', 'vegetable', 'spaghetti'];
+export const LUNCH = ['salad', 'vegan', 'cutlet'];
