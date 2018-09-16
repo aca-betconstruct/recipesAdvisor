@@ -10,10 +10,12 @@ class CommentsList extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
-    const { getComments, getAuthenticated, getMe, jwt } = this.props;
+    const { getComments, getAuthenticated, getMe, jwt, isAuth } = this.props;
     getComments();
     getAuthenticated();
-    getMe(jwt);
+    if (isAuth) {
+      getMe(jwt);
+    }
   }
   handleClick(id) {
     const { deleteComment, jwt } = this.props;
@@ -21,7 +23,7 @@ class CommentsList extends Component {
   }
 
   render() {
-    const { classes, comments, url, users, user } = this.props;
+    const { classes, comments, url, users } = this.props;
     const comment = comments.filter(elem => elem.receptId === url);
     return (
       <Col className={classes.main}>
