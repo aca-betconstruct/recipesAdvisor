@@ -43,17 +43,8 @@ class CommentsList extends Component {
               </div>
               <div className={classes.comment}>
                 {elem.text}
-                <div>
-                  {user === null ? (
-                    <p>Loadibg ...</p>
-                  ) : user.id === elem.creatorId ? (
-                    <button onClick={this.handleClick(elem.id)}>
-                      <i className="fa fa-close" aria-hidden="true" />
-                    </button>
-                  ) : (
-                    ''
-                  )}
-                </div>
+
+                <span>{elem.createdAt}</span>
               </div>
             </div>
           );
