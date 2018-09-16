@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import injectSheet from 'react-jss';
+import { Fa } from 'mdbreact';
+
+import styles from './styles';
 
 class CommentDelete extends Component {
   constructor(props) {
@@ -7,17 +11,18 @@ class CommentDelete extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(event) {
+  handleClick() {
     const { deleteComment, id, jwt } = this.props;
     deleteComment(id, jwt);
   }
   render() {
+    const { classes } = this.props;
     return (
-      <div>
-        <button onClick={this.handleClick}>
-          <i className="fa fa-close" aria-hidden="true" />
-        </button>
-      </div>
+      <Fa
+        className={classes.closeIcon}
+        icon="close"
+        onClick={this.handleClick}
+      />
     );
   }
   static propTypes = {
@@ -27,4 +32,4 @@ class CommentDelete extends Component {
   };
 }
 
-export default CommentDelete;
+export default injectSheet(styles)(CommentDelete);

@@ -37,7 +37,7 @@ export default {
     cursor: 'pointer',
     border: 0,
     color: 'white',
-    padding: '8px',
+    padding: '6px 16px',
     marginBottom: '5%',
     borderRadius: '5px',
     '&:focus': {

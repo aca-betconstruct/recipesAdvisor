@@ -3,7 +3,8 @@ export default {
     width: '80%',
     margin: '2% auto',
     maxHeight: '500px',
-    overflowY: 'scroll',
+    overflowX: 'hidden',
+    overflowY: 'auto',
     '&::-webkit-scrollbar': {
       width: '6px'
     },
@@ -24,11 +25,18 @@ export default {
   },
   excerpt: {
     margin: '5% 0',
-    wordWrap: 'break-word',
     borderBottom: '1px solid rgb(139, 195, 74)'
   },
   comment: {
-    padding: '0 5% 3%',
+    padding: '0 7% 0 5%',
+    wordBreak: 'break-word',
     marginTop: '-10px'
+  },
+  createdAt: {
+    textAlign: 'right',
+    padding: '0 10%',
+    fontSize: '11px',
+    fontWeight: '500',
+    color: 'gray'
   }
 };
