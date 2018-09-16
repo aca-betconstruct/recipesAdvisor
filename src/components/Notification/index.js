@@ -13,7 +13,6 @@ class MyNotification extends Component {
   componentDidMount() {
     const { getRecipesForNotification } = this.props;
     interval = setInterval(() => {
-      console.log(new Date().toLocaleTimeString({}, { hour12: false }));
       switch (new Date().toLocaleTimeString({}, { hour12: false })) {
         case '9:00:00':
           getRecipesForNotification('breakfast');
