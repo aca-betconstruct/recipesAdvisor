@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import { Col } from 'mdbreact';
 import styles from './styles';
-import CommentDelete from '../CommentDelete';
+import CommentDelete from '../../containers/CommentDelete';
 
 class CommentsList extends Component {
   componentDidMount() {
@@ -17,8 +17,6 @@ class CommentsList extends Component {
 
   render() {
     const {
-      deleteComment,
-      jwt,
       classes,
       comments,
       url,
@@ -48,11 +46,7 @@ class CommentsList extends Component {
                 {elem.text}
                 <div>
                   {user.id === elem.creatorId ? (
-                    <CommentDelete
-                      deleteComment={deleteComment}
-                      id={elem.id}
-                      jwt={jwt}
-                    />
+                    <CommentDelete id={elem.id} />
                   ) : (
                     ''
                   )}
