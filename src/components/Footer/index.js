@@ -18,8 +18,7 @@ const FooterPage = () => {
               Recipes Advisor
             </h6>
             <p>
-              Here you can use rows and columns here to organize your footer
-              content. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              All Rights Reserved
             </p>
           </Col>
           <hr
