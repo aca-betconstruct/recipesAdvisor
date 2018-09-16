@@ -1,7 +1,7 @@
 import { jwt, user } from '../../reducers/authenticated';
 import {
   LOGOUT_USER,
-  RECEIVE_AUTHENTICATED,
+  RECEIVE_ME,
   RECEIVE_LOGIN
 } from '../../constants';
 
@@ -33,13 +33,13 @@ describe('test user', () => {
     expect(user(null, {})).toBe(null);
   });
 
-  test('RECEIVE_AUTHENTICATED', () => {
+  test('RECEIVE_ME', () => {
     expect(
       user(null, {
-        type: RECEIVE_AUTHENTICATED,
-        payload: userInfo
+        type: RECEIVE_ME,
+        payload: [{...userInfo}]
       })
-    ).toBe(userInfo);
+    ).toEqual({...userInfo});
   });
 
   test('LOGOUT_USER', () => {
