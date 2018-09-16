@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import CommentsList from '../../components/CommentsList';
 import { getComments } from '../../actions';
-import  {deleteComment} from '../../actions';
 import { getAuthenticated } from '../../actions';
 import { getMe } from '../../actions';
 import { bindActionCreators } from 'redux';
@@ -18,8 +17,7 @@ const mapDispatchToProps = dispatch => {
     {
       getComments,
       getAuthenticated,
-      getMe,
-      deleteComment
+      getMe
     },
     dispatch
   );
