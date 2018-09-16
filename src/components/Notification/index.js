@@ -75,7 +75,7 @@ class MyNotification extends Component {
 
       createdNotification.onclick = () => {
         history.push(`/detail/${notification.uri.slice(44)}`);
-        // createdNotification.close();
+        createdNotification.close();
       };
     } else {
       alert('Notification are disabled');
