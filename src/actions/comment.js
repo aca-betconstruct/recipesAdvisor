@@ -33,9 +33,10 @@ const requestPostComment = () => {
   };
 };
 
-const receiveDeletComments = () => {
+const receiveDeletComments = id => {
   return {
-    type: RECEIVE_DELETE_COMMENT
+    type: RECEIVE_DELETE_COMMENT,
+    payload: id
   };
 };
 
@@ -82,6 +83,6 @@ export const deleteComment = (id, jwt) => {
       body: JSON.stringify({id})
     })
       .then(response => response.json())
-      .then(response => dispatch(receiveDeletComments()));
+      .then(response => dispatch(receiveDeletComments(id)));
   };
 };

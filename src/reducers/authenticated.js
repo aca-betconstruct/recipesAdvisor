@@ -6,7 +6,7 @@ import {
   ERROR_LOGIN
 } from '../constants';
 
-export const user = (state = null, action) => {
+export const user = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_ME: {
       return action.payload[0];

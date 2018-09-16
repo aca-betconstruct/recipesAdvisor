@@ -3,12 +3,9 @@ import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import { Col } from 'mdbreact';
 import styles from './styles';
+import CommentDelete from '../CommentDelete';
 
 class CommentsList extends Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
   componentDidMount() {
     const { getComments, getAuthenticated, getMe, jwt, isAuth } = this.props;
     getComments();
@@ -17,13 +14,17 @@ class CommentsList extends Component {
       getMe(jwt);
     }
   }
-  handleClick(id) {
-    const { deleteComment, jwt } = this.props;
-    deleteComment(id, jwt);
-  }
 
   render() {
-    const { classes, comments, url, users } = this.props;
+    const {
+      deleteComment,
+      jwt,
+      classes,
+      comments,
+      url,
+      users,
+      user
+    } = this.props;
     const comment = comments.filter(elem => elem.receptId === url);
     return (
       <Col className={classes.main}>
@@ -45,7 +46,17 @@ class CommentsList extends Component {
               </div>
               <div className={classes.comment}>
                 {elem.text}
-
+                <div>
+                  {user.id === elem.creatorId ? (
+                    <CommentDelete
+                      deleteComment={deleteComment}
+                      id={elem.id}
+                      jwt={jwt}
+                    />
+                  ) : (
+                    ''
+                  )}
+                </div>
                 <span>{elem.createdAt}</span>
               </div>
             </div>
