@@ -22,7 +22,7 @@ const errorSignUp = message => {
 export const postSignUp = (state, toLoginPage) => {
   return dispatch => {
     dispatch(requestSignUp());
-    return fetch(`http://localhost:5002/v1/signup`, {
+    return fetch(`https://acafoodapi.haffollc.com/v1/signup`, {
       headers: {
         'Content-Type': 'application/json'
       },

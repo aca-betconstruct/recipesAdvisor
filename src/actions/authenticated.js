@@ -48,7 +48,7 @@ export const logoutUser = () => {
 export const getAuthenticated = () => {
   return dispatch => {
     dispatch(requestAuthenticated());
-    return fetch(`http://localhost:5002/v1/users`, {
+    return fetch(`https://acafoodapi.haffollc.com/v1/users`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -65,7 +65,7 @@ export const getAuthenticated = () => {
 export const getMe = jwt => {
   return dispatch => {
     dispatch(requestMe());
-    return fetch(`http://localhost:5002/v1/me`, {
+    return fetch(`https://acafoodapi.haffollc.com/v1/me`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',

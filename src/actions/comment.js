@@ -49,7 +49,7 @@ const requestDeleteComment = () => {
 export const getComments = () => {
   return dispatch => {
     dispatch(requestComment());
-    return fetch(`http://localhost:5002/v1/comments`)
+    return fetch(`https://acafoodapi.haffollc.com/v1/comments`)
       .then(response => response.json())
       .then(response => dispatch(receiveComments(response)));
   };
@@ -58,7 +58,7 @@ export const getComments = () => {
 export const postComment = (state, jwt) => {
   return dispatch => {
     dispatch(requestPostComment());
-    return fetch(`http://localhost:5002/v1/comments`, {
+    return fetch(`https://acafoodapi.haffollc.com/v1/comments`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt}`
@@ -74,7 +74,7 @@ export const postComment = (state, jwt) => {
 export const deleteComment = (id, jwt) => {
   return dispatch => {
     dispatch(requestDeleteComment());
-    return fetch(`http://localhost:5002/v1/comment/${id}`, {
+    return fetch(`https://acafoodapi.haffollc.com/v1/comment/${id}`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${jwt}`

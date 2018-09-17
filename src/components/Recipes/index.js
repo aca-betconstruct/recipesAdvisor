@@ -194,7 +194,7 @@ class Recipes extends Component {
                     <b>
                       {favourites.length
                         ? 'Yay! You have seen it all'
-                        : 'You do not have any favourite recipes yet.'}
+                        : `You don't have any favourite recipes yet.`}
                     </b>
                   </p>
                 }
